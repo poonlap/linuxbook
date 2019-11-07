@@ -1,2 +1,2 @@
-# linuxbook
-A book in Thai about introduction to Linux
+Source code LaTeX ที่ได้มากจากการกู้ข้อมูล.
+ถ้ามีเวลาคงจะต้องลองเริ่มประติดประต่อใหม่อีกครั้งว่า complie ผ่านหรือไม่.
