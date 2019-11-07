@@ -1,0 +1,8 @@
+heading_prefix   "\\section*{"
+heading_suffix   "}"
+headings_flag       1
+delim_0 "\\ \\hspace{0pt plus 1fil}\\penalty0\\null\\nobreak\\dotfill~"
+delim_1 "~\\dotfill\\penalty0\\ "
+delim_2 "~\\dotfill\\penalty0\\ "
+
+

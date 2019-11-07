@@ -1,0 +1,514 @@
+\indexentry{minix@Minix}{1}
+\indexentry{linus benedict torvalds@Linus Benedict Torvalds}{1}
+\indexentry{linux@Linux|see{ลิ\wbr{}นุกซ์}}{1}
+\indexentry{ลิ\wbr{}นุกซ์}{1}
+\indexentry{นัก\wbr{}พัฒนา\wbr{}ซอฟต์แวร์}{2}
+\indexentry{posix@POSIX}{2}
+\indexentry{compatibility}{2}
+\indexentry{compile}{2}
+\indexentry{kernel}{2}
+\indexentry{open operating environment@Operating Environment}{2}
+\indexentry{linus benedict torvalds@Linus Benedict Torvalds!Linux Torvalds}{2}
+\indexentry{andrew tanenbaum@Andrew Tanenbaum}{3}
+\indexentry{minix@Minix}{3}
+\indexentry{task switching}{3}
+\indexentry{port (กริยา)}{3}
+\indexentry{ลิขสิทธิ์}{4}
+\indexentry{copyright|see{ลิขสิทธิ์}}{4}
+\indexentry{สาธารณะ\wbr{}สมบัติ}{4}
+\indexentry{public domain|see{สาธารณะ\wbr{}สมบัติ}}{4}
+\indexentry{license|see{ใบ\wbr{}อนุญาต}}{4}
+\indexentry{ใบ\wbr{}อนุญาต}{4}
+\indexentry{gnu general public license@GNU General Public License}{5}
+\indexentry{gpl@GPL|see{GNU General Publice License}}{5}
+\indexentry{free software foundation@Free Software Foundation}{5}
+\indexentry{gnu@GNU}{5}
+\indexentry{richard stallman@Richard Stallman}{5}
+\indexentry{สิทธิ\wbr{}บัตร}{6}
+\indexentry{patent|see{สิทธิ\wbr{}บัตร}}{6}
+\indexentry{ซอฟต์แวร์\wbr{}เสรี}{7}
+\indexentry{ลิขสิทธิ์}{7}
+\indexentry{copyright|see{ลิขสิทธิ์}}{7}
+\indexentry{โอเ\wbr{}พน\wbr{}ซอร์ส}{7}
+\indexentry{distribution@Distribution|see{ดิสท\wbr{}ริ\wbr{}บิว\wbr{}ชัน}}{9}
+\indexentry{slackware@Slackware}{9}
+\indexentry{patrick volkerding@Patrick Volkerding}{9}
+\indexentry{slackware@Slackware}{9}
+\indexentry{redhat@Red Hat}{10}
+\indexentry{rpm@RPM|see{Red Hat Package Management}}{10}
+\indexentry{redhat package management@Red Hat Package Management}{10}
+\indexentry{debian@Debian}{11}
+\indexentry{code name}{12}
+\indexentry{ชื่อ\hskip 0pt plus0.6pt\relax {}รหัส\hskip 0pt plus0.6pt\relax {}การ\hskip 0pt plus0.6pt\relax {}พัฒนา}{12}
+\indexentry{gentoo@Gentoo}{12}
+\indexentry{portage}{12}
+\indexentry{fedora@Fedora}{13}
+\indexentry{knoppix@Knoppix}{13}
+\indexentry{thai linux working group@Thai Linux Working Group}{14}
+\indexentry{tlwg@TLWG|see{Thai Linux Working Group}}{14}
+\indexentry{multics@MULTICS}{17}
+\indexentry{ken thopmson@Ken Thompson}{17}
+\indexentry{dennis ritchie@Dennis Ritchie}{17}
+\indexentry{unix@UNIX}{17}
+\indexentry{unics@UNICS|see{UNIX}}{17}
+\indexentry{ภาษา\wbr{}ชั้น\wbr{}สูง}{18}
+\indexentry{high-level language|see{ภาษา\wbr{}ชั้น\wbr{}สูง}}{18}
+\indexentry{low-level language|see{ภาษา\wbr{}ชั้น\wbr{}ต่ำ}}{18}
+\indexentry{ภาษา\wbr{}ชั้น\wbr{}ต่ำ}{18}
+\indexentry{berkley software distribution@Berkley Software Distribution}{18}
+\indexentry{bsd@BSD|see{Berkley Software Distribution}}{18}
+\indexentry{bill joy@Bill Joy}{18}
+\indexentry{vi@\cmd{vi}}{18}
+\indexentry{darpa@DARPA}{18}
+\indexentry{system v@System V}{19}
+\indexentry{posix@POSIX}{19}
+\indexentry{user ID}{23}
+\indexentry{uid@UID}{23}
+\indexentry{group}{23}
+\indexentry{กรุป}{23}
+\indexentry{group ID}{23}
+\indexentry{gid@GID}{23}
+\indexentry{cli@CLI|see{Command Line Interface}}{24}
+\indexentry{command line interface@Command Line Interface}{24}
+\indexentry{tui@TUI|see{Text User Interface}}{24}
+\indexentry{text user interface@Text User Interface}{24}
+\indexentry{argument}{32}
+\indexentry{อาร์กิวเ\hskip 0pt plus0.6pt\relax {}มนต์}{32}
+\indexentry{option}{32}
+\indexentry{ตัว\hskip 0pt plus0.6pt\relax {}เลือก}{32}
+\indexentry{full path}{33}
+\indexentry{relative path}{33}
+\indexentry{environment variable}{34}
+\indexentry{ตัวแปร\hskip 0pt plus0.6pt\relax {}สภาพ\hskip 0pt plus0.6pt\relax {}แวด\hskip 0pt plus0.6pt\relax {}ล้อม}{34}
+\indexentry{shell variable}{34}
+\indexentry{ตัวแปร\hskip 0pt plus0.6pt\relax {}เชลล์}{34}
+\indexentry{standard input}{41}
+\indexentry{ข้อ\hskip 0pt plus0.6pt\relax {}มูล\hskip 0pt plus0.6pt\relax {}นำ\hskip 0pt plus0.6pt\relax {}เข้า\hskip 0pt plus0.6pt\relax {}มาตร\hskip 0pt plus0.6pt\relax {}ฐาน}{41}
+\indexentry{stdin|see{standard input}}{41}
+\indexentry{standard output}{42}
+\indexentry{ข้อ\hskip 0pt plus0.6pt\relax {}มูล\hskip 0pt plus0.6pt\relax {}ออก\hskip 0pt plus0.6pt\relax {}มาตร\hskip 0pt plus0.6pt\relax {}ฐาน}{42}
+\indexentry{stdout|see{standard output}}{42}
+\indexentry{standard error}{42}
+\indexentry{ข้อ\hskip 0pt plus0.6pt\relax {}ผิด\hskip 0pt plus0.6pt\relax {}พลาด\hskip 0pt plus0.6pt\relax {}มาตร\hskip 0pt plus0.6pt\relax {}ฐาน}{42}
+\indexentry{stderr|see{standard error}}{42}
+\indexentry{file descriptor}{43}
+\indexentry{exit status}{43}
+\indexentry{unix!philosophy}{43}
+\indexentry{ปราชญา\hskip 0pt plus0.6pt\relax {}ยู\hskip 0pt plus0.6pt\relax {}นิกซ์}{43}
+\indexentry{pipe}{44}
+\indexentry{ไปป์}{44}
+\indexentry{ตัว\hskip 0pt plus0.6pt\relax {}กรอง}{45}
+\indexentry{filter}{45}
+\indexentry{eol@EOL}{45}
+\indexentry{here document}{49}
+\indexentry{prompt!secondary}{49}
+\indexentry{พร\hskip 0pt plus0.6pt\relax {}อมต์!ลำดับ\hskip 0pt plus0.6pt\relax {}ที่\hskip 0pt plus0.6pt\relax {}สอง}{49}
+\indexentry{alias}{51}
+\indexentry{wildcard}{54}
+\indexentry{ไวล์ด\hskip 0pt plus0.6pt\relax {}คาร์ด}{54}
+\indexentry{{\latintext  \texttt  {*}}}{54}
+\indexentry{{\latintext  \texttt  {?}}}{54}
+\indexentry{[}{54}
+\indexentry{]}{54}
+\indexentry{!}{54}
+\indexentry{"@{\latintext  \texttt  {"}}}{56}
+\indexentry{'@{\latintext  \texttt  {'}}}{56}
+\indexentry{quote!single}{57}
+\indexentry{quote!double}{57}
+\indexentry{\char 92}{57}
+\indexentry{escape sequence}{58}
+\indexentry{key binding}{59}
+\indexentry{จ็\hskip 0pt plus0.6pt\relax {}อบ}{63}
+\indexentry{job!foreground}{63}
+\indexentry{job!background}{63}
+\indexentry{\&}{63}
+\indexentry{จ็\hskip 0pt plus0.6pt\relax {}อบ!หมาย\hskip 0pt plus0.6pt\relax {}เลข}{64}
+\indexentry{job!number}{64}
+\indexentry{process!number}{64}
+\indexentry{โปร\hskip 0pt plus0.6pt\relax {}เซส!หมาย\hskip 0pt plus0.6pt\relax {}เลข}{64}
+\indexentry{on-line manual}{65}
+\indexentry{man page|see{on-line manual}}{65}
+\indexentry{pager}{66}
+\indexentry{เพจ\hskip 0pt plus0.6pt\relax {}เจอร์}{66}
+\indexentry{initialization file}{72}
+\indexentry{rc file}{72}
+\indexentry{dot file}{72}
+\indexentry{ps1@{\latintext  \texttt  {PS1}}}{75}
+\indexentry{ansi termial@ANSI terminal}{75}
+\indexentry{ansi escape sequence@ANSI!escape sequence}{77}
+\indexentry{readline}{77}
+\indexentry{ps1@{\latintext  \texttt  {PS1}}}{79}
+\indexentry{ps2@{\latintext  \texttt  {PS2}}}{79}
+\indexentry{ps3@{\latintext  \texttt  {PS3}}}{79}
+\indexentry{ps4@{\latintext  \texttt  {PS4}}}{80}
+\indexentry{.inputrc@{\latintext  \texttt  {.inputrc}}}{81}
+\indexentry{.bashrc@{\latintext  \texttt  {.bashrc}}}{86}
+\indexentry{virutual memory}{90}
+\indexentry{swap partition}{90}
+\indexentry{mount}{92}
+\indexentry{file}{94}
+\indexentry{ไฟล์}{94}
+\indexentry{ส่วน\hskip 0pt plus0.6pt\relax {}ขยาย\hskip 0pt plus0.6pt\relax {}ชื่อ\hskip 0pt plus0.6pt\relax {}ไฟล์}{95}
+\indexentry{filename extension}{95}
+\indexentry{magic number}{96}
+\indexentry{file!executable}{96}
+\indexentry{file!binary data}{96}
+\indexentry{script}{97}
+\indexentry{device!character}{98}
+\indexentry{device!block}{98}
+\indexentry{buffer}{98}
+\indexentry{major device number}{98}
+\indexentry{minor device number}{98}
+\indexentry{/dev/null}{99}
+\indexentry{/dev/zero}{99}
+\indexentry{directory}{100}
+\indexentry{ไดเ\hskip 0pt plus0.6pt\relax {}รก\hskip 0pt plus0.6pt\relax {}ทอ\hskip 0pt plus0.6pt\relax {}รี}{100}
+\indexentry{..}{100}
+\indexentry{directory!home}{101}
+\indexentry{ไดเ\hskip 0pt plus0.6pt\relax {}รก\hskip 0pt plus0.6pt\relax {}ทอ\hskip 0pt plus0.6pt\relax {}รี!โฮม}{101}
+\indexentry{.}{101}
+\indexentry{filesystem hierarchy standard@Filesystem Hierarchy Standard}{102}
+\indexentry{fhs@FHS}{102}
+\indexentry{proc filesystem}{106}
+\indexentry{fifo@FIFO}{109}
+\indexentry{named pipe}{109}
+\indexentry{hard link}{112}
+\indexentry{ฮาร์ด\hskip 0pt plus0.6pt\relax {}ลิงค์}{112}
+\indexentry{link}{112}
+\indexentry{soft link}{114}
+\indexentry{ซอฟต์\hskip 0pt plus0.6pt\relax {}ลิงค์}{114}
+\indexentry{symbolic link}{114}
+\indexentry{atime}{116}
+\indexentry{mtime}{116}
+\indexentry{ctime}{116}
+\indexentry{mode}{117}
+\indexentry{โหมด}{117}
+\indexentry{symbolic mode}{119}
+\indexentry{umask}{120}
+\indexentry{suid}{121}
+\indexentry{uid@UID!effective}{122}
+\indexentry{sgid}{122}
+\indexentry{gid@GID!effective}{122}
+\indexentry{sticky bit}{122}
+\indexentry{raw device}{126}
+\indexentry{image file}{126}
+\indexentry{buffer cache}{136}
+\indexentry{utmp@ไฟล์ {\latintext  \texttt  {/var/run/utmp}}}{140}
+\indexentry{wtmp@ไฟล์ {\latintext  \texttt  {/var/log/wtmp}}}{140}
+\indexentry{pts}{140}
+\indexentry{pseudo-terminal}{140}
+\indexentry{load average}{141}
+\indexentry{jcpu@JCPU}{141}
+\indexentry{pcpu@PCPU}{141}
+\indexentry{btmp@ไฟล์ btmp}{142}
+\indexentry{terminfo}{142}
+\indexentry{instant messenger}{144}
+\indexentry{effective user ID}{149}
+\indexentry{log@log file}{152}
+\indexentry{passwd@ไฟล์ {\latintext  \texttt  {/etc/passwd}}}{155}
+\indexentry{shadow@ไฟล์ {\latintext  \texttt  {/etc/shadow}}}{155}
+\indexentry{group@ไฟล์ {\latintext  \texttt  {/etc/group}}}{156}
+\indexentry{services@ไฟล์ {\latintext  \texttt  {/etc/services}}}{156}
+\indexentry{csv}{157}
+\indexentry{regular expression}{164}
+\indexentry{/var/log/message}{166}
+\indexentry{stream editor}{169}
+\indexentry{pattern space}{170}
+\indexentry{record}{176}
+\indexentry{field}{176}
+\indexentry{compress}{179}
+\indexentry{บีบ\hskip 0pt plus0.6pt\relax {}อัด}{179}
+\indexentry{decompress}{179}
+\indexentry{ขยาย}{179}
+\indexentry{แถว\hskip 0pt plus0.6pt\relax {}ลำดับ}{192}
+\indexentry{array}{192}
+\indexentry{คำ\hskip 0pt plus0.6pt\relax {}สั่ง\hskip 0pt plus0.6pt\relax {}ผสม}{193}
+\indexentry{compound commands}{193}
+\indexentry{rgb@RGB}{199}
+\indexentry{process}{205}
+\indexentry{โปร\hskip 0pt plus0.6pt\relax {}เซส}{205}
+\indexentry{context switching}{206}
+\indexentry{page fault}{206}
+\indexentry{user mode}{207}
+\indexentry{kernel mode}{207}
+\indexentry{process!ID}{207}
+\indexentry{โปร\hskip 0pt plus0.6pt\relax {}เซส\hskip 0pt plus0.6pt\relax {}พ่อ\hskip 0pt plus0.6pt\relax {}แม่}{209}
+\indexentry{process!parent}{209}
+\indexentry{โปร\hskip 0pt plus0.6pt\relax {}เซส\hskip 0pt plus0.6pt\relax {}ลูก}{210}
+\indexentry{process!child}{210}
+\indexentry{fork}{210}
+\indexentry{init}{210}
+\indexentry{kernel thread}{211}
+\indexentry{โปร\hskip 0pt plus0.6pt\relax {}เซส\hskip 0pt plus0.6pt\relax {}กำพร้า}{211}
+\indexentry{orphan process}{211}
+\indexentry{zombie|see{process}}{211}
+\indexentry{process!zombie}{211}
+\indexentry{โปร\hskip 0pt plus0.6pt\relax {}เซส!zombie}{211}
+\indexentry{virtual memory}{212}
+\indexentry{rss@RSS}{212}
+\indexentry{resident set size@Residen set size}{212}
+\indexentry{physical memory}{212}
+\indexentry{zombie process}{213}
+\indexentry{thread}{214}
+\indexentry{pthread}{214}
+\indexentry{nptl@NPTL|see{Native POSIX thread library}}{214}
+\indexentry{native posix thread library@Native POSIX thread library}{214}
+\indexentry{lwp@LWP|see{Light Weight Process}}{215}
+\indexentry{light weight process@Light Weight Process}{215}
+\indexentry{signal}{216}
+\indexentry{core dump}{217}
+\indexentry{cache!buffer}{221}
+\indexentry{cache!page}{221}
+\indexentry{text resident set}{223}
+\indexentry{trs@TRS|see{text resident set}}{223}
+\indexentry{x11@X11}{238}
+\indexentry{x.org@X.org}{238}
+\indexentry{xfree86@โครง\hskip 0pt plus0.6pt\relax {}การ XFree86}{238}
+\indexentry{x server@x server}{238}
+\indexentry{event}{238}
+\indexentry{อี\hskip 0pt plus0.6pt\relax {}เวนท์}{238}
+\indexentry{x protocol@X protocol}{239}
+\indexentry{xlib@Xlib}{239}
+\indexentry{widget}{239}
+\indexentry{วิดเจ็ต}{239}
+\indexentry{athena@Athena}{239}
+\indexentry{motif@Motif}{239}
+\indexentry{xaw@Xaw}{239}
+\indexentry{motif@Motif!Open Motif}{239}
+\indexentry{motif@Motif!LeffTif}{239}
+\indexentry{ฟอนต์!เวกเตอร์}{249}
+\indexentry{ฟอนต์!บิตแมป}{249}
+\indexentry{bdf@BDF|see{Bitmap Distribution Format}}{250}
+\indexentry{bitmap distribution format@Bitmap Distribution Format}{250}
+\indexentry{ฟอนต์!เอาต์ไลน์}{250}
+\indexentry{postscript font ascii@PostScript Font ASCII}{250}
+\indexentry{pfa@PFA|see{PostScript Font ASCII}}{250}
+\indexentry{pfb@PFB|see{PostScript Font Binary}}{250}
+\indexentry{postscript font binary@PostScript Font Binary}{250}
+\indexentry{kerning}{250}
+\indexentry{afm@AFM|see{Adobe Font Metric}}{250}
+\indexentry{adobe font metric@Adobe Font Metric}{250}
+\indexentry{truetype@TrueType}{250}
+\indexentry{ฟอนต์!ท\hskip 0pt plus0.6pt\relax {}รู\hskip 0pt plus0.6pt\relax {}ไทป์}{250}
+\indexentry{opentype@OpenType}{250}
+\indexentry{ฟอนต์!โอเ\hskip 0pt plus0.6pt\relax {}พน\hskip 0pt plus0.6pt\relax {}ไทป์}{250}
+\indexentry{rendering}{251}
+\indexentry{aliasing}{251}
+\indexentry{anti-alias}{251}
+\indexentry{rendering!sub-pixel}{251}
+\indexentry{event}{252}
+\indexentry{อิ\hskip 0pt plus0.6pt\relax {}เวนต์}{252}
+\indexentry{scancode}{252}
+\indexentry{ส\hskip 0pt plus0.6pt\relax {}แกน\hskip 0pt plus0.6pt\relax {}โค้ด}{252}
+\indexentry{keycode}{252}
+\indexentry{คีย์\hskip 0pt plus0.6pt\relax {}โค้ด}{252}
+\indexentry{keysym}{253}
+\indexentry{คีย์\hskip 0pt plus0.6pt\relax {}ซิม}{253}
+\indexentry{modifier key}{253}
+\indexentry{โมดิ\hskip 0pt plus0.6pt\relax {}ไฟ\hskip 0pt plus0.6pt\relax {}เออร์\hskip 0pt plus0.6pt\relax {}คีย์}{253}
+\indexentry{xkb@XKB|see{X Keyboard Extension}}{253}
+\indexentry{x keyboard extension@X Keyboard Extension}{253}
+\indexentry{desktop environment@Desktop Environment}{259}
+\indexentry{สภาพ\hskip 0pt plus0.6pt\relax {}แวด\hskip 0pt plus0.6pt\relax {}ล้อม\hskip 0pt plus0.6pt\relax {}เดสก์ท็\hskip 0pt plus0.6pt\relax {}อป}{259}
+\indexentry{de@DE|see{Desktop Enviornment}}{259}
+\indexentry{xorg.conf@ไฟล์ xorg.conf}{260}
+\indexentry{xf86config@ไฟล์ XF86Config|see{xorg.conf}}{260}
+\indexentry{ช่วง\hskip 0pt plus0.6pt\relax {}ความถี่\hskip 0pt plus0.6pt\relax {}ตาม\hskip 0pt plus0.6pt\relax {}แนว\hskip 0pt plus0.6pt\relax {}นอน}{260}
+\indexentry{horizontal sync frequency}{260}
+\indexentry{ช่วง\hskip 0pt plus0.6pt\relax {}ความถี่\hskip 0pt plus0.6pt\relax {}ตาม\hskip 0pt plus0.6pt\relax {}แนว\hskip 0pt plus0.6pt\relax {}ตั้ง}{260}
+\indexentry{vertical sync frequency}{260}
+\indexentry{ps/2@PS/2}{260}
+\indexentry{xorg.conf.new@ไฟล์ {\latintext  \texttt  {xorg.conf.new}}}{260}
+\indexentry{xorgconfig}{261}
+\indexentry{xf86config|see{xorgconfig}}{261}
+\indexentry{dri|see{Direct Rendering Infrastructure}}{267}
+\indexentry{direct rendering infrastructure@Direct Rendering Infrastructure}{267}
+\indexentry{dbe|see{Double Buffer Extension}}{267}
+\indexentry{double buffer extension@Double Buffer Extension}{267}
+\indexentry{แป้น\hskip 0pt plus0.6pt\relax {}พิมพ์!ภาษา\hskip 0pt plus0.6pt\relax {}ไทย}{268}
+\indexentry{แป้น\hskip 0pt plus0.6pt\relax {}พิมพ์!เกษมณี}{268}
+\indexentry{ketmanee@Ketmanee|see{Kedmanee}}{268}
+\indexentry{kedmanee@Kedmanee}{268}
+\indexentry{th}{268}
+\indexentry{แป้น\hskip 0pt plus0.6pt\relax {}พิมพ์!ปัตตะ\hskip 0pt plus0.6pt\relax {}โชติ}{268}
+\indexentry{pattachote@Pattachote}{268}
+\indexentry{pattajoti@Pattajoti|see{Pattachote}}{268}
+\indexentry{th\_ pat}{268}
+\indexentry{แป้น\hskip 0pt plus0.6pt\relax {}พิมพ์!ม\hskip 0pt plus0.6pt\relax {}อก. 820}{268}
+\indexentry{tis-820.2538@TIS-820.2538}{268}
+\indexentry{th\_ tis}{268}
+\indexentry{intellimouse@IntelliMouse}{272}
+\indexentry{.xinitrc@ไฟล์ {\latintext  \texttt  {.xinitrc}}}{276}
+\indexentry{.xinitrc@ไฟล์ .xinitrc}{278}
+\indexentry{session}{278}
+\indexentry{เซส\hskip 0pt plus0.6pt\relax {}ชัน}{278}
+\indexentry{display manager}{280}
+\indexentry{ดิส\hskip 0pt plus0.6pt\relax {}เพลย\hskip 0pt plus0.6pt\relax {}แมนเน\hskip 0pt plus0.6pt\relax {}เจอร์}{280}
+\indexentry{x display manager control protocol@X Display Manager Control Protocol}{280}
+\indexentry{broadcast}{281}
+\indexentry{บอ\hskip 0pt plus0.6pt\relax {}รด\hskip 0pt plus0.6pt\relax {}แคสต์}{281}
+\indexentry{/etc/X11/xdm@ไดเ\hskip 0pt plus0.6pt\relax {}รก\hskip 0pt plus0.6pt\relax {}ทอ\hskip 0pt plus0.6pt\relax {}รี {\latintext  \texttt  {/etc/X11/xdm}}}{281}
+\indexentry{vnc@VNC|see{Virtual Network Computing}}{284}
+\indexentry{virtual network computing@Virtual Network Computing}{284}
+\indexentry{xfstt}{286}
+\indexentry{xfsft}{286}
+\indexentry{freetype@FreeType}{286}
+\indexentry{font.dir@ไฟล์ {\latintext  \texttt  {font.dir}}}{286}
+\indexentry{ฟอนต์!เ\hskip 0pt plus0.6pt\relax {}ซิร์ฟ\hskip 0pt plus0.6pt\relax {}เวอร์}{288}
+\indexentry{x font server@X font server}{288}
+\indexentry{x logical font description@X Logical Font Description}{290}
+\indexentry{xlfd@XLFD|see{X Logical Font Description}}{290}
+\indexentry{ฟอนต์!การ\hskip 0pt plus0.6pt\relax {}ติด\hskip 0pt plus0.6pt\relax {}ตั้ง}{292}
+\indexentry{xft@Xft|see{X FreeType Interface library}}{295}
+\indexentry{x freetype interface library@X FreeType Interface library}{295}
+\indexentry{xft1@Xft1}{295}
+\indexentry{fontconfig}{295}
+\indexentry{serif}{296}
+\indexentry{sans-serif}{296}
+\indexentry{monospace}{296}
+\indexentry{คีย์แมป}{301}
+\indexentry{keymap}{301}
+\indexentry{xev}{301}
+\indexentry{qwerty}{305}
+\indexentry{dvorak}{305}
+\indexentry{แท็บ}{307}
+\indexentry{tab}{307}
+\indexentry{miguel deIcaza@Miguel de Icaza}{309}
+\indexentry{federico mena@Federico Mena}{309}
+\indexentry{พาเนล}{309}
+\indexentry{panel}{309}
+\indexentry{menu}{309}
+\indexentry{เมนู}{309}
+\indexentry{พื้น\hskip 0pt plus0.6pt\relax {}ที่\hskip 0pt plus0.6pt\relax {}ทำ\hskip 0pt plus0.6pt\relax {}งาน}{310}
+\indexentry{workspace}{310}
+\indexentry{file manager}{310}
+\indexentry{navigation metaphor}{310}
+\indexentry{spatial view}{311}
+\indexentry{object oriented metaphor}{311}
+\indexentry{ธีม}{312}
+\indexentry{theme}{312}
+\indexentry{session}{312}
+\indexentry{เซส\hskip 0pt plus0.6pt\relax {}ชัน}{312}
+\indexentry{gconf@GConf}{315}
+\indexentry{localization}{319}
+\indexentry{l10n}{319}
+\indexentry{internationalization}{319}
+\indexentry{i18n}{319}
+\indexentry{อักขระ}{320}
+\indexentry{ชุด\hskip 0pt plus0.6pt\relax {}อักขระ}{320}
+\indexentry{character set}{320}
+\indexentry{ชุด\hskip 0pt plus0.6pt\relax {}รหัส\hskip 0pt plus0.6pt\relax {}อักขระ}{320}
+\indexentry{coded character set}{320}
+\indexentry{charset|see{coded character set}}{320}
+\indexentry{code set|see{coded character set}}{320}
+\indexentry{กลีฟ}{320}
+\indexentry{glyph}{320}
+\indexentry{ม\hskip 0pt plus0.6pt\relax {}อก.620-2533}{320}
+\indexentry{tis-620@TIS-620}{320}
+\indexentry{สมอ.}{320}
+\indexentry{graphics left}{322}
+\indexentry{graphics right}{322}
+\indexentry{iso 8859-1@ISO 8859-1}{322}
+\indexentry{iso 8859-11@ISO 8859-11}{322}
+\indexentry{ยู\hskip 0pt plus0.6pt\relax {}นิ\hskip 0pt plus0.6pt\relax {}โค้ด}{322}
+\indexentry{unicode}{322}
+\indexentry{basic multilingual plane@Basic Multilingual Plane}{322}
+\indexentry{bmp@BMP|see{Basic Multilingual Plane}}{322}
+\indexentry{iso 10646@ISO 10646}{323}
+\indexentry{การ\hskip 0pt plus0.6pt\relax {}เข้า\hskip 0pt plus0.6pt\relax {}รหัส\hskip 0pt plus0.6pt\relax {}อักขระ}{323}
+\indexentry{character encoding}{323}
+\indexentry{ucs-2@UCS-2}{324}
+\indexentry{ucs-4@UCS-4}{324}
+\indexentry{utf@UTF}{324}
+\indexentry{unicode transformation format@Unicode Transformation Format}{324}
+\indexentry{utf-8@UTF-8}{324}
+\indexentry{locale}{326}
+\indexentry{โลแ\hskip 0pt plus0.6pt\relax {}คล}{326}
+\indexentry{territory}{327}
+\indexentry{lanf@{\latintext  \texttt  {LANG}}}{330}
+\indexentry{วร\hskip 0pt plus0.6pt\relax {}เดช เย็น\hskip 0pt plus0.6pt\relax {}บุตร}{331}
+\indexentry{มานพ วงศ์\hskip 0pt plus0.6pt\relax {}สาย\hskip 0pt plus0.6pt\relax {}สุวรรณ}{331}
+\indexentry{วุฒิชัย อัมพร\hskip 0pt plus0.6pt\relax {}อร่าม\hskip 0pt plus0.6pt\relax {}เวทย์}{331}
+\indexentry{สื่อ\hskip 0pt plus0.6pt\relax {}ไทย}{332}
+\indexentry{zzzthai@ZzzThai}{332}
+\indexentry{thai extension@Thai Extension}{332}
+\indexentry{te@TE|see{Thai Extension}}{332}
+\indexentry{ไพศาล เต\hskip 0pt plus0.6pt\relax {}ชะ\hskip 0pt plus0.6pt\relax {}จารุ\hskip 0pt plus0.6pt\relax {}วงศ์}{332}
+\indexentry{ศิ\hskip 0pt plus0.6pt\relax {}ริ\hskip 0pt plus0.6pt\relax {}ชัย เลิศ\hskip 0pt plus0.6pt\relax {}วร\hskip 0pt plus0.6pt\relax {}วุฒิ}{334}
+\indexentry{เทพ\hskip 0pt plus0.6pt\relax {}พิทักษ์ กา\hskip 0pt plus0.6pt\relax {}รุ\hskip 0pt plus0.6pt\relax {}ณ\hskip 0pt plus0.6pt\relax {}บุญญานันท์}{334}
+\indexentry{pua@PUA|see{Private Use Area}}{336}
+\indexentry{private use area@Private Use Area}{336}
+\indexentry{glyph positioning@Glyph Positioning}{337}
+\indexentry{gpos@GPOS|see{Glyph Positioning}}{337}
+\indexentry{gsub@GSUB|see{Glyph Substitution}}{337}
+\indexentry{glyph substitution@Glyph Substitution}{337}
+\indexentry{pango}{337}
+\indexentry{คุณ\hskip 0pt plus0.6pt\relax {}ชู\hskip 0pt plus0.6pt\relax {}กิจ วนา\hskip 0pt plus0.6pt\relax {}ธรรม}{337}
+\indexentry{input method@Input Method}{337}
+\indexentry{im@IM|see{Input Method}}{337}
+\indexentry{x input method@X Input Method}{338}
+\indexentry{xim@XIM|see{X Input Method}}{338}
+\indexentry{xmodifiers@{\latintext  \texttt  {XMODIFIERS}}}{338}
+\indexentry{dotted circle}{339}
+\indexentry{บรรณาธิ\hskip 0pt plus0.6pt\relax {}กรณ์}{341}
+\indexentry{editor}{341}
+\indexentry{george coulouris@George Coulouris}{342}
+\indexentry{bill joy@Bill Joy}{342}
+\indexentry{line editor}{342}
+\indexentry{emacs@Emacs}{350}
+\indexentry{richard stallman@Richard Stallman}{350}
+\indexentry{guy steele@Guy Steele}{350}
+\indexentry{dave moon@Dave Moon}{350}
+\indexentry{emacs@Emacs!Gosling}{350}
+\indexentry{james gosling@James Goslings}{350}
+\indexentry{emacs@Emacs!GNU}{350}
+\indexentry{emacs@Emacs!Lucid}{350}
+\indexentry{jamie zawinski@Jamie Zawinski}{350}
+\indexentry{xemacs@XEmacs}{350}
+\indexentry{emacs@Emacs!Nihongo}{350}
+\indexentry{mule@Mule}{350}
+\indexentry{kenichi handa@Kenichi Handa}{350}
+\indexentry{emacs@Emacs!Lisp}{351}
+\indexentry{buffer}{351}
+\indexentry{บัฟเฟอร์}{351}
+\indexentry{โหมดไลน์}{352}
+\indexentry{mode line}{352}
+\indexentry{mode}{352}
+\indexentry{โหมด}{352}
+\indexentry{โหมด\hskip 0pt plus0.6pt\relax {}หลัก}{352}
+\indexentry{major mode}{352}
+\indexentry{minor mode}{352}
+\indexentry{โหมด\hskip 0pt plus0.6pt\relax {}รอง}{352}
+\indexentry{minibuffer}{353}
+\indexentry{มิ\hskip 0pt plus0.6pt\relax {}นิบัฟเฟอร์}{353}
+\indexentry{key binding}{353}
+\indexentry{มาร์ก}{355}
+\indexentry{mark}{355}
+\indexentry{region}{355}
+\indexentry{openoffice@OpenOffice}{362}
+\indexentry{officepladao@OfficePladao}{362}
+\indexentry{officetle@OfficeTLE}{362}
+\indexentry{gimp@Gimp}{363}
+\indexentry{scheme}{364}
+\indexentry{inkscape}{364}
+\indexentry{svg@SVG}{364}
+\indexentry{dia@Dia}{365}
+\indexentry{imagemagick@ImageMagick}{366}
+\indexentry{ghostscript@GhostScript}{367}
+\indexentry{ogg@OGG|see{Ogg Vobris}}{368}
+\indexentry{ogg vobris@Ogg Vobris}{368}
+\indexentry{flac@FLAC|see{Free Loose-less Audio Codec}}{368}
+\indexentry{free losse-less audio codec@Free Loose-less Audio Codec}{368}
+\indexentry{netscape@Netscape}{370}
+\indexentry{konqueror@Konqueror}{371}
+\indexentry{smb}{371}
+\indexentry{instant messenger service@Instant Messenger Service}{371}
+\indexentry{jabber@Jabber}{372}
+\indexentry{kdevelop@Kdevelop}{373}
+\indexentry{anjuta@Anjuta}{373}
+\indexentry{monodevelop@Monodevelop}{373}
+\indexentry{jcpu@JCPU}{418}
+\indexentry{pcpu@PCPU}{418}
+\indexentry{jigdo}{433}
+\indexentry{event}{464}
+\indexentry{อี\hskip 0pt plus0.6pt\relax เวนท์}{464}

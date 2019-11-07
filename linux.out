@@ -1,0 +1,305 @@
+\BOOKMARK [0][-]{chapter.1}{รู้จักกับลินุกซ์}{}
+\BOOKMARK [1][-]{section.1.1}{Linux คืออะไร?}{chapter.1}
+\BOOKMARK [1][-]{section.1.2}{ประวัติความเป็นมาของลินุกซ์}{chapter.1}
+\BOOKMARK [1][-]{section.1.3}{กฏหมายกับซอฟต์แวร์}{chapter.1}
+\BOOKMARK [2][-]{subsection.1.3.1}{ลิขสิทธิ์}{section.1.3}
+\BOOKMARK [2][-]{subsection.1.3.2}{ใบอนุญาต}{section.1.3}
+\BOOKMARK [2][-]{subsection.1.3.3}{สิทธิบัตร}{section.1.3}
+\BOOKMARK [1][-]{section.1.4}{ซอฟต์แวร์เสรี}{chapter.1}
+\BOOKMARK [1][-]{section.1.5}{โอเพนซอร์ส}{chapter.1}
+\BOOKMARK [1][-]{section.1.6}{ธรรมชาติและคุณลักษณะของลินุกซ์}{chapter.1}
+\BOOKMARK [1][-]{section.1.7}{ดิสทริบิวชัน}{chapter.1}
+\BOOKMARK [2][-]{subsection.1.7.1}{Slackware}{section.1.7}
+\BOOKMARK [2][-]{subsection.1.7.2}{Red Hat}{section.1.7}
+\BOOKMARK [2][-]{subsection.1.7.3}{Debian GNU/Linux}{section.1.7}
+\BOOKMARK [2][-]{subsection.1.7.4}{Gentoo}{section.1.7}
+\BOOKMARK [2][-]{subsection.1.7.5}{Fedora}{section.1.7}
+\BOOKMARK [2][-]{subsection.1.7.6}{Knoppix}{section.1.7}
+\BOOKMARK [1][-]{section.1.8}{ลินุกซ์ดิสทริบิวชันในประเทศไทย}{chapter.1}
+\BOOKMARK [1][-]{section.1.9}{Thai Linux Working Group}{chapter.1}
+\BOOKMARK [1][-]{section.1.10}{ลินุกซ์และยูนิกซ์}{chapter.1}
+\BOOKMARK [2][-]{subsection.1.10.1}{กำเนิด UNIX}{section.1.10}
+\BOOKMARK [2][-]{subsection.1.10.2}{จากภาษาแอสเซมบลีสู่ภาษา C}{section.1.10}
+\BOOKMARK [2][-]{subsection.1.10.3}{Berkeley Software Distribution \(BSD\)}{section.1.10}
+\BOOKMARK [2][-]{subsection.1.10.4}{UNIX System V}{section.1.10}
+\BOOKMARK [2][-]{subsection.1.10.5}{มาตรฐานยูนิกซ์}{section.1.10}
+\BOOKMARK [1][-]{section.1.11}{สรุปท้ายบท}{chapter.1}
+\BOOKMARK [0][-]{chapter.2}{ลินุกซ์ขั้นพื้นฐาน}{}
+\BOOKMARK [1][-]{section.2.1}{ระบบปฏิบัติการ}{chapter.2}
+\BOOKMARK [1][-]{section.2.2}{การเข้าสู่ระบบ}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.2.1}{ผู้ใช้ในระบบ}{section.2.2}
+\BOOKMARK [2][-]{subsection.2.2.2}{ประเภทของการล็อกอินแบ่งตามอินเทอร์เฟส}{section.2.2}
+\BOOKMARK [2][-]{subsection.2.2.3}{การล็อกอินแบ่งตามการใช้เน็ตเวิร์ก}{section.2.2}
+\BOOKMARK [1][-]{section.2.3}{การออกจากระบบ}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.3.1}{เท็กซ์โหมด}{section.2.3}
+\BOOKMARK [2][-]{subsection.2.3.2}{กราฟฟิกโหมด}{section.2.3}
+\BOOKMARK [1][-]{section.2.4}{เทอร์มินอลเสมือน}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.4.1}{การเปลี่ยนโหมด}{section.2.4}
+\BOOKMARK [1][-]{section.2.5}{เชลล์เบื้องต้น}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.5.1}{อักขระ}{section.2.5}
+\BOOKMARK [2][-]{subsection.2.5.2}{คำสั่ง}{section.2.5}
+\BOOKMARK [2][-]{subsection.2.5.3}{ตรวจสอบประเภทของคำสั่ง}{section.2.5}
+\BOOKMARK [2][-]{subsection.2.5.4}{ตัวแปรสภาพแวดล้อม}{section.2.5}
+\BOOKMARK [2][-]{subsection.2.5.5}{คำสั่งไหน}{section.2.5}
+\BOOKMARK [2][-]{subsection.2.5.6}{ตัวเลือก}{section.2.5}
+\BOOKMARK [2][-]{subsection.2.5.7}{ข้อมูล \(data\)}{section.2.5}
+\BOOKMARK [2][-]{subsection.2.5.8}{รีไดเรกและไปป์}{section.2.5}
+\BOOKMARK [2][-]{subsection.2.5.9}{การจัดกลุ่มคำสั่ง}{section.2.5}
+\BOOKMARK [2][-]{subsection.2.5.10}{การแทนที่ \(substitue\) คำสั่ง}{section.2.5}
+\BOOKMARK [2][-]{subsection.2.5.11}{นามแฝง \(alias\)}{section.2.5}
+\BOOKMARK [2][-]{subsection.2.5.12}{การเติมเต็ม}{section.2.5}
+\BOOKMARK [2][-]{subsection.2.5.13}{ไวล์ดคาร์ด}{section.2.5}
+\BOOKMARK [2][-]{subsection.2.5.14}{อักขระที่มีความหมายพิเศษ}{section.2.5}
+\BOOKMARK [2][-]{subsection.2.5.15}{การตรวจแก้บรรทัดคำสั่ง}{section.2.5}
+\BOOKMARK [2][-]{subsection.2.5.16}{การควบคุมเทอร์มินอล}{section.2.5}
+\BOOKMARK [2][-]{subsection.2.5.17}{ประวัติคำสั่ง}{section.2.5}
+\BOOKMARK [2][-]{subsection.2.5.18}{จ็อบและการควบคุมคำสั่ง}{section.2.5}
+\BOOKMARK [1][-]{section.2.6}{คู่มือการใช้งาน}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.6.1}{คู่มือใช้งาน}{section.2.6}
+\BOOKMARK [2][-]{subsection.2.6.2}{เอกสารกำกับโปรแกรมใช้งาน}{section.2.6}
+\BOOKMARK [2][-]{subsection.2.6.3}{ข้อมูลทางอินเทอร์เน็ต}{section.2.6}
+\BOOKMARK [1][-]{section.2.7}{การปรับแต่งเชลล์}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.7.1}{ไฟล์ตั้งค่าเริ่มต้น}{section.2.7}
+\BOOKMARK [2][-]{subsection.2.7.2}{ไฟล์ /etc/profile}{section.2.7}
+\BOOKMARK [2][-]{subsection.2.7.3}{สีที่ใช้ในเทอร์มินอลแบบ ANSI}{section.2.7}
+\BOOKMARK [2][-]{subsection.2.7.4}{เชลล์พรอมต์}{section.2.7}
+\BOOKMARK [2][-]{subsection.2.7.5}{ไลบรารี readline}{section.2.7}
+\BOOKMARK [2][-]{subsection.2.7.6}{ไฟล์ \044HOME/.bash\137profile}{section.2.7}
+\BOOKMARK [2][-]{subsection.2.7.7}{ไฟล์ \044HOME/.bashrc}{section.2.7}
+\BOOKMARK [1][-]{section.2.8}{สรุปท้ายบท}{chapter.2}
+\BOOKMARK [0][-]{chapter.3}{ไฟล์}{}
+\BOOKMARK [1][-]{section.3.1}{พาร์ทิชัน, และระบบไฟล์}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.1.1}{พาร์ทิชัน}{section.3.1}
+\BOOKMARK [2][-]{subsection.3.1.2}{ระบบไฟล์}{section.3.1}
+\BOOKMARK [2][-]{subsection.3.1.3}{mount และ unmount}{section.3.1}
+\BOOKMARK [1][-]{section.3.2}{ไฟล์}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.2.1}{ชื่อไฟล์}{section.3.2}
+\BOOKMARK [2][-]{subsection.3.2.2}{ประเภทไฟล์}{section.3.2}
+\BOOKMARK [1][-]{section.3.3}{ไฟล์ธรรมดา}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.3.1}{ไฟล์จุด}{section.3.3}
+\BOOKMARK [2][-]{subsection.3.3.2}{ไฟล์สคริปต์}{section.3.3}
+\BOOKMARK [1][-]{section.3.4}{ไฟล์ดีไวซ์}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.4.1}{ไฟล์ /dev/null และ /dev/zero}{section.3.4}
+\BOOKMARK [1][-]{section.3.5}{ไดเรกทอรี}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.5.1}{โฮมไดเรกทอรี}{section.3.5}
+\BOOKMARK [2][-]{subsection.3.5.2}{ไดเรกทอรีปัจจุบัน}{section.3.5}
+\BOOKMARK [2][-]{subsection.3.5.3}{โครงสร้างไฟล์และไดเรกทอรี}{section.3.5}
+\BOOKMARK [2][-]{subsection.3.5.4}{ไดเรกทอรี proc}{section.3.5}
+\BOOKMARK [1][-]{section.3.6}{FIFO}{chapter.3}
+\BOOKMARK [1][-]{section.3.7}{UNIX Domain socket}{chapter.3}
+\BOOKMARK [1][-]{section.3.8}{i-node}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.8.1}{ฮาร์ดลิงค์}{section.3.8}
+\BOOKMARK [2][-]{subsection.3.8.2}{ซอฟต์ลิงค์}{section.3.8}
+\BOOKMARK [1][-]{section.3.9}{รายละเอียดของไฟล์}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.9.1}{คำสั่ง stat}{section.3.9}
+\BOOKMARK [1][-]{section.3.10}{การเปลี่ยนเจ้าของและกลุ่มของไฟล์}{chapter.3}
+\BOOKMARK [1][-]{section.3.11}{สิทธิการใช้ไฟล์}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.11.1}{สิทธิ์การกระทำ}{section.3.11}
+\BOOKMARK [2][-]{subsection.3.11.2}{การแก้สิทธิ์การใช้ไฟล์}{section.3.11}
+\BOOKMARK [2][-]{subsection.3.11.3}{สิทธิ์การใช้ไฟล์โดยปริยาย}{section.3.11}
+\BOOKMARK [1][-]{section.3.12}{บิต suid, sgid และ sticky}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.12.1}{การตั้งค่าบิตพิเศษ}{section.3.12}
+\BOOKMARK [1][-]{section.3.13}{การจัดการไฟล์และไดเรกทอรีเบื้องต้น}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.13.1}{การสร้างไฟล์}{section.3.13}
+\BOOKMARK [2][-]{subsection.3.13.2}{การสร้างไดเรกทอรี}{section.3.13}
+\BOOKMARK [2][-]{subsection.3.13.3}{การลบไฟล์}{section.3.13}
+\BOOKMARK [2][-]{subsection.3.13.4}{การลบไดเรกทอรี}{section.3.13}
+\BOOKMARK [2][-]{subsection.3.13.5}{การย้ายไฟล์, เปลี่ยนชื่อ}{section.3.13}
+\BOOKMARK [2][-]{subsection.3.13.6}{การสำเนาไฟล์}{section.3.13}
+\BOOKMARK [2][-]{subsection.3.13.7}{การหาไฟล์}{section.3.13}
+\BOOKMARK [2][-]{subsection.3.13.8}{ดูข้อมูลในไฟล์}{section.3.13}
+\BOOKMARK [1][-]{section.3.14}{สรุปท้ายบท}{chapter.3}
+\BOOKMARK [0][-]{chapter.4}{โปรแกรมคำสั่งพื้นฐาน}{}
+\BOOKMARK [1][-]{section.4.1}{แพ็กเกจ fileutils}{chapter.4}
+\BOOKMARK [2][-]{subsection.4.1.1}{สำรวจพื้นที่ฮาร์ดดิสก์}{section.4.1}
+\BOOKMARK [2][-]{subsection.4.1.2}{ก็อปปี้ไฟล์}{section.4.1}
+\BOOKMARK [2][-]{subsection.4.1.3}{เปลี่ยนเจ้าของไฟล์และกลุ่ม}{section.4.1}
+\BOOKMARK [2][-]{subsection.4.1.4}{สร้างไฟล์พิเศษ}{section.4.1}
+\BOOKMARK [2][-]{subsection.4.1.5}{ทำลายข้อมูล}{section.4.1}
+\BOOKMARK [2][-]{subsection.4.1.6}{sync}{section.4.1}
+\BOOKMARK [1][-]{section.4.2}{แพ็กเกจ shellutils}{chapter.4}
+\BOOKMARK [2][-]{subsection.4.2.1}{ตรวจสอบไฟล์และค่าต่างๆ}{section.4.2}
+\BOOKMARK [2][-]{subsection.4.2.2}{สกัดส่วนของชื่อไฟล์}{section.4.2}
+\BOOKMARK [2][-]{subsection.4.2.3}{ถูกผิด}{section.4.2}
+\BOOKMARK [2][-]{subsection.4.2.4}{คำสั่งเกี่ยวกับข้อมูลของระบบ}{section.4.2}
+\BOOKMARK [2][-]{subsection.4.2.5}{สำรวจผู้ใช้ที่ล็อกอิน}{section.4.2}
+\BOOKMARK [2][-]{subsection.4.2.6}{เทอร์มินอล}{section.4.2}
+\BOOKMARK [2][-]{subsection.4.2.7}{ควบคุมคำสั่ง}{section.4.2}
+\BOOKMARK [2][-]{subsection.4.2.8}{นอนพัก}{section.4.2}
+\BOOKMARK [2][-]{subsection.4.2.9}{คณิตศาสตร์}{section.4.2}
+\BOOKMARK [2][-]{subsection.4.2.10}{ซ้ำ}{section.4.2}
+\BOOKMARK [2][-]{subsection.4.2.11}{เปลี่ยนตัวเองเป็นผู้ใช้อื่น}{section.4.2}
+\BOOKMARK [1][-]{section.4.3}{แพ็กเกจ textutils}{chapter.4}
+\BOOKMARK [2][-]{subsection.4.3.1}{แสดงข้อมูล}{section.4.3}
+\BOOKMARK [2][-]{subsection.4.3.2}{จัดรูปแบบข้อมูล}{section.4.3}
+\BOOKMARK [2][-]{subsection.4.3.3}{หัวหาง}{section.4.3}
+\BOOKMARK [2][-]{subsection.4.3.4}{แบ่งไฟล์, รวมไฟล์}{section.4.3}
+\BOOKMARK [2][-]{subsection.4.3.5}{จัดการข้อมูลที่แบ่งเป็นคอลัมน์}{section.4.3}
+\BOOKMARK [2][-]{subsection.4.3.6}{การเรียง, จัดลำดับข้อมูลในไฟล์}{section.4.3}
+\BOOKMARK [2][-]{subsection.4.3.7}{การเปรียบเทียบไฟล์}{section.4.3}
+\BOOKMARK [1][-]{section.4.4}{การจัดการข้อมูลเท็กซ์และ regular expression}{chapter.4}
+\BOOKMARK [2][-]{subsection.4.4.1}{การแก้ไขตัวอักษร}{section.4.4}
+\BOOKMARK [2][-]{subsection.4.4.2}{Regular expression}{section.4.4}
+\BOOKMARK [2][-]{subsection.4.4.3}{หาคำ, บรรทัดที่ต้องการในไฟล์}{section.4.4}
+\BOOKMARK [1][-]{section.4.5}{sed และ awk}{chapter.4}
+\BOOKMARK [2][-]{subsection.4.5.1}{sed}{section.4.5}
+\BOOKMARK [2][-]{subsection.4.5.2}{awk}{section.4.5}
+\BOOKMARK [2][-]{subsection.4.5.3}{บล็อกพิเศษ}{section.4.5}
+\BOOKMARK [2][-]{subsection.4.5.4}{การกระทำในคำสั่ง awk}{section.4.5}
+\BOOKMARK [1][-]{section.4.6}{คำสั่งอื่นๆ}{chapter.4}
+\BOOKMARK [2][-]{subsection.4.6.1}{การบีบอัดไฟล์}{section.4.6}
+\BOOKMARK [2][-]{subsection.4.6.2}{การทำสำรองไฟล์ทั้งไดเรกทอรี}{section.4.6}
+\BOOKMARK [2][-]{subsection.4.6.3}{แปลงไบนารีให้เป็นเท็กซ์}{section.4.6}
+\BOOKMARK [2][-]{subsection.4.6.4}{บันทึกสิ่งที่แสดงในเทอร์มินอล}{section.4.6}
+\BOOKMARK [2][-]{subsection.4.6.5}{ส่งอาร์กิวเมนต์ด้วยคำสั่ง xargs}{section.4.6}
+\BOOKMARK [1][-]{section.4.7}{เชลล์สคริปต์}{chapter.4}
+\BOOKMARK [2][-]{subsection.4.7.1}{สร้างเชลล์สคริปต์}{section.4.7}
+\BOOKMARK [2][-]{subsection.4.7.2}{หมายเหตุ}{section.4.7}
+\BOOKMARK [2][-]{subsection.4.7.3}{ตัวแปร}{section.4.7}
+\BOOKMARK [2][-]{subsection.4.7.4}{การใช้เครื่องหมายคำพูด}{section.4.7}
+\BOOKMARK [2][-]{subsection.4.7.5}{แถวลำดับ}{section.4.7}
+\BOOKMARK [2][-]{subsection.4.7.6}{การควบคุมขั้นตอนคำสั่ง}{section.4.7}
+\BOOKMARK [2][-]{subsection.4.7.7}{ฟังก์ชัน}{section.4.7}
+\BOOKMARK [2][-]{subsection.4.7.8}{เรียนรู้เชลล์สคริปต์จากตัวอย่าง}{section.4.7}
+\BOOKMARK [1][-]{section.4.8}{สรุปท้ายบท}{chapter.4}
+\BOOKMARK [0][-]{chapter.5}{โปรเซส}{}
+\BOOKMARK [1][-]{section.5.1}{โปรเซส \(process\)}{chapter.5}
+\BOOKMARK [1][-]{section.5.2}{สำรวจโปรเซส}{chapter.5}
+\BOOKMARK [2][-]{subsection.5.2.1}{โปรเซสและเจ้าของ}{section.5.2}
+\BOOKMARK [2][-]{subsection.5.2.2}{ความสัมพันธ์ระหว่างโปรเซส}{section.5.2}
+\BOOKMARK [2][-]{subsection.5.2.3}{เกี่ยวกับคำสั่ง ps}{section.5.2}
+\BOOKMARK [2][-]{subsection.5.2.4}{โปรเซส และ thread}{section.5.2}
+\BOOKMARK [2][-]{subsection.5.2.5}{หาโปรเซส ID}{section.5.2}
+\BOOKMARK [1][-]{section.5.3}{สัญญาณ \(signal\)}{chapter.5}
+\BOOKMARK [1][-]{section.5.4}{ทรัพยากร}{chapter.5}
+\BOOKMARK [2][-]{subsection.5.4.1}{คำสั่ง top}{section.5.4}
+\BOOKMARK [2][-]{subsection.5.4.2}{กลุ่มการแสดงผลของคำสั่ง top}{section.5.4}
+\BOOKMARK [2][-]{subsection.5.4.3}{คำสั่งในโปรแกรม top}{section.5.4}
+\BOOKMARK [2][-]{subsection.5.4.4}{ทรัพยากรหน่วยความจำ}{section.5.4}
+\BOOKMARK [1][-]{section.5.5}{จับเวลาการทำงานของโปรเซส}{chapter.5}
+\BOOKMARK [1][-]{section.5.6}{ไฟล์และโปรเซส}{chapter.5}
+\BOOKMARK [2][-]{subsection.5.6.1}{หาโปรเซสที่ใช้ไฟล์}{section.5.6}
+\BOOKMARK [2][-]{subsection.5.6.2}{หาไฟล์ที่โปรเซสใช้}{section.5.6}
+\BOOKMARK [1][-]{section.5.7}{ดูการทำงานของโปรเซส}{chapter.5}
+\BOOKMARK [1][-]{section.5.8}{สรุปท้ายบท}{chapter.5}
+\BOOKMARK [0][-]{chapter.6}{ระบบ X วินโดว์}{}
+\BOOKMARK [1][-]{section.6.1}{ประวัติระบบ X วินโดว์}{chapter.6}
+\BOOKMARK [2][-]{subsection.6.1.1}{XFree86}{section.6.1}
+\BOOKMARK [1][-]{section.6.2}{พื้นความรู้ระบบ X วินโดว์}{chapter.6}
+\BOOKMARK [2][-]{subsection.6.2.1}{ทูลล์คิทและไลบรารี}{section.6.2}
+\BOOKMARK [2][-]{subsection.6.2.2}{หน้าจอและสกรีน}{section.6.2}
+\BOOKMARK [2][-]{subsection.6.2.3}{ระบบหน้าต่าง}{section.6.2}
+\BOOKMARK [2][-]{subsection.6.2.4}{ตำแหน่งหน้าต่าง}{section.6.2}
+\BOOKMARK [2][-]{subsection.6.2.5}{ตัวเลือกร่วมของไลบรารี Xt}{section.6.2}
+\BOOKMARK [2][-]{subsection.6.2.6}{เมาส์ในระบบ X วินโดว์}{section.6.2}
+\BOOKMARK [2][-]{subsection.6.2.7}{สีในระบบ X วินโดว์}{section.6.2}
+\BOOKMARK [2][-]{subsection.6.2.8}{ฟอนต์}{section.6.2}
+\BOOKMARK [2][-]{subsection.6.2.9}{แป้นพิมพ์}{section.6.2}
+\BOOKMARK [2][-]{subsection.6.2.10}{ทรัพยากร}{section.6.2}
+\BOOKMARK [2][-]{subsection.6.2.11}{วินโดว์แมนเนเจอร์}{section.6.2}
+\BOOKMARK [2][-]{subsection.6.2.12}{สภาพแวดล้อมเดสก์ท็อป}{section.6.2}
+\BOOKMARK [1][-]{section.6.3}{ติดตั้งและปรับแต่ง X เซิร์ฟเวอร์}{chapter.6}
+\BOOKMARK [2][-]{subsection.6.3.1}{xorgcfg}{section.6.3}
+\BOOKMARK [2][-]{subsection.6.3.2}{xorgconfig}{section.6.3}
+\BOOKMARK [2][-]{subsection.6.3.3}{X}{section.6.3}
+\BOOKMARK [1][-]{section.6.4}{ไฟล์ xorg.conf}{chapter.6}
+\BOOKMARK [2][-]{subsection.6.4.1}{เซกชัน ServerLayout}{section.6.4}
+\BOOKMARK [2][-]{subsection.6.4.2}{เซกชัน Files}{section.6.4}
+\BOOKMARK [2][-]{subsection.6.4.3}{เซกชัน Module}{section.6.4}
+\BOOKMARK [2][-]{subsection.6.4.4}{เซกชัน InputDevices}{section.6.4}
+\BOOKMARK [2][-]{subsection.6.4.5}{เซกชัน Monitor}{section.6.4}
+\BOOKMARK [2][-]{subsection.6.4.6}{เซกชัน Device}{section.6.4}
+\BOOKMARK [2][-]{subsection.6.4.7}{เซกชัน Screen}{section.6.4}
+\BOOKMARK [2][-]{subsection.6.4.8}{เซกชัน ServerFlags}{section.6.4}
+\BOOKMARK [1][-]{section.6.5}{X เซิร์ฟเวอร์}{chapter.6}
+\BOOKMARK [1][-]{section.6.6}{การเริ่มต้น X เซิร์ฟเวอร์}{chapter.6}
+\BOOKMARK [2][-]{subsection.6.6.1}{เริ่มต้น X เซิร์ฟเวอร์จากบรรทัดคำสั่ง}{section.6.6}
+\BOOKMARK [2][-]{subsection.6.6.2}{เริ่มต้น X เซิร์ฟเวอร์ด้วยดิสเพลยแมเนเจอร์}{section.6.6}
+\BOOKMARK [1][-]{section.6.7}{X เซิร์ฟเวอร์แบบพิเศษ}{chapter.6}
+\BOOKMARK [2][-]{subsection.6.7.1}{Xnest}{section.6.7}
+\BOOKMARK [2][-]{subsection.6.7.2}{Xvfb}{section.6.7}
+\BOOKMARK [2][-]{subsection.6.7.3}{Xvnc}{section.6.7}
+\BOOKMARK [1][-]{section.6.8}{ระบบจัดการฟอนต์}{chapter.6}
+\BOOKMARK [2][-]{subsection.6.8.1}{ระบบจัดการฟอนต์แบบดั้งเดิม}{section.6.8}
+\BOOKMARK [2][-]{subsection.6.8.2}{ฟอนต์ในระบบ Xft}{section.6.8}
+\BOOKMARK [1][-]{section.6.9}{วิธีการติดตั้งฟอนต์}{chapter.6}
+\BOOKMARK [1][-]{section.6.10}{ปรับแต่งแป้นพิมพ์}{chapter.6}
+\BOOKMARK [2][-]{subsection.6.10.1}{ปรับแต่งแป้นฟิมพ์ด้วย XKB}{section.6.10}
+\BOOKMARK [1][-]{section.6.11}{เทอร์มินอลเอมิวเลเตอร์}{chapter.6}
+\BOOKMARK [2][-]{subsection.6.11.1}{บันทึกหน้าจอเทอร์มินอล}{section.6.11}
+\BOOKMARK [1][-]{section.6.12}{สภาพแวดล้อมเดสก์ท็อป GNOME}{chapter.6}
+\BOOKMARK [2][-]{subsection.6.12.1}{พาเนล \(penel\)}{section.6.12}
+\BOOKMARK [2][-]{subsection.6.12.2}{เมนู \(menu\)}{section.6.12}
+\BOOKMARK [2][-]{subsection.6.12.3}{หน้าต่าง \(window\)}{section.6.12}
+\BOOKMARK [2][-]{subsection.6.12.4}{พื้นที่ทำงาน \(workspace\)}{section.6.12}
+\BOOKMARK [2][-]{subsection.6.12.5}{โปรแกรมจัดการแฟ้มข้อมูล \(file manager\)}{section.6.12}
+\BOOKMARK [2][-]{subsection.6.12.6}{เซสชัน}{section.6.12}
+\BOOKMARK [2][-]{subsection.6.12.7}{การปรับแต่งสภาพแวดล้อมเดสก์ท็อป GNOME}{section.6.12}
+\BOOKMARK [1][-]{section.6.13}{สรุปท้ายบท}{chapter.6}
+\BOOKMARK [0][-]{chapter.7}{ภาษาไทยกับลินุกซ์}{}
+\BOOKMARK [1][-]{section.7.1}{ความรู้เบื้องต้นเกี่ยวกับอักขระไทย}{chapter.7}
+\BOOKMARK [2][-]{subsection.7.1.1}{รหัสอักขระ TIS-620}{section.7.1}
+\BOOKMARK [2][-]{subsection.7.1.2}{ชุดรหัสอักขระ ISO 8859-11}{section.7.1}
+\BOOKMARK [2][-]{subsection.7.1.3}{ชุดรหัสอักขระยูนิโค้ดและ ISO 10646}{section.7.1}
+\BOOKMARK [2][-]{subsection.7.1.4}{การเข้ารหัสอักขระ}{section.7.1}
+\BOOKMARK [2][-]{subsection.7.1.5}{การเปลี่ยนการเข้ารหัสด้วย iconv}{section.7.1}
+\BOOKMARK [1][-]{section.7.2}{โลแคล}{chapter.7}
+\BOOKMARK [2][-]{subsection.7.2.1}{ชื่อโลแคล}{section.7.2}
+\BOOKMARK [2][-]{subsection.7.2.2}{สร้างโลแคล}{section.7.2}
+\BOOKMARK [2][-]{subsection.7.2.3}{ตัวแปรสภาพแวดล้อมที่เกี่ยวกับโลแคล}{section.7.2}
+\BOOKMARK [1][-]{section.7.3}{การแสดงอักขระภาษาไทย}{chapter.7}
+\BOOKMARK [2][-]{subsection.7.3.1}{ประวัติฟอนต์ภาษาไทยที่ใช้ในลินุกซ์}{section.7.3}
+\BOOKMARK [2][-]{subsection.7.3.2}{กลีฟ}{section.7.3}
+\BOOKMARK [1][-]{section.7.4}{การป้อนข้อมูล}{chapter.7}
+\BOOKMARK [2][-]{subsection.7.4.1}{X Input Method}{section.7.4}
+\BOOKMARK [2][-]{subsection.7.4.2}{IM module}{section.7.4}
+\BOOKMARK [1][-]{section.7.5}{สรุปท้ายบท}{chapter.7}
+\BOOKMARK [0][-]{chapter.8}{แนะนำโปรแกรมใช้งาน}{}
+\BOOKMARK [1][-]{section.8.1}{บรรณาธิกรณ์}{chapter.8}
+\BOOKMARK [2][-]{subsection.8.1.1}{vi\(m\)}{section.8.1}
+\BOOKMARK [2][-]{subsection.8.1.2}{GNU Emacs}{section.8.1}
+\BOOKMARK [1][-]{section.8.2}{แอพพลิเคชันสำนักงาน}{chapter.8}
+\BOOKMARK [1][-]{section.8.3}{กราฟิก}{chapter.8}
+\BOOKMARK [2][-]{subsection.8.3.1}{Gimp}{section.8.3}
+\BOOKMARK [2][-]{subsection.8.3.2}{Inkscape}{section.8.3}
+\BOOKMARK [2][-]{subsection.8.3.3}{Dia}{section.8.3}
+\BOOKMARK [2][-]{subsection.8.3.4}{ImageMagick}{section.8.3}
+\BOOKMARK [2][-]{subsection.8.3.5}{โปรแกรมดูรูปภาพ}{section.8.3}
+\BOOKMARK [2][-]{subsection.8.3.6}{โปรแกรมดูเอกสาร}{section.8.3}
+\BOOKMARK [1][-]{section.8.4}{มัลติมีเดีย}{chapter.8}
+\BOOKMARK [2][-]{subsection.8.4.1}{โปรแกรมฟังเพลง}{section.8.4}
+\BOOKMARK [2][-]{subsection.8.4.2}{โปรแกรมสร้างไฟล์เพลงดิจิตอล}{section.8.4}
+\BOOKMARK [2][-]{subsection.8.4.3}{โปรแกรมดูหนัง}{section.8.4}
+\BOOKMARK [2][-]{subsection.8.4.4}{โปรแกรมเขียน CD, DVD}{section.8.4}
+\BOOKMARK [1][-]{section.8.5}{อินเทอร์เน็ต}{chapter.8}
+\BOOKMARK [2][-]{subsection.8.5.1}{เบราเซอร์}{section.8.5}
+\BOOKMARK [2][-]{subsection.8.5.2}{Instant Messenger Service}{section.8.5}
+\BOOKMARK [2][-]{subsection.8.5.3}{โปรแกรมช่วยดาว์นโหลด}{section.8.5}
+\BOOKMARK [2][-]{subsection.8.5.4}{Video Conference}{section.8.5}
+\BOOKMARK [1][-]{section.8.6}{โปรแกรมรับส่งอีเมล}{chapter.8}
+\BOOKMARK [1][-]{section.8.7}{โปรแกรมมิ่ง}{chapter.8}
+\BOOKMARK [1][-]{section.8.8}{วิทยาศาสตร์}{chapter.8}
+\BOOKMARK [1][-]{section.8.9}{รีโมตเดสก์ท็อป}{chapter.8}
+\BOOKMARK [1][-]{section.8.10}{พจนานุกรม}{chapter.8}
+\BOOKMARK [1][-]{section.8.11}{สรุปท้ายบท}{chapter.8}
+\BOOKMARK [0][-]{chapter.1}{รหัสอักขระ ASCII}{}
+\BOOKMARK [0][-]{chapter.2}{สรุปคำสั่ง, โปรแกรม}{}
+\BOOKMARK [1][-]{section.2.1}{ประมวลผลข้อมูลในไฟล์}{chapter.2}
+\BOOKMARK [1][-]{section.2.2}{จัดการระบบไฟล์}{chapter.2}
+\BOOKMARK [1][-]{section.2.3}{เคอร์เนล}{chapter.2}
+\BOOKMARK [1][-]{section.2.4}{ควบคุมโปรเซส}{chapter.2}
+\BOOKMARK [1][-]{section.2.5}{เน็ตเวิร์ก, สื่อสาร}{chapter.2}
+\BOOKMARK [1][-]{section.2.6}{ดูและระบบ}{chapter.2}
+\BOOKMARK [1][-]{section.2.7}{พัฒนาโปรแกรม}{chapter.2}
+\BOOKMARK [1][-]{section.2.8}{อื่นๆ}{chapter.2}
+\BOOKMARK [1][-]{section.2.9}{เชลล์}{chapter.2}
+\BOOKMARK [1][-]{section.2.10}{ระบบ X วินโดว์}{chapter.2}
+\BOOKMARK [0][-]{chapter.3}{ไฟล์ปรับแต่งระบบที่อยู่ใน /etc}{}
+\BOOKMARK [0][-]{chapter.4}{Debian GNU/Linux}{}
+\BOOKMARK [1][-]{section.4.1}{ติดตั้ง Debian GNU/Linux}{chapter.4}
+\BOOKMARK [1][-]{section.4.2}{ดาวน์โหลดซีดี}{chapter.4}
+\BOOKMARK [2][-]{subsection.4.2.1}{การตรวจสอบดิสก์อิมเมจ}{section.4.2}
+\BOOKMARK [1][-]{section.4.3}{การเขียนซีดี}{chapter.4}
+\BOOKMARK [1][-]{section.4.4}{การติดตั้งลินุกซ์}{chapter.4}
+\BOOKMARK [0][-]{section*.283}{บรรณานุกรม}{}
+\BOOKMARK [0][-]{section*.364}{รวมคำศัพท์คอมพิวเตอร์}{}

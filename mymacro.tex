@@ -1,0 +1,382 @@
+\def\thairmdefault{kinnari}
+\def\thaisfdefault{garuda}
+\def\ttdefault{cmtt}
+
+\newcommand{\cmd}[1]{{\latintext\texttt {#1}}}
+\newcommand{\mymarginpar}[1]{\marginpar{\raggedright \scriptsize #1}}
+%\newcommand{\myvocab}[2]{\nomenclature{#1}{\mbox{}\\ #2\label{vocab:#1}}\mymarginpar{#1 $\blacktriangleright$ หน้า \pageref{vocab:#1}}}
+%\newcommand{\myvocab}[3]{\nomenclature[#1]{{\latintext #2}}{\mbox{}\\ #3\label{vocab:#2}}\mymarginpar{#2 $\blacktriangleright$ คำศัพท์หน้า \pageref{vocab:#2}}}
+\newcommand{\myvocab}[3]{\nomenclature[#1]{{\latintext #2}}{\mbox{}\\ #3\label{vocab:#2}}\mymarginpar{#2 $\blacktriangleright$\\
+#3}}
+%\newcommand{\mymemo}[1]{\mymarginpar{\includegraphics[scale=0.4]{icon_memo.eps}\par#1}}
+\newcommand{\mymemo}[1]{\mymarginpar{{\large\ding{45}} \hrulefill\par #1}}
+%\newcommand{\myexplanation}[2]{\mymarginpar{\includegraphics[scale=0.4]{gnome-terminal.eps} \cmd{#1}\par#2}}
+%\newcommand{\myexplanation}[2]{\mymarginpar{\ding{111} \cmd{#1} \ding{111}\par#2}}
+\newcommand{\myexplanation}[2]{\mymarginpar{\raisebox{1pt}{\scalebox{.5}{\Ovalbox{\cmd{\myenter}}}} \cmd{#1}\par#2}}
+\newcommand{\myxapp}[2]{\mymarginpar{\includegraphics[scale=0.4]{metacity-properties.eps} \cmd{#1}\par#2}}
+
+% practice
+\newcommand{\mypractice}[1]{\addtocounter{myprac}{1}\mymarginpar{\textleaf{} \emph{แบบฝึกหัด} \themyprac\ \hrulefill\par #1}}
+\newcommand{\myprac}{\item[\addtocounter{myprac}{1}คำถามที่ \themyprac{}.] }
+
+% remember chapter title
+\renewcommand{\chaptermark}[1]%
+        {\markboth{#1}{}}
+% section number and title
+\renewcommand{\sectionmark}[1]%
+        {\markright{\thesection\ #1}}
+\lhead[\fancyplain{}{\bfseries\thepage}]%
+        {\fancyplain{}{\bfseries\rightmark}}
+\rhead[\fancyplain{}{\bfseries\leftmark}]%
+        {\fancyplain{}{\bfseries\thepage}}
+\cfoot{}
+\rfoot[]{}
+\lfoot[]{}
+
+
+\newcommand{\glossmargin}[2]{\index{#1}\mymarginpar{{\fontencoding{OT1}\fontfamily{cmss}\fontseries{bx}\selectfont #1}:\\ #2 }}
+
+%\makeatletter
+%\def\@makechapterhead#1{%
+%  \vspace*{50\p@}%
+%  {\parindent \z@ \raggedright \normalfont
+%    \ifnum \c@secnumdepth >\m@ne
+%      \if@mainmatter
+%        \hspace*{\stretch{1}} \huge\sffamily\bfseries \@chapapp\space \Huge \thechapter
+%        \par\nobreak
+%        \vskip 20\p@
+%      \fi
+%    \fi
+%    \interlinepenalty\@M
+%    \hspace*{\stretch{1}} \bfseries{\fontfamily{garuda}\fontsize{36pt}{48pt}\selectfont #1}\par\nobreak
+%    \vskip 40\p@
+%  }}
+%\makeatother
+
+
+
+
+\newcommand{\commandline}[1]{{\latintext\tt #1}}
+\newcommand{\commandinput}[1]{{\textcolor{blue}{#1}}}
+
+\newcommand{\myleftarrow}{\Pisymbol{psy}{172}}
+\newcommand{\myenter}{\Pisymbol{psy}{191}}
+\newcommand{\cin}[1]{{\latintext\tt \textcolor{blue}{#1}}\myenter}
+
+
+\DefineVerbatimEnvironment%
+ {MyVerbatim}{Verbatim}
+ {formatcom=\latintext\tt,
+  frame=single,
+  fontsize=\scriptsize,
+  framesep=3mm,
+%  samepage=true,
+%  showspaces=true,
+%  showtabs=true,
+  commandchars=\\\{\}}
+
+
+
+\DefineVerbatimEnvironment%
+ {MyMan}{Verbatim}
+ {formatcom=\latintext\tt,
+  frame=none,
+  fontsize=\scriptsize,
+  framesep=10mm,
+  samepage=true,
+%  showspaces=true,
+%  showtabs=true,
+  commandchars=\\\{\}}
+
+\DefineVerbatimEnvironment%
+ {MyEx}{Verbatim}
+ {formatcom=\latintext\tt,
+%  frame=single,
+  fontsize=\scriptsize,
+%  framesep=3mm,
+%  samepage=true,
+%  showspaces=true,
+%  showtabs=true,
+  commandchars=\\\{\}}
+
+\DefineVerbatimEnvironment%
+ {MyCode}{Verbatim}
+ {formatcom=\latintext\tt,
+  frame=leftline,
+  fontsize=\scriptsize,
+  framesep=10mm,
+%  samepage=true,
+%  showspaces=true,
+%  showtabs=true,
+  commandchars=\\\{\}}
+
+\newcounter{myprac}[chapter]
+\renewcommand{\themyprac}{\arabic{chapter}.\arabic{myprac}}
+\newcounter{myexample}[chapter]
+\renewcommand{\themyexample}{\arabic{chapter}.\arabic{myexample}}
+
+
+%\newenvironment{myexample}{\begin{MyVerbatim}}
+%{\end{MyVerbatim}}
+
+%\def\cursorprompt{\ding{110}}
+\def\cursorprompt{\rule{4pt}{6pt}}
+
+
+\def\mypicture#1#2#3#4{% scale, figure, caption, name
+%
+\ifthenelse{\isodd{\pageref{fig:#4}}}%
+{\parbox{\headwidth}{\center\scalebox{#1}{#2}\caption{#3}\label{fig:#4}}}%
+{\leftskip=\moveback\parbox{\headwidth}{\center\scalebox{#1}{#2}\caption{#3}\label{fig:#4}}}}
+
+%%%% rotate
+\def\plfigurelongodd#1#2#3#4{% scale, figure, caption, name
+%
+\ifthenelse{\isodd{\pageref{fig:#4}}}%
+{\parbox{\headwidth}{\center\scalebox{#1}{\rotatebox{90}{\includegraphics{#2}}}\caption{#3}\label{fig:#4}}}%
+{\leftskip=\moveback\parbox{\headwidth}{\center\scalebox{#1}{\rotatebox{90}{\includegraphics{#2}}}\caption{#3}\label{fig:#4}}}}
+\def\plfigurelongeven#1#2#3#4{% scale, figure, caption, name
+%
+\ifthenelse{\isodd{\pageref{fig:#4}}}%
+{\parbox{\headwidth}{\center\scalebox{#1}{\rotatebox{-90}{\includegraphics{#2}}}\caption{#3}\label{fig:#4}}}%
+{\leftskip=\moveback\parbox{\headwidth}{\center\scalebox{#1}{\rotatebox{-90}{\includegraphics{#2}}}\caption{#3}\label{fig:#4}}}}
+%%%% rotate
+\def\plfigure#1#2#3#4{% scale, figure, caption, name
+%
+\ifthenelse{\isodd{\pageref{fig:#4}}}%
+{\parbox{\headwidth}{\center\scalebox{#1}{\includegraphics{#2}}\caption{#3}\label{fig:#4}}}%
+{\leftskip=\moveback\parbox{\headwidth}{\center\scalebox{#1}{\includegraphics{#2}}\caption{#3}\label{fig:#4}}}}
+\def\plboxfigure#1#2#3#4{% scale, figure, caption, name
+\label{fig:#4}\ifthenelse{\isodd{\pageref{fig:#4}}}{\fbox{\parbox{\headwidth}{\center\scalebox{#1}{\includegraphics{#2}}\caption{#3}}}}{\leftskip=\moveback\label{fig:#4}\fbox{\parbox{\headwidth}{\center\scalebox{#1}{\includegraphics{#2}}\caption{#3}}}}}
+\def\plfiguretwo#1#2#3#4#5{% scale, figure, caption, name
+%
+\ifthenelse{\isodd{\pageref{fig:#5}}}%
+{\parbox{\headwidth}{\center\scalebox{#1}{\includegraphics{#2}~~~\includegraphics{#3}}\caption{#4}\label{fig:#5}}}%
+{\leftskip=\moveback\parbox{\headwidth}{\center\scalebox{#1}{\includegraphics{#2}~~~\includegraphics{#3}}\caption{#4}\label{fig:#5}}}}
+\def\plfigurethree#1#2#3#4#5#6{% scale, figure, caption, name
+%
+\ifthenelse{\isodd{\pageref{fig:#6}}}%
+{\parbox{\headwidth}{\center\scalebox{#1}{\includegraphics{#2}~~~\includegraphics{#3}~~~\includegraphics{#4}}\caption{#5}\label{fig:#6}}}%
+{\leftskip=\moveback\parbox{\headwidth}{\center\scalebox{#1}{\includegraphics{#2}~~~\includegraphics{#3}~~~\includegraphics{#4}}\caption{#5}\label{fig:#6}}}}
+\def\arrowdown{\Pisymbol{psy}{175}}
+\def\arrowleft{\Pisymbol{psy}{172}}
+\def\arrowup{\Pisymbol{psy}{173}}
+\def\arrowright{\Pisymbol{psy}{174}}
+\def\kk#1{\Ovalbox{\cmd{#1}}}
+%\def\mycomment#1{\hspace*{\stretch{1}}\shabox{\myleftarrow{} \thtt{#1}}}
+\def\mycomment#1{\hspace*{\stretch{1}}\myleftarrow{} \thtt{#1}}
+
+
+\usepackage{sverb}
+
+\newcounter{filenum}
+\makeatletter
+\newenvironment{thwbr}%
+  {\verbwrite{\jobname.\thefilenum.th}}
+  {\endverbwrite}
+\def\wbrin{\@input@{\jobname.\thefilenum.wbr}\stepcounter{filenum}}
+
+\def\thraw#1{%
+\newwrite\outputfile
+\immediate\openout\outputfile=\jobname.\thefilenum.th\relax% th: Thai Text
+\write\outputfile{\protect{}{\thaitext{}#1}}
+\closeout\outputfile
+}
+
+
+\setlength{\columnsep}{3em}
+\def\printindex#1#2{
+
+\begin{multicols}{2}[\chapter*{\makebox[\headwidth][r]{\sffamily\bfseries #2}}]
+
+\markboth{#2}{#2}
+  \@input{#1.ind}\end{multicols}}
+
+%%\def\@@@nomenclature[#1]#2#3{% 
+%%\def\@tempa{#2}\def\@tempb{#3}% 
+%%\protected@write\@glossaryfile{}% 
+%%{\string\glossaryentry{#1\nom@verb\@tempa @{\nom@verb\@tempa}&% 
+%%\begingroup\nom@verb\@tempb\protect\nomeqref{\theequation}% 
+%%|nompageref}{\thepage}}% 
+%%\endgroup \@esphack}
+
+%\def\@@@nomenclature[#1]#2#3{% 
+%\def\@tempa{#2}\def\@tempb{#3}% 
+%\protected@write\@glossaryfile{}% 
+%{\string\glossaryentry{\item[#1]\mbox{}\\
+%#2}}
+%\endgroup}
+
+
+%%\def\theglossary{% 
+%%\@ifundefined{chapter}{\section*}{\chapter*}{\nomname}% 
+%%%\nompreamble \begin{longtable}[l]{@{}ll@{}}} \def\endtheglossary{% 
+%%\nompreamble \begin{longtable}[l]{l|p{.8\textwidth}}} \def\endtheglossary{% 
+%%\end{longtable}% 
+%%\nompostamble}
+
+\def\theglossary{% 
+\@ifundefined{chapter}{\section*}{\chapter*}{\nomname}% 
+%\nompreamble \begin{longtable}[l]{@{}ll@{}}} \def\endtheglossary{% 
+\markboth{รวมคำศัพท์คอมพิวเตอร์}{พูลลาภ วีระธนาบุตร \thtt{http://linux.thai.net/Members/poonlap}}\nompreamble \begin{description}} \def\endtheglossary{% 
+\end{description}% 
+\nompostamble}
+
+%%
+%% Modified \chapter
+%%
+\def\mhrulefill{\leavevmode\leaders\hrule height 2pt \hfill\kern\z@}
+\long\def\@makechapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+      \if@mainmatter
+        \makebox[\headwidth][r]{\mhrulefill\hspace{15pt}\fontsize{29.85}{32}%
+	\usefont{LTH}{garuda}{b}{n} \@chapapp\space %
+	\fontsize{61.9}{65}\usefont{OT1}{cmss}{bx}{n}\thechapter}
+%	\huge\bfseries \@chapapp\space \thechapter
+        \par\nobreak
+        \vskip 20\p@
+      \fi
+    \fi
+    \interlinepenalty\@M
+    \makebox[\headwidth][r]{\fontsize{35.83}{40}%
+	\usefont{LTH}{garuda}{b}{n} #1\par\nobreak}
+%    \Huge \bfseries #1\par\nobreak
+    \vskip 40\p@
+  }}
+\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+                    \thispagestyle{empty}%
+                    \global\@topnum\z@
+                    \@afterindentfalse
+                    \secdef\@chapter\@schapter}
+\def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
+                       \if@mainmatter
+                         \refstepcounter{chapter}%
+                         \typeout{\@chapapp\space\thechapter.}%
+                         \addcontentsline{toc}{chapter}%
+                                   {\protect\numberline{\thechapter}#1}%
+                       \else
+                         \addcontentsline{toc}{chapter}{#1}%
+                       \fi
+                    \else
+                      \addcontentsline{toc}{chapter}{#1}%
+                    \fi
+                    \chaptermark{#1}%
+                    \addtocontents{lof}{\protect\addvspace{10\p@}}%
+                    \addtocontents{lot}{\protect\addvspace{10\p@}}%
+                    \if@twocolumn
+                      \@topnewpage[\@makechapterhead{#2}]%
+                    \else
+                      \@makechapterhead{#2}%
+                      \@afterheading
+                    \fi}
+%%
+%% Modified \chapter* 
+%%
+\def\@makeschapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright
+    \normalfont
+    \interlinepenalty\@M
+    \makebox[\headwidth][r]{\fontsize{35.83}{40}%
+	\usefont{LTH}{garuda}{b}{n} #1\par\nobreak}
+%    \Huge \bfseries  #1\par\nobreak
+    \vskip 40\p@
+  }}
+%%
+%% Leave blank page
+%%
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+  \hbox{}
+  \vspace*{\fill}
+  \thispagestyle{empty}
+  \newpage
+  \if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother
+
+
+\makeatletter
+%\def\nomgroup#1{\ifodd\c@page\marginpar{\break\break\hfill\textinit{#1}\par}\else\marginpar{\textinit{#1}\par}\fi}
+%\def\nomgroup#1{\ifodd\c@page\marginpar{\mbox{}\par\mbox{}\par\mhrulefill\ {\fontsize{24}{26}\usefont{OT1}{cmss}{bx}{n} #1}\par}\else\marginpar{\mbox{}\par\mbox{}\par{\fontsize{24}{26}\usefont{OT1}{cmss}{bx}{n} #1 \mhrulefill}\par}\fi}
+\def\nomgroup#1{\marginpar{\mbox{}\par\mbox{}\par\mhrulefill\ {\fontsize{24}{26}\usefont{OT1}{cmss}{bx}{n} #1 \mhrulefill}\par}}
+\def\bookimg#1#2{\ifodd\c@page\marginpar{\hfill\includegraphics[scale=#1]{#2}}\else\marginpar{\includegraphics[scale=#1]{#2}}\fi}
+
+
+% Define thai charactor translation
+% thaiAlph is full alphabet set
+% thaialph is reduced alphabet set
+\def\thaialph#1{\expandafter\@thaialph\csname c@#1\endcsname}
+\def\thaiAlph#1{\expandafter\@thaiAlph\csname c@#1\endcsname}
+\def\@thaialph#1{%
+  \ifcase#1\or ก\or ข\or ค\or ง\or จ\or ฉ\or ช\or ซ\or ฌ\or ญ\or ฎ\or
+   ฏ\or ฐ\or ฑ\or ฒ\or ณ\or ด\or ต\or ถ\or ท\or ธ\or น\or บ\or ป\or ผ\or 
+   ฝ\or พ\or ฟ\or ภ\or ม\or ย\or ร\or ล\or ว\or ศ\or ษ\or ส\or ห\or ฬ\or อ\or
+     ฮelse\@ctrerr\fi}
+\def\@thaiAlph#1{%
+  \ifcase#1\or ก\or ข\or ฃ\or ค\or ฅ\or ฆ\or ง\or จ\or ฉ\or ช\or ซ\or
+   ฌ\or ญ\or ฎ\or ฏ\or ฐ\or ฑ\or ฒ\or ณ\or ด\or ต\or ถ\or ท\or ธ\or น\or
+    บ\or ป\or ผ\or ฝ\or พ\or ฟ\or ภ\or ม\or ย\or ร\or ฤ\or ล\or ฦ\or ว\or
+     ศ\or ษ\or ส\or ห\or ฬ\or อ\or ฮelse\@ctrerr\fi}
+\renewcommand\appendix{\par
+  \setcounter{chapter}{0}%
+  \setcounter{section}{0}%
+  \gdef\@chapapp{\appendixname}%
+  \gdef\thechapter{{\thaitext\@thaialph\c@chapter}}}
+
+\makeatother
+
+\def\thtt#1{{\fontencoding{LTH}\fontfamily{pmono}\selectfont #1}}
+
+\def\cindex#1{\index{command}{#1@{\latintext\texttt{#1}}}}
+\def\findex#1{\index{command}{#1@{\latintext\texttt{#1}} (ไฟล์)}}
+\def\dindex#1{\index{command}{#1@{\latintext\texttt{#1}} (ไดเรกทอรี)}}
+\def\gindex#1{\index{general}{#1}}
+%\def\findex#1{\index{filei}{#1}}
+
+
+%
+% Example related
+%
+%\definecolor{Mygrey}{rgb}{0.8,0.8,0.8}
+\definecolor{shadecolor}{rgb}{0.8,0.8,0.8}
+\shadecolor{lightgray}
+%\theoremseparator{\hrulefill}
+\theoremstyle{break}
+%\theorembodyfont{\latintext\tt}
+\theoremheaderfont{\scriptsize}
+\theorempreskipamount=18pt
+%\theorempreskipamount=0pt
+\theorempostskipamount=18pt
+%\theorempostskipamount=-16pt
+\theoremindent=12pt
+%\newshadedtheorem{MyExample}{{\thaitext ตัวอย่างที่}}[chapter]
+\newtheorem{MyExample}{{\thaitext ตัวอย่างที่}}[chapter]
+%\newframedtheorem{MyExample}{ตัวอย่างที่}[chapter]
+
+
+\newcommand\bs{\char92}
+\newcommand\qq{\char32}
+\newcommand\dollar{\char36}
+\newcommand\dq{"}
+\newcommand\cmdit[1]{\cmd{\textit{#1}}}
+\newcommand\wrap{\ \rotatebox{-90}{$\curvearrowright$}}
+
+\newcommand\cmdentry[1]{\subsection*{\cmd{#1}}\label{cmd:#1}\cindex{#1}}
+\newcommand{\refcmd}[1]{\mymarginpar{\raisebox{1pt}{\scalebox{.5}{\Ovalbox{\cmd{\myenter}}}} \cmd{#1} อ้างอิงหน้า \pageref{cmd:#1}}}
+
+%%%%%%%%% can be used as column
+%\begin{figure}[tb]
+%\begin{boxedminipage}[!t]{\textwidth}
+%
+%\end{boxedminipage}
+%\end{figure}
+
+\newcommand{\graybox}[1]{\psboxit{box .7 setgray fill}{\addtolength{\fboxsep}{-5pt}\spbox{#1}\addtolength{\fboxsep}{5pt}}}
+
+
+% key pad figure
+\newcommand{\keydel}{\raisebox{-4pt}{\scalebox{.25}{\includegraphics{key_del.eps}}}}
+\newcommand{\keyctrl}{\raisebox{-4pt}{\scalebox{.25}{\includegraphics{key_ctrl.eps}}}}
+\newcommand{\keyc}{\raisebox{-4pt}{\scalebox{.25}{\includegraphics{key_c.eps}}}}
+\newcommand{\abb}{--- \thtt{แสดงผลต่อไปเรื่อยๆ} ---}

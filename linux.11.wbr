@@ -1,0 +1,74 @@
+\chapter{Debian GNU/Linux}\label{chap:debian}
+หนังสือ\wbr{}เล่ม\wbr{}นี้\wbr{}เลือก\wbr{}ใช้ Debian GNU/Linux เป็น\wbr{}ลิ\wbr{}นุกซ์ดิสท\wbr{}ริ\wbr{}บิว\wbr{}ชัน\wbr{}อ้าง\wbr{}อิง\wbr{}เนื่อง\wbr{}จาก\wbr{}เหตุ\wbr{}ผล\wbr{}หลายๆ\wbr{}อย่าง\wbr{}และ\wbr{}ใน\wbr{}บท\wbr{}นี้\wbr{}จะ\wbr{}แนะ\wbr{}นำ\wbr{}การ\wbr{}ติด\wbr{}ตั้ง Debian และ\wbr{}การ\wbr{}จัด\wbr{}การแพ็ก\wbr{}เกจ\wbr{}ซอฟต์แวร์\wbr{}เพื่อ\wbr{}ที่\wbr{}จะ\wbr{}ให้\wbr{}ผู้\wbr{}ใช้\wbr{}คุ้น\wbr{}เคย\wbr{}และ\wbr{}นำ\wbr{}ไป\wbr{}ใช้\wbr{}งาน\wbr{}ได้\wbr{}จริง\wbr{}ต่อ\wbr{}ไป.
+
+\section{ติด\wbr{}ตั้ง Debian GNU/Linux}
+
+ขั้น\wbr{}ตอน\wbr{}การ\wbr{}ติด\wbr{}ตั้ง\wbr{}ลิ\wbr{}นุกซ์\wbr{}ไม่\wbr{}ว่า\wbr{}จะ\wbr{}เป็นดิสท\wbr{}ริ\wbr{}บิว\wbr{}ชัน\wbr{}ใด\wbr{}ก็\wbr{}ตาม\wbr{}โดย\wbr{}ทั่ว\wbr{}ไป\wbr{}มี\wbr{}ขั้น\wbr{}ตอน\wbr{}ดัง\wbr{}นี้.
+\begin{enumerate}
+\item ดาวน์โ\wbr{}หลด\wbr{}ซี\wbr{}ดี\wbr{}ใน\wbr{}รูป\wbr{}ของ\wbr{}ไฟล์อิม\wbr{}เมจ ISO
+\item เขียน\wbr{}ซี\wbr{}ดี\wbr{}รอม และบูต\wbr{}เครื่อง\wbr{}คอมพิวเตอร์\wbr{}จาก\wbr{}ซี\wbr{}ดี\wbr{}รอม
+\item ติด\wbr{}ตั้ง\wbr{}ระบบ\wbr{}ปฏิบัติ\wbr{}การ\wbr{}ลิ\wbr{}นุกซ์\wbr{}ด้วย\wbr{}โปรแกรม\wbr{}ติด\wbr{}ตั้ง\wbr{}ของดิสท\wbr{}ริ\wbr{}บิว\wbr{}ชัน\wbr{}ที่\wbr{}ใช้
+\item ปรับ\wbr{}แต่ง\wbr{}และ\wbr{}อัป\wbr{}เดท\wbr{}ซอฟต์แวร์
+\end{enumerate}
+
+\section{ดาวน์โ\wbr{}หลด\wbr{}ซี\wbr{}ดี}
+การ\wbr{}ติด\wbr{}ตั้ง\wbr{}ลิ\wbr{}นุกซ์\wbr{}โดย\wbr{}ทั่ว\wbr{}ไป\wbr{}มัก\wbr{}จะ\wbr{}ใช้\wbr{}ซี\wbr{}ดี\wbr{}รอม\wbr{}เป็น\wbr{}สื่อ\wbr{}ใน\wbr{}การ\wbr{}ติด\wbr{}ตั้ง. ผู้\wbr{}ใช้\wbr{}สามารถ\wbr{}ซื้อ\wbr{}หรือ\wbr{}จะ\wbr{}ดาวน์โ\wbr{}หลด\wbr{}ด้วย\wbr{}ตัว\wbr{}เอง\wbr{}จากเว็บ\wbr{}ไซด์\wbr{}ของดิสท\wbr{}ริ\wbr{}บิว\wbr{}ชัน\wbr{}ต่างๆ.
+
+ซี\wbr{}ดี\wbr{}ที่\wbr{}ดาว์นโ\wbr{}หลด\wbr{}มา\wbr{}จะ\wbr{}อยู่\wbr{}ใน\wbr{}รูป\wbr{}ของ\wbr{}ไฟล์\wbr{}ที่\wbr{}เรีย\wbr{}กว่า\emph{ดิสก์อิม\wbr{}เมจ (disk image)} และ\wbr{}มัก\wbr{}จะ\wbr{}มี\wbr{}ส่วน\wbr{}ขยาย\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}เป็น \cmd{.iso}. %
+\mymemo{ส่วน\wbr{}ขยาย\wbr{}ชื่อ\wbr{}ไฟล์ \cmd{.iso} เป็น\wbr{}แค่\wbr{}ชื่อ\wbr{}ที่\wbr{}ให้\wbr{}คน\wbr{}อ่าน\wbr{}แล้ว\wbr{}เข้า\wbr{}ใจ. จริงๆ\wbr{}แล้ว\wbr{}ไม่\wbr{}จำ\wbr{}เป็น\wbr{}ต้อง\wbr{}เป็น \cmd{.iso}, บ้าง\wbr{}ก็\wbr{}ใช้\wbr{}ส่วน\wbr{}ขยาย\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}เป็น \cmd{.raw}, {\latintext\tt .img} หรือ\wbr{}ไม่\wbr{}ใส่\wbr{}ส่วน\wbr{}ขยาย\wbr{}ชื่อ\wbr{}ไฟล์.}%
+
+ในเว็บ\wbr{}ไซด์\wbr{}หน้า\wbr{}ดาว์นโ\wbr{}หลด\wbr{}ซี\wbr{}ดี Debian \footnote{http://www.debian.org/CD} จะ\wbr{}มี\wbr{}บอก\wbr{}วิธี\wbr{}การ\wbr{}ดาว์นโ\wbr{}หลด\wbr{}หลาย\wbr{}แบบ\wbr{}เช่น\wbr{}ดาวน์โ\wbr{}หลด\wbr{}ด้วย jigdo\gindex{jigdo} ซึ่ง\wbr{}เป็น\wbr{}โปรแกรม\wbr{}พิเศษ\wbr{}สำหรับ\wbr{}ดาว์นโ\wbr{}หลด\wbr{}ไฟล์ ISO ของ Debian, ดาวน์โ\wbr{}หลด\wbr{}โดย\wbr{}ใช้ Bittorrent. แต่\wbr{}วิธี\wbr{}ที่\wbr{}เข้า\wbr{}ใจ\wbr{}ง่าย\wbr{}ที่\wbr{}สุด\wbr{}คือ\wbr{}ดาว์นโ\wbr{}หลด\wbr{}ผ่าน\wbr{}ทาง FTP หรือ HTTP โดย\wbr{}ไป\wbr{}ที่\wbr{}หน้า\wbr{}ดาว์นโ\wbr{}หลด Debian CD/DVD ผ่าน\wbr{}ทาง HTTP/FTP\footnote{http://www.debian.org/CD/http-ftp/} ก่อน. จา\wbr{}กน\wbr{}นั้น\wbr{}ก็\wbr{}เลือก FTP หรือ HTTP ที่\wbr{}ใกล้\wbr{}ตัว\wbr{}เพื่อ\wbr{}ความ\wbr{}รวด\wbr{}เร็ว\wbr{}ใน\wbr{}การ\wbr{}ดาว์นโ\wbr{}หลด.
+
+ตัว\wbr{}อย่าง\wbr{}เช่น\wbr{}ถ้า\wbr{}ดาว์นโ\wbr{}หลด\wbr{}จาก \mbox{ftp://cdimage.debina.org/debian-cd/3.1\_r0a/i386/iso-cd/} จะ\wbr{}มี\wbr{}ไฟล์ \cmd{.iso} หลาย\wbr{}ตัว\wbr{}ให้\wbr{}เลือก. ให้\wbr{}เลือก\wbr{}ดาว์นโ\wbr{}หลด\wbr{}ไฟล์ debian-31r0a-i386-binary-1.iso ไฟล์\wbr{}เดียว\wbr{}ก็\wbr{}พอ\wbr{}เพียง\wbr{}สำหรับ\wbr{}การ\wbr{}ติด\wbr{}ตั้ง. ไฟล์อิม\wbr{}เมจ\wbr{}นี้\wbr{}สามารถ\wbr{}ใช้\wbr{}ติด\wbr{}ตั้ง\wbr{}โดย\wbr{}ไม่\wbr{}มีเน็ตเ\wbr{}วิร์ก\wbr{}ได้\wbr{}และ\wbr{}มีแพ็ก\wbr{}เกจ\wbr{}พื้น\wbr{}ฐาน\wbr{}ที่\wbr{}จำ\wbr{}เป็น\wbr{}รวม\wbr{}ถึง\wbr{}สภาพ\wbr{}แวด\wbr{}ล้อม\wbr{}เดสก์ท็\wbr{}อป\wbr{}ให้\wbr{}ด้วย. ไฟล์ debian-31r0a-i386-businesscard.iso เป็น\wbr{}ไฟล์อิม\wbr{}เมจ\wbr{}สำหรับ CD ขนาด\wbr{}นาม\wbr{}บัตร\wbr{}ซึ่งแพ็ก\wbr{}เกจ\wbr{}ที่\wbr{}อยู่อิม\wbr{}เมจ\wbr{}ก็\wbr{}จะ\wbr{}น้อย\wbr{}ลง. และ\wbr{}ไฟล์ debian-31r0a-i386-netinst.iso เป็น\wbr{}ไฟล์อิม\wbr{}เมจ\wbr{}สำหรับ\wbr{}ติด\wbr{}ตั้ง\wbr{}โดย\wbr{}ผ่านเน็ตเ\wbr{}วิร์ก\wbr{}ซึ่งแพ็ก\wbr{}เกจ\wbr{}ที่\wbr{}ติด\wbr{}ตั้ง\wbr{}จะ\wbr{}ดาว์นโ\wbr{}หลด\wbr{}ผ่านเน็ตเ\wbr{}วิร์ก\wbr{}ขณะ\wbr{}ติด\wbr{}ตั้ง.
+
+
+
+\subsection{การ\wbr{}ตรวจ\wbr{}สอบดิสก์อิม\wbr{}เมจ}
+ไฟล์ดิสก์อิม\wbr{}เมจ\wbr{}ที่\wbr{}ดาวน์โ\wbr{}หลด\wbr{}มา\wbr{}มัก\wbr{}จะ\wbr{}มี\wbr{}ขนาด\wbr{}ใหญ่\wbr{}ประมาณ 700 MB เพื่อ\wbr{}เขียน\wbr{}ลง\wbr{}ซี\wbr{}ดี\wbr{}รอม\wbr{}หนึ่ง\wbr{}แผ่น. การ\wbr{}ดาวน์โ\wbr{}หลด\wbr{}ไฟล์\wbr{}ใหญ่\wbr{}แบบ\wbr{}นี้\wbr{}อาจ\wbr{}จะ\wbr{}เกิด\wbr{}ความ\wbr{}ผิด\wbr{}พลาด\wbr{}ใน\wbr{}การ\wbr{}โอน\wbr{}ถ่าย\wbr{}ข้อ\wbr{}มูล, ซึ่ง\wbr{}บาง\wbr{}ครั้ง\wbr{}นำ\wbr{}ไฟล์\wbr{}ที่\wbr{}ดาวน์โ\wbr{}หลด\wbr{}ไป\wbr{}เขียน\wbr{}ซี\wbr{}ดี\wbr{}แล้ว\wbr{}ใช้\wbr{}งาน\wbr{}ไม่\wbr{}ได้. ใน\wbr{}บาง\wbr{}กรณี\wbr{}ที่\wbr{}ผู้\wbr{}ใช้\wbr{}ไม่\wbr{}ได้\wbr{}ดาวน์โ\wbr{}หลด\wbr{}ไฟล์\wbr{}จากเว็บ\wbr{}ไซด์\wbr{}ของดิสท\wbr{}ริ\wbr{}บิว\wbr{}ชัน\wbr{}อย่าง\wbr{}เป็น\wbr{}ทาง\wbr{}การ, อาจ\wbr{}จะ\wbr{}มี\wbr{}ผู้\wbr{}ไม่\wbr{}ประสงค์\wbr{}ดี\wbr{}แอบ\wbr{}ใส่\wbr{}โปรแกรม\wbr{}ที่\wbr{}ไม่\wbr{}พึง\wbr{}ประสงค์\wbr{}ลง\wbr{}ไป\wbr{}ใน\wbr{}ไฟล์\wbr{}ติด\wbr{}ตั้ง\wbr{}ด้วย. ด้วย\wbr{}เหตุ\wbr{}ผล\wbr{}เหล่า\wbr{}นี้\wbr{}เอง\wbr{}ผู้\wbr{}ใช้\wbr{}จึง\wbr{}ควร\wbr{}ตรวจ\wbr{}สอบ\wbr{}ไฟล์ดิสก์อิม\wbr{}เมจ\wbr{}ที่\wbr{}ดาวน์โ\wbr{}หลด\wbr{}มา\wbr{}ก่อน\wbr{}ใช้\wbr{}งาน.
+
+ผู้\wbr{}ใช้\wbr{}สามารถ\wbr{}ตรวจ\wbr{}สอบ\wbr{}ไฟล์\wbr{}ที่\wbr{}ดาวน์โ\wbr{}หลด\wbr{}มา\wbr{}ด้วย\wbr{}โปรแกรม \cmd{md5sum}. %
+%
+\begin{MyVerbatim}
+$ \cin{md5sum debian-31r0a-i386-binary-1.iso}
+b49a7955be5e286eff873a9bd157793a  debian-31r0a-i386-binary-1.iso
+\end{MyVerbatim}
+%$
+โปรแกรม \cmd{md5sum} จะ\wbr{}แสดง\wbr{}ค่า\emph{เช็ค\wbr{}ซัม (checksum)} ของ\wbr{}ไฟล์\wbr{}ที่\wbr{}ต้องการ\wbr{}ตรวจ\wbr{}สอบ. เมื่อ\wbr{}ได้\wbr{}ค่า\wbr{}เช็ค\wbr{}ซัม\wbr{}แล้ว\wbr{}ก็\wbr{}นำ\wbr{}ไป\wbr{}เทียบ\wbr{}กับ\wbr{}ค่า\wbr{}เช็ค\wbr{}ซัม\wbr{}ที่ดิสท\wbr{}ริ\wbr{}บิว\wbr{}ชัน\wbr{}แสดง\wbr{}ไว้\wbr{}ว่า\wbr{}ตรง\wbr{}กัน\wbr{}หรือ\wbr{}ไม่. ปรกติ\wbr{}ไซด์\wbr{}ที่\wbr{}ดาว์นโ\wbr{}หลด\wbr{}จะ\wbr{}มี\wbr{}ไฟล์ \cmd{MD5SUMS} ให้\wbr{}ดาว์นโ\wbr{}หลด\wbr{}ด้วย. ไฟล์\wbr{}นี้\wbr{}จะ\wbr{}มี\wbr{}ค่า\wbr{}เช็ค\wbr{}ซัม\wbr{}ของ\wbr{}ไฟล์อิม\wbr{}เมจ\wbr{}ไว้\wbr{}ให้\wbr{}ดู\wbr{}เปรียบ\wbr{}เทียบ\wbr{}ว่า\wbr{}ค่า\wbr{}ตรง\wbr{}กัน\wbr{}หรือ\wbr{}ไม่. ถ้า\wbr{}ไม่\wbr{}ตรง\wbr{}กัน\wbr{}แสดง\wbr{}ว่า\wbr{}ไฟล์\wbr{}ที่\wbr{}ดาวน์โ\wbr{}หลด\wbr{}มา\wbr{}มี\wbr{}ข้อ\wbr{}มูล\wbr{}ไม่\wbr{}ตรง\wbr{}กับ\wbr{}ต้น\wbr{}ฉบับ\wbr{}จริง. %ดิสท\wbr{}ริ\wbr{}บิว\wbr{}ชัน\wbr{}มัก\wbr{}จะ\wbr{}เตรียม\wbr{}ไฟล์\wbr{}ราย\wbr{}การ\wbr{}ค่า\wbr{}เช็ค\wbr{}ซัม\wbr{}กับ\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ไว้\wbr{}ให้\wbr{}ดาวน์โ\wbr{}หลด\wbr{}ด้วย\wbr{}เพื่อ\wbr{}ที่\wbr{}ผู้\wbr{}ใช้\wbr{}จะ\wbr{}ได้\wbr{}ตรวจ\wbr{}สอบ\wbr{}ได้\wbr{}ว่า\wbr{}ไฟล์\wbr{}ที่\wbr{}ดาวน์โ\wbr{}หลด\wbr{}ไป\wbr{}ถูก\wbr{}ต้อง\wbr{}หรือ\wbr{}ไม่.
+
+
+สำหรับ\wbr{}ผู้\wbr{}ที่\wbr{}ใช้\wbr{}วิน\wbr{}โดวส์\wbr{}และ\wbr{}ต้องการ\wbr{}ตรวจ\wbr{}ค่า\wbr{}เช็ค\wbr{}ซัม, ให้\wbr{}ใช้\wbr{}โปรแกรม MD5summer \cite{md5summer} ซึ่ง\wbr{}เป็น\wbr{}ซอฟต์แวร์\wbr{}เสรี.
+
+\section{การ\wbr{}เขียน\wbr{}ซี\wbr{}ดี}
+โปรแกรม\wbr{}ที่\wbr{}ใช้\wbr{}เขียน\wbr{}ซี\wbr{}ดี\wbr{}บน\wbr{}ลิ\wbr{}นุกซ์\wbr{}มี\wbr{}หลาย\wbr{}โปรแกรม\wbr{}ให้\wbr{}เลือก\wbr{}ใช้\wbr{}เช่น \cmd{xcdroast}, \cmd{gtoaster} แต่\wbr{}โปรแกรม\wbr{}เหล่า\wbr{}นี้\wbr{}ต่าง\wbr{}ก็\wbr{}เป็น frontend ของ\wbr{}โปรแกรม (คำ\wbr{}สั่ง) \cmd{cdrecord} ทั้ง\wbr{}นั้น. เมื่อ\wbr{}ดาวน์\wbr{}โหลดั\wbr{}และ\wbr{}ตรวจ\wbr{}สอบ\wbr{}ไฟล์\wbr{}ที่\wbr{}ดาวน์โ\wbr{}หลด\wbr{}แล้ว, ให้\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{cdrecord}.
+
+\myexplanation{cdrecord}{\cmd{dev=0,0,0} เป็น\wbr{}การ\wbr{}ระบุ\wbr{}ดี\wbr{}ไวส์\wbr{}ซี\wbr{}ดี. \cmd{-eject} ให้\wbr{}คอมพิวเตอร์\wbr{}ดีด\wbr{}ตัว\wbr{}ซี\wbr{}ดี\wbr{}ออก\wbr{}จากไ\wbr{}ดรว์\wbr{}เมื่อ\wbr{}เขียน\wbr{}ซี\wbr{}ดี\wbr{}เสร็จ. และ \cmd{speed=4} เป็น\wbr{}การ\wbr{}ใช้\wbr{}ความเร็ว 4 เท่า.}
+\begin{MyVerbatim}
+# \cin{cdrecord dev=0,0,0 -eject speed=4 samila-5.5-i386-cd1.iso}
+\end{MyVerbatim}
+
+ผู้\wbr{}ที่\wbr{}ใช้\wbr{}วิน\wbr{}โดวส์\wbr{}สามารถ\wbr{}ใช้\wbr{}โปรแกรม\wbr{}เขียน\wbr{}ไฟล์ \cmd{.iso} ลง\wbr{}ซี\wbr{}ดี\wbr{}ได้\wbr{}เช่น Nero, Easy CD Creator ฯลฯ.  หรือ\wbr{}ถ้า\wbr{}เป็น\wbr{}ซอฟต์แวร์\wbr{}เสรี\wbr{}สามารถ\wbr{}ใช้ BurnAtOnce\footnote{http://www.burnatonce.com}, CDBruenerXP Pro\footnote{http://www.cdburnerxp.se} ฯลฯ.
+\section{การ\wbr{}ติด\wbr{}ตั้ง\wbr{}ลิ\wbr{}นุกซ์}
+ก่อน\wbr{}อื่น\wbr{}ให้\wbr{}ตรวจ\wbr{}สอบ BIOS ของ\wbr{}คอมพิวเตอร์\wbr{}ให้\wbr{}เครื่อง\wbr{}คอมพิวเตอร์บูต\wbr{}เครื่อง\wbr{}จาก\wbr{}ซี\wbr{}ดี\wbr{}ได้. จาก\wbr{}นั้น\wbr{}ให้\wbr{}ใส่\wbr{}ซี\wbr{}ดี\wbr{}แล้ว\wbr{}เปิด\wbr{}เครื่อง\wbr{}ใหม่, ถ้า\wbr{}ไม่\wbr{}มี\wbr{}ข้อ\wbr{}ผิด\wbr{}พลาด\wbr{}ใดๆ\wbr{}ก็\wbr{}จะ\wbr{}สามารถบูต\wbr{}จาก\wbr{}แผ่น\wbr{}ซี\wbr{}ดี\wbr{}ได้.
+
+\subsubsection*{ตั้ง\wbr{}ค่า BIOS}\mymemo{เข้า\wbr{}หน้า\wbr{}จอ BIOS และ\wbr{}เปลี่ยน\wbr{}ให้\wbr{}เครื่องบูต\wbr{}จาก CDROM. วิธี\wbr{}ตั้ง\wbr{}ให้\wbr{}เครื่อง\wbr{}เข้า BIOS อาจ\wbr{}จะ\wbr{}กด \cmd{F1}, \cmd{Del}, \cmd{ESC} แล้ว\wbr{}แต่\wbr{}กรณี. หลัง\wbr{}จาก\wbr{}ที่\wbr{}เข้า BIOS แล้ง\wbr{}แก้\wbr{}เมนู\wbr{}การบูต\wbr{}ให้บูต\wbr{}จาก CDROM, บันทึก\wbr{}การ\wbr{}แก้\wbr{}ไข\wbr{}แล้ว\wbr{}รีบูต.}
+\bigskip
+\includegraphics[scale=.45]{bios-cdrom.eps}
+
+\vfill
+
+
+
+\subsubsection*{เข้า\wbr{}สู่\wbr{}โปรแกรม\wbr{}ติด\wbr{}ตั้ง}%\mymemo{ผู้\wbr{}อ่าน\wbr{}สามารถ\wbr{}เลือก\wbr{}วิธี\wbr{}การ\wbr{}ติด\wbr{}ตั้ง (อินเ\wbr{}ทอร์เฟส) ได้\wbr{}สอง\wbr{}แบบ\wbr{}คือ\wbr{}แบบ\wbr{}กราฟ\wbr{}ฟิก\wbr{}และ\wbr{}แบบเท็กซ์\wbr{}โหมด. ใน\wbr{}ที่\wbr{}นี้\wbr{}จะ\wbr{}อธิบาย\wbr{}วิธี\wbr{}การ\wbr{}ติด\wbr{}ตั้ง\wbr{}แบบ\wbr{}กราฟ\wbr{}ฟิก. หาก\wbr{}ต้องการ\wbr{}ติด\wbr{}ตั้ง\wbr{}ใน\wbr{}ระบบเท็กซ์\wbr{}โหมด, ให้\wbr{}พิมพ์ \cmd{linux text} แล้ว\wbr{}กด\wbr{}คีย์ Enter. การ\wbr{}ติด\wbr{}ตั้ง\wbr{}แบบ\wbr{}กราฟ\wbr{}ฟิก\wbr{}ให้\wbr{}กด\wbr{}คีย์ Enter เพื่อ\wbr{}ดำเนิน\wbr{}การ\wbr{}ต่อ\wbr{}ไป.
+%
+%นอก\wbr{}จาก\wbr{}การ\wbr{}ติด\wbr{}ตั้ง\wbr{}แล้ว\wbr{}ผู้\wbr{}อ่าน\wbr{}สามารถ\wbr{}ใช้\wbr{}แผ่น\wbr{}ซี\wbr{}ดี\wbr{}เป็น\wbr{}แผ่นบูต\wbr{}คอมพิวเตอร์\wbr{}แก้\wbr{}ไข\wbr{}ปัญหา\wbr{}เวลา\wbr{}เครื่องบูต\wbr{}ไม่\wbr{}ได้. ใน\wbr{}กรณี\wbr{}นี้\wbr{}เรีย\wbr{}กว่า\wbr{}การบูต\wbr{}แบบ Rescue. นอก\wbr{}จาก\wbr{}นั้น\wbr{}ผู้\wbr{}อ่าน\wbr{}สามารถ\wbr{}เลือก\wbr{}วิธี\wbr{}การ\wbr{}ติด\wbr{}ตั้ง\wbr{}จากเน็ตเ\wbr{}วิร์ค\wbr{}ได้\wbr{}ด้วย.}
+\mymemo{หนัง\wbr{}จาก\wbr{}ที่\wbr{}ใส่\wbr{}แผ่น CD แล้วบูต\wbr{}จาก\wbr{}จะ\wbr{}มี\wbr{}หน้า\wbr{}จอ\wbr{}ดัง\wbr{}ภาพ. ให้\wbr{}กด\wbr{}คีย์ \cmd{Enter} หรือ\wbr{}กด\wbr{}คีย์ \cmd{F1} เพื่อ\wbr{}ดู\wbr{}คำ\wbr{}อธิบาย\wbr{}ช่วย\wbr{}เหลือ.}
+
+\bigskip
+\includegraphics[scale=.45]{debian-cd-boot.eps}
+
+\vfill
+%\subsubsection*{หน้า\wbr{}จอ\wbr{}ต้อน\wbr{}รับ\wbr{}ของ\wbr{}โปรแกรม\wbr{}ติด\wbr{}ตั้ง}\mymemo{ด้าน\wbr{}ซ้าย\wbr{}มือ\wbr{}ของ\wbr{}หน้า\wbr{}จอ\wbr{}จะ\wbr{}เป็น\wbr{}หน้า\wbr{}ต่าง\wbr{}ช่วย\wbr{}เหลือ, ช่วย\wbr{}อธิบาย\wbr{}ขั้น\wbr{}ตอน\wbr{}การ\wbr{}ติด\wbr{}ตั้ง. ใน\wbr{}ช่วง\wbr{}นี้\wbr{}ผู้\wbr{}อ่าน\wbr{}สามารถ\wbr{}กด\wbr{}ปุ่ม\wbr{}อ่าน\emph{รี\wbr{}ลีส\wbr{}โน้ต (release note)} ซึ่ง\wbr{}จะ\wbr{}แนะ\wbr{}นำ\wbr{}ความ\wbr{}สามารถ\wbr{}ใหม่\wbr{}ใน\wbr{}ลิ\wbr{}นุกซ์\wbr{}ทะเล. ให้\wbr{}กด\wbr{}ปุ่ม ``ถัด\wbr{}ไป'' เพื่อ\wbr{}ดำเนิน\wbr{}การ\wbr{}ต่อ\wbr{}ไป.}%
+
+... to be continued
+
+

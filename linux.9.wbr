@@ -1,0 +1,696 @@
+\chapter{แนะ\wbr{}นำ\wbr{}โปรแกรม\wbr{}ใช้\wbr{}งาน}
+ปัจจุบัน\wbr{}สภาพ\wbr{}แวด\wbr{}ล้อม\wbr{}เดสก์ท็\wbr{}อป\wbr{}เช่น GNOME, KDE พัฒนา\wbr{}ไป\wbr{}อย่าง\wbr{}รวด\wbr{}เร็ว, โปรแกรม\wbr{}ต่างๆ\wbr{}ใช้\wbr{}งาน\wbr{}ง่าย\wbr{}ขึ้น, มี\wbr{}อินเ\wbr{}ทอร์เฟส\wbr{}ที่\wbr{}ทัน\wbr{}สมัย. การ\wbr{}ใช้\wbr{}งาน\wbr{}โปรแกรม\wbr{}บน\wbr{}ลิ\wbr{}นุกซ์\wbr{}ไม่\wbr{}ได้\wbr{}จำกัด\wbr{}เฉพาะ\wbr{}งาน\wbr{}เดสก์ท็\wbr{}อป, โปรแกรม\wbr{}ที่\wbr{}มี\wbr{}อินเฟส\wbr{}เป็น\wbr{}บรรทัด\wbr{}คำ\wbr{}สั่ง\wbr{}ยัง\wbr{}เป็น\wbr{}ที่\wbr{}นิยม\wbr{}เพราะ\wbr{}ทำ\wbr{}งาน\wbr{}ได้\wbr{}รวด\wbr{}เร็ว\wbr{}และ\wbr{}สามารถ\wbr{}เขียนสค\wbr{}ริปต์\wbr{}ให้\wbr{}ทำ\wbr{}งาน\wbr{}ตาม\wbr{}โดย\wbr{}ที่\wbr{}ไม่\wbr{}ต้อง\wbr{}โต้\wbr{}ตอบ\wbr{}กับ\wbr{}ผู้\wbr{}ใช้\wbr{}ได้.  อย่าง\wbr{}ไร\wbr{}ก็\wbr{}ตาม\wbr{}โปรแกรม\wbr{}ต่าง\wbr{}สามารถ\wbr{}ใช้\wbr{}ร่วม\wbr{}กัน\wbr{}ได้\wbr{}เช่น\wbr{}ใน\wbr{}สภาพ\wbr{}แวด\wbr{}ล้อม\wbr{}เดสก์ท็\wbr{}อป GNOME สามารถ\wbr{}ใช้\wbr{}โปรแกรม\wbr{}ของ KDE ได้\wbr{}หรือ\wbr{}ใช้\wbr{}โปรแกรม\wbr{}ที่\wbr{}ไม่\wbr{}ได้\wbr{}ใช้ไ\wbr{}ลบ\wbr{}รา\wbr{}รี GTK+ ได้\wbr{}เช่น\wbr{}กัน. สิ่ง\wbr{}ที่\wbr{}สำคัญ\wbr{}คือ\wbr{}การ\wbr{}รู้\wbr{}จัก\wbr{}เลือก\wbr{}ใช้\wbr{}โปรแกรม\wbr{}ให้\wbr{}เหมาะ\wbr{}สม\wbr{}กับ\wbr{}งาน, สภาพ\wbr{}แวด\wbr{}ล้อม และ\wbr{}ตาม\wbr{}ความ\wbr{}ถนัด\wbr{}ของ\wbr{}ผู้\wbr{}ใช้.
+
+โปรแกรม\wbr{}หรือ\wbr{}แอพ\wbr{}พลิ\wbr{}เค\wbr{}ชัน\wbr{}ต่างๆ\wbr{}ที่\wbr{}ใช้\wbr{}ใน\wbr{}ลิ\wbr{}นุกซ์\wbr{}ส่วน\wbr{}ใหญ่\wbr{}จะ\wbr{}เป็น\wbr{}โปรแกรม\wbr{}ซอฟต์แวร์\wbr{}เสรี. ตอน\wbr{}ที่\wbr{}ติด\wbr{}ตั้ง\wbr{}ลิ\wbr{}นุกซ์ดิสท\wbr{}ริ\wbr{}บิว\wbr{}ชัน\wbr{}ผู้\wbr{}ใช้\wbr{}สามารถ\wbr{}เลือก\wbr{}แอพ\wbr{}พลิ\wbr{}เค\wbr{}ชัน\wbr{}ที่\wbr{}ใช้\wbr{}ติด\wbr{}ตั้ง\wbr{}ใน\wbr{}ระบบ\wbr{}หรือ\wbr{}ติด\wbr{}ตั้ง\wbr{}หลัง\wbr{}ติด\wbr{}ตั้ง\wbr{}ตัว\wbr{}ระบบ\wbr{}ปฏิบัติ\wbr{}การ. วิธี\wbr{}การ\wbr{}ติด\wbr{}ตั้ง\wbr{}โปรแกรม\wbr{}จะ\wbr{}อธิบาย\wbr{}ใน\wbr{}บท\wbr{}ที่\wbr{}เกี่ยว\wbr{}กับ\wbr{}การ\wbr{}ดู\wbr{}แล\wbr{}ระบบ\wbr{}หน้า \pageref{sec:install}. ใน\wbr{}บท\wbr{}นี้\wbr{}จะ\wbr{}แนะ\wbr{}นำ\wbr{}โปรแกรม\wbr{}ต่างๆ\wbr{}ตาม\wbr{}ประเภท\wbr{}การ\wbr{}ใช้\wbr{}งาน\wbr{}เพื่อ\wbr{}ให้\wbr{}เห็น\wbr{}ภาพ\wbr{}พจน์\wbr{}และ\wbr{}เป็น\wbr{}ประโยชน์\wbr{}ใน\wbr{}การ\wbr{}ใช้\wbr{}งาน\wbr{}จริง. ใน\wbr{}ช่วง\wbr{}แรก\wbr{}เป็น\wbr{}เนื้อ\wbr{}หา\wbr{}เกี่ยว\wbr{}กับ\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}ซึ่ง\wbr{}จะ\wbr{}อธิบาย\wbr{}ละเอียด\wbr{}กว่า\wbr{}โปรแกรม\wbr{}อื่นๆ. ส่วน\wbr{}แอพ\wbr{}พลิ\wbr{}เค\wbr{}ชัน\wbr{}แบบ GUI จะ\wbr{}ไม่\wbr{}เจาะ\wbr{}ลึก\wbr{}ใน\wbr{}ราย\wbr{}ละเอียด\wbr{}เนื่อง\wbr{}จาก\wbr{}ผู้\wbr{}ใช้\wbr{}สามารถ\wbr{}เรียน\wbr{}รู้\wbr{}จาก\wbr{}การ\wbr{}ใช้\wbr{}แอพ\wbr{}พลิ\wbr{}เค\wbr{}ชัน\wbr{}เหล่า\wbr{}นั้น\wbr{}ด้วย\wbr{}ตัว\wbr{}เอง\wbr{}หรือ\wbr{}อ่าน\wbr{}จาก\wbr{}หนังสือ\wbr{}เล่ม\wbr{}อื่นๆ.
+
+\section{บรรณาธิ\wbr{}กรณ์}
+\emph{บรรณาธิ\wbr{}กรณ์ (editor)}\gindex{บรรณาธิ\wbr{}กรณ์}\gindex{editor} เป็น\wbr{}ชื่อ\wbr{}ทั่ว\wbr{}ไป\wbr{}ที่\wbr{}ใช้\wbr{}เรียก\wbr{}โปรแกรม\wbr{}สำหรับ\wbr{}สร้าง\wbr{}ไฟล์\wbr{}หรือ\wbr{}แก้\wbr{}ไข\mymemo{แก้\wbr{}ไข (edit) ใน\wbr{}ที่\wbr{}นี้\wbr{}หมาย\wbr{}ถึง\wbr{}การ\wbr{}พิมพ์\wbr{}ข้อ\wbr{}มูล\wbr{}เพิ่ม, ลบ\wbr{}แก้\wbr{}ไข\wbr{}ข้อ\wbr{}มูล.}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}มี\wbr{}อยู่. บรรณาธิ\wbr{}กรณ์\wbr{}ต่าง\wbr{}จาก\wbr{}โปรแกรม\wbr{}เวิร์ด\wbr{}โปรเซสเซอร์\wbr{}เช่น OpenOffice ตรง\wbr{}ที่\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}เน้น\wbr{}การ\wbr{}ประมวล\wbr{}ผล\wbr{}ข้อ\wbr{}มูลเท็กซ์\wbr{}เช่น\wbr{}แก้\wbr{}ไข\wbr{}ข้อ\wbr{}มูล, และ\wbr{}ไม่\wbr{}มี\wbr{}ความ\wbr{}สามารถ\wbr{}ใน\wbr{}การ\wbr{}จัด\wbr{}แต่ง\wbr{}หน้า\wbr{}เอก\wbr{}สาร\wbr{}สำหรับ\wbr{}งาน\wbr{}พิมพ์. ใน\wbr{}ระบบ\wbr{}จำ\wbr{}เป็น\wbr{}ต้อง\wbr{}มี\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}เพื่อ\wbr{}แก้\wbr{}ไข\wbr{}ไฟล์\wbr{}ต่างๆ, ปรับ\wbr{}แต่ง\wbr{}ระบบ. ผู้\wbr{}ใช้\wbr{}ทั่ว\wbr{}ไป\wbr{}โดย\wbr{}เฉพาะ\wbr{}ผู้\wbr{}ดู\wbr{}และ\wbr{}ระบบ\wbr{}ควร\wbr{}รู้\wbr{}จัก\wbr{}วิธี\wbr{}ใช้\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}ที่\wbr{}ทำ\wbr{}งาน\wbr{}ในเ\wbr{}ทอร์\wbr{}มิ\wbr{}นอล\wbr{}อย่าง\wbr{}น้อย\wbr{}หนึ่ง\wbr{}ตัว.
+
+บรรณาธิ\wbr{}กรณ์\wbr{}ที่\wbr{}ใช้\wbr{}กัน\wbr{}ใน\wbr{}ปัจจุบัน\wbr{}สามารถ\wbr{}แบ่ง\wbr{}ออก\wbr{}เป็น\wbr{}สอง\wbr{}กระแส\wbr{}ตาม\wbr{}ความ\wbr{}นิยม\wbr{}ได้\wbr{}แก่ \cmd{vi} และ \cmd{emacs}. นอก\wbr{}จาก\wbr{}นี้\wbr{}ยัง\wbr{}มี\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}อื่นๆ\wbr{}เช่น \cmd{nano}, \cmd{gedit}, \cmd{kedit} ฯลฯ. \cmd{vi} และ \cmd{emacs} เป็น\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}ที่\wbr{}ได้\wbr{}รับ\wbr{}ความ\wbr{}นิยม\wbr{}สูง\wbr{}เพราะ\wbr{}เป็น\wbr{}โปรแกรม\wbr{}ที่\wbr{}มี\wbr{}มา\wbr{}นาน\wbr{}แล้ว, มี\wbr{}ความ\wbr{}สามารถ\wbr{}ต่างๆ\wbr{}มาก\wbr{}มาย, ใช้\wbr{}ได้\wbr{}กับ\wbr{}งาน\wbr{}ทั่ว\wbr{}ไป\wbr{}จน\wbr{}ถึง\wbr{}เป็น\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}สำหรับ\wbr{}เขียน\wbr{}โปรแกรม\wbr{}พัฒนา\wbr{}ซอฟต์แวร์.
+
+\subsection{\cmd{vi}(\cmd{m})}
+บรรณาธิ\wbr{}กรณ์\wbr{}ใน\wbr{}ยู\wbr{}นิกซ์\wbr{}ยุค\wbr{}แรกๆ\wbr{}คือ \cmd{ed}\cindex{ed} เป็น\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}ที่\wbr{}ประมวล\wbr{}ผล\wbr{}ข้อ\wbr{}มูลเท็กซ์\wbr{}ใน\wbr{}ไฟล์\wbr{}บรรทัด\wbr{}ต่อ\wbr{}บรรทัด, ไม่\wbr{}สามารถ\wbr{}แสดง\wbr{}ข้อ\wbr{}มูล\wbr{}ต่อ\wbr{}เนื่อง\wbr{}เป็น\wbr{}หน้า\wbr{}บนเ\wbr{}ทอร์\wbr{}มิ\wbr{}นอล. โปรแกรม \cmd{ed} เป็น\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}ที่\wbr{}ใช้\wbr{}ยาก\wbr{}และ\wbr{}ใน\wbr{}เวลา\wbr{}ต่อ\wbr{}มา George Coulouris\gindex{george coulouris@George Coulouris}\cite{em} สร้าง\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}ชื่อ \cmd{em} คล้าย\wbr{}กับ \cmd{ed} แต่\wbr{}ใช้\wbr{}งาน\wbr{}ง่าย\wbr{}ขึ้น. ขณะ\wbr{}ที่ Bill Joy\gindex{bill joy@Bill Joy} พัฒนา BSD ได้\wbr{}พบ\wbr{}กับ George Coulouris และ\wbr{}ได้\wbr{}เอา\wbr{}บรรณธิ\wbr{}กรณ์ \cmd{em} เป็นต้น\wbr{}แบบ\wbr{}ใน\wbr{}การ\wbr{}สร้าง\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}ตัว\wbr{}ใหม่\wbr{}ที่\wbr{}ดี\wbr{}กว่า\wbr{}ได้\wbr{}แก่ \cmd{ex}\cindex{ex}. อย่าง\wbr{}ไร\wbr{}ก็\wbr{}ตาม \cmd{ex} ก็\wbr{}ยัง\wbr{}คง\wbr{}เป็น\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}เชิง\wbr{}บรรทัด (line editor)\gindex{line editor} แบบ\wbr{}เดิม\wbr{}จน\wbr{}กระทั่ง Bill Joy เขียน\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}ใหม่\wbr{}สามารถ\wbr{}แสดง\wbr{}ผล\wbr{}เต็ม\wbr{}หน้า\wbr{}จอ\wbr{}ได้\wbr{}ที่\wbr{}เรีย\wbr{}กว่า \cmd{vi}\mymemo{\cmd{vi} อ่าน\wbr{}ออก\wbr{}เสียง\wbr{}ว่า vee-eye}. \cmd{vi} รับ\wbr{}แนว\wbr{}คิด\wbr{}ของ\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}ก่อน\wbr{}หน้า\wbr{}นั้น\wbr{}เช่น \cmd{ed} มา\wbr{}ไม่\wbr{}น้อย. จะ\wbr{}เห็น\wbr{}ได้\wbr{}จาก\wbr{}คำ\wbr{}สั่ง\wbr{}ที่\wbr{}ใช้\wbr{}ใน \cmd{vi} เหมือน\wbr{}กับ\wbr{}คำ\wbr{}สั่ง\wbr{}ที่\wbr{}ใช้\wbr{}ใน \cmd{ed}.
+
+ปัจจุบัน \cmd{vi} ที่\wbr{}ใช้\wbr{}กัน\wbr{}ใน\wbr{}ลิ\wbr{}นุกซ์\wbr{}ไม่\wbr{}ใช่\wbr{}โปรแกรม \cmd{vi} แบบ\wbr{}ดั้งเดิม\wbr{}แต่\wbr{}เป็น\wbr{}โปรแกรม \cmd{vi} โคลน\wbr{}คือ\wbr{}เป็น\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}ที่\wbr{}สร้าง\wbr{}ให้\wbr{}ทำ\wbr{}งาน\wbr{}เหมือน\wbr{}กับ \cmd{vi} และ\wbr{}ได้\wbr{}รับ\wbr{}การ\wbr{}ปรับ\wbr{}ปรุง\wbr{}พัฒนา\wbr{}ให้\wbr{}ดี\wbr{}ขึ้น\wbr{}จน\wbr{}ความ\wbr{}สามารถ\wbr{}บาง\wbr{}อย่าง\wbr{}แตก\wbr{}ต่าง\wbr{}จาก\wbr{}ของ\wbr{}เดิม\wbr{}โดย\wbr{}สิ้น\wbr{}เชิง. โปรแกรม \cmd{vi} ใน\wbr{}ปัจจุบัน\wbr{}คือ \cmd{vim}\cindex{vim} (Vi IMproved).\mymemo{โปรแกรม \cmd{vi} ที่\wbr{}ใช้\wbr{}ใน\wbr{}หนังสือ\wbr{}เล่ม\wbr{}นี้\wbr{}จะ\wbr{}หมาย\wbr{}ถึง \cmd{vim}.} ในดิส\wbr{}โทร\wbr{}ทั่ว\wbr{}ไป\wbr{}จะ\wbr{}สร้าง\wbr{}ซอฟต์\wbr{}ลิงก์ \cmd{vi} ชี้\wbr{}ไป\wbr{}ที่\wbr{}ตัว\wbr{}โปรแกรม \cmd{vim}\cindex{vim}\cindex{vi}. โดvย\wbr{}ปรกติ \cmd{vim} เป็น\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}ที่\wbr{}ใช้\wbr{}อยู่\wbr{}ในเ\wbr{}ทอร์\wbr{}มิ\wbr{}นอล\wbr{}เช่น\wbr{}เดียว\wbr{}กับ \cmd{vi} แบบ\wbr{}ดั้งเดิม. แต่\wbr{}ตอน\wbr{}ที่\wbr{}สร้าง \cmd{vim} จาก\wbr{}รหัส\wbr{}ต้น\wbr{}ฉบับ\wbr{}สามารถ\wbr{}เลือก\wbr{}สร้าง \cmd{vim} ให้\wbr{}แสดง\wbr{}ผล\wbr{}แบบ GUI ได้\wbr{}และ\wbr{}จะ\wbr{}มี\wbr{}โปรแกรม\wbr{}ต่าง\wbr{}หาก\wbr{}เตรียม\wbr{}ไว้\wbr{}ชื่อ \cmd{gvim}\cindex{gvim}. \cmd{gvim} จะ\wbr{}มี\wbr{}หน้า\wbr{}ต่าง\wbr{}เป็น\wbr{}ของ\wbr{}ตัว\wbr{}เอง\wbr{}ใช้\wbr{}ใน\wbr{}ระบบ X วิน\wbr{}โดว์. อย่าง\wbr{}ไร\wbr{}ก็\wbr{}ตาม\wbr{}คน\wbr{}ส่วน\wbr{}ใหญ่\wbr{}ก็\wbr{}ยัง\wbr{}นิยม\wbr{}ให้ \cmd{vi} ซึ่ง\wbr{}รัน\wbr{}อยู่\wbr{}ในเ\wbr{}ทอร์\wbr{}มิ\wbr{}นอล\wbr{}ตาม\wbr{}ปรกติ.
+
+นอก\wbr{}จาก\wbr{}นี้\wbr{}ยัง\wbr{}มี\wbr{}โปรแกรม\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}ตระกูล\wbr{}เดียว\wbr{}กัน\wbr{}ได้\wbr{}แก่ \cmd{view}\cindex{view} คือ \cmd{vi} แบบ\wbr{}พิเศษ\wbr{}สำหรับ\wbr{}เปิด\wbr{}อ่าน\wbr{}ไฟล์\wbr{}ได้\wbr{}อย่าง\wbr{}เดียว, ไม่\wbr{}สามารถ\wbr{}แก้\wbr{}ไข\wbr{}ไฟล์. \cmd{ex}\cindex{ex} เป็น\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}ประมวล\wbr{}ผล\wbr{}ข้อ\wbr{}มูล\wbr{}บรรทัด\wbr{}ต่อ\wbr{}บรรทัด\wbr{}คล้าย \cmd{ed}. โปรแกรม\wbr{}เหล่า\wbr{}นี้\wbr{}จริงๆ\wbr{}แล้ว\wbr{}ก็\wbr{}คือ \cmd{vim}.
+
+การ\wbr{}ใช้\wbr{}โปรแกรม \cmd{vim} มัก\wbr{}จะ\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง \cmd{vi} หรือ \cmd{vim} จาก\wbr{}บรรทัด\wbr{}คำ\wbr{}สั่ง.
+\begin{MyVerbatim}
+vi [\textit{options}] [\cmd{filename}]
+\end{MyVerbatim}
+
+\begin{table}[!h]
+\begin{tabular}{lp{.75\textwidth}l}
+%\caption{ตัว\wbr{}เลือก\wbr{}ของ\wbr{}โปรแกรม \cmd{vi}.}\label{tab:vioptions}\\
+\toprule
+\multicolumn{1}{c}{ตัว\wbr{}เลือก} & \multicolumn{1}{c}{คำ\wbr{}อธิบาย}\\
+\midrule
+\cmd{-e} & รัน\wbr{}โปรแกรม\wbr{}โดย\wbr{}ให้\wbr{}ผล\wbr{}เหมือน\wbr{}กับ \cmd{ex}.\\
+\cmd{-g} & รัน\wbr{}โปรแกรม\wbr{}โดย\wbr{}ใช้\wbr{}อินเ\wbr{}ทอร์เฟส\wbr{}แบบ GUI. ให้\wbr{}ผล\wbr{}เหมือน\wbr{}กับ\wbr{}คำ\wbr{}สั่ง \cmd{gvim}.\\
+\cmd{-R} & ไฟล์\wbr{}ที่\wbr{}เปิด\wbr{}ด้วย \cmd{vi} และ\wbr{}ตัว\wbr{}เลือก\wbr{}นี้\wbr{}จะ\wbr{}เป็น\wbr{}ไฟล์\wbr{}แบบ\wbr{}อ่าน\wbr{}ได้\wbr{}อย่าง\wbr{}เดียว, ไม่\wbr{}สามารถ\wbr{}แก้\wbr{}ไข\wbr{}ได้. ให้\wbr{}ผล\wbr{}เหมือน\wbr{}กับ\wbr{}คำ\wbr{}สั่ง \cmd{view}.\\
+\cmd{-C} & ระบุ\wbr{}ให้ \cmd{vim} ทำ\wbr{}งาน\wbr{}เหมือน\wbr{}กับ \cmd{vi} แบบ\wbr{}ดั้งเดิม\wbr{}เท่า\wbr{}ที่\wbr{}เป็น\wbr{}ไป\wbr{}ได้.\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+ไฟล์\wbr{}ที่\wbr{}ระบุ\wbr{}เป็น\wbr{}อาร์กิวเ\wbr{}มนต์\wbr{}ของ\wbr{}คำ\wbr{}สั่ง\wbr{}เป็น\wbr{}ไฟล์\wbr{}ที่\wbr{}ต้องการ\wbr{}แก้\wbr{}ไข\wbr{}หรือ\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ใหม่\wbr{}ที่\wbr{}ต้องการ\wbr{}สร้าง. ถ้า\wbr{}ไม่\wbr{}ระบุ\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}และ\wbr{}ต้องการ\wbr{}บันทึก\wbr{}สิ่ง\wbr{}ที่\wbr{}พิมพ์\wbr{}ต้อง\wbr{}ระบุ\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ภาย\wbr{}หลัง.
+
+%\begin{figure}[!htb]
+%\plfiguretwo{.6}{vim.eps}{gvim.eps}{\cmd{vim} และ \cmd{gvim}.}{vim}
+%\end{figure}
+
+
+\subsubsection{โหมด}
+ก่อน\wbr{}ที่\wbr{}จะ\wbr{}ใช้ \cmd{vi} ต้อง\wbr{}ทำ\wbr{}ความ\wbr{}รู้\wbr{}จัก\wbr{}กับ\wbr{}ตัว\wbr{}โปรแกรม\wbr{}ก่อน\wbr{}ว่า \cmd{vi} มี\wbr{}แนว\wbr{}คิด\wbr{}เรื่อง\wbr{}โหมด (mode). โหมด\wbr{}คือ\wbr{}สภาพ\wbr{}การ\wbr{}ทำ\wbr{}งาน\wbr{}แบ่ง\wbr{}ออก\wbr{}เป็น 2 แบบ\wbr{}ได้\wbr{}แก่
+\begin{itemize}
+\item โหมด\wbr{}คำ\wbr{}สั่ง (command mode) --- หลัง\wbr{}จาก\wbr{}ที่ \cmd{vi} เริ่ม\wbr{}ทำ\wbr{}งาน\wbr{}จะ\wbr{}อยู่\wbr{}ใน\wbr{}โหมด\wbr{}คำ\wbr{}สั่ง. ขณะ\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}โหมด\wbr{}คำ\wbr{}สั่ง, การ\wbr{}กด\wbr{}ปุ่ม\wbr{}แป้น\wbr{}พิมพ์\wbr{}ถือ\wbr{}เป็น\wbr{}การ\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง\wbr{}ให้ \cmd{vi} กระทำ\wbr{}การ\wbr{}อะไร\wbr{}บาง\wbr{}อย่าง. ปุ่ม\wbr{}บาง\wbr{}ตัว\wbr{}กด\wbr{}แล้\wbr{}วจะ\wbr{}มี\wbr{}การ\wbr{}โต้\wbr{}ตอบ\wbr{}ทัน\wbr{}ที\wbr{}เช่น\wbr{}การ\wbr{}เลื่อนเ\wbr{}คอร์เ\wbr{}ซอร์. คำ\wbr{}สั่ง\wbr{}บาง\wbr{}อย่าง\wbr{}ต้อง\wbr{}พิมพ์\wbr{}เครื่อง\wbr{}หมาย \cmd{:} เป็น\wbr{}การ\wbr{}เริ่ม\wbr{}คำ\wbr{}สั่ง\wbr{}บอก\wbr{}โปรแกรม\wbr{}รับ\wbr{}รู้\wbr{}ว่า\wbr{}คำ\wbr{}สั่ง\wbr{}นี้\wbr{}เป็น\wbr{}คำ\wbr{}สั่ง\wbr{}ยาว\wbr{}และ\wbr{}ต้อง\wbr{}กด \cmd{Enter} ตาม\wbr{}จึง\wbr{}จะ\wbr{}กระทำ\wbr{}การ.
+\item โหมด\wbr{}แก้\wbr{}ไข (edit mode) --- เวลา\wbr{}ที่\wbr{}ต้องการ\wbr{}พิมพ์\wbr{}ข้อ\wbr{}ความ\wbr{}ต้อง\wbr{}เปลี่ยน\wbr{}โหมด\wbr{}ให้\wbr{}อยู่\wbr{}ใน\wbr{}โหมด\wbr{}แก้\wbr{}ไข\wbr{}ก่อน\wbr{}จึง\wbr{}จะ\wbr{}พิมพ์\wbr{}ข้อ\wbr{}ความ\wbr{}ได้. คำ\wbr{}สั่ง (คีย์) ต่างๆ\wbr{}ที่\wbr{}แสดง\wbr{}ใน\wbr{}ตา\wbr{}ราง\wbr{}ที่ \ref{tab:vimode} เป็น\wbr{}วิธี\wbr{}การ\wbr{}เปลี่ยน\wbr{}โหมด\wbr{}จาก\wbr{}โหมด\wbr{}คำ\wbr{}สั่ง\wbr{}ให้\wbr{}เป็น\wbr{}โหมด\wbr{}แก้\wbr{}ไข. ใน\wbr{}ทาง\wbr{}กลับ\wbr{}กัน\wbr{}จะ\wbr{}ใช้\wbr{}การ\wbr{}กด\wbr{}ปุ่ม \cmd{Esc} เพื่อ\wbr{}เปลี่ยน\wbr{}โหมด\wbr{}จาก\wbr{}โหมด\wbr{}แก้\wbr{}ไข\wbr{}ให้\wbr{}กลับ\wbr{}เข้า\wbr{}สู่\wbr{}โหมด\wbr{}คำ\wbr{}สั่ง.
+\end{itemize}
+
+\setlongtables
+\begin{longtable}{lp{.75\textwidth}l}
+\caption{คำ\wbr{}สั่ง\wbr{}สำหรับ\wbr{}แก้\wbr{}ไข\wbr{}ข้อ\wbr{}ความ\wbr{}ใน \cmd{vi}.}\label{tab:vimode}\\
+\toprule
+\multicolumn{1}{c}{คีย์\wbr{}คำ\wbr{}สั่ง} & \multicolumn{1}{c}{คำ\wbr{}อธิบาย}\\
+\midrule
+\cmd{a} & append --- เริ่ม\wbr{}แก้\wbr{}ไข\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}ตำแหน่ง\wbr{}ถัด\wbr{}จากเ\wbr{}คอร์เ\wbr{}ซอร์.\\
+\cmd{i}  & insert --- เริ่ม\wbr{}แก้\wbr{}ไข\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}ตำแหน่งเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}ปัจจุบัน.\\
+\cmd{o} & open line --- เปิด\wbr{}บรรทัด\wbr{}ใหม่\wbr{}ถัด\wbr{}จาก\wbr{}บรรทัด\wbr{}ปัจจุบัน\wbr{}เริ่ม\wbr{}การ\wbr{}แก้\wbr{}ไข.\\
+\cmd{r} & replace character --- แก้\wbr{}ไข\wbr{}อักขระ\wbr{}ตำแหน่งเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}ปัจจุบัน. หลัง\wbr{}จาก\wbr{}ที่\wbr{}เปลี่ยน\wbr{}อักขระ\wbr{}แล้\wbr{}วจะ\wbr{}กลับ\wbr{}เป็น\wbr{}โหมด\wbr{}คำ\wbr{}สั่ง\wbr{}ทัน\wbr{}ที.\\
+\cmd{R} & replace --- เริ่ม\wbr{}การ\wbr{}แก้\wbr{}ไข\wbr{}จาก\wbr{}ตำแหน่งเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}ปัจจุบัน\wbr{}และ\wbr{}เขียน\wbr{}ทับ\wbr{}อักขระ\wbr{}ที่\wbr{}มี\wbr{}อยู่.\\
+\bottomrule
+\end{longtable}
+
+\subsubsection{การ\wbr{}เลื่อนเ\wbr{}คอร์เ\wbr{}ซอร์}
+การ\wbr{}เลื่อนเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}ใน \cmd{vi} ทำ\wbr{}ได้\wbr{}โดย\wbr{}การ\wbr{}กด\wbr{}คีย์\wbr{}ลูก\wbr{}ศร\wbr{}ต่างๆ\wbr{}ขณะ\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}โหมด\wbr{}แก้\wbr{}ไข\wbr{}หรือ\wbr{}โหมด\wbr{}คำ\wbr{}สั่ง. ใน\wbr{}โหมด\wbr{}คำ\wbr{}สั่ง\wbr{}สามารถ\wbr{}ใช้\wbr{}คีย์ \cmd{h} \cmd{j} \cmd{k} \cmd{l} แทน\wbr{}คีย์\wbr{}ลูก\wbr{}ศร\wbr{}เลื่อนเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}ไป\wbr{}ทาง\wbr{}ซ้าย, บรรทัด\wbr{}ถัด\wbr{}ไป, บรรทัด\wbr{}ก่อน\wbr{}หน้า และ\wbr{}ทาง\wbr{}ขวา\wbr{}ได้\wbr{}ด้วย. ผู้\wbr{}ที่\wbr{}ใช้ \cmd{vi} คล่อง\wbr{}แล้\wbr{}วจะ\wbr{}ถนัด\wbr{}ใช้\wbr{}คีย์ \cmd{hjkl} มาก\wbr{}กว่า\wbr{}คีย์\wbr{}ลูก\wbr{}ศร\wbr{}เพราะ\wbr{}โดย\wbr{}ปรกติ\wbr{}ตำแหน่ง\wbr{}ของ\wbr{}มือ\wbr{}ขวา\wbr{}ที่\wbr{}วาง\wbr{}บน\wbr{}แป้น\wbr{}พิมพ์\wbr{}จะ\wbr{}ตรง\wbr{}กับ \cmd{hjkl}.
+
+\begin{figure}[!htb]
+\plfigure{.6}{hjkl.eps}{ตำแหน่ง\wbr{}ของ\wbr{}นิ้ว\wbr{}เวลา\wbr{}ใช้\wbr{}เลื่อนเ\wbr{}คอร์เ\wbr{}ซอร์.}{hjkl}
+\end{figure}
+
+โปรแกรม \cmd{vi} มี\wbr{}คำ\wbr{}สั่ง\wbr{}สำหรับ\wbr{}เลื่อนเ\wbr{}คอร์\wbr{}ไป\wbr{}ที่\wbr{}ต้น\wbr{}บรรทัด\wbr{}ด้วย\wbr{}คีย์ \cmd{\^} และ\wbr{}เลื่อน\wbr{}คำ\wbr{}สั่ง\wbr{}ไป\wbr{}ที่\wbr{}ท้าย\wbr{}บรรทัด\wbr{}ด้วย\wbr{}คีย์ \cmd{\$}. อักขระ\wbr{}ที่\wbr{}ใช้\wbr{}เป็น\wbr{}คำ\wbr{}สั่ง\wbr{}นี้\wbr{}เหมือน\wbr{}กับ\wbr{}อักขระ\wbr{}ที่\wbr{}ใช้\wbr{}ใน regular expression.
+
+การ\wbr{}เลื่อน\wbr{}เนื้อ\wbr{}หา\wbr{}ทั้ง\wbr{}หน้า\wbr{}จอ\wbr{}ลง\wbr{}จะ\wbr{}ใช้\wbr{}คีย์ \cmd{Ctrl+f} (forward). ใน\wbr{}ทาง\wbr{}กลับ\wbr{}กัน\wbr{}จะ\wbr{}ใช้\wbr{}คีย์ \cmd{Ctrl+b} (backward) เพื่อ\wbr{}เลื่อน\wbr{}หน้า\wbr{}จอ\wbr{}ขึ้น. ใน\wbr{}กรณี\wbr{}ที่\wbr{}ต้องการ\wbr{}ตรวจ\wbr{}สอบ\wbr{}ว่า\wbr{}ตำแหน่ง\wbr{}ของเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}อยู่\wbr{}ที่\wbr{}ส่วน\wbr{}ไหน\wbr{}ของ\wbr{}ไฟล์\wbr{}ให้\wbr{}กด\wbr{}คีย์ \cmd{Ctrl+g}. \cmd{vi} จะ\wbr{}แสดง\wbr{}ชื่อ\wbr{}ไฟล์, ข้อ\wbr{}มูล\wbr{}ของ\wbr{}ไฟล์\wbr{}ที่\wbr{}แก้\wbr{}ไข\wbr{}และ\wbr{}ตำแหน่ง\wbr{}บรรทัด\wbr{}และ\wbr{}คอลัมน์\wbr{}ของเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}ที่\wbr{}บรรทัด\wbr{}สุด\wbr{}ท้าย\wbr{}ของเ\wbr{}ทอร์\wbr{}มิ\wbr{}นอล.
+
+การ\wbr{}ย้ายเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}ไป\wbr{}บรรทัด\wbr{}ที่\wbr{}ต้องการ\wbr{}ให้\wbr{}กด\wbr{}เลข\wbr{}บรรทัด\wbr{}แล้ว\wbr{}ตาม\wbr{}ด้วย \cmd{G} (กด \cmd{Shift+g}) เช่น\wbr{}ถ้า\wbr{}ต้องการ\wbr{}กระโดด\wbr{}ไป\wbr{}บรรทัด\wbr{}ที่\wbr{}สาม\wbr{}ให้\wbr{}กด\wbr{}คีย์ \cmd{3G}. ถ้า\wbr{}กด \cmd{G} โดย\wbr{}ไม่\wbr{}มี\wbr{}ตัว\wbr{}เลข\wbr{}นำ\wbr{}หน้า\wbr{}จะ\wbr{}เป็น\wbr{}การ\wbr{}กระโดด\wbr{}ไป\wbr{}ที่\wbr{}บรรทัด\wbr{}สุด\wbr{}ท้าย\wbr{}ของ\wbr{}ไฟล์.
+
+\begin{figure}[!htb]
+\plfigure{.6}{vim-ctrlg.eps}{การ\wbr{}แสดง\wbr{}ตำแหน่ง\wbr{}ของเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}ใน \cmd{vi}.}{vim-ctrlg}
+\end{figure}
+
+
+\subsubsection{ลบ\wbr{}อักขระ\wbr{}หรือ\wbr{}ข้อ\wbr{}ความ}
+ขณะ\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}โหมด\wbr{}แก้\wbr{}ไข\wbr{}สามารถ\wbr{}ใช้\wbr{}คีย์ \cmd{Backspace} หรือ \cmd{Del} เพื่อ\wbr{}ลบ\wbr{}อักขระ\wbr{}ที่\wbr{}ไม่\wbr{}ต้องการ\wbr{}ได้. \cmd{Backspace} จะ\wbr{}ลบ\wbr{}อักขระ\wbr{}ที่\wbr{}อยู่\wbr{}ก่อน\wbr{}หน้าเ\wbr{}คอร์เ\wbr{}ซอร์, \cmd{Del} จะ\wbr{}ลบ\wbr{}อักขระ\wbr{}ที่\wbr{}อยู่\wbr{}ตรง\wbr{}ตำแหน่งเ\wbr{}คอร์เ\wbr{}ซอร์.
+
+ถ้า\wbr{}อยู่\wbr{}ใน\wbr{}โหมด\wbr{}คำ\wbr{}สั่ง\wbr{}สามารถ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง\wbr{}ใน\wbr{}ตา\wbr{}ราง\wbr{}ที่ \ref{tab:vimdelete}. ถ้า\wbr{}ต้องการ\wbr{}ยก\wbr{}เลิก\wbr{}สิ่ง\wbr{}ที่\wbr{}กระทำ\wbr{}ไป\wbr{}ให้\wbr{}ใช้\wbr{}กด\wbr{}คีย์ \cmd{u} (undo).
+
+\begin{table}[!htb]
+\caption{คำ\wbr{}สั่ง\wbr{}สำหรับ\wbr{}ลบ\wbr{}อักขระ\wbr{}ใน \cmd{vi}.}\label{tab:vimdelete}
+\medskip
+\begin{tabular}{lp{.75\textwidth}l}
+\toprule
+\multicolumn{1}{c}{คีย์\wbr{}คำ\wbr{}สั่ง} & \multicolumn{1}{c}{คำ\wbr{}อธิบาย}\\
+\midrule
+\cmd{x} & ให้\wbr{}ผล\wbr{}เหมือน\wbr{}กับ\wbr{}การ\wbr{}กด\wbr{}คีย์ \cmd{Del} ใน\wbr{}โหมด\wbr{}แก้\wbr{}ไข. ลบ\wbr{}อักขระ\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}ตำแหน่งเ\wbr{}คอร์เ\wbr{}ซอร์.\\
+\cmd{dd}  & ลบ\wbr{}บรรทัด\wbr{}ที่เ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}อยู่\wbr{}ทั้ง\wbr{}บรรทัด.\\
+\cmd{dw} & ลบ\wbr{}คำ. คำ\wbr{}ใน\wbr{}ที่\wbr{}นี้\wbr{}หมาย\wbr{}ถึง\wbr{}คำ\wbr{}ภาษา\wbr{}อังกฤษ. เช่น\wbr{}ถ้า\wbr{}มี\wbr{}สาย\wbr{}อักขระ ``How are you?'' และเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}อยู่\wbr{}ใน\wbr{}ตัว\wbr{}อักษร a, กด \cmd{dw} จะ\wbr{}ลบ are.\\
+\cmd{D} & ลบ\wbr{}อักขระ\wbr{}ตั้ง\wbr{}แต่\wbr{}ตำแหน่งเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}จน\wbr{}จบ\wbr{}บรรทัด.\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+อักขระ\wbr{}ที่\wbr{}ลบ\wbr{}ด้วย\wbr{}คำ\wbr{}สั่ง\wbr{}ใน\wbr{}ตา\wbr{}ราง\wbr{}ข้าง\wbr{}บน\wbr{}จะ\wbr{}ถูก\wbr{}บันทึก\wbr{}ไว้\wbr{}ใน\wbr{}พื้น\wbr{}ที่\wbr{}ชั่ว\wbr{}คราว. หลัง\wbr{}จาก\wbr{}นั้น\wbr{}ผู้\wbr{}ใช้\wbr{}สามารถ\wbr{}เลื่อนเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}ไป\wbr{}ตำแหน่ง\wbr{}ที่\wbr{}ต้องการ\wbr{}และ\wbr{}เรียก\wbr{}อักขระ\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}พื้น\wbr{}ที่\wbr{}ชั่ว\wbr{}คราว\wbr{}กลับ\wbr{}มา\wbr{}วาง\wbr{}ใน\wbr{}ตำแหน่งเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}ได้\wbr{}ด้วย\wbr{}คีย์ \cmd{p}.
+
+การ\wbr{}ลบ\wbr{}อักขระ\wbr{}เหล่า\wbr{}ด้วย\wbr{}คำ\wbr{}สั่ง\wbr{}เหล่า\wbr{}นี้\wbr{}สามารถ\wbr{}ระบุ\wbr{}จำนวน\wbr{}ที่\wbr{}ต้องการ\wbr{}ลบ\wbr{}โดย\wbr{}พิมพ์\wbr{}จำนวน\wbr{}ที่\wbr{}ต้องการ\wbr{}ลบ\wbr{}แล้ว\wbr{}ตาม\wbr{}ด้วย\wbr{}คำ\wbr{}สั่ง. การ\wbr{}ระบุ\wbr{}จำนวน\wbr{}ด้วย\wbr{}ตัว\wbr{}เลข\wbr{}มี\wbr{}ประโยชน์\wbr{}เมื่อ\wbr{}ต้องการ\wbr{}ลบ\wbr{}ข้อ\wbr{}มูล\wbr{}ใน\wbr{}คราว\wbr{}เดียว\wbr{}เช่น \cmd{100dd} จะ\wbr{}ลบ\wbr{}ข้อ\wbr{}มูล 100 บรรทัด, \cmd{4x} จะ\wbr{}ลบ\wbr{}อักขระ 4 ตัว\wbr{}เป็นต้น. ใน\wbr{}ทำนอง\wbr{}เดียว\wbr{}กัน\wbr{}ถ้า\wbr{}ต้องการ\wbr{}ใช้เ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}เลือก\wbr{}ช่วง\wbr{}ที่\wbr{}ต้องการ\wbr{}ลบ, จะ\wbr{}ใช้\wbr{}ต้อง\wbr{}เปลี่ยน\wbr{}เป็น\wbr{}โหมด VISUAL โดย\wbr{}กด\wbr{}คีย์ \cmd{v}. โปรแกรม \cmd{vi} จะไฮไลต์\wbr{}ส่วน\wbr{}ที่\wbr{}เลือก, หลัง\wbr{}จาก\wbr{}นั้น\wbr{}ผู้\wbr{}ใช้\wbr{}สามารถ\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง\wbr{}ลบ\wbr{}ช่วง\wbr{}ที่\wbr{}เลือก\wbr{}ไว้\wbr{}ได้. ถ้า\wbr{}ต้องการ\wbr{}ยก\wbr{}เลิก\wbr{}โหมด VISUAL ให้\wbr{}กด\wbr{}คีย์ \cmd{v} อีก\wbr{}ครั้ง.
+
+
+\begin{figure}[!htb]
+\plfigure{.5}{vim-visual.eps}{โหมด VISUAL เลือก\wbr{}ช่วง\wbr{}ที่\wbr{}ต้องการ\wbr{}กระทำ\wbr{}การ.}{vim-visual}
+\end{figure}
+
+
+\subsubsection{เชื่อม\wbr{}ต่อ\wbr{}บรรทัด}
+ใน\wbr{}บาง\wbr{}กรณี\wbr{}เรา\wbr{}มี\wbr{}ความ\wbr{}จำ\wbr{}เป็น\wbr{}ต้อง\wbr{}รวม\wbr{}บรรทัด\wbr{}สอง\wbr{}บรรทัด\wbr{}เข้า\wbr{}เป็น\wbr{}บรรทัด\wbr{}เดียว\wbr{}กัน. ใน\wbr{}โหมด\wbr{}คำ\wbr{}สั่ง\wbr{}สามารถ\wbr{}ใช้\wbr{}คีย์ \cmd{J} (join) รวม\wbr{}บรรทัด\wbr{}ที่\wbr{}อยู่\wbr{}จาก\wbr{}บรรทัด\wbr{}ปัจจุบัน\wbr{}ต่อ\wbr{}ท้าย\wbr{}รวม\wbr{}กัน\wbr{}เป็น\wbr{}บรรทัด\wbr{}เดียว\wbr{}ได้. การ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง\wbr{}นี้\wbr{}จะ\wbr{}เร็ว\wbr{}กว่า\wbr{}การ\wbr{}แก้\wbr{}ไข\wbr{}ข้อ\wbr{}มูล\wbr{}ใน\wbr{}โหมด\wbr{}แก้\wbr{}ไข.
+
+ใน\wbr{}ทำนอง\wbr{}เดียว\wbr{}กัน, ใน\wbr{}กรณี\wbr{}ที่\wbr{}ต้องการ\wbr{}รวม\wbr{}ข้อ\wbr{}มูล\wbr{}จาก\wbr{}ไฟล์\wbr{}อื่น\wbr{}เข้า\wbr{}มา\wbr{}ใน\wbr{}ไฟล์\wbr{}ที่\wbr{}แก้\wbr{}ไข\wbr{}อยู่\wbr{}ให้\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{:r} (กด \cmd{:} แล้ว\wbr{}กด \cmd{r}). ต่อ\wbr{}จาก\wbr{}นั้น\wbr{}ให้\wbr{}พิมพ์\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ที่\wbr{}ต้องการ\wbr{}ดึง\wbr{}ข้อ\wbr{}มูล\wbr{}เข้า\wbr{}มา\wbr{}ไว้\wbr{}ด้วย\wbr{}กัน. ใน\wbr{}ขณะ\wbr{}ที่\wbr{}พิมพ์\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}สามารถ\wbr{}ใช้\wbr{}คีย์แท็บ\wbr{}ช่วย\wbr{}เติม\wbr{}เต็ม\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ได้\wbr{}ด้วย, เหมือน\wbr{}ความ\wbr{}สามารถ\wbr{}ของ bash เชลล์.
+
+
+\begin{figure}[!htb]
+\plfigure{.6}{vim-r.eps}{พร\wbr{}อมต์\wbr{}รอ\wbr{}รับ\wbr{}คำ\wbr{}สั่ง\wbr{}ใน \cmd{vi}.}{vim-r}
+\end{figure}
+
+%คีย์ \cmd{:} เป็น\wbr{}คำ\wbr{}สั่ง\wbr{}พิเศษ, หลัง\wbr{}จาก\wbr{}ที่\wbr{}กด\wbr{}คีย์\wbr{}นี้\wbr{}แล้ว \cmd{vi} จะ\wbr{}รอ\wbr{}รับ\wbr{}คำ\wbr{}สั่ง\wbr{}ต่อ\wbr{}ไป\wbr{}โดย\wbr{}แสดง\wbr{}พร\wbr{}อมต์ \cmd{:} บริเวณ\wbr{}บรรทัด\wbr{}ล่าง\wbr{}สุด\wbr{}ของ\wbr{}หน้า\wbr{}จอ\wbr{}มัก\wbr{}เป็น\wbr{}คำ\wbr{}สั่ง\wbr{}ที่\wbr{}เกี่ยว\wbr{}กับ\wbr{}ไฟล์\wbr{}และ\wbr{}คำ\wbr{}สั่ง\wbr{}ที่\wbr{}ต้องการ\wbr{}ข้อ\wbr{}มูล\wbr{}เพิ่ม\wbr{}เติม\wbr{}จาก\wbr{}ผู้\wbr{}ใช้.
+
+
+\subsubsection{ค้น\wbr{}หา\wbr{}คำ}
+การ\wbr{}ค้น\wbr{}ข้อ\wbr{}มูล\wbr{}ใน\wbr{}ไฟล์\wbr{}เป็น\wbr{}งาน\wbr{}ที่\wbr{}เกิด\wbr{}ขึ้น\wbr{}บ่อย\wbr{}ครั้ง. ใน\wbr{}โปรแกรม \cmd{vi} ผู้\wbr{}ใช้\wbr{}สามารถ\wbr{}ค้น\wbr{}หา\wbr{}คำ\wbr{}ด้วย regular expression โดย\wbr{}กด\wbr{}คีย์ \cmd{/} (search forward) ขณะ\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}โหมด\wbr{}คำ\wbr{}สั่ง\wbr{}และ\wbr{}พิมพ์\wbr{}คำ\wbr{}หรือ regular expression ที่\wbr{}ต้องการ\wbr{}หา\wbr{}แล้ว\wbr{}กด \cmd{Enter}. เ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}จะ\wbr{}เลื่อน\wbr{}ไป\wbr{}อยู่\wbr{}ตำแหน่ง\wbr{}ที่\wbr{}คำ\wbr{}ค้น\wbr{}หา\wbr{}เจอ. และ\wbr{}จะไฮไลต์\wbr{}คำ\wbr{}ที่\wbr{}หา\wbr{}เจอ\wbr{}ด้วย\wbr{}ถ้า\wbr{}ปรับ\wbr{}แต่ง \cmd{vi} ไว้. กด \cmd{n} (next match) เพื่อ\wbr{}เลื่อนเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}ไป\wbr{}ตำแหน่ง\wbr{}ที่\wbr{}หา\wbr{}คำ\wbr{}นั้น\wbr{}เจอ\wbr{}ต่อ\wbr{}ไป\wbr{}เรื่อยๆ. ใน\wbr{}ทาง\wbr{}กลับ\wbr{}กัน\wbr{}คำ\wbr{}สั่ง \cmd{?} ใช้\wbr{}หา\wbr{}คำ\wbr{}ที่\wbr{}อยู่\wbr{}ก่อน\wbr{}หน้าเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}และ\wbr{}กด \cmd{n} เพื่อ\wbr{}ดู\wbr{}คำ\wbr{}ที่\wbr{}หา\wbr{}เจอ\wbr{}ไป\wbr{}เรื่อยๆ.
+
+\begin{figure}[!htb]
+\plfigure{.6}{vim-search.eps}{การ\wbr{}หา\wbr{}คำ\wbr{}ใน \cmd{vi}.}{vim-search}
+\end{figure}
+
+ข้อ\wbr{}ควร\wbr{}ระวัง\wbr{}ใน\wbr{}การ\wbr{}หา\wbr{}คำ\wbr{}คือ\wbr{}การ\wbr{}หา\wbr{}คำ\wbr{}จะ\wbr{}ใช้ regular expression. ดัง\wbr{}นั้น\wbr{}จะ\wbr{}ต้อง\wbr{}เพิ่ม\wbr{}เครื่อง\wbr{}หมาย \cmd{\bs} หน้า\wbr{}อักขระ\wbr{}ที่\wbr{}มี\wbr{}ความ\wbr{}หมาย\wbr{}พิเศษ\wbr{}สำหรับ regular expression ทุก\wbr{}ครั้ง.
+
+
+\subsubsection{บันทึก, อ่าน\wbr{}ไฟล์, และ\wbr{}จบ\wbr{}การ\wbr{}ทำ\wbr{}งาน}
+คำ\wbr{}สั่ง\wbr{}ของ \cmd{vi} ที่\wbr{}เกี่ยว\wbr{}ข้อง\wbr{}กับ\wbr{}การ\wbr{}บันทึก\wbr{}และ\wbr{}จบ\wbr{}การ\wbr{}ทำ\wbr{}งาน\wbr{}ที่\wbr{}สำคัญๆ\wbr{}สรุป\wbr{}ไว้\wbr{}ใน\wbr{}ตา\wbr{}ราง\wbr{}ที่ \ref{tab:vimend}.
+
+\begin{longtable}{lp{.75\textwidth}l}
+\caption{คำ\wbr{}สั่ง\wbr{}สำหรับ\wbr{}จัด\wbr{}การ\wbr{}ไฟล์\wbr{}ใน \cmd{vi}.}\label{tab:vimend}\\
+\toprule
+\multicolumn{1}{c}{คีย์\wbr{}คำ\wbr{}สั่ง} & \multicolumn{1}{c}{คำ\wbr{}อธิบาย}\\
+\midrule
+\cmd{:w [\textit{filename}]} & บันทึก\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}แก้\wbr{}ไข\wbr{}ลง\wbr{}ใน\wbr{}ไฟล์. ถ้า\wbr{}ระบุ\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ด้วย\wbr{}จะ\wbr{}เป็น\wbr{}การ\wbr{}บันทึก\wbr{}ข้อ\wbr{}มูล\wbr{}ลง\wbr{}ใน\wbr{}ไฟล์\wbr{}ที่\wbr{}ระบุ.\\
+\cmd{:q} & quit --- จบ\wbr{}การ\wbr{}ทำ\wbr{}งาน\wbr{}โดย\wbr{}ที่\wbr{}ไม่\wbr{}บันทึก\wbr{}สิ่ง\wbr{}ที่\wbr{}แก้\wbr{}ไข.\\
+\cmd{:q!} & บังคับ\wbr{}จบ\wbr{}การ\wbr{}ทำ\wbr{}งาน\wbr{}โดย\wbr{}ที่\wbr{}ไม่\wbr{}บันทึก\wbr{}สิ่ง\wbr{}ที่\wbr{}แก้\wbr{}ไข.\\
+\cmd{ZQ} & ให้\wbr{}ผล\wbr{}เช่น\wbr{}เดียว\wbr{}กับ \cmd{:q!}.\\
+\cmd{:wq}  & บันทึก\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}แก้\wbr{}ไข\wbr{}ลง\wbr{}ใน\wbr{}ไฟล์\wbr{}แล้ว\wbr{}จบ\wbr{}การ\wbr{}ทำ\wbr{}งาน.\\
+\cmd{ZZ} & ให้\wbr{}ผล\wbr{}เหมือน \cmd{wq} แต่\wbr{}จะ\wbr{}บันทึก\wbr{}ข้อ\wbr{}มูล\wbr{}เมื่อ\wbr{}มี\wbr{}การ\wbr{}เปลี่ยน\wbr{}แปลง\wbr{}เกิด\wbr{}ขึ้น.\\
+\cmd{:wq!}  & บังคับ\wbr{}บันทึก\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}แก้\wbr{}ไข\wbr{}ลง\wbr{}ใน\wbr{}ไฟล์\wbr{}แล้ว\wbr{}จบ\wbr{}การ\wbr{}ทำ\wbr{}งาน.\\
+\cmd{:e \textit{filename}} & เปิด\wbr{}แก้\wbr{}ไข\wbr{}ไฟล์\wbr{}ที่\wbr{}ระบุ.\\
+\bottomrule
+\end{longtable}
+
+\subsubsection{ขอ\wbr{}ความ\wbr{}ช่วย\wbr{}เหลือ}
+ใน\wbr{}โปรแกรม \cmd{vi} มี\wbr{}คำ\wbr{}สั่ง\wbr{}สำหรับ\wbr{}แสดง\wbr{}เอก\wbr{}สาร\wbr{}ช่วย\wbr{}เหลือ\wbr{}แนะ\wbr{}นำ\wbr{}การ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง\wbr{}เบื้อง\wbr{}ต้น\wbr{}ได้\wbr{}แก่ \cmd{:help}. หรือ\wbr{}ระบุ\wbr{}หัว\wbr{}ข้อ\wbr{}ขอ\wbr{}ความ\wbr{}ช่วย\wbr{}เหลือ ``\cmd{:help [\textit{subject}]}''. \cmdit{subject} คือ\wbr{}ชื่อ\wbr{}หัว\wbr{}ข้อ\wbr{}สำหรับ\wbr{}การ\wbr{}ช่วย\wbr{}เหลือ\wbr{}หรือ\wbr{}คำ\wbr{}สั่ง\wbr{}ที่\wbr{}ต้องการ\wbr{}ดู\wbr{}ราย\wbr{}ละเอียด\wbr{}การ\wbr{}ใช้\wbr{}งาน. ตัว\wbr{}อย่าง\wbr{}คำ\wbr{}สั่ง\wbr{}เช่น ``\cmd{:help set}'' จะ\wbr{}แสดง\wbr{}ข้อ\wbr{}มูล\wbr{}เกี่ยว\wbr{}กับ\wbr{}การ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{set}.
+
+นอก\wbr{}จาก\wbr{}ข้อ\wbr{}มูล\wbr{}ช่วย\wbr{}เหลือ\wbr{}ใน\wbr{}ตัว\wbr{}โปรแกรม\wbr{}ยัง\wbr{}มี\wbr{}โปรแกรม \cmd{vimtutor}\cindex{vimtutor} ช่วย\wbr{}สอน\wbr{}การ\wbr{}ใช้ \cmd{vi} เบื้อง\wbr{}ต้น.
+
+\begin{figure}[!htb]
+\plfigure{.6}{vimtutor.eps}{โปรแกรม \cmd{vitutor}.}{vimtutor}
+\end{figure}
+
+\subsubsection{ปรับ\wbr{}แต่ง \cmd{vi}}
+\cmd{vim} เป็น\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}ที่\wbr{}สามารถ\wbr{}ปรับ\wbr{}แต่ง\wbr{}ความ\wbr{}สามารถ\wbr{}ต่างๆ\wbr{}ช่วย\wbr{}อำนวย\wbr{}ความ\wbr{}สะดวก\wbr{}ของ\wbr{}ผู้\wbr{}ใช้. การ\wbr{}ปรับ\wbr{}แต่ง\wbr{}เบื้อง\wbr{}ต้น\wbr{}สามารถ\wbr{}ทำ\wbr{}ได้\wbr{}โดย\wbr{}การ\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง \cmd{:set} และ\wbr{}ตาม\wbr{}ด้วย\wbr{}ชื่อ\wbr{}ตัว\wbr{}เลือก\wbr{}ต่างๆ. ชื่อ\wbr{}ตัว\wbr{}เลือก\wbr{}นี้\wbr{}อาจ\wbr{}จะ\wbr{}มี\wbr{}ความ\wbr{}หมาย\wbr{}ใน\wbr{}ตัว\wbr{}และ\wbr{}ไม่\wbr{}ต้องการ\wbr{}อาร์กิวเ\wbr{}มนต์\wbr{}เช่น ``\cmd{:set number}'' เป็น\wbr{}การสั้ง\wbr{}ให้ \cmd{vim} แสดง\wbr{}หมาย\wbr{}เลข\wbr{}บรรทัด\wbr{}บริเวณ\wbr{}ซ้าย\wbr{}มือ\wbr{}ของ\wbr{}หน้า\wbr{}จอ. ตัว\wbr{}เลือก\wbr{}บาง\wbr{}ตัว\wbr{}ต้องการ\wbr{}อาร์กิวเ\wbr{}มนต์\wbr{}ได้\wbr{}แก่\wbr{}ค่าที่\wbr{}เป็น\wbr{}ตัว\wbr{}เลข\wbr{}หรือ\wbr{}สาย\wbr{}อักขระ\wbr{}เช่น ``\cmd{:set columns=80}'' เป็น\wbr{}การ\wbr{}ตั้ง\wbr{}จำนวน\wbr{}คอลัมน์\wbr{}ที่\wbr{}แสดง\wbr{}ผล\wbr{}ใน\wbr{}หน้า\wbr{}หนึ่ง\wbr{}ให้\wbr{}มี\wbr{}ขนาด 80 ตัว\wbr{}อักษร. การ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{:set} มี\wbr{}รูป\wbr{}แบบ\wbr{}ต่างๆ\wbr{}ดัง\wbr{}ต่อ\wbr{}ไป\wbr{}นี้.
+\begin{itemize}
+\item \cmd{:set} --- แสดง\wbr{}ชื่อ\wbr{}และ\wbr{}ค่า\wbr{}ตัว\wbr{}เลือก\wbr{}ที่\wbr{}แตก\wbr{}ต่าง\wbr{}จาก\wbr{}ค่า\wbr{}โดย\wbr{}ปริยาย.
+\item \cmd{:set all} --- แสดง\wbr{}ชื่อ\wbr{}และ\wbr{}ค่า\wbr{}ตัว\wbr{}เลือก\wbr{}ทั้ง\wbr{}หมด.
+\item \cmd{:set \textit{option}?} --- ตรวจ\wbr{}สอบ\wbr{}ค่า\wbr{}ของ\wbr{}ตัว\wbr{}เลือก\wbr{}ว่า\wbr{}มี\wbr{}ค่า\wbr{}เป็น\wbr{}อะไร\wbr{}หรือ\wbr{}มี\wbr{}การ\wbr{}ตั้ง\wbr{}ตัว\wbr{}เลือก\wbr{}ที่\wbr{}ระบุ\wbr{}หรือ\wbr{}ไม่.
+\item \cmd{:set [no]\textit{option}} --- ใช้\wbr{}สำหรับ\wbr{}ระบุ\wbr{}ใช้\wbr{}ตัว\wbr{}เลือก\wbr{}ที่\wbr{}ไม่\wbr{}ต้องการ\wbr{}อาร์กิวเ\wbr{}มนต์. ตัว\wbr{}เลือก\wbr{}พวก\wbr{}นี้\wbr{}สามารถ\wbr{}พิมพ์\wbr{}คำ\wbr{}ว่า \cmd{no} นำ\wbr{}หน้า\wbr{}เป็น\wbr{}การ\wbr{}ระบุ\wbr{}ยก\wbr{}เลิก\wbr{}ตัว\wbr{}เลือก\wbr{}ที่\wbr{}ตั้ง\wbr{}ไป\wbr{}แล้ว. ตัว\wbr{}อย่าง\wbr{}เช่น ``\cmd{:set number}'', ``\cmd{:set nonumber}'' เป็นต้น.
+\item \cmd{:set \textit{option}=\textit{value}} --- ตั้ง\wbr{}ค่า\wbr{}ให้\wbr{}ตัว\wbr{}เลือก\wbr{}ที่\wbr{}ต้องการ\wbr{}อาร์กิวเ\wbr{}มนต์\wbr{}เช่น ``\cmd{:set columns=80}''.
+\end{itemize}
+
+ตา\wbr{}ราง\wbr{}ที่ \ref{tab:viset} แสดง\wbr{}ชื่อ\wbr{}ตัว\wbr{}เลือก\wbr{}ที่\wbr{}ใช้\wbr{}บ่อย\wbr{}และ\wbr{}มี\wbr{}ประโยชน์. บาง\wbr{}กรณี\wbr{}ชื่อ\wbr{}ตัว\wbr{}เลือก\wbr{}จะ\wbr{}มี\wbr{}ชื่อ\wbr{}ย่อ\wbr{}และ\wbr{}ชื่อ\wbr{}เต็ม.
+\begin{longtable}{lp{.7\textwidth}l}
+\caption{ตัว\wbr{}เลือก\wbr{}สำหรับ\wbr{}การ\wbr{}ปรับ\wbr{}แต่ง \cmd{vi}.}\label{tab:viset}\\
+\toprule
+\multicolumn{1}{c}{คำ\wbr{}สั่ง} & \multicolumn{1}{c}{คำ\wbr{}อธิบาย}\\
+\midrule
+\cmd{[no]autoindent} & ย่อ\wbr{}หน้า\wbr{}บรรทัด\wbr{}ใหม่\wbr{}ให้\wbr{}เหมาะ\wbr{}สม\wbr{}โดย\wbr{}อัตโนมัติ\wbr{}สำหรับ\wbr{}การ\wbr{}ใช้ \cmd{vi} เขียน\wbr{}โปรแกรม. ตัว\wbr{}เลือก\wbr{}นี้\wbr{}มี\wbr{}ชื่อ\wbr{}ย่อ\wbr{}คือ \cmd{[no]ai}.\\
+\cmd{[no]compatible} & ปรับ\wbr{}แต่ง\wbr{}ให้ \cmd{vim} ทำ\wbr{}งาน\wbr{}เหมือน \cmd{vi} แบบ\wbr{}ดั้งเดิม\wbr{}เท่า\wbr{}ที่\wbr{}เป็น\wbr{}ไป\wbr{}ได้. ถ้า\wbr{}ต้องการ\wbr{}ใช้ \cmd{vim} เต็ม\wbr{}ความ\wbr{}สามารถ\wbr{}ควร\wbr{}ใช้\wbr{}ตัว\wbr{}เลือก ``\cmd{:set nocompatible}''. สิ่ง\wbr{}ที่\wbr{}แตก\wbr{}ต่าง\wbr{}ระหว่าง \cmd{vi} และ \cmd{vim} ดู\wbr{}ได้\wbr{}จาก\wbr{}คำ\wbr{}สั่ง ``\cmd{:help vi\_diff}''.\\
+\cmd{[no]hlsearch} & ไฮไลต์\wbr{}คำ\wbr{}ที่\wbr{}หา\wbr{}เจอ\wbr{}เมื่อ\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง\wbr{}ค้น\wbr{}หา. ตัว\wbr{}เลือก\wbr{}นี้\wbr{}มี\wbr{}ชื่อ\wbr{}ย่อ\wbr{}คือ \cmd{[no]hls}.\\
+\cmd{[no]incsearch} & ค้น\wbr{}หา\wbr{}คำ\wbr{}ทัน\wbr{}ที\wbr{}ขณะ\wbr{}พิมพ์\wbr{}คำ\wbr{}ที่\wbr{}ต้องการ\wbr{}ค้น\wbr{}หา. ตัว\wbr{}เลือก\wbr{}นี้\wbr{}มี\wbr{}ชื่อ\wbr{}ย่อ\wbr{}คือ \cmd{[no]is}\\
+\cmd{[no]ruler} & แสดง\wbr{}เลข\wbr{}บรรทัด\wbr{}และ\wbr{}คอลัมน์\wbr{}ด้าน\wbr{}ล่าง\wbr{}ของ\wbr{}หน้า\wbr{}จอ.\\
+\cmd{[no]showmatch} & เลื่อนเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}จับ\wbr{}คู่\wbr{}วง\wbr{}เล็บ\wbr{}แบบ\wbr{}ต่างๆ\wbr{}เมื่อ\wbr{}ทำ\wbr{}การ\wbr{}ปิด\wbr{}วง\wbr{}เล็บ\wbr{}ช่วย\wbr{}ให้\wbr{}ผู้\wbr{}ใช้\wbr{}รับ\wbr{}รู้\wbr{}ว่า\wbr{}บริเวณ\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}วง\wbr{}เล็บ. ตัว\wbr{}เลือก\wbr{}นี้\wbr{}มี\wbr{}ชื่อ\wbr{}ย่อ\wbr{}คือ \cmd{[no]sm}.\\
+\cmd{[no]visualbell} & กระ\wbr{}พริบ\wbr{}หน้า\wbr{}จอ\wbr{}แทน\wbr{}การ\wbr{}ใช้\wbr{}เสียง\wbr{}เมื่อ\wbr{}เกิด\wbr{}ข้อ\wbr{}ผิด\wbr{}พลาด. ตัว\wbr{}เลือก\wbr{}นี้\wbr{}มี\wbr{}ชื่อ\wbr{}ย่อ\wbr{}คือ \cmd{[no]vb}\\
+\cmd{[no]wrap} & แสดง\wbr{}ผล\wbr{}ใน\wbr{}บรรทัด\wbr{}ถัด\wbr{}ไป\wbr{}ถ้า\wbr{}สิ่ง\wbr{}ที่\wbr{}พิมพ์\wbr{}ยาว\wbr{}เกิน\wbr{}ความ\wbr{}กว้าง\wbr{}ที่\wbr{}ตั้ง\wbr{}ค่า\wbr{}ไว้.\\
+\cmd{mouse=a} & ระบุ\wbr{}ให้\wbr{}ใช้\wbr{}เมาส์\wbr{}ได้\wbr{}ใน\wbr{}ทุก\wbr{}โหมด. \cmd{vi} ที่\wbr{}รัน\wbr{}อยู่\wbr{}ในเ\wbr{}ทอร์\wbr{}มิ\wbr{}นอล\wbr{}โดย\wbr{}ปรกติ\wbr{}จะ\wbr{}ไม่\wbr{}สามารถ\wbr{}ใช้\wbr{}เมาส์\wbr{}ได้.\\
+%\cmd{sidescroll=\textit{number}} & \\
+\bottomrule
+\end{longtable}
+
+ผู้\wbr{}ใช้\wbr{}ไม่\wbr{}จำ\wbr{}เป็น\wbr{}ต้อง\wbr{}จำ\wbr{}ชื่อ\wbr{}คำ\wbr{}สั่ง\wbr{}หรือ\wbr{}ตัว\wbr{}เลือก\wbr{}เหล่า\wbr{}นี้\wbr{}ทั้ง\wbr{}หมด. โปรแกรม \cmd{vi} จะ\wbr{}เติม\wbr{}เต็ม\wbr{}ชื่อ\wbr{}คำ\wbr{}สั่ง\wbr{}หรือ\wbr{}ตัว\wbr{}เลือก\wbr{}ให้\wbr{}โดย\wbr{}อัตโนมัติ\wbr{}ถ้า\wbr{}กด\wbr{}คีย์ \cmd{Tab} ตาม\wbr{}หลัง\wbr{}เครื่อง\wbr{}หมาย \cmd{:}. ผู้\wbr{}ใช้\wbr{}สามารถ\wbr{}กดแท็บ\wbr{}ต่อ\wbr{}กัน\wbr{}หลาย\wbr{}ครั้ง\wbr{}เพื่อ\wbr{}เปลี่ยน\wbr{}ชื่อ\wbr{}คำ\wbr{}สั่ง\wbr{}ที่ \cmd{vi} ช่วย\wbr{}เติม\wbr{}เต็ม\wbr{}ให้.
+
+\cmd{vim} จะ\wbr{}อ่าน\wbr{}ไฟล์\wbr{}ตั้ง\wbr{}ค่า\wbr{}เริ่ม\wbr{}ต้น\wbr{}จาก\wbr{}ไฟล์ \cmd{\~{}/.vimrc}\findex{.vimrc}. เนื้อ\wbr{}หา\wbr{}ของ\wbr{}ไฟล์\wbr{}คือ\wbr{}คำ\wbr{}สั่ง\wbr{}ที่\wbr{}ใช้\wbr{}ใน \cmd{vi} แต่\wbr{}ตัด\wbr{}เครื่อง\wbr{}หมาย \cmd{:} ทิ้ง. ผู้\wbr{}ใช้\wbr{}สามารถ\wbr{}สร้าง\wbr{}ไฟล์ \cmd{\~{}/.vimrc} หลัง\wbr{}จาก\wbr{}ที่\wbr{}ปรับ\wbr{}แต่ง\wbr{}แล้ว\wbr{}ด้วย\wbr{}คำ\wbr{}สั่ง ``\cmd{:mkvimrc \~{}/.vimrc}''. ใน\wbr{}กรณี\wbr{}ที่\wbr{}มี\wbr{}ไฟล์ \cmd{\~{}/.vimrc} อยู่\wbr{}แล้ว\wbr{}และ\wbr{}ต้องการ\wbr{}เพิ่ม\wbr{}เติม\wbr{}สิ่ง\wbr{}ที่\wbr{}ปรับ\wbr{}แต่ง\wbr{}ใหม่\wbr{}ให้\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง ``\cmd{:mkvimrc! \~{}/.vimrc}'' แทน. บรรทัด\wbr{}ที่\wbr{}เริ่ม\wbr{}ต้น\wbr{}ด้วย\wbr{}เครื่อง\wbr{}หมาย\wbr{}คำ\wbr{}พูด \cmd{"} จะ\wbr{}เป็น\wbr{}คอมเ\wbr{}มนต์.
+
+\begin{shaded}
+\begin{MyExample}[ไฟล์ \cmd{\~{}/.vimrc}.]
+\begin{MyEx}
+" Use Vim settings, rather then Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+set nocompatible
+set history=50          " keep 50 lines of command line history
+set ruler               " show the cursor position all the time
+set showcmd             " display incomplete commands
+set incsearch           " do incremental searching
+set mouse=a             " use mouse in terminal
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if &t_Co > 2 || has("gui_running")
+  syntax on
+  set hlsearch
+endif
+\end{MyEx}
+\end{MyExample}
+\end{shaded}
+
+จาก\wbr{}ตัว\wbr{}อย่าง\wbr{}ไฟล์ \cmd{\~{}/.vimrc} ข้าง\wbr{}บน\wbr{}มี\wbr{}คำ\wbr{}สั่ง\wbr{}ที่\wbr{}ไม่\wbr{}ได้\wbr{}อธิบาย\wbr{}ใน\wbr{}ที่\wbr{}นี้\wbr{}เช่น \cmd{syntax}, \cmd{if} ฯลฯ. ผู้\wbr{}อ่าน\wbr{}สามารถ\wbr{}เปิด\wbr{}เอก\wbr{}สาร\wbr{}ขอ\wbr{}ความ\wbr{}ช่วย\wbr{}เหลือ\wbr{}ใน\wbr{}โปรแกรม \cmd{vi} เช่น ``\cmd{:help syntax}'' เป็นต้น.
+
+\medskip
+สำหรับ\wbr{}ผู้\wbr{}ที่\wbr{}ไม่\wbr{}เคย\wbr{}ใช้ \cmd{vi} มา\wbr{}ก่อน\wbr{}อาจ\wbr{}จะ\wbr{}รู้\wbr{}สึก\wbr{}ว่า \cmd{vi} เป็น\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}ที่\wbr{}ใช้\wbr{}ยาก. แต่\wbr{}ถ้า\wbr{}เข้า\wbr{}ใจ\wbr{}หลัก\wbr{}การ\wbr{}การ\wbr{}ทำ\wbr{}งาน\wbr{}และ\wbr{}ลอง\wbr{}ใช้\wbr{}สัก\wbr{}ระยะ\wbr{}จะ\wbr{}คง\wbr{}จะ\wbr{}เข้า\wbr{}ใจ\wbr{}ได้\wbr{}ว่า\wbr{}ทำไม \cmd{vi} จึง\wbr{}เป็น\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}ยอด\wbr{}นิยม. วิธี\wbr{}ใช้ \cmd{vi} ที่\wbr{}แนะ\wbr{}นำ\wbr{}ไป\wbr{}นั้น\wbr{}เป็น\wbr{}การ\wbr{}ใช้\wbr{}เบื้อง\wbr{}ต้น\wbr{}เท่า\wbr{}นั้น, ตัว\wbr{}โปรแกรม\wbr{}สามารถ\wbr{}ทำ\wbr{}อะไร\wbr{}อีก\wbr{}มาก\wbr{}มาย\wbr{}และ\wbr{}ผู้\wbr{}ใช้\wbr{}สามารถ\wbr{}ปรับ\wbr{}แต่ง\wbr{}ตัว\wbr{}การ\wbr{}ทำ\wbr{}งาน\wbr{}หรือ\wbr{}การ\wbr{}แสดง\wbr{}ผล\wbr{}ตาม\wbr{}ต้องการ\wbr{}ได้\wbr{}ด้วย.
+
+
+
+
+\subsection{GNU Emacs}
+ใน\wbr{}ราว\wbr{}ปี ค.ศ.1976 ก่อน\wbr{}หน้า\wbr{}ที่\wbr{}มี\wbr{}บรรณาธิ\wbr{}กรณ์ Emacs มี\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}ที่\wbr{}ชื่อ\wbr{}ว่า TECMAC และ TMACS สร้าง\wbr{}โดย Guy Steele, Dave Moon, Richard Greenblatt, Charles Frankston และ\wbr{}คณะ \cite{emacstimeline}. \emph{Emacs (Editor Macros)}\gindex{emacs@Emacs} เป็น\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}ที่\wbr{}สร้าง\wbr{}จาก TECMAC และ TMACS โดย Richard Stallman\gindex{richard stallman@Richard Stallman}, Guy Steele\gindex{guy steele@Guy Steele} และ Dave Moon\gindex{dave moon@Dave Moon} ใน\wbr{}เวลา\wbr{}ถัด\wbr{}มา. บรรณาธิ\wbr{}กรณ์\wbr{}นี้\wbr{}ได้\wbr{}รับ\wbr{}ความ\wbr{}นิยม\wbr{}เพราะ\wbr{}สามารถ\wbr{}แก้\wbr{}ไข\wbr{}ข้อ\wbr{}มูล, แสดง\wbr{}ผล\wbr{}เป็น\wbr{}หน้า\wbr{}จอ\wbr{}ซึ่ง\wbr{}แตก\wbr{}ต่าง\wbr{}จาก\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}เชิง\wbr{}บรรทัด\wbr{}ที่\wbr{}มี\wbr{}ใช้\wbr{}กัน\wbr{}ทั่ว\wbr{}ไป\wbr{}ใน\wbr{}ขณะ\wbr{}นั้น. Emacs กลาย\wbr{}เป็น\wbr{}ชื่อ\wbr{}ทั่ว\wbr{}ไป\wbr{}หมาย\wbr{}ถึง\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}ที่\wbr{}ทำ\wbr{}งาน\wbr{}ได้\wbr{}เหมือน\wbr{}กับ Emacs ที่\wbr{}สร้าง\wbr{}ใน\wbr{}ยุค\wbr{}แรก\wbr{}และ\wbr{}ต่อ\wbr{}มา\wbr{}มี\wbr{}คน\wbr{}หลาย\wbr{}คน\wbr{}สร้าง\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}ใน\wbr{}ตระกูล Emacs เช่น Eine (Eien Is Not Emacs), Zmacs ฯลฯ. และ\wbr{}บรรณาธิ\wbr{}กรณ์ Emacs ที่\wbr{}มี\wbr{}ชื่อ\wbr{}เสียง\wbr{}ได้\wbr{}แก่ \emph{Gosling Emacs}\gindex{emacs@Emacs!Gosling} ที่\wbr{}เขียน\wbr{}ด้วย\wbr{}ภาษา C เป็น\wbr{}ครั้ง\wbr{}แรก\wbr{}โดย James Gosling\gindex{james gosling@James Goslings}\mymemo{James Gosling ถือ\wbr{}เป็น\wbr{}บิดา\wbr{}ของ\wbr{}ภาษา Java.} ใน\wbr{}ปี ค.ศ.1981. ต่อ\wbr{}มา\wbr{}ใน\wbr{}ปี ค.ศ.1985, Richard Stallman ประกาศ\wbr{}เผย\wbr{}แพร่ Emacs ที่\wbr{}เรีย\wbr{}กว่า GNU Emacs\gindex{emacs@Emacs!GNU} สู่\wbr{}สาธารณะ\wbr{}เป็น\wbr{}ซอฟต์แวร์\wbr{}เสรี\wbr{}หลัก\wbr{}ของ\wbr{}โครง\wbr{}การ GNU.
+
+หลัง\wbr{}จาก\wbr{}ที่\wbr{}มี GNU Emacs แล้ว\wbr{}ยัง\wbr{}มี\wbr{}การ\wbr{}แตก\wbr{}ราก Emacs ต่อ\wbr{}เช่น Lucid Emacs, Eposch, NEmacs, Mule ฯลฯ. Lucid Emacs เป็น Emacs ที่\wbr{}สนับสนุน\wbr{}การ\wbr{}ใช้\wbr{}งาน\wbr{}กับ\wbr{}ระบบ X วิน\wbr{}โดว์\wbr{}อย่าง\wbr{}เต็ม\wbr{}ตัว, มี\wbr{}วิดเจ็ต\wbr{}เฉพาะ\wbr{}ของ\wbr{}ตัว\wbr{}เอง\wbr{}เพิ่ม\wbr{}ความ\wbr{}สามารถ\wbr{}ใน\wbr{}การ\wbr{}แสดง\wbr{}ผล\wbr{}แบบ GUI. Lucid Emacs\gindex{emacs@Emacs!Lucid} พัฒนา\wbr{}โดย Jamie Zawinski\gindex{jamie zawinski@Jamie Zawinski} และ\wbr{}ทีม\wbr{}งาน\wbr{}และ\wbr{}หลัง\wbr{}จาก\wbr{}นั้น\wbr{}กลาย\wbr{}เป็น XEmacs\gindex{xemacs@XEmacs}. NEmacs (Nihongo Emacs)\gindex{emacs@Emacs!Nihongo} เป็น\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}ที่\wbr{}สร้าง\wbr{}จาก GNU Emacs สนับสนุน\wbr{}การ\wbr{}ใช้\wbr{}ภาษา\wbr{}ญี่ปุ่น\wbr{}ใน\wbr{}ปี ค.ศ.1987. ต่อ\wbr{}มา\wbr{}เปลี่ยน\wbr{}ชื่อ\wbr{}เป็น \emph{Mule (Multilingual Enhancement to GNU Emacs)}\gindex{mule@Mule} สนับสนุน\wbr{}ภาษา\wbr{}นานา\wbr{}ชาติ\wbr{}เช่น ภาษา\wbr{}จีน, เกาหลี ฯลฯ. Mule มี\wbr{}ความ\wbr{}สามารถ\wbr{}สนับสนุน\wbr{}การ\wbr{}ใช้\wbr{}งาน\wbr{}ภาษา\wbr{}ไทย\wbr{}ด้วย\wbr{}ซึ่ง\wbr{}พัฒนา\wbr{}โดย Kenichi Handa\gindex{kenichi handa@Kenichi Handa}. ใน\wbr{}ปี ค.ศ.1997 ตอน\wbr{}ที่ GNU Emacs รุ่น\wbr{}ที่ 20 เผย\wbr{}แพร่\wbr{}สู่\wbr{}สาธารณะ\wbr{}ได้\wbr{}รวม\wbr{}ความ\wbr{}สามารถ\wbr{}รอง\wbr{}รับ\wbr{}การ\wbr{}ใช้\wbr{}งาน\wbr{}ภาษา\wbr{}นานา\wbr{}ชาติ\wbr{}ของ Mule ไว้\wbr{}ด้วย.
+
+\begin{figure}[!htb]
+\plfigure{.5}{emacs-nw.eps}{Emacs ที่\wbr{}ทำ\wbr{}งาน\wbr{}ใน \cmd{xterm}.}{emacs-nw}
+\end{figure}
+\begin{figure}[!htb]
+\plfigure{.34}{emacs-gui.eps}{ส่วน\wbr{}ต่างๆ\wbr{}ของ Emacs.}{emacs-gui}
+\end{figure}
+
+
+Emacs เป็น\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}ที่\wbr{}รัน\wbr{}ได้\wbr{}ทั้ง\wbr{}ในเ\wbr{}ทอร์\wbr{}มิ\wbr{}นอล\wbr{}และ\wbr{}แสดง\wbr{}ผล\wbr{}เป็น\wbr{}หน้า\wbr{}ต่าง\wbr{}เฉพาะ\wbr{}ใน\wbr{}ระบบ X วิน\wbr{}โดว์. โดย\wbr{}ปรกติ\wbr{}จะ\wbr{}นิยม\wbr{}ใช้ Emacs แบบ GUI มี\wbr{}หน้า\wbr{}ต่าง\wbr{}เฉพาะ\wbr{}สำหรับ\wbr{}โปรแกรม\wbr{}ใน\wbr{}รูป\wbr{}ที่ \ref{fig:emacs-gui}. Emacs เป็น\wbr{}โปรแกรม\wbr{}ขนาด\wbr{}ใหญ่\wbr{}เมื่อ\wbr{}เทียบ\wbr{}กับ Vi. บาง\wbr{}ครั้ง\wbr{}ผู้\wbr{}ใช้\wbr{}ทั่ว\wbr{}ไป\wbr{}มัก\wbr{}จะ\wbr{}หลีก\wbr{}เลี่ยง\wbr{}การ\wbr{}ใช้ Emacs เพราะ\wbr{}ใช้\wbr{}ทรัพยากร\wbr{}ใน\wbr{}การ\wbr{}ทำ\wbr{}งาน\wbr{}สูง\wbr{}และ\wbr{}ความ\wbr{}สามารถ\wbr{}บาง\wbr{}อย่าง\wbr{}เกิน\wbr{}ความ\wbr{}จำ\wbr{}เป็น. สิ่ง\wbr{}ที่\wbr{}แตก\wbr{}ต่าง\wbr{}จาก Vi อย่าง\wbr{}ชัดเจน\wbr{}คือ Emacs ไม่\wbr{}มี\wbr{}แนว\wbr{}คิด\wbr{}เรื่อง\wbr{}โหมด\wbr{}คำ\wbr{}สั่ง\wbr{}และ\wbr{}โหมด\wbr{}แก้\wbr{}ไข\wbr{}เหมือน Vi. หลัง\wbr{}จาก\wbr{}ที่ Emacs เริ่ม\wbr{}ทำ\wbr{}งาน\wbr{}แล้ว\wbr{}ผู้\wbr{}ใช้\wbr{}สามารถ\wbr{}ป้อน\wbr{}ข้อ\wbr{}มูล\wbr{}ด้วย\wbr{}แป้น\wbr{}พิมพ์\wbr{}ได้\wbr{}ทัน\wbr{}ที.
+
+Emacs เป็น\wbr{}โปรแกรม\wbr{}ที่\wbr{}เขียน\wbr{}ด้วย\wbr{}ภาษา C และ\wbr{}มี\wbr{}ตัว\wbr{}แปล\wbr{}ภาษา Lisp ที่\wbr{}เรีย\wbr{}กว่า \emph{Emacs Lisp}\gindex{emacs@Emacs!Lisp}\mymemo{ต่อ\wbr{}ไป\wbr{}นี้\wbr{}จะ\wbr{}เรียก Emacs Lisp ย่อๆ\wbr{}เป็น Lisp.} ฝัง\wbr{}อยู่\wbr{}ใน\wbr{}ตัว\wbr{}บรรณาธิ\wbr{}กรณ์. การ\wbr{}ทำ\wbr{}งาน\wbr{}ต่างๆ\wbr{}ใน Emacs จะ\wbr{}ดำเนิน\wbr{}การ\wbr{}โดย\wbr{}ฟังก์ชัน\wbr{}ภาษา Lisp. ผู้\wbr{}ใช้\wbr{}สามารถ\wbr{}นิยาม\wbr{}ฟังก์ชัน\wbr{}ใหม่\wbr{}ด้วย\wbr{}ภาษา Lisp และ\wbr{}รวบ\wbr{}รวม\wbr{}เก็บ\wbr{}ใน\wbr{}ไฟล์\wbr{}ใช้\wbr{}เป็นไ\wbr{}ลบ\wbr{}รา\wbr{}รี\wbr{}เพื่อ\wbr{}เพิ่ม\wbr{}ความ\wbr{}สามารถ\wbr{}ให้\wbr{}กับ Emacs. ด้วย\wbr{}เหตุ\wbr{}นี้\wbr{}เอง\wbr{}ทำ\wbr{}ให้ Emacs เป็น\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}ที่\wbr{}ไม่\wbr{}ธรรม\wbr{}ดา, สามารถ\wbr{}ทำ\wbr{}อะไร\wbr{}ได้\wbr{}หลาย\wbr{}อย่าง\wbr{}ตั้ง\wbr{}แต่\wbr{}แก้\wbr{}ไข\wbr{}ข้อ\wbr{}มูล\wbr{}ใน\wbr{}ไฟล์\wbr{}เหมือน\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}ทั่ว\wbr{}ไป, ใช้\wbr{}อ่านเ\wbr{}มล, ส่ง\wbr{}รับ\wbr{}ข้อ\wbr{}มูล\wbr{}ผ่าน ftp, อ่าน\wbr{}นิวส์\wbr{}กรุป, ส่ง\wbr{}ข้อ\wbr{}ความ ICQ, อ่านเว็บ ฯลฯ.
+
+\subsubsection{ส่วน\wbr{}ประกอบ\wbr{}ใน Emacs}
+ส่วน\wbr{}ต่างๆ\wbr{}ของ Emacs อาจ\wbr{}แบ่ง\wbr{}ได้\wbr{}เป็น 3 ส่วน\wbr{}ได้\wbr{}แก่.
+\begin{itemize}
+\item \emph{บัฟเฟอร์ (buffer)}\gindex{buffer}\gindex{บัฟเฟอร์} --- เป็น\wbr{}พื้น\wbr{}ที่\wbr{}แสดง\wbr{}ข้อ\wbr{}มูล\wbr{}และ\wbr{}ใช้\wbr{}แก้\wbr{}ข้อ\wbr{}มูล. บัฟเฟอร์\wbr{}มี\wbr{}ชื่อ\wbr{}เฉพาะ\wbr{}ตัว\wbr{}ซึ่ง\wbr{}โดย\wbr{}ปรกติ\wbr{}จะ\wbr{}เป็น\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ที่\wbr{}ทำ\wbr{}การ\wbr{}แก้\wbr{}ไข\wbr{}อยู่. บัฟเฟอร์\wbr{}เป็น\wbr{}พื้น\wbr{}ที่\wbr{}ใน\wbr{}หน่วย\wbr{}ความ\wbr{}จำ, ถ้า\wbr{}มี\wbr{}การ\wbr{}แก้\wbr{}ไข\wbr{}ข้อ\wbr{}มูล\wbr{}ในบัฟเฟอร์, ข้อ\wbr{}มูล\wbr{}ใน\wbr{}ไฟล์\wbr{}ที่\wbr{}สัมพันธ์\wbr{}กับบัฟเฟอร์\wbr{}นั้น\wbr{}จะ\wbr{}ไม่\wbr{}เปลี่ยน\wbr{}แปลง\wbr{}ทัน\wbr{}ที. ถ้า\wbr{}ต้องการ\wbr{}บันทึก\wbr{}สิ่ง\wbr{}ที่\wbr{}เปลี่ยน\wbr{}แปลง\wbr{}ลง\wbr{}ใน\wbr{}ไฟล์\wbr{}ต้อง\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง\wbr{}บันทึก\wbr{}ข้อ\wbr{}มูล\wbr{}ในบัฟเฟอร์\wbr{}ลง\wbr{}ใน\wbr{}ไฟล์.
+
+โดย\wbr{}ปรกติ Emacs จะ\wbr{}มีบัฟเฟอร์\wbr{}อย่าง\wbr{}น้อย\wbr{}หนึ่ง\wbr{}ตัว\wbr{}ได้\wbr{}แก่บัฟเฟอร์\wbr{}ชื่อ *scratch*. บัฟเฟอร์\wbr{}นี้\wbr{}เป็นบัฟเฟอร์\wbr{}ที่ Emacs แสดง\wbr{}ถ้า\wbr{}รัน\wbr{}โดย\wbr{}ไม่\wbr{}มี\wbr{}อาร์กิวเ\wbr{}มนต์. สิ่ง\wbr{}ที่\wbr{}แก้\wbr{}ไข\wbr{}ในบัฟเฟอร์\wbr{}นี้\wbr{}จะ\wbr{}ไม่\wbr{}มี\wbr{}การ\wbr{}เก็บ\wbr{}บันทึก\wbr{}ถ้า\wbr{}ไม่\wbr{}ระบุ\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ด้วย\wbr{}ตัว\wbr{}เอง. ผู้\wbr{}ใช้\wbr{}สามารถ\wbr{}เปิดบัฟเฟอร์\wbr{}ได้\wbr{}หลาย\wbr{}ตัว\wbr{}ใน\wbr{}หนึ่ง\wbr{}หน้า\wbr{}ต่าง. แต่ Emacs จะ\wbr{}แสดงบัฟเฟอร์\wbr{}ที่\wbr{}เปิด\wbr{}ตัว\wbr{}ล่า\wbr{}สุด\wbr{}เท่า\wbr{}นั้น. ผู้\wbr{}ใช้\wbr{}สามารถ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง\wbr{}เลือกบัฟเฟอร์\wbr{}ที่\wbr{}ต้องการ\wbr{}มา\wbr{}แสดง\wbr{}ผล\wbr{}และ\wbr{}แก้\wbr{}ไข\wbr{}เมื่อ\wbr{}ต้องการ.
+\item \emph{โหมดไลน์ (mode line)}\gindex{โหมดไลน์}\gindex{mode line} --- เป็น\wbr{}พื้น\wbr{}ที่\wbr{}สำหรับ\wbr{}แสดง\wbr{}สถานะ\wbr{}ต่างๆ\wbr{}ของ Emacs เช่น\wbr{}ชื่อบัฟเฟอร์, สถานะ\wbr{}ของบัฟเฟอร์\wbr{}และ\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}เกี่ยว\wbr{}ข้อง\wbr{}กับ\wbr{}โหมด\wbr{}ที่\wbr{}ใช้\wbr{}อยู่. โหมด (mode)\gindex{mode}\gindex{โหมด} คือ\wbr{}สภาพ\wbr{}แวด\wbr{}ล้อม\wbr{}ของบัฟเฟอร์\wbr{}และ\wbr{}กำหนด\wbr{}พฤติกรรม\wbr{}ต่างๆ\wbr{}ของบัฟเฟอร์\wbr{}ที่\wbr{}ทำ\wbr{}งาน\wbr{}อยู่. โหมด\wbr{}ยัง\wbr{}แบ่ง\wbr{}ออก\wbr{}ได้\wbr{}เป็น\emph{โหมด\wbr{}หลัก (major mode)}\gindex{โหมด\wbr{}หลัก}\gindex{major mode} และ \emph{โหมด\wbr{}รอง (minor mode)}\gindex{minor mode}\gindex{โหมด\wbr{}รอง}. บัฟเฟอร์\wbr{}หนึ่ง\wbr{}ตัว\wbr{}จะ\wbr{}มี\wbr{}โหมด\wbr{}หลัก\wbr{}ได้\wbr{}หนึ่ง\wbr{}ชนิด\wbr{}แต่\wbr{}มี\wbr{}โหมด\wbr{}รอง\wbr{}ได้\wbr{}หลาย\wbr{}ชนิด. เช่น\wbr{}เวลา\wbr{}เขียน\wbr{}รหัส\wbr{}ต้น\wbr{}ฉบับ\wbr{}ภาษา C ด้วย Emacs และ\wbr{}แสดง\wbr{}สี\wbr{}แยก\wbr{}แยะ\wbr{}คีย์\wbr{}เวิร์ด\wbr{}จะ\wbr{}มี\wbr{}โหมด\wbr{}หลัก\wbr{}เป็น c-mode และ\wbr{}มี\wbr{}โหมด\wbr{}รอง\wbr{}เป็น font-lock-mode เป็นต้น. ถ้า\wbr{}โหมด\wbr{}ที่\wbr{}ใช้\wbr{}ต่าง\wbr{}กัน, คีย์\wbr{}คำ\wbr{}สั่ง\wbr{}ที่\wbr{}ใช้\wbr{}ได้\wbr{}จะ\wbr{}แตก\wbr{}ต่าง\wbr{}กัน\wbr{}ด้วย.
+
+\begin{figure}[!hbt]
+\plfigure{.6}{modeline.eps}{โหมดไลน์ (mode line).}{modeline}
+\end{figure}
+
+ข้อ\wbr{}มูล\wbr{}ที่\wbr{}แสดง\wbr{}ใน\wbr{}โหมดไลน์\wbr{}สำคัญๆ\wbr{}ได้\wbr{}แก่.
+\begin{itemize}
+\item สภาพ\wbr{}ผัง\wbr{}แป้น\wbr{}พิมพ์ --- Emacs ที่\wbr{}สนับสนุน\wbr{}ภาษา\wbr{}นานา\wbr{}ชาติ\wbr{}มี\wbr{}วิธี\wbr{}การ\wbr{}ป้อน\wbr{}ข้อ\wbr{}มูล\wbr{}ของ\wbr{}ตัว\wbr{}เอง\wbr{}ไม่\wbr{}ขึ้น\wbr{}กับ\wbr{}ระบบ X วิน\wbr{}โดว์\wbr{}และ\wbr{}จะ\wbr{}แสดง\wbr{}ผัง\wbr{}แป้น\wbr{}พิมพ์\wbr{}ที่\wbr{}ใช้\wbr{}อยู่\wbr{}ใน\wbr{}โหมดไลน์. ผัง\wbr{}แป้น\wbr{}พิมพ์\wbr{}ภาษา\wbr{}ไทย\wbr{}จะ\wbr{}แสดง\wbr{}เป็น ``กก>'' บอก\wbr{}ให้\wbr{}รู้\wbr{}ว่า\wbr{}สามารถ\wbr{}พิมพ์\wbr{}ภาษา\wbr{}ไทย\wbr{}ได้. ส่วน\wbr{}ผัง\wbr{}แป้น\wbr{}พิมพ์\wbr{}ภาษา\wbr{}อังกฤษ\wbr{}จะ\wbr{}ไม่\wbr{}มี\wbr{}การ\wbr{}บอก\wbr{}สถานะ.
+\item รหัส\wbr{}อักขระ\wbr{}ที่\wbr{}ใช้\wbr{}ในบัฟเฟอร์ --- Emacs สามารถ\wbr{}ระบุ\wbr{}การ\wbr{}เข้า\wbr{}รหัส\wbr{}อักขระ\wbr{}ของ\wbr{}ข้อ\wbr{}มูล\wbr{}ในบัฟเฟอร์\wbr{}ได้. การ\wbr{}เข้า\wbr{}รหัส\wbr{}อักขระ\wbr{}นี้\wbr{}จะ\wbr{}พิจารณา\wbr{}ตามโลแ\wbr{}คล\wbr{}ที่\wbr{}ใช้\wbr{}เช่น\wbr{}ภาษา\wbr{}ไทย\wbr{}แสดง\wbr{}ตัว\wbr{}อักษร ``T:'' หมาย\wbr{}ถึงบัฟเฟอร์\wbr{}นั้น\wbr{}มี\wbr{}การ\wbr{}เข้า\wbr{}รหัส\wbr{}อักขระ\wbr{}เป็น TIS-620.
+\item สภาพ\wbr{}ของบัฟเฟอร์ --- ใน\wbr{}โหมดไลน์\wbr{}จะ\wbr{}แสดง\wbr{}สภาพ\wbr{}ของบัฟเฟอร์\wbr{}ด้วย\wbr{}เครื่อง\wbr{}หมาย\wbr{}ต่อ\wbr{}ไป\wbr{}นี้
+\begin{itemize}
+\item \cmd{--} --- บัฟเฟอร์\wbr{}ไม่\wbr{}มี\wbr{}การ\wbr{}เปลี่ยน\wbr{}แปลง\wbr{}ใดๆ.
+\item \cmd{**} --- มี\wbr{}การ\wbr{}เปลี่ยน\wbr{}แปลง\wbr{}เกิด\wbr{}ขึ้น\wbr{}ในบัฟเฟอร์.
+\item \cmd{\%\%} --- บัฟเฟอร์\wbr{}นั้น\wbr{}เป็นบัฟเฟอร์\wbr{}ชนิด\wbr{}อ่าน\wbr{}ได้\wbr{}อย่าง\wbr{}เดียว, ไม่\wbr{}สามารถ\wbr{}แก้\wbr{}ไข\wbr{}ได้.
+\end{itemize}
+\item ชื่อบัฟเฟอร์ --- ชื่อบัฟเฟอร์\wbr{}โดย\wbr{}ปรกติ\wbr{}จะ\wbr{}เป็น\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ที่\wbr{}เปิด\wbr{}แก้\wbr{}ไข.
+\item ชื่อ\wbr{}โหมด --- ชื่อ\wbr{}โหมด\wbr{}จะ\wbr{}เขียน\wbr{}อยู่\wbr{}ใน\wbr{}วง\wbr{}เล็บ.
+\item ข้อ\wbr{}มูล\wbr{}อื่นๆ --- เช่น\wbr{}ใน\wbr{}รูป\wbr{}ที่ \ref{fig:modeline} จะ\wbr{}มี\wbr{}ข้อ\wbr{}มูล\wbr{}แสดง\wbr{}ตำแหน่ง\wbr{}ของเ\wbr{}คอร์เ\wbr{}ซอร์, เวลา ฯลฯ ใน\wbr{}โหมดไลน์. ข้อ\wbr{}มูล\wbr{}เหล่า\wbr{}นี้\wbr{}เกิด\wbr{}จาก\wbr{}การ\wbr{}ใช้\wbr{}โหมด\wbr{}รอง\wbr{}เช่น column-number-mode, display-time-mode เป็นต้น.
+\end{itemize}
+\item \emph{มิ\wbr{}นิบัฟเฟอร์ (minibuffer)}\gindex{minibuffer}\gindex{มิ\wbr{}นิบัฟเฟอร์} --- เป็น\wbr{}พื้น\wbr{}ที่\wbr{}สำหรับ\wbr{}แสดง\wbr{}พร\wbr{}อมต์\wbr{}หรือ\wbr{}คำ\wbr{}ถาม\wbr{}ต่างๆ\wbr{}ให้\wbr{}ผู้\wbr{}ใช้\wbr{}โต้\wbr{}ตอบ\wbr{}ป้อน\wbr{}ข้อ\wbr{}มูล\wbr{}ด้วย\wbr{}แป้น\wbr{}พิมพ์. คำ\wbr{}สั่ง\wbr{}บาง\wbr{}คำ\wbr{}สั่ง\wbr{}เช่น\wbr{}การ\wbr{}เปิด\wbr{}อ่าน\wbr{}ไฟล์\wbr{}แก้\wbr{}ไข\wbr{}ในบัฟเฟอร์\wbr{}จะ\wbr{}ถาม\wbr{}ชื่อ\wbr{}ไฟล์, ผู้\wbr{}ใช้\wbr{}ต้อง\wbr{}พิมพ์\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ใน\wbr{}มิ\wbr{}นิบัฟเฟอร์. ถ้า\wbr{}ต้องการ\wbr{}ยก\wbr{}เลิก\wbr{}การ\wbr{}ป้อน\wbr{}ข้อ\wbr{}มูล\wbr{}ให้\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง keyboard-quit โดย\wbr{}การ\wbr{}กด\wbr{}คีย์ \cmd{\ovalbox{Ctrl}+\ovalbox{g}} แล้วเ\wbr{}คอร์\wbr{}จะ\wbr{}กลับ\wbr{}ไป\wbr{}สู่บัฟเฟอร์\wbr{}ที่\wbr{}ทำ\wbr{}งาน\wbr{}อยู่.
+\end{itemize}
+
+\subsubsection{การ\wbr{}ผูก\wbr{}เชื่อม\wbr{}คีย์}
+เวลา\wbr{}ผู้\wbr{}ใช้\wbr{}กด\wbr{}คีย์\wbr{}ต่างๆ\wbr{}บน\wbr{}แป้น\wbr{}พิมพ์, Emacs จะ\wbr{}รับ\wbr{}รู้\wbr{}สิ่ง\wbr{}ที่\wbr{}กด\wbr{}และ\wbr{}เรียก\wbr{}ใช้\wbr{}ฟังก์ชัน\wbr{}ภาษา Lisp ที่\wbr{}ผูก\wbr{}เชื่อม (key binding)\gindex{key binding} กับ\wbr{}คีย์\wbr{}นั้นๆ. ตัว\wbr{}อย่าง\wbr{}เช่น คีย์\wbr{}ลูก\wbr{}ศร\wbr{}ขวา\wbr{}จะ\wbr{}ผูก\wbr{}ติด\wbr{}กับ\wbr{}ฟังก์ชัน forward-char. เมื่อ\wbr{}ผู้\wbr{}ใช้\wbr{}กด\wbr{}คีย์\wbr{}ลูก\wbr{}ศร\wbr{}ขวา, โปรแกรม\wbr{}จะ\wbr{}เรียก\wbr{}ใช้\wbr{}ฟังก์ชัน forward-char เลื่อนเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}ถัด\wbr{}ไป\wbr{}หนึ่ง\wbr{}ตัว\wbr{}อักขระ. การ\wbr{}กด\wbr{}คีย์ ``a'' ก็\wbr{}เช่น\wbr{}กัน\wbr{}จะ\wbr{}เป็น\wbr{}การ\wbr{}เรียก\wbr{}ใช้\wbr{}ฟังก์ชัน self-insert-command ใส่\wbr{}อักขระ\wbr{}ที่\wbr{}พิมพ์\wbr{}ตรง\wbr{}ตำแหน่งเ\wbr{}คอร์\wbr{}ปัจจุบัน. ชื่อ\wbr{}ฟังก์ชัน\wbr{}เหล่า\wbr{}นี้\wbr{}มัก\wbr{}จะ\wbr{}เป็น\wbr{}ชื่อ\wbr{}ที่\wbr{}มี\wbr{}ความ\wbr{}หมาย\wbr{}และ\wbr{}คั่น\wbr{}ด้วย\wbr{}เครื่อง\wbr{}หมาย ``-''.
+
+ฟังก์ชัน\wbr{}พื้น\wbr{}ฐาน\wbr{}ที่\wbr{}สำคัญๆ\wbr{}จะ\wbr{}มี\wbr{}คีย์\wbr{}ที่\wbr{}มอบ\wbr{}หมาย\wbr{}เตรียม\wbr{}ไว้. ผู้\wbr{}ที่\wbr{}ใช้\wbr{}แป้น\wbr{}พิมพ์\wbr{}คล่อง\wbr{}อาจ\wbr{}จะ\wbr{}ไม่\wbr{}จำ\wbr{}เป็น\wbr{}ต้อง\wbr{}แตะ\wbr{}เมาส์\wbr{}เลย\wbr{}ก็\wbr{}ได้. คีย์\wbr{}คำ\wbr{}สั่ง\wbr{}ต่างๆ\wbr{}ที่\wbr{}ใช้\wbr{}ใน Emacs มัก\wbr{}จะ\wbr{}มี\wbr{}รูป\wbr{}แบบ\wbr{}ดัง\wbr{}ต่อ\wbr{}ไป\wbr{}นี้.
+
+
+\begin{itemize}
+\item \cmd{C-\textit{x}} --- หมาย\wbr{}ถึง\wbr{}การ\wbr{}กด\wbr{}คีย์ \cmd{\ovalbox{Ctrl}} พร้อม\wbr{}กับ\wbr{}คีย์ \cmdit{x}. ตัว\wbr{}อย่าง\wbr{}เช่น ``\cmd{C-x C-c}'' หมาย\wbr{}ถึง\wbr{}ให้\wbr{}กด\wbr{}คีย์ \cmd{\ovalbox{Ctrl}} ค้าง\wbr{}ไว้\wbr{}แล้ว\wbr{}กด \cmd{\ovalbox{x}} ต่อ\wbr{}ด้วย\wbr{}การ\wbr{}กด\wbr{}คีย์ \cmd{\ovalbox{Ctrl}} ค้าง\wbr{}ไว้\wbr{}แล้ว\wbr{}กด \cmd{\ovalbox{c}}. คีย์\wbr{}คำ\wbr{}สั่ง\wbr{}นี้\wbr{}ผูก\wbr{}เชื่อม\wbr{}ติด\wbr{}กับ\wbr{}ฟังก์ชัน save-buffer-kill-emacs บันทึก\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}อยู่\wbr{}ในบัฟเฟอร์\wbr{}ลง\wbr{}ไฟล์\wbr{}แล้ว\wbr{}เลิก\wbr{}การ\wbr{}ทำ\wbr{}งาน\wbr{}ของ Emacs.
+\item \cmd{M-\textit{x}} --- หมาย\wbr{}ถึง\wbr{}การ\wbr{}กด\wbr{}คีย์ \cmd{\ovalbox{Meta}} พร้อม\wbr{}กับ\wbr{}คีย์ \cmdit{x}. แป้น\wbr{}พิมพ์\wbr{}ของ\wbr{}คอมพิวเตอร์\wbr{}ส่วน\wbr{}บุคคล\wbr{}โดย\wbr{}ทั่ว\wbr{}ไป\wbr{}จะ\wbr{}ไม่\wbr{}มี\wbr{}คีย์ \cmd{\ovalbox{Meta}}. ใน\wbr{}กรณี\wbr{}นี้\wbr{}จะ\wbr{}ใช้\wbr{}คีย์ \cmd{\ovalbox{Esc}} หรือ\wbr{}คีย์ \cmd{\ovalbox{Alt}} แทน\wbr{}แล้ว Emacs จะ\wbr{}รับ\wbr{}รู้\wbr{}การ\wbr{}กด\wbr{}คีย์\wbr{}เหล่า\wbr{}นี้\wbr{}เหมือน\wbr{}กับ\wbr{}การ\wbr{}กด\wbr{}คีย์ \cmd{\ovalbox{Meta}}.
+
+ถ้า\wbr{}ใช้\wbr{}คีย์ \cmd{\ovalbox{Esc}} ให้\wbr{}กด\wbr{}แล้ว\wbr{}ปล่อย, แล้ว\wbr{}กด\wbr{}คีย์\wbr{}อื่นๆ\wbr{}ที่\wbr{}ระบุ\wbr{}ตาม. แต่\wbr{}ถ้า\wbr{}ใช้\wbr{}คีย์ \cmd{\ovalbox{Alt}} ให้\wbr{}กด\wbr{}พร้อม\wbr{}กับ\wbr{}คีย์\wbr{}ที่\wbr{}ต้อง\wbr{}กด\wbr{}ตาม\wbr{}ได้\wbr{}เลย. วิธี\wbr{}ใช้\wbr{}คีย์\wbr{}ต่าง\wbr{}กัน\wbr{}เพราะ \cmd{\ovalbox{Esc}} ส่ง\wbr{}สัญญาณ\wbr{}รหัส ASCII Esc ใน\wbr{}ขณะ\wbr{}ที่\wbr{}คีย์ \cmd{\ovalbox{Alt}} ไม่\wbr{}ได้\wbr{}ส่ง\wbr{}สัญญาณ\wbr{}ของ\wbr{}รหัส\wbr{}ใดๆ\wbr{}แต่\wbr{}เป็น\wbr{}โมดิ\wbr{}ไฟ\wbr{}เออร์\wbr{}คีย์\wbr{}จึง\wbr{}ต้อง\wbr{}กด\wbr{}ค้าง\wbr{}ไว้. ตัว\wbr{}อย่าง\wbr{}เช่น ``\cmd{M-v}'' หมาย\wbr{}ความ\wbr{}ว่า\wbr{}ให้\wbr{}กด\wbr{}คีย์ \cmd{\ovalbox{Esc}} แล้ว\wbr{}ปล่อย, จาก\wbr{}นั้น\wbr{}กด\wbr{}คีย์  \cmd{v} เป็น\wbr{}การ\wbr{}เลื่อน\wbr{}หน้า\wbr{}จอ\wbr{}ขึ้น\wbr{}ไป\wbr{}หนึ่ง\wbr{}หน้า. ถ้า\wbr{}ใช้\wbr{}คีย์ \cmd{\ovalbox{Alt}} ให้\wbr{}กด\wbr{}คีย์ \cmd{\ovalbox{Alt}} ค้าง\wbr{}ไว้\wbr{}แล้ว\wbr{}ตาม\wbr{}ด้วย\wbr{}การ\wbr{}กด\wbr{}คีย์ \cmd{v}.
+\item \cmd{C-M-\textit{x}} --- ใช้\wbr{}คีย์ \cmd{\ovalbox{Ctrl}} และ \cmd{\ovalbox{Meta}} ร่วม\wbr{}กัน. ถ้า\wbr{}ใช้\wbr{}คีย์ \cmd{\ovalbox{Esc}} แทน \cmd{\ovalbox{Meta}} สามารถ\wbr{}กด\wbr{}คีย์ \cmd{\ovalbox{Esc}} แล้ว\wbr{}ปล่อย\wbr{}ตาม\wbr{}ด้วย \cmd{C-\textit{x}}. ถ้า\wbr{}ใช้\wbr{}คีย์ \cmd{\ovalbox{Alt}}, \cmd{C-M-\textit{x}} หมาย\wbr{}ถึง\wbr{}การ\wbr{}กด\wbr{}คีย์ \cmd{\ovalbox{Ctrl}} พร้อม\wbr{}กับ \cmd{\ovalbox{Alt}} ค้าง\wbr{}ไว้\wbr{}แล้ว\wbr{}ตาม\wbr{}ด้วย \cmdit{x}
+
+\end{itemize}
+คำ\wbr{}สั่ง\wbr{}หนึ่ง\wbr{}สามารถ\wbr{}ผูก\wbr{}เชื่อม\wbr{}กับ\wbr{}คีย์\wbr{}ได้\wbr{}มาก\wbr{}กว่า\wbr{}หนึ่ง\wbr{}ตัว\wbr{}และ\wbr{}คำ\wbr{}สั่ง\wbr{}ที่\wbr{}ผูก\wbr{}เชื่อม\wbr{}กับ\wbr{}คีย์\wbr{}สามารถ\wbr{}เปลี่ยน\wbr{}ไป\wbr{}ตาม\wbr{}โหมด\wbr{}ที่\wbr{}ใช้.
+
+
+\subsubsection{การ\wbr{}เลื่อนเ\wbr{}คอร์เ\wbr{}ซอร์}
+การ\wbr{}เลื่อนเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}สามารถ\wbr{}ใช้\wbr{}คีย์\wbr{}ลูก\wbr{}ศร\wbr{}เลื่อนเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}ไป\wbr{}มา, หรือ\wbr{}ใช้\wbr{}คีย์\wbr{}คำ\wbr{}สั่ง\wbr{}ต่อ\wbr{}ไป\wbr{}นี้.
+\begin{itemize}
+\item \cmd{C-f} -- forward-char --- เลื่อนเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}ไป\wbr{}ทาง\wbr{}ขวา\wbr{}หนึ่ง\wbr{}อักขระ.
+\item \cmd{C-b} -- backward-char --- เลื่อนเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}ไป\wbr{}ทาง\wbr{}ซ้าย\wbr{}หนึ่ง\wbr{}อักขระ.
+\item \cmd{C-n} -- next-line --- เลื่อนเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}ไป\wbr{}ขึ้น\wbr{}ไป\wbr{}หนึ่ง\wbr{}บรรทัด.
+\item \cmd{C-p} -- previous-line --- เลื่อนเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}ลง\wbr{}มา\wbr{}หนึ่ง\wbr{}บรรทัด.
+\item \cmd{C-v} -- scroll-up --- เลื่อน\wbr{}หน้า\wbr{}จอ\wbr{}ลง\wbr{}หนึ่ง\wbr{}หน้า.
+\item \cmd{M-v} -- scroll-down --- เลื่อน\wbr{}หน้า\wbr{}จอ\wbr{}ขึ้น\wbr{}หนึ่ง\wbr{}หน้า.
+\item \cmd{C-a} -- move-beginning-of-line --- เลื่อนเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}ไป\wbr{}ที่\wbr{}ต้น\wbr{}บรรทัด.
+\item \cmd{C-e} -- move-end-of-line --- เลื่อนเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}ไป\wbr{}ที่\wbr{}ท้าย\wbr{}บรรทัด.
+\item \cmd{M-<} -- beginning-of-buffer --- เลื่อนเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}ไป\wbr{}ที่\wbr{}ต้นบัฟเฟอร์.
+\item \cmd{M->} -- end-of-buffer --- เลื่อนเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}ไป\wbr{}ที่\wbr{}ท้ายบัฟเฟอร์.
+\item \cmd{C-M-a} -- beginning-of-defun --- เลื่อนเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}ไป\wbr{}ที่\wbr{}จุด\wbr{}เริ่ม\wbr{}ต้น\wbr{}ของ\wbr{}ฟังก์ชัน. คำ\wbr{}สั่ง\wbr{}นี้\wbr{}มี\wbr{}ประโยชน์\wbr{}เวลา\wbr{}ใช้\wbr{}เขียน\wbr{}โปรแกรม.
+\item \cmd{C-M-e} -- end-of-defun --- เลื่อนเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}ไป\wbr{}ที่\wbr{}ท้าย\wbr{}ของ\wbr{}ฟังก์ชัน.
+\item \cmd{C-M-f} -- forward-sexp --- เลื่อนเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}ไป\wbr{}ตำแหน่ง\wbr{}ถัด\wbr{}ไป\wbr{}ขอ\wbr{}งวง\wbr{}เล็บ\wbr{}หรือ\wbr{}เครื่อง\wbr{}หมาย\wbr{}คำ\wbr{}พูด\wbr{}ที่\wbr{}เข้า\wbr{}คู่\wbr{}กัน. เช่น\wbr{}ถ้า\wbr{}มี\wbr{}ข้อ\wbr{}มูล (abc) อยู่\wbr{}ในบัฟเฟอร์\wbr{}และเ\wbr{}คอร์\wbr{}อยู่\wbr{}ที่\wbr{}ตำแหน่ง\wbr{}อักษร a แล้ว\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง forwawrd-sexp. เ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}จะ\wbr{}เลื่อน\wbr{}ไป\wbr{}อยู่\wbr{}ตำแหน่ง\wbr{}ขอ\wbr{}งวง\wbr{}เล็บ\wbr{}ปิด.
+\item \cmd{C-M-b} -- backward-sexp --- เลื่อนเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}กลับ\wbr{}ไป\wbr{}ตำแหน่ง\wbr{}ไป\wbr{}ขอ\wbr{}งวง\wbr{}เล็บ\wbr{}หรือ\wbr{}เครื่อง\wbr{}หมาย\wbr{}คำ\wbr{}พูด\wbr{}ที่\wbr{}เข้า\wbr{}คู่\wbr{}กัน.
+\end{itemize}
+
+\subsubsection{ลบ\wbr{}อักขระ\wbr{}หรือ\wbr{}ข้อ\wbr{}ความ}
+การ\wbr{}ลบ\wbr{}อักขระ\wbr{}สามารถ\wbr{}ใช้\wbr{}คีย์ \cmd{\ovalbox{Backspace}} หรือ \cmd{\ovalbox{Del}} ได้\wbr{}เหมือน\wbr{}กับ\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}ปรกติ. นอก\wbr{}จาก\wbr{}นี้\wbr{}แล้\wbr{}วจะ\wbr{}มี\wbr{}คำ\wbr{}สั่ง\wbr{}ต่างๆ\wbr{}ลบ\wbr{}อักข\wbr{}ระแบบ\wbr{}อื่นๆ\wbr{}เตรียม\wbr{}ไว้\wbr{}ด้วย\wbr{}ได้\wbr{}แก่.
+\begin{itemize}
+\item \cmd{C-d} -- delete-char --- ให้\wbr{}ผล\wbr{}เหมือน\wbr{}กัน\wbr{}กด\wbr{}คีย์ \cmd{\ovalbox{Del}} คือ\wbr{}ลบ\wbr{}อักขระ\wbr{}หนึ่ง\wbr{}ตัว\wbr{}ที่\wbr{}อยู่\wbr{}ตรง\wbr{}ตำแหน่งเ\wbr{}คอร์เ\wbr{}ซอร์.
+\item \cmd{M-d} -- kill-word --- ลบ\wbr{}คำ\wbr{}หนึ่ง\wbr{}คำ\wbr{}จาก\wbr{}ตำแหน่งเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}ปัจจุบัน.
+\item \cmd{C-k} -- kill-line --- ลบ\wbr{}อักขระ\wbr{}ตั้ง\wbr{}แต่\wbr{}ตำแหน่งเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}ปัจจุบัน\wbr{}จน\wbr{}ถึง\wbr{}สุด\wbr{}บรรทัด.
+\item \cmd{C-w} -- kill-region --- ลบ\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}รี\wbr{}เจียน\wbr{}ที่\wbr{}กำหนด\wbr{}ไว้.
+\end{itemize}
+
+
+\subsubsection{มาร์ก\wbr{}และ\wbr{}รี\wbr{}เจียน}
+\emph{มาร์ก (mark)}\gindex{มาร์ก}\gindex{mark} ใน Emacs หมาย\wbr{}ถึง\wbr{}การ\wbr{}บันทึก\wbr{}ตำแหน่ง\wbr{}ของเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}เพื่อ\wbr{}ใช้\wbr{}กำหนด\emph{รี\wbr{}เจียน (region)}\gindex{region} สำหรับ\wbr{}การ\wbr{}ปร\wbr{}ะม\wbr{}วณ\wbr{}ผล\wbr{}ข้อ\wbr{}มูล. รี\wbr{}เจียน\wbr{}คือ\wbr{}ช่วง\wbr{}พื้น\wbr{}ที่\wbr{}ระหว่าง\wbr{}ตำแหน่ง\wbr{}ที่\wbr{}มาร์ก\wbr{}ไว้\wbr{}และ\wbr{}ตำแหน่งเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}ปัจจุบัน. การ\wbr{}บันทึก\wbr{}ตำแหน่ง\wbr{}มาร์ก\wbr{}ให้ Emacs รับ\wbr{}รู้\wbr{}จะ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง set-mark-command ซึ่ง\wbr{}โดย\wbr{}ปรกติ\wbr{}จะ\wbr{}ผูก\wbr{}เชื่อม\wbr{}ต่อ\wbr{}คำ\wbr{}สั่ง\wbr{}นี้\wbr{}ไว้\wbr{}กับ\wbr{}คีย์ \cmd{C-@} และ \cmd{C-Space}. เนื่อง\wbr{}จาก\wbr{}การ\wbr{}กด\wbr{}คีย์ \cmd{@} ต้อง\wbr{}กด \cmd{Shift} ค้าง\wbr{}ไว้\wbr{}ด้วย, ดัง\wbr{}นั้น\wbr{}การ\wbr{}บันทึก\wbr{}ตำแหน่ง\wbr{}มาร์ก\wbr{}มัก\wbr{}จะ\wbr{}ใช้ \cmd{C-Space} ซึ่ง\wbr{}ทำ\wbr{}ได้\wbr{}ง่าย\wbr{}กว่า\wbr{}การ\wbr{}กด \cmd{C-@}.
+
+\begin{figure}[!hbt]
+\plfigure{.6}{emacs-mark.eps}{การเซ็ต\wbr{}มาร์ก.}{emacs-mark}
+\end{figure}
+
+ใน\wbr{}รูป\wbr{}ที่ \ref{fig:emacs-mark} เป็น\wbr{}ตัว\wbr{}อย่าง\wbr{}การเซ็ต\wbr{}มาร์ก\wbr{}เริ่ม\wbr{}ที่\wbr{}ตำแหน่ง ``so these ...'' โดย\wbr{}การ\wbr{}กด\wbr{}คีย์ \cmd{C-Space}. ตรง\wbr{}มิ\wbr{}นิบัฟเฟอร์\wbr{}จะ\wbr{}มี\wbr{}ข้อ\wbr{}ความ ``Mark set'' บอก\wbr{}ให้\wbr{}ผู้\wbr{}ใช้\wbr{}รู้\wbr{}ว่า\wbr{}ได้เซ็ต\wbr{}มาร์ก\wbr{}แล้ว. หลัง\wbr{}จาก\wbr{}นั้น\wbr{}ให้\wbr{}เลื่อนเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}ไป\wbr{}ตำแหน่ง\wbr{}ที่\wbr{}ต้อง\wbr{}เพื่อ\wbr{}กำหนด\wbr{}รี\wbr{}เจียน\wbr{}ที่\wbr{}ต้องการ. ใน\wbr{}ตัว\wbr{}อย่างเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}อยู่\wbr{}ที่ ``... avoid error.'' ดัง\wbr{}นั้น\wbr{}รี\wbr{}เจียน\wbr{}จะ\wbr{}เป็น\wbr{}ช่วง\wbr{}ข้อ\wbr{}ความ ``so these ...'' จน\wbr{}ถึง ``avoid error.''. Emacs ใน\wbr{}รูป\wbr{}จะ\wbr{}แสดง\wbr{}สี\wbr{}พื้น\wbr{}ตัว\wbr{}อักษร\wbr{}ของ\wbr{}รี\wbr{}เจียน\wbr{}ให้\wbr{}แตก\wbr{}ต่าง\wbr{}จาก\wbr{}ช่วง\wbr{}อื่น, แต่\wbr{}โดย\wbr{}ปรกติ\wbr{}จะ\wbr{}ไม่\wbr{}แสดง\wbr{}สี\wbr{}พื้น\wbr{}อักษร\wbr{}ให้\wbr{}ถ้า\wbr{}ไม่\wbr{}อยู่\wbr{}ใน\wbr{}โหมด transient-mark-mode. หรือ\wbr{}เวลาเซ็ต\wbr{}มาร์ก, กดคีย \cmd{C-Space} สอง\wbr{}ครั้ง\wbr{}ก็\wbr{}จะ\wbr{}ใช้\wbr{}โหมด transient-mark-mode ชั่ว\wbr{}คราว\wbr{}ให้.
+
+คำ\wbr{}สั่ง Emacs บาง\wbr{}ตัว\wbr{}จะ\wbr{}ประมวล\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}รี\wbr{}เจียน\wbr{}เช่น kill-region, copy-region-as-kill, indent-region เป็นต้น. ถ้า\wbr{}กำหนด\wbr{}รี\wbr{}เจียน\wbr{}แล้ว\wbr{}กด\wbr{}คีย์ \cmd{C-w} ซึ่ง\wbr{}ผูก\wbr{}เชื่อม\wbr{}ไว้\wbr{}กับ\wbr{}คำ\wbr{}สั่ง kill-region, โปรแกรม Emacs จะ\wbr{}ลบ\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}เลือก\wbr{}ไว้\wbr{}ใน\wbr{}รี\wbr{}เจียน.
+
+\subsubsection{อาร์กิวเ\wbr{}มนต์}
+คำ\wbr{}สั่ง\wbr{}ใน Emacs สามารถ\wbr{}ระบุ\wbr{}อาร์กิวเ\wbr{}มนต์\wbr{}ได้\wbr{}เช่น\wbr{}ใน\wbr{}กรณี\wbr{}ที่\wbr{}ต้องการ\wbr{}ลบ\wbr{}บรรทัด\wbr{}ที่\wbr{}อยู่\wbr{}ในบัฟเฟอร์ 10 บรรทัด, แทน\wbr{}ที่\wbr{}จะ\wbr{}กด\wbr{}คีย์ \cmd{C-k} สิบ\wbr{}ครั้ง, สามารถ\wbr{}ระบุ\wbr{}จำนวน\wbr{}ครั้ง\wbr{}ด้วย\wbr{}การ\wbr{}กด\wbr{}คีย์ \cmd{C-u} (universal-argument) แล้ว\wbr{}พิมพ์\wbr{}จำนวน\wbr{}บรรทัด\wbr{}ที่\wbr{}ต้องการ\wbr{}ลบ.
+
+คำ\wbr{}สั่ง universal-argument เป็น\wbr{}วิธี\wbr{}การ\wbr{}รับ\wbr{}อาร์กิวเ\wbr{}มนต์. เช่น\wbr{}คำ\wbr{}สั่ง kill-line จะ\wbr{}รับ\wbr{}อาร์กิวเ\wbr{}มนต์\wbr{}เป็น\wbr{}จำนวน\wbr{}บรรทัด. ถ้า\wbr{}ไม่\wbr{}มี\wbr{}จำนวน\wbr{}บรรทัด\wbr{}ให้\wbr{}เป็น\wbr{}อาร์กิวเ\wbr{}มนต์\wbr{}ก็\wbr{}จะ\wbr{}ลบ\wbr{}หนึ่ง\wbr{}บรรทัด. ใน\wbr{}ทำนอง\wbr{}เดียว\wbr{}กัน, คำ\wbr{}สั่ง delete-char, delete-word สามารถ\wbr{}รับ\wbr{}อาร์กิวเ\wbr{}มนต์\wbr{}ได้\wbr{}ด้วย\wbr{}เช่น\wbr{}กัน.
+
+\subsubsection{ค้น\wbr{}ข้อ\wbr{}มูล, เปลี่ยน\wbr{}สาย\wbr{}อักขระ}
+การ\wbr{}ค้น\wbr{}ข้อ\wbr{}มูล\wbr{}ใน Emacs จะ\wbr{}กด\wbr{}คีย์ \cmd{C-s} ซึ่ง\wbr{}ผูก\wbr{}เชื่อม\wbr{}ไว้\wbr{}กับ\wbr{}คำ\wbr{}สั่ง isearch-forward เป็น\wbr{}การ\wbr{}หา\wbr{}สาย\wbr{}อักขระ\wbr{}ขณะ\wbr{}ที่\wbr{}พิมพ์\wbr{}ไป\wbr{}เรื่อยๆ. การ\wbr{}หา\wbr{}ข้อ\wbr{}มูล\wbr{}นี้\wbr{}จะ\wbr{}หา\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}อยู่\wbr{}ถัด\wbr{}จาก\wbr{}ตำแหน่งเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}ปัจจุบัน. เมื่อ\wbr{}กด\wbr{}คีย์ \cmd{C-s} แล้\wbr{}วจะ\wbr{}รอ\wbr{}รับ\wbr{}คำ\wbr{}ที่\wbr{}ต้องการ\wbr{}หา\wbr{}โดย\wbr{}แสดง\wbr{}พร\wbr{}อมต์ ``I-search:'' ที่\wbr{}มิ\wbr{}นิบัฟเฟอร์. ขณะ\wbr{}ที่\wbr{}ผู้\wbr{}ใช้\wbr{}ป้อน\wbr{}ข้อ\wbr{}มูล\wbr{}ก็\wbr{}จะ\wbr{}เลื่อนเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}ในบัฟเฟอร์\wbr{}ไป\wbr{}ที่\wbr{}ตำแหน่ง\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}หา\wbr{}เจอ\wbr{}ทัน\wbr{}ที. ถ้า\wbr{}ป้อน\wbr{}ข้อ\wbr{}มูล\wbr{}ด้วย\wbr{}อักษร\wbr{}ภาษา\wbr{}อังกฤษ\wbr{}ตัว\wbr{}เล็ก\wbr{}ทั้ง\wbr{}หมด\wbr{}จะ\wbr{}เป็น\wbr{}การ\wbr{}หา\wbr{}โดย\wbr{}ไม่\wbr{}แยก\wbr{}แยะ\wbr{}อักษร\wbr{}ตัว\wbr{}ใหญ่\wbr{}ตัว\wbr{}เล็ก, แต่\wbr{}ถ้า\wbr{}ใน\wbr{}สาย\wbr{}อักขระ\wbr{}มี\wbr{}อักษร\wbr{}ตัว\wbr{}ใหญ่\wbr{}ปรากฏ\wbr{}อยู่\wbr{}ด้วย\wbr{}จะ\wbr{}แยก\wbr{}แยะ\wbr{}การ\wbr{}หา\wbr{}สาย\wbr{}อักขระ\wbr{}ระหว่าง\wbr{}อักษร\wbr{}ตัว\wbr{}ใหญ่\wbr{}กับ\wbr{}ตัว\wbr{}เล็ก. การ\wbr{}เลื่อน\wbr{}ตำแหน่ง\wbr{}ที่\wbr{}ต้องการ\wbr{}หา\wbr{}ในบัฟเฟอร์\wbr{}ถัด\wbr{}ไป\wbr{}ให้\wbr{}กด\wbr{}คีย์ \cmd{C-s} ไป\wbr{}เรื่อยๆ.
+
+การ\wbr{}หยุด\wbr{}คำ\wbr{}สั่ง\wbr{}การ\wbr{}หา\wbr{}ข้อ\wbr{}มูล\wbr{}มี\wbr{}อยู่\wbr{}ประเภท\wbr{}ของ\wbr{}กด\wbr{}คีย์ \cmd{Enter} เพื่อ\wbr{}จบ\wbr{}การ\wbr{}หา\wbr{}ข้อ\wbr{}มูล. ใน\wbr{}กรณี\wbr{}นี้เ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}จะ\wbr{}หยุด\wbr{}อยู่\wbr{}ตรง\wbr{}ตำแหน่ง\wbr{}ที่\wbr{}หา\wbr{}ข้อ\wbr{}มูล\wbr{}เจอ. การ\wbr{}หยุด\wbr{}การ\wbr{}ทำ\wbr{}งาน\wbr{}อีก\wbr{}วิธี\wbr{}หนึ่ง\wbr{}คือ\wbr{}กด\wbr{}คีย์ \cmd{C-g} ซึ่ง\wbr{}ผูก\wbr{}เชื่อม\wbr{}ไว้\wbr{}กับ\wbr{}คำ\wbr{}สั่ง keyboard-quit. ใน\wbr{}ขณะ\wbr{}ที่ Emacs กำลัง\wbr{}หา\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}ต้องการ\wbr{}ในบัฟเฟอร์, ตัว\wbr{}โปรแกรม\wbr{}จะ\wbr{}รับ\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}ต้องการ\wbr{}หา\wbr{}ตลอด\wbr{}เวลา\wbr{}จน\wbr{}กว่า\wbr{}จะ\wbr{}กด\wbr{}คีย์ \cmd{Enter} เพื่อ\wbr{}จบ\wbr{}การ\wbr{}ทำ\wbr{}งาน\wbr{}หรือ\wbr{}กด\wbr{}คีย์ \cmd{C-s} เพื่อ\wbr{}หา\wbr{}ข้อ\wbr{}มูล\wbr{}ต่อ\wbr{}ไป. การ\wbr{}กด\wbr{}คีย์ \cmd{C-g} จะ\wbr{}เป็น\wbr{}การ\wbr{}ยก\wbr{}เลิก\wbr{}ป้อน\wbr{}ข้อ\wbr{}มูล\wbr{}ซึ่ง\wbr{}หมาย\wbr{}ถึง\wbr{}เลิก\wbr{}หา\wbr{}ข้อ\wbr{}มูล\wbr{}ไป\wbr{}ใน\wbr{}ตัว.
+
+ใน\wbr{}ทำนอง\wbr{}เดียว\wbr{}กัน, การ\wbr{}หา\wbr{}คำ\wbr{}ก่อน\wbr{}หน้า\wbr{}ตำแหน่งเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}จะ\wbr{}ใช้\wbr{}คีย์ \cmd{C-r} ซึ่ง\wbr{}ผูก\wbr{}เชื่อ\wbr{}ไว้\wbr{}กับ\wbr{}คำ\wbr{}สั่ง isearch-backward.
+
+\subsubsection{การ\wbr{}จัด\wbr{}การบัฟเฟอร์\wbr{}และ\wbr{}ไฟล์}
+Emacs ที่\wbr{}รัน\wbr{}อยู่\wbr{}ใน\wbr{}ระบบ X วิน\wbr{}โดว์\wbr{}จะ\wbr{}มี\wbr{}เมนู\wbr{}กระทำ\wbr{}การ\wbr{}เกี่ยว\wbr{}กับ\wbr{}ไฟล์\wbr{}เช่น\wbr{}อ่าน\wbr{}ไฟล์, บันทึก\wbr{}ไฟล์\wbr{}ไว้\wbr{}ให้. การ\wbr{}กระทำ\wbr{}เหล่า\wbr{}นี้\wbr{}เป็น\wbr{}คำ\wbr{}สั่ง\wbr{}ซึ่ง\wbr{}ผูก\wbr{}เชื่อม\wbr{}กับ\wbr{}คีย์\wbr{}ต่างๆ\wbr{}และ\wbr{}มัก\wbr{}จะ\wbr{}เริ่ม\wbr{}ต้น\wbr{}ด้วย\wbr{}คีย์ \cmd{C-x}. คีย์\wbr{}บาง\wbr{}ตัว\wbr{}อาจ\wbr{}จะ\wbr{}เหมือน\wbr{}กับ\wbr{}คีย์\wbr{}ลัด\wbr{}ของ\wbr{}แอพ\wbr{}พลิ\wbr{}เค\wbr{}ชัน\wbr{}ใน\wbr{}สภาพ\wbr{}แวด\wbr{}ล้อม GNOME เช่น \cmd{\ovalbox{Ctrl} + \ovalbox{s}} แต่\wbr{}มี\wbr{}ความ\wbr{}หมาย\wbr{}แต่ง\wbr{}กัน. ถ้า\wbr{}ผู้\wbr{}ใช้\wbr{}คุ้น\wbr{}เคย\wbr{}กับ\wbr{}คีย์\wbr{}คำ\wbr{}สั่ง\wbr{}ต่างๆ\wbr{}ใน Emacs แล้ว, ก็\wbr{}จะ\wbr{}ไม่\wbr{}ต้อง\wbr{}ใช้\wbr{}เมาส์\wbr{}เลือก\wbr{}การ\wbr{}กระทำ\wbr{}ต่างๆ\wbr{}จาก\wbr{}เมนู\wbr{}และ\wbr{}ใช้\wbr{}งาน\wbr{}ได้\wbr{}คล่อง\wbr{}กว่า. นอก\wbr{}จาก\wbr{}นั้น\wbr{}คีย์\wbr{}คำ\wbr{}สั่ง\wbr{}ใน Emacs สามารถ\wbr{}ใช้\wbr{}ใน bash เชลล์\wbr{}ได้\wbr{}ด้วย.
+
+การ\wbr{}กระทำ\wbr{}กับ\wbr{}ไฟล์\wbr{}หรือบัฟเฟอร์\wbr{}บาง\wbr{}ครั้ง Emacs ต้องการ\wbr{}ให้\wbr{}ผู้\wbr{}ใช้\wbr{}ป้อน\wbr{}ข้อ\wbr{}มูล\wbr{}เช่น\wbr{}ชื่อบัฟเฟอร์\wbr{}หรือ\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ด้วย\wbr{}แป้น\wbr{}พิมพ์. Emacs จะ\wbr{}แสดง\wbr{}พร\wbr{}อมต์\wbr{}หรือ\wbr{}คำ\wbr{}ถาม\wbr{}ต่างๆ\wbr{}ที่\wbr{}มิ\wbr{}นิบัฟเฟอร์. ถ้า\wbr{}ผู้\wbr{}ใช้\wbr{}ต้องการ\wbr{}เลิก\wbr{}การ\wbr{}ป้อน\wbr{}ข้อ\wbr{}มูล\wbr{}ใน\wbr{}มิ\wbr{}นิบัฟเฟอร์\wbr{}ให้\wbr{}กด\wbr{}คีย์ \cmd{C-g} (keyboard-quit).
+
+\begin{itemize}
+\item \cmd{C-x C-f} -- find-file --- สำหรับ\wbr{}เปิด\wbr{}อ่าน\wbr{}ไฟล์\wbr{}เข้า\wbr{}สู่บัฟเฟอร์\wbr{}เพื่อ\wbr{}แก้\wbr{}ไข\wbr{}ต่อ\wbr{}ไป. เมื่อ\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง\wbr{}นี้\wbr{}แล้ว Emacs จะ\wbr{}แสดง\wbr{}พร\wbr{}อมต์\wbr{}ถาม\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ที่\wbr{}มิ\wbr{}นิบัฟเฟอร์. ผู้\wbr{}ใช้\wbr{}ต้อง\wbr{}พิมพ์\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ที่\wbr{}ต้องการ\wbr{}เปิด\wbr{}และ\wbr{}การ\wbr{}พิมพ์\wbr{}ชื่อ\wbr{}ไฟล์ Emacs จะ\wbr{}ชื่อ\wbr{}เติม\wbr{}เต็ม\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ให้\wbr{}ด้วย. การ\wbr{}เติม\wbr{}เต็ม\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ให้\wbr{}กด\wbr{}คีย์ \cmd{\ovalbox{Tab}} หรือ\wbr{}กด\wbr{}คีย์ \cmd{\ovalbox{Tab} \ovalbox{Tab}} เพื่อ\wbr{}แสดง\wbr{}ราย\wbr{}การ\wbr{}ไฟล์\wbr{}หรือ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ใน\wbr{}กรณี\wbr{}ที่\wbr{}ไม่\wbr{}สามารถ\wbr{}เติม\wbr{}เต็ม\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ให้\wbr{}ทัน\wbr{}ที.
+
+
+
+คำ\wbr{}สั่ง find-file ยัง\wbr{}ใช้\wbr{}สร้าง\wbr{}ไฟล์\wbr{}ใหม่\wbr{}ได้\wbr{}โดย\wbr{}การ\wbr{}เขียน\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ตอน\wbr{}ที่\wbr{}ถาม.
+
+\begin{figure}[!hbt]
+\plfigure{.5}{find-file.eps}{เปิด\wbr{}ไฟล์\wbr{}หรือ\wbr{}สร้าง\wbr{}ไฟล์\wbr{}ใหม่.}{find-file}
+\end{figure}
+
+\begin{figure}[!hbt]
+\plfigure{.5}{find-file-completion.eps}{เติม\wbr{}เต็ม\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}หรือ\wbr{}แสดง\wbr{}ราย\wbr{}การ\wbr{}ไฟล์.}{find-file-completion}
+\end{figure}
+
+\item \cmd{C-x C-s} -- save-buffer --- หลัง\wbr{}จาก\wbr{}ที่\wbr{}แก้\wbr{}ไข\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}อยู่\wbr{}ในบัฟเฟอร์\wbr{}และ\wbr{}ต้องการ\wbr{}บันทึก\wbr{}ข้อ\wbr{}มูล\wbr{}ลง\wbr{}ใน\wbr{}ไฟล์\wbr{}ให้\wbr{}กด\wbr{}คีย์ \cmd{C-x C-s}. Emacs จะ\wbr{}แสดง\wbr{}ข้อ\wbr{}ความ\wbr{}บอก\wbr{}ให้\wbr{}ผู้\wbr{}ใช้\wbr{}รู้\wbr{}ว่า\wbr{}ได้\wbr{}บันทึก\wbr{}ข้อ\wbr{}มูล\wbr{}ลง\wbr{}ใน\wbr{}ไฟล์\wbr{}แล้ว\wbr{}ที่\wbr{}มิ\wbr{}นิบัฟเฟอร์.
+\item \cmd{C-x C-w} -- write-file --- บันทึก\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}อยู่\wbr{}ในบัฟเฟอร์\wbr{}ลง\wbr{}ใน\wbr{}ไฟล์\wbr{}โดย\wbr{}จะ\wbr{}ถาม\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ให้\wbr{}ผู้\wbr{}ใช้\wbr{}ระบุ\wbr{}ใน\wbr{}บริเวณ\wbr{}มิ\wbr{}นิบัฟเฟอร์.
+\item \cmd{C-x C-c} -- save-buffers-kill-emacs --- จบ\wbr{}การ\wbr{}ทำ\wbr{}งาน Emacs และ\wbr{}ถ้า\wbr{}มีบัฟเฟอร์\wbr{}ที่\wbr{}ยัง\wbr{}ไม่\wbr{}ได้\wbr{}บันทึก\wbr{}ลง\wbr{}ใน\wbr{}ไฟล์\wbr{}จะ\wbr{}ถาม\wbr{}ให้\wbr{}ผู้\wbr{}ย้ำ\wbr{}ให้\wbr{}ผู้\wbr{}ใช้\wbr{}บันทึกบัฟเฟอร์\wbr{}ก่อน\wbr{}จบ\wbr{}การ\wbr{}ทำ\wbr{}งาน.
+\item \cmd{C-x i} -- insert-file --- คำ\wbr{}สั่ง\wbr{}นี้\wbr{}ใช้\wbr{}สำหรับ\wbr{}แทรก\wbr{}ข้อ\wbr{}มูล\wbr{}จาก\wbr{}ไฟล์\wbr{}อื่นๆ\wbr{}ที่\wbr{}ระบุ\wbr{}ใน\wbr{}ตำแหน่งเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}ปัจจุบัน.
+\item \cmd{C-x b} -- switch-to-buffer --- บรรณาธิ\wbr{}กรณ์ Emacs สามารถ\wbr{}เปิด\wbr{}แก้\wbr{}ไข\wbr{}ไฟล์\wbr{}ได้\wbr{}หลายบัฟเฟอร์\wbr{}พร้อมๆ\wbr{}กัน. ถ้า Emacs ที่\wbr{}ใช้\wbr{}มี\wbr{}หน้า\wbr{}ต่าง\wbr{}เดียว\wbr{}และ\wbr{}เปิดบัฟเฟอร์\wbr{}หลาย\wbr{}ตัว, จะ\wbr{}แสดงบัฟเฟอร์\wbr{}ที่\wbr{}เปิด\wbr{}ตัว\wbr{}ล่า\wbr{}สุด\wbr{}เท่า\wbr{}นั้น. บัฟเฟอร์\wbr{}ที่\wbr{}เปิด\wbr{}ไว้\wbr{}ก่อน\wbr{}จะ\wbr{}ไม่\wbr{}หาย\wbr{}ไป\wbr{}ไหน\wbr{}เพียง\wbr{}แต่\wbr{}จะ\wbr{}ไม่\wbr{}แสดง\wbr{}ให้\wbr{}เห็น\wbr{}ใน\wbr{}หน้า\wbr{}ต่าง. วิธี\wbr{}การ\wbr{}สลับบัฟเฟอร์\wbr{}ไป\wbr{}มา\wbr{}ให้\wbr{}กด\wbr{}คีย์ \cmd{C-x b} แล้ว\wbr{}เขียน\wbr{}ชื่อบัฟเฟอร์\wbr{}ที่\wbr{}ต้องการ\wbr{}เปลี่ยน\wbr{}ที่\wbr{}มิ\wbr{}นิบัฟเฟอร์. Emacs มี\wbr{}การ\wbr{}ช่วย\wbr{}เติม\wbr{}เต็ม\wbr{}ชื่อบัฟเฟอร์\wbr{}ให้\wbr{}ด้วย\wbr{}ถ้า\wbr{}กด \cmd{\ovalbox{Tab}} หรือ \cmd{\ovalbox{Tab} \ovalbox{Tab}}.
+\item \cmd{C-x C-b} -- list-buffers --- คำ\wbr{}สั่ง\wbr{}สำหรับ\wbr{}แสดง\wbr{}ชื่อบัฟเฟอร์\wbr{}ที่ Emacs รับ\wbr{}รู้\wbr{}ทั้ง\wbr{}หมด.
+\item \cmd{C-x k} -- kill-buffer --- ทำลายบัฟเฟอร์\wbr{}ที่\wbr{}ใช้\wbr{}อยู่. Emacs จะ\wbr{}ถาม\wbr{}ย้ำ\wbr{}ถ้าบัฟเฟอร์\wbr{}ยัง\wbr{}ไม่\wbr{}ได้\wbr{}บันทึก\wbr{}ลง\wbr{}ไฟล์.
+\end{itemize}
+
+\subsubsection{หน้า\wbr{}ต่าง}
+หน้า\wbr{}ต่าง\wbr{}ใน Emacs คือ\wbr{}พื้น\wbr{}ที่\wbr{}สำหรับ\wbr{}แสดง\wbr{}เนื้อ\wbr{}หา\wbr{}ของบัฟเฟอร์\wbr{}และ\wbr{}ใน\wbr{}ที่\wbr{}นี้\wbr{}จะ\wbr{}เรียก\wbr{}หน้า\wbr{}ต่าง\wbr{}โดย\wbr{}รวม\wbr{}ที่\wbr{}แสดง\wbr{}ใน\wbr{}ระบบ X วิน\wbr{}โดว์\wbr{}ว่า\emph{เฟ\wbr{}รม (frame)}. หน้า\wbr{}ต่าง\wbr{}หนึ่ง\wbr{}สามารถ\wbr{}แบ่ง\wbr{}ออก\wbr{}เป็น\wbr{}หน้า\wbr{}ต่าง\wbr{}ย่อยๆ\wbr{}ได้\wbr{}ตาม\wbr{}ที่\wbr{}แสดง\wbr{}ใน\wbr{}รูป\wbr{}ที่ \ref{fig:emacs-windows}. การ\wbr{}แบ่ง\wbr{}หน้า\wbr{}ต่าง\wbr{}ย่อย\wbr{}นี้\wbr{}เหมาะ\wbr{}สำหรับ\wbr{}การ\wbr{}แสดงบัฟเฟอร์\wbr{}หลายบัฟเฟอร์\wbr{}พร้อมๆ\wbr{}กัน\wbr{}แทน\wbr{}ที่\wbr{}จะ\wbr{}มี\wbr{}หน้า\wbr{}ต่าง\wbr{}เดียว\wbr{}และ\wbr{}แสดงบัฟเฟอร์\wbr{}ได้\wbr{}ตัว\wbr{}เดียว.
+
+\begin{figure}[!hbt]
+\plfigure{.4}{emacs-windows.eps}{หน้า\wbr{}ต่าง\wbr{}ย่อย\wbr{}แบบ\wbr{}ต่างๆ\wbr{}ใน Emacs.}{emacs-windows}
+\end{figure}
+
+คีย์\wbr{}คำ\wbr{}สั่ง\wbr{}ที่\wbr{}ใช้\wbr{}ควบ\wbr{}คุม\wbr{}หน้า\wbr{}ต่าง\wbr{}มี\wbr{}ดัง\wbr{}ต่อ\wbr{}ไป\wbr{}นี้.
+\begin{itemize}
+\item \cmd{C-x 2} -- split-window-vertically --- แบ่ง\wbr{}หน้า\wbr{}ต่าง\wbr{}ที่\wbr{}ใช้\wbr{}อยู่\wbr{}ออก\wbr{}เป็น\wbr{}สอง\wbr{}ส่วน\wbr{}ใน\wbr{}แนว\wbr{}ตั้ง.
+\item \cmd{C-x 3} -- split-window-horizontally --- แบ่ง\wbr{}หน้า\wbr{}ต่าง\wbr{}ที่\wbr{}ใช้\wbr{}อยู่\wbr{}ออก\wbr{}เป็น\wbr{}สอง\wbr{}ส่วน\wbr{}ใน\wbr{}แนว\wbr{}นอน.
+\item \cmd{C-x o} -- other-window --- เลื่อนเ\wbr{}คอร์เ\wbr{}ซอร์\wbr{}ไป\wbr{}ใน\wbr{}แต่\wbr{}ละ\wbr{}หน้า\wbr{}ต่าง\wbr{}ย่อย\wbr{}ที่\wbr{}มี\wbr{}อยู่\wbr{}ในเฟ\wbr{}รม.
+\item \cmd{C-x 0} -- delete -window --- ปิด\wbr{}หน้า\wbr{}ต่าง\wbr{}ที่\wbr{}ใช้\wbr{}อยู่\wbr{}แต่\wbr{}ไม่\wbr{}ทำลายบัฟเฟอร์\wbr{}ที่\wbr{}หน้า\wbr{}ต่าง\wbr{}นั้น\wbr{}แสดง\wbr{}ผล.\mymemo{ระวัง\wbr{}สับ\wbr{}สน\wbr{}ระหว่าง\wbr{}แนว\wbr{}คิด\wbr{}เรื่อง\wbr{}หน้า\wbr{}ต่าง\wbr{}และบัฟเฟอร์.}
+\item \cmd{C-x 1} -- delete-other-windows --- ปิด\wbr{}หน้า\wbr{}ต่าง\wbr{}อื่นๆ\wbr{}ที่\wbr{}ไม่\wbr{}ใช่\wbr{}หน้า\wbr{}ต่าง\wbr{}ที่\wbr{}ใช้\wbr{}อยู่.
+\item \cmd{C-x 5 2} -- make-frame-command --- สร้างเฟ\wbr{}รม\wbr{}ใหม่\wbr{}ต่าง\wbr{}หาก.
+\end{itemize}
+
+\subsubsection{การ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง\wbr{}โดย\wbr{}ตรง}
+สำหรับ\wbr{}ผู้\wbr{}ที่\wbr{}เริ่ม\wbr{}ใช้ Emacs ควร\wbr{}จะ\wbr{}จำ\wbr{}คีย์\wbr{}คำ\wbr{}สั่ง\wbr{}สำคัญๆ\wbr{}เช่น\wbr{}การ\wbr{}เปิด\wbr{}อ่าน\wbr{}ไฟล์, บันทึกบัฟเฟอร์, เลิก\wbr{}การ\wbr{}ทำ\wbr{}งาน เป็นต้น. คำ\wbr{}สั่ง\wbr{}ใน Emacs มี\wbr{}มาก\wbr{}มาย\wbr{}และ\wbr{}ไม่\wbr{}มี\wbr{}ทาง\wbr{}ที่\wbr{}จะ\wbr{}จำ\wbr{}ได้\wbr{}หมด\wbr{}แต่ Emacs มี\wbr{}วิธี\wbr{}ช่วย\wbr{}ให้\wbr{}ผู้\wbr{}ใช้\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง\wbr{}ได้\wbr{}โดย\wbr{}ตรง\wbr{}โดดย\wbr{}การ\wbr{}การ\wbr{}ใช้\wbr{}คีย์\wbr{}คำ\wbr{}สั่ง \cmd{M-x} (execute-extended-command) เป็น\wbr{}การ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง\wbr{}โดย\wbr{}ตรง\wbr{}ใน\wbr{}กรณี\wbr{}ที่\wbr{}คำ\wbr{}สั่ง\wbr{}นั้น\wbr{}ไม่\wbr{}ได้\wbr{}ผูก\wbr{}เชื่อม\wbr{}กับ\wbr{}คีย์\wbr{}ใดๆ\wbr{}หรือ\wbr{}ต้องการ\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง\wbr{}เป็น\wbr{}ชื่อ\wbr{}คำ\wbr{}สั่ง\wbr{}แทน\wbr{}การ\wbr{}กด\wbr{}คีย์\wbr{}คำ\wbr{}สั่ง.
+
+Emacs จะ\wbr{}รอ\wbr{}รับ\wbr{}ชื่อ\wbr{}คำ\wbr{}สั่ง\wbr{}จาก\wbr{}ผู้\wbr{}ใน\wbr{}บริเวณ\wbr{}มิ\wbr{}นิบัฟเฟอร์\wbr{}หลัง\wbr{}จาก\wbr{}ที่\wbr{}กด\wbr{}คีย์ \cmd{M-x}. ถ้า\wbr{}ต้องการ\wbr{}ยก\wbr{}เลิก\wbr{}การ\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง\wbr{}ให้\wbr{}กด\wbr{}คีย์ \cmd{C-g}. ถ้า\wbr{}ผู้\wbr{}ใช้\wbr{}พอ\wbr{}จะ\wbr{}จำ\wbr{}ชื่อ\wbr{}คำ\wbr{}สั่ง\wbr{}ได้\wbr{}สามารถ\wbr{}เขียน\wbr{}ชื่อ\wbr{}คำ\wbr{}สั่ง (ชื่อ\wbr{}ฟังก์ชัน\wbr{}ใน Emacs Lisp) ทั้ง\wbr{}หมด\wbr{}หรือ\wbr{}บาง\wbr{}ส่วน\wbr{}และ\wbr{}กด \cmd{\ovalbox{Tab}} ให้ Emacs ช่วย\wbr{}เติม\wbr{}เต็ม\wbr{}ชื่อ\wbr{}คำ\wbr{}สั่ง\wbr{}ให้. หรือ\wbr{}ถ้า\wbr{}ต้องการ\wbr{}ดู\wbr{}ชื่อ\wbr{}คำ\wbr{}สั่ง\wbr{}ที่\wbr{}เป็น\wbr{}ไป\wbr{}ได้\wbr{}ทั้ง\wbr{}หมด\wbr{}ก็\wbr{}ให้\wbr{}กด \cmd{\ovalbox{Tab}} \cmd{\ovalbox{Tab}}.
+
+\begin{figure}[!hbt]
+\plfigure{.5}{emacs-execute-command.eps}{การ\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง\wbr{}โดย\wbr{}ตรง\wbr{}ใน Emacs.}{emacs-execute-command}
+\end{figure}
+
+จาก\wbr{}รูป\wbr{}ที่ \ref{fig:emacs-execute-command} เป็น\wbr{}ตัว\wbr{}อย่าง\wbr{}การ\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง goto-line โดย\wbr{}ตรง. หลัง\wbr{}จาก\wbr{}ที่\wbr{}กด\wbr{}คีย์ \cmd{M-x} แล้ว\wbr{}พิมพ์\wbr{}คำ\wbr{}ว่า ``go'' แล้ว\wbr{}กด \cmd{\ovalbox{Tab}} \cmd{\ovalbox{Tab}} ดู\wbr{}ว่า\wbr{}มี\wbr{}คำ\wbr{}สั่ง\wbr{}อะไร\wbr{}ที่\wbr{}ขึ้น\wbr{}ต้น\wbr{}คำ\wbr{}ว่า ``go'' บ้าง. ใน\wbr{}กรณี\wbr{}นี้\wbr{}เรา\wbr{}ต้องการ\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง goto-line ก็\wbr{}พิมพ์\wbr{}ชื่อ\wbr{}คำ\wbr{}สั่ง\wbr{}ต่อ ``to-l'' แล้ว\wbr{}กด \cmd{\ovalbox{Tab}} ให้ Emacs ช่วย\wbr{}เติม\wbr{}เต็ม\wbr{}คำ\wbr{}สั่ง\wbr{}ให้, ไม่\wbr{}ต้อง\wbr{}เขียน\wbr{}คำ\wbr{}สั่ง\wbr{}ทั้ง\wbr{}หมด\wbr{}ด้วย\wbr{}ตัว\wbr{}เอง. เมื่อ\wbr{}พิมพ์\wbr{}ชื่อ\wbr{}คำ\wbr{}สั่ง\wbr{}เรียบ\wbr{}ร้อย\wbr{}แล้ว\wbr{}กด \cmd{\ovalbox{Enter}} เพื่อ\wbr{}สั่ง\wbr{}งาน\wbr{}ต่อ\wbr{}ไป.
+
+ถ้า\wbr{}คำ\wbr{}สั่ง\wbr{}นั้น\wbr{}มี\wbr{}การ\wbr{}ผูก\wbr{}เชื่อม\wbr{}ไว้\wbr{}กับ\wbr{}คีย์, Emacs จะ\wbr{}แสดง\wbr{}ข้อ\wbr{}มูล\wbr{}เพิ่ม\wbr{}เติม\wbr{}บอก\wbr{}ไว้\wbr{}ว่า\wbr{}มี\wbr{}คีย์\wbr{}คำ\wbr{}สั่ง\wbr{}อะไร\wbr{}ที่\wbr{}ใช้\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง\wbr{}นั้น (รูป\wbr{}ที่ \ref{fig:emacs-advice}).
+
+\begin{figure}[!hbt]
+\plfigure{.5}{emacs-advice.eps}{ข้อ\wbr{}มูล\wbr{}เพิ่ม\wbr{}เติม\wbr{}หลัง\wbr{}จาก\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง\wbr{}โดย\wbr{}ตรง\wbr{}ใน Emacs.}{emacs-advice}
+\end{figure}
+
+ถ้า\wbr{}เรา\wbr{}กด\wbr{}คีย์ \cmd{M-x} แล้ว\wbr{}กด \cmd{\ovalbox{Tab}} \cmd{\ovalbox{Tab}} จะ\wbr{}เห็น\wbr{}ชื่อ\wbr{}คำ\wbr{}สั่ง\wbr{}ต่างๆ\wbr{}ที่\wbr{}สามารถ\wbr{}ใช้\wbr{}ได้. ใน\wbr{}กรณี\wbr{}ที่\wbr{}ต้อง\wbr{}ทำ\wbr{}อะไร\wbr{}สัก\wbr{}อย่าง\wbr{}แต่\wbr{}ไม่\wbr{}รู้\wbr{}ชื่อ\wbr{}คำ\wbr{}สั่ง\wbr{}อาจ\wbr{}จะ\wbr{}ดู\wbr{}ราย\wbr{}การ\wbr{}คำ\wbr{}สั่ง\wbr{}ที่\wbr{}แสดง\wbr{}ไว้\wbr{}ทั้ง\wbr{}หมด. แต่\wbr{}วิธี\wbr{}ไม่\wbr{}ใช่\wbr{}วิธี\wbr{}ที่\wbr{}เหมาะ\wbr{}สม\wbr{}และ Emacs มี\wbr{}คำ\wbr{}สั่ง apropos-command ซึ่ง\wbr{}ผูก\wbr{}เชื่อม\wbr{}ไว้\wbr{}กับ\wbr{}คีย์ \cmd{C-h a}. การ\wbr{}หา\wbr{}ชื่อ\wbr{}คำ\wbr{}สั่ง\wbr{}จะ\wbr{}ใช้ regular expression หรือ\wbr{}คำ\wbr{}ธรรม\wbr{}ดา\wbr{}ใน\wbr{}การ\wbr{}ค้น\wbr{}หา.
+
+\begin{figure}[!hbt]
+\plfigure{.5}{emacs-apropos-results.eps}{คำ\wbr{}สั่ง apropos และ\wbr{}ผล\wbr{}ลัพธ์\wbr{}ใน Emacs.}{emacs-apropos-results}
+\end{figure}
+
+ผล\wbr{}ลัพธ์\wbr{}ที่\wbr{}แสดง\wbr{}จะ\wbr{}มี\wbr{}ราย\wbr{}ละเ\wbr{}อี\wbr{}ยก\wbr{}คร่าว\wbr{}อธิบาย\wbr{}การ\wbr{}ทำ\wbr{}งาน\wbr{}และ\wbr{}คีย์\wbr{}คำ\wbr{}สั่ง\wbr{}ที่\wbr{}ผูก\wbr{}เชื่อม\wbr{}ไว้. จาก\wbr{}รูป \ref{fig:emacs-apropos-results} เป็น\wbr{}ตัว\wbr{}อย่าง\wbr{}หา\wbr{}คำ\wbr{}สั่ง\wbr{}ที่\wbr{}เกี่ยว\wbr{}กับ\wbr{}การ\wbr{}ตรวจ\wbr{}สะกด\wbr{}คำ. ถ้า\wbr{}ต้องการ\wbr{}ตรวจ\wbr{}การ\wbr{}สะกด\wbr{}คำ\wbr{}ภาษา\wbr{}ไทย\wbr{}อังกฤษ\wbr{}สามารถ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง ispell-word หรือ\wbr{}คีย์\wbr{}คำ\wbr{}สั่ง \cmd{M-\$}.
+
+
+\subsubsection{ขอ\wbr{}ความ\wbr{}ช่วย\wbr{}เหลือ}
+ใน Emacs จะ\wbr{}มี\wbr{}คำ\wbr{}สั่ง\wbr{}ช่วย\wbr{}เหลือ\wbr{}ต่างๆ\wbr{}และ\wbr{}จะ\wbr{}มี\wbr{}คีย์\wbr{}คำ\wbr{}สั่ง\wbr{}ขึ้น\wbr{}ต้น\wbr{}ด้วย \cmd{C-h}. คีย์\wbr{}คำ\wbr{}สั่ง\wbr{}ที่\wbr{}เกี่ยว\wbr{}กับ\wbr{}การ\wbr{}ช่วย\wbr{}เหลือ\wbr{}ต่างๆ\wbr{}ที่\wbr{}สำคัญๆ\wbr{}ได้\wbr{}แก่.
+\begin{itemize}
+\item \cmd{C-h a} -- command-apropos --- ใช้\wbr{}ค้น\wbr{}หา\wbr{}คำ\wbr{}สั่ง\wbr{}ใช้\wbr{}งาน.
+\item \cmd{C-h b} -- describe-bindings --- อธิบาย\wbr{}คีย์\wbr{}คำ\wbr{}สั่ง\wbr{}ใน\wbr{}โหมด\wbr{}ต่างๆ\wbr{}ที่\wbr{}ใช้\wbr{}อยู่\wbr{}ว่า\wbr{}มี\wbr{}คีย์\wbr{}คำ\wbr{}สั่ง\wbr{}อะไร\wbr{}บ้าง\wbr{}และ\wbr{}ผูก\wbr{}เชื่อม\wbr{}ไว้\wbr{}กับ\wbr{}คำ\wbr{}สั่ง\wbr{}ชื่อ\wbr{}อะไร. ผู้\wbr{}ใช้\wbr{}สามารถ\wbr{}สำรวจ\wbr{}คีย์\wbr{}คำ\wbr{}สั่ง\wbr{}ทั้ง\wbr{}หมด\wbr{}ที่\wbr{}ใช้\wbr{}ได้\wbr{}ด้วย\wbr{}คำ\wbr{}สั่ง\wbr{}นี้.
+\item \cmd{C-h f} -- describe-function --- หลัง\wbr{}จาก\wbr{}ที่\wbr{}ระบุ\wbr{}ชื่อ\wbr{}ฟังก์ชัน\wbr{}จะ\wbr{}อธิบาย\wbr{}การ\wbr{}ทำ\wbr{}งาน\wbr{}อย่าง\wbr{}คร่าวๆ\wbr{}และ\wbr{}คีย์\wbr{}คำ\wbr{}สั่ง\wbr{}ที่\wbr{}ผูก\wbr{}เชื่อม\wbr{}ไว้ (ถ้า\wbr{}มี).
+\item \cmd{C-h i} -- info --- ดู\wbr{}คู่\wbr{}มือ\wbr{}การ\wbr{}ใช้\wbr{}งาน\wbr{}โปรแกรม\wbr{}ต่าง\wbr{}แบบ info ด้วย Emacs.
+\item \cmd{C-h k} -- describe-key --- อธิบาย\wbr{}คีย์\wbr{}คำ\wbr{}สั่ง\wbr{}ที่\wbr{}กด\wbr{}ว่า\wbr{}ผูก\wbr{}เชื่อม\wbr{}อยู่\wbr{}กับ\wbr{}คำ\wbr{}สั่ง\wbr{}อะไร.
+\item \cmd{C-h m} -- describe-mode --- อธิบาย\wbr{}โหมด\wbr{}ที่บัฟเฟอร์\wbr{}ใช้\wbr{}อยู่.
+\item \cmd{C-h p} -- finder-by-keyword --- หา\wbr{}ชื่อแ\wbr{}พก\wbr{}เกจ\wbr{}เพิ่ม\wbr{}เติม\wbr{}ที่\wbr{}ใช้\wbr{}กับ Emacs.
+\item \cmd{C-h t} -- help-with-tutorial --- แสดง\wbr{}ติว\wbr{}ทอ\wbr{}เรีย\wbr{}ลการ\wbr{}ใช้\wbr{}การ Emacs ใน\wbr{}ภาษา\wbr{}ท้อง\wbr{}ถิ่น\wbr{}เช่น\wbr{}ภาษา\wbr{}ไทย\wbr{}เป็นต้น (รูป\wbr{}ที่ \ref{fig:emacs-gui}).
+\end{itemize}
+
+
+\subsubsection{ปรับ\wbr{}แต่ง Emacs}
+โปรแกรม Emacs มี\wbr{}ไฟล์\wbr{}ตั้ง\wbr{}ค่า\wbr{}เริ่ม\wbr{}ต้น\wbr{}ได้\wbr{}แก่ \cmd{\~{}/.emacs}\findex{.emacs} เป็น\wbr{}ไฟล์เท็กซ์\wbr{}ที่\wbr{}เขียน\wbr{}ด้วย\wbr{}ภาษา Emacs Lisp. ใน\wbr{}ไฟล์\wbr{}นี้\wbr{}สามารถ\wbr{}ใช้\wbr{}ฟังก์ชัน\wbr{}ที่\wbr{}เตรียม\wbr{}ไว้\wbr{}ปรับ\wbr{}แต่ง\wbr{}พฤติกรรม\wbr{}ต่างๆ\wbr{}ของ Emacs เช่น\wbr{}โหมด\wbr{}ที่\wbr{}ต้องการ\wbr{}ใช้, ผูก\wbr{}เชื่อม\wbr{}คีย์\wbr{}คำ\wbr{}สั่ง\wbr{}เป็นต้น. การ\wbr{}เขียน\wbr{}ไฟล์\wbr{}ตั้ง\wbr{}ค่า\wbr{}เริ่ม\wbr{}ต้น\wbr{}นี้\wbr{}ต้อง\wbr{}มี\wbr{}ความ\wbr{}รู้\wbr{}เบื้อง\wbr{}ต้น\wbr{}เกี่ยว\wbr{}กับ\wbr{}ภาษา Emacs Lisp ซึ่ง\wbr{}จะ\wbr{}ไม่\wbr{}อธิบาย\wbr{}ใน\wbr{}หนังสือ\wbr{}เล่ม\wbr{}นี้\wbr{}แต่\wbr{}สามารถ\wbr{}หา\wbr{}อ่าน\wbr{}ได้\wbr{}จาก\wbr{}คู่\wbr{}มือ Emacs จาก\wbr{}อินเ\wbr{}ทอร์เน็ต\wbr{}หรือ\wbr{}ใน\wbr{}เมนู\wbr{}ของ Emacs.
+
+\begin{shaded}
+\begin{MyExample}[ไฟล์\wbr{}ตั้ง\wbr{}ค่า\wbr{}เริ่ม\wbr{}ต้น\wbr{}ของ Emacs]\label{ex:dotemacs}
+\begin{MyEx}
+;; \thtt{ตัว\wbr{}อย่าง\wbr{}ไฟล์\wbr{}ตั้ง\wbr{}ค่า\wbr{}เริ่ม\wbr{}ต้น} ~/.emacs
+(set-language-environment 'thai) ;; \thtt{สภาพ\wbr{}แวด\wbr{}ล้อม\wbr{}ภาษา\wbr{}ไทย}
+(global-font-lock-mode)          ;; ให้\wbr{}แสดง\wbr{}สี\wbr{}คีย์\wbr{}เวิร์ด
+(transient-mark-mode t)          ;; แสดง\wbr{}รี\wbr{}เจียน\wbr{}ให้\wbr{}เห็น\wbr{}ชัด
+;; \thtt{ตั้ง\wbr{}ค่า\wbr{}ตัว\wbr{}แปล} user-mail-address
+(setq user-mail-address "poonlap@linux.thai.net")
+;; \thtt{ให้} text-mode \thtt{เป็น\wbr{}โหมด\wbr{}ปริยาย\wbr{}ของบัฟเฟอร์\wbr{}ใหม่}
+(setq default-major-mode 'text-mode)
+\end{MyEx}
+\end{MyExample}
+\end{shaded}
+
+\subsubsection{การ\wbr{}ใช้\wbr{}ภาษา\wbr{}ไทย\wbr{}กับ Emacs}
+Emacs ที่\wbr{}สามารถ\wbr{}ใช้\wbr{}ภาษา\wbr{}ไทย\wbr{}จะ\wbr{}ต้อง\wbr{}เป็น\wbr{}รุ่น 20 เป็นต้น\wbr{}ไป, แสดง\wbr{}ผล\wbr{}ภาษา\wbr{}ไทย\wbr{}และ\wbr{}พิมพ์\wbr{}ภาษา\wbr{}ไทย\wbr{}ได้\wbr{}โดย\wbr{}มี\wbr{}ผัง\wbr{}แป้น\wbr{}พิมพ์\wbr{}ใน\wbr{}ตัว\wbr{}โปรแกรม\wbr{}ไม่\wbr{}เกี่ยว\wbr{}ข้อง\wbr{}กับ\wbr{}ระบบ X วิน\wbr{}โดว์. Emacs จะ\wbr{}เลือก\wbr{}ฟอนต์\wbr{}ภาษา\wbr{}ไทย\wbr{}ที่\wbr{}เหมาะ\wbr{}สม\wbr{}ใน\wbr{}การ\wbr{}แสดง\wbr{}ผล\wbr{}ซึ่ง\wbr{}ถ้า\wbr{}ไม่\wbr{}ชอบ\wbr{}ฟอนต์\wbr{}ใช้\wbr{}สามารถ\wbr{}ระบุ\wbr{}ด้วย\wbr{}ตัว\wbr{}เลือก \cmd{-fn \textit{fontname}} ตอน\wbr{}ที่\wbr{}รัน\wbr{}โปรแกรม Emacs. ตัว\wbr{}อย่าง\wbr{}ต่อ\wbr{}ไป\wbr{}นี้\wbr{}เป็น\wbr{}การ\wbr{}รัน\wbr{}โปรแกรม\wbr{}โดย\wbr{}ใช้\wbr{}ฟอนต์ -nectec-emacs-bold-r-normal--18-180-72-72-c-90-tis620-0 ซึ่ง\wbr{}เป็น\wbr{}ฟอนต์\wbr{}ที่\wbr{}แก้\wbr{}ไข\wbr{}มา\wbr{}จาก\wbr{}ฟอนต์\wbr{}บิตแมป\wbr{}ของเ\wbr{}นค\wbr{}เทค\wbr{}ใช้\wbr{}กับ Emacs ได้.
+\begin{MyExample}[การ\wbr{}ระบุ\wbr{}ฟอนต์\wbr{}ที่\wbr{}ต้องการ\wbr{}ใช้\wbr{}กับ Emacs.]
+\begin{MyEx}
+$ \cin{emacs -fn -nectec-emacs-bold-r-normal--18-180-72-72-c-90-tis620-0}
+ --- \thtt{หรือ} ---
+$ \cin{emacs -fn themacs18}
+\end{MyEx}
+\end{MyExample}
+ฟอนต์\wbr{}ภาษา\wbr{}ไทย\wbr{}ที่\wbr{}ใช้\wbr{}กับ Emacs ต้อง\wbr{}เป็น\wbr{}ฟอนต์\wbr{}ที่\wbr{}ขนาด\wbr{}ของ\wbr{}อักขระ\wbr{}ทุก\wbr{}ตัว\wbr{}มี่\wbr{}ค่า\wbr{}คง\wbr{}ที่\wbr{}รวม\wbr{}ถึง\wbr{}สระ\wbr{}และ\wbr{}วรรณยุกต์\wbr{}ด้วย.
+
+Emacs ที่\wbr{}ต้องการ\wbr{}ใช้\wbr{}ภาษา\wbr{}ไทย\wbr{}ต้อง\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง set-language-environment ให้\wbr{}เป็น\wbr{}ภาษา\wbr{}ไทย\wbr{}ด้วย. คำ\wbr{}สั่ง\wbr{}นี้\wbr{}จะ\wbr{}เตรียม\wbr{}แป้น\wbr{}พิมพ์\wbr{}และ\wbr{}สภาพ\wbr{}แวด\wbr{}ล้อม\wbr{}การ\wbr{}ทำ\wbr{}งาน\wbr{}ภาษา\wbr{}ไทย\wbr{}ให้. ถ้า\wbr{}ไม่\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง\wbr{}นี้\wbr{}โดย\wbr{}ตรง\wbr{}ก็\wbr{}เขียน\wbr{}ไว้\wbr{}ใน\wbr{}ไฟล์\wbr{}ตั้ง\wbr{}ค่า\wbr{}เริ่ม\wbr{}ต้น\wbr{}ที่\wbr{}แสดง\wbr{}ใน\wbr{}ตัว\wbr{}อย่าง\wbr{}ที่ \ref{ex:dotemacs}. เวลา\wbr{}พิมพ์\wbr{}ต้องการ\wbr{}พิมพ์\wbr{}ภาษา\wbr{}ไทย\wbr{}ให้\wbr{}กด\wbr{}คีย์ \cmd{C-\bs} จะ\wbr{}สลับ\wbr{}เปลี่ยน\wbr{}ผัง\wbr{}แป้น\wbr{}พิมพ์\wbr{}ไป\wbr{}มา\wbr{}ระหว่าง\wbr{}ภาษา\wbr{}อังกฤษ\wbr{}และ\wbr{}ภาษา\wbr{}ไทย.
+
+
+
+\section{แอพ\wbr{}พลิ\wbr{}เค\wbr{}ชัน\wbr{}สำ\wbr{}นักงาน}
+ใน\wbr{}ปัจจุบัน\wbr{}แอพ\wbr{}พลิ\wbr{}เค\wbr{}ชัน\wbr{}สำ\wbr{}นักงาน\wbr{}เช่น\wbr{}เตรียม\wbr{}เอก\wbr{}สาร, ตา\wbr{}ราง\wbr{}คำนวณ, นำ\wbr{}เสนอ\wbr{}ผล\wbr{}งาน ฯลฯ มี\wbr{}ความ\wbr{}สำคัญ\wbr{}สำหรับ\wbr{}การ\wbr{}ใช้\wbr{}งาน\wbr{}ประเภท\wbr{}เดสก์ท็\wbr{}อป. โปรแกรม\wbr{}ประเภท\wbr{}นี้\wbr{}เริ่ม\wbr{}พัฒนา\wbr{}และ\wbr{}ใช้\wbr{}งาน\wbr{}ได้\wbr{}ดี\wbr{}หลัง\wbr{}จาก\wbr{}ที่\wbr{}มี\wbr{}ทูลคิต\wbr{}สมัย\wbr{}ใหม่\wbr{}เช่น GTK+ และ Qt ออก\wbr{}มา.
+
+ถ้า\wbr{}พูด\wbr{}ถึง\wbr{}แอพ\wbr{}พลิ\wbr{}เค\wbr{}ชัน\wbr{}สำ\wbr{}นักงาน\wbr{}คง\wbr{}จะ\wbr{}หนี\wbr{}ไม่\wbr{}พ้น\wbr{}ชุด\wbr{}แอพ\wbr{}พลิ\wbr{}เค\wbr{}ชัน\wbr{}สำ\wbr{}นักงาน OpenOffice\gindex{openoffice@OpenOffice} ซึ่ง\wbr{}เดิม\wbr{}ที่\wbr{}เป็น\wbr{}ชุด\wbr{}แอพ\wbr{}พลิ\wbr{}เค\wbr{}ชัน\wbr{}ที่\wbr{}เรีย\wbr{}กว่า ApplixWare สำหรับ\wbr{}ใช้\wbr{}ระบบ\wbr{}ปฏิบัติ\wbr{}การ\wbr{}ยู\wbr{}นิกซ์. ต่อ\wbr{}มา\wbr{}บริษัท Sun Microsystems ซื้อ ApplixWare และ\wbr{}พัฒนา\wbr{}เพิ่ม\wbr{}เติม\wbr{}ให้\wbr{}เป็น StarOffice และ\wbr{}ท้าย\wbr{}สุด\wbr{}เปิด\wbr{}เผย\wbr{}รหัส\wbr{}ต้น\wbr{}ฉบับ\wbr{}และ\wbr{}มอบ\wbr{}ให้\wbr{}ชุม\wbr{}ชน\wbr{}พัฒนา\wbr{}ต่อ\wbr{}ใน\wbr{}ชื่อ\wbr{}ของ OpenOffice. ใน\wbr{}ประเทศ\wbr{}ไทย\wbr{}จะ\wbr{}มี\wbr{}แอพ\wbr{}พลิ\wbr{}เค\wbr{}ชัน\wbr{}สำ\wbr{}นักงาน\wbr{}ที่\wbr{}ใช้\wbr{}กับ\wbr{}ลิ\wbr{}นุกซ์ 2 ตัว\wbr{}ที่\wbr{}ใช้\wbr{}กัน\wbr{}อย่าง\wbr{}กว้าง\wbr{}ขวาง\wbr{}ได้\wbr{}แก่ OfficePladao\gindex{officepladao@OfficePladao} และ OfficeTLE\gindex{officetle@OfficeTLE} ซึ่ง\wbr{}เป็น\wbr{}ชุด\wbr{}ซอฟต์แวร์\wbr{}ที่\wbr{}พัฒนา\wbr{}ต่อ\wbr{}ยอด\wbr{}มา\wbr{}จาก OpenOffice ให้\wbr{}สนับสนุน\wbr{}การ\wbr{}ใช้\wbr{}งาน\wbr{}กับ\wbr{}ภาษา\wbr{}ไทย\wbr{}ได้\wbr{}อย่าง\wbr{}ดี. แต่\wbr{}ใน\wbr{}ปัจจุบัน\wbr{}เริ่ม\wbr{}มี\wbr{}การ\wbr{}รวม\wbr{}ความ\wbr{}สามารถ\wbr{}การ\wbr{}ประมวล\wbr{}ผล\wbr{}ภาษา\wbr{}ไทย\wbr{}เหล่า\wbr{}นั้น\wbr{}กลับ\wbr{}เข้า\wbr{}สู่\wbr{}โครง\wbr{}การ OpenOffice เรื่อยๆ\wbr{}และ\wbr{}ใน\wbr{}อนาคต\wbr{}คาด\wbr{}ว่า\wbr{}สามารถ\wbr{}ใช้\wbr{}ภาษา\wbr{}ไทย\wbr{}ได้\wbr{}กับ OpenOffice โดย\wbr{}ไม่\wbr{}ต้อง\wbr{}พึ่ง OfficePladao หรือ OfficeTLE.
+
+นอก\wbr{}จาก\wbr{}ชุด\wbr{}แอพ\wbr{}พลิ\wbr{}เค\wbr{}ชัน\wbr{}สำ\wbr{}นักงาน OpenOffice แล้ว\wbr{}ยัง\wbr{}มี\wbr{}แอพ\wbr{}พลิ\wbr{}เค\wbr{}ชัน\wbr{}อื่นๆ\wbr{}ที่\wbr{}ใช้\wbr{}ทูลคิต\wbr{}สมัย\wbr{}ใหม่\wbr{}เช่น GTK+ และ Qt เช่น
+
+\begin{itemize}
+\item Abiword --- โป\wbr{}รก\wbr{}แก\wbr{}รม\wbr{}เวิร์ด\wbr{}โปร\wbr{}เซส WYSIWYG (What you see is what you get) ที่\wbr{}ใช้\wbr{}ทูลคิต GTK+.
+\item Gnumeric --- โปรแกรม\wbr{}ตา\wbr{}ราง\wbr{}คำนวณ\wbr{}สำหรับ\wbr{}สภาพ\wbr{}แวด\wbr{}ล้อม GNOME.
+\item Koffice --- ชุด\wbr{}แอพ\wbr{}พลิ\wbr{}เค\wbr{}ชัน\wbr{}สำ\wbr{}นักงาน\wbr{}ใน\wbr{}สภาพ\wbr{}แวด\wbr{}ล้อม\wbr{}เดสก์ท็\wbr{}อป KDE. ผู้\wbr{}ใช้\wbr{}สามารถ\wbr{}เริ่ม\wbr{}การ\wbr{}ทำ\wbr{}งาน\wbr{}ด้วย\wbr{}คำ\wbr{}สั่ง \cmd{koshell}\cindex{koshell} ซึ่ง\wbr{}เป็น\wbr{}ตัว\wbr{}โปรแกรม\wbr{}สำหรับ\wbr{}เรียก\wbr{}ใช้\wbr{}โปรแกรม\wbr{}ส่วน\wbr{}ประกอบ\wbr{}อื่นๆ\wbr{}อีก\wbr{}ที. แอพ\wbr{}พลิ\wbr{}เค\wbr{}ชัน\wbr{}เหล่า\wbr{}นี้\wbr{}ใช้\wbr{}ภาษา\wbr{}ไทย\wbr{}ได้\wbr{}ใน\wbr{}ระดับ\wbr{}ดี.
+\begin{itemize}
+\item \cmd{kaddressbook}\cindex{kaddressbook} --- โปรแกรม\wbr{}เก็บ\wbr{}ที่\wbr{}อยู่\wbr{}สำหรับ\wbr{}ติด\wbr{}ต่อ\wbr{}กับ\wbr{}บุคคล. สามารถ\wbr{}เก็บ\wbr{}ข้อ\wbr{}มูล\wbr{}ใน\wbr{}ระบบ\wbr{}ไฟล์, LDAP หรือ SQL เ\wbr{}ซิร์ฟ\wbr{}เวอร์.
+\item \cmd{karbon}\cindex{karbon} ---  โปรแกรม\wbr{}สำหรับ\wbr{}วาด\wbr{}รูป\wbr{}แบบ\wbr{}เวค\wbr{}เตอร์.
+\item \cmd{kchart}\cindex{kchart} --- โปรแกรม\wbr{}สำหรับ\wbr{}สร้าง\wbr{}รูป\wbr{}ชาร์ต, แผน\wbr{}ภาพ\wbr{}สถิติ\wbr{}ต่างๆ.
+\item \cmd{kformula}\cindex{kformula} --- โปรแกรม\wbr{}สำหรับ\wbr{}เขียน\wbr{}สูตร\wbr{}เลข\wbr{}ใช้\wbr{}กับ\wbr{}แอพ\wbr{}พลิ\wbr{}เค\wbr{}ชัน\wbr{}สำ\wbr{}นักงาน\wbr{}อื่นๆ.
+\item \cmd{kivio}\cindex{kivio} --- โปรแกรม\wbr{}สำหรับ\wbr{}เขียน\wbr{}แผน\wbr{}ผัง\wbr{}หรือโฟล\wbr{}ชาร์ต.
+\item \cmd{kpresenter}\cindex{kpresenter} --- โปรแกรม\wbr{}นำ\wbr{}เสนอ\wbr{}ผล\wbr{}งาน.
+\item \cmd{kspread}\cindex{kspread} --- โปรแกรม\wbr{}ตา\wbr{}ราง\wbr{}คำนวณ.
+\item \cmd{kugar}\cindex{kugar} --- โปรแกรม\wbr{}สำหรับ\wbr{}สร้าง\wbr{}ราย\wbr{}งาน.
+\item \cmd{kword}\cindex{kword} --- โปรแกรม\wbr{}เวิร์ด\wbr{}โปรเซสเซอร์.
+\end{itemize}
+\end{itemize}
+
+\begin{figure}[!hbt]
+\plfigure{.45}{koshell.eps}{ชุด\wbr{}แอพ\wbr{}พลิ\wbr{}เค\wbr{}ชัน\wbr{}สำ\wbr{}นักงาน KOffice.}{koffice}
+\end{figure}
+
+
+
+\section{ก\wbr{}รา\wbr{}ฟิก}
+โปร\wbr{}แร\wbr{}กม\wbr{}ที่\wbr{}เกี่ยว\wbr{}กับ\wbr{}งา\wbr{}นก\wbr{}รา\wbr{}ฟิก\wbr{}ใน\wbr{}ลิ\wbr{}นุกซ์\wbr{}ก้าว\wbr{}หน้า\wbr{}ไป\wbr{}มาก\wbr{}เนื่อง\wbr{}จาก\wbr{}มี\wbr{}การ\wbr{}พัฒนา\wbr{}ทูลคิต\wbr{}และไ\wbr{}ลบ\wbr{}รา\wbr{}รี\wbr{}อำนวย\wbr{}ความ\wbr{}สะดวก\wbr{}มาก\wbr{}มาย. ใน\wbr{}ช่วง\wbr{}นี้\wbr{}จะ\wbr{}แนะ\wbr{}นำ\wbr{}โปรแกรม\wbr{}พอ\wbr{}สังเขป\wbr{}เป็น\wbr{}แนว\wbr{}ทาง\wbr{}ใน\wbr{}การ\wbr{}เลือก\wbr{}ใช้\wbr{}แอพ\wbr{}พลิ\wbr{}เค\wbr{}ชัน\wbr{}ให้\wbr{}เหมาะ\wbr{}สม\wbr{}กับ\wbr{}งาน.
+
+\subsection{Gimp}
+\begin{figure}[!hbt]
+\plfigure{.4}{gimp.eps}{โปรแกรม Gimp.}{gimp}
+\end{figure}
+
+\emph{Gimp (GNU Image manipulation program)}\gindex{gimp@Gimp}\cindex{gimp} เป็น\wbr{}แอพ\wbr{}พลิ\wbr{}เค\wbr{}ชัน\wbr{}เดสก์ท็\wbr{}อป\wbr{}หลัก\wbr{}สำหรับ\wbr{}ลิ\wbr{}นุกซ์\wbr{}ใช้\wbr{}ปรับ\wbr{}แต่ง\wbr{}ภาพ\wbr{}หรือ\wbr{}สร้าง\wbr{}ภาพดิ\wbr{}จิ\wbr{}ตอล. Gimp เป็น\wbr{}ที่\wbr{}ยอม\wbr{}รับ\wbr{}ว่า\wbr{}เป็น\wbr{}โปรแกรมก\wbr{}รา\wbr{}ฟิก\wbr{}ที่\wbr{}เยี่ยม\wbr{}ยอด\wbr{}และ\wbr{}เป็น\wbr{}ตัว\wbr{}เลือก\wbr{}ใช้\wbr{}แทน\wbr{}โปรแกรม\wbr{}ใน\wbr{}ระบบ\wbr{}ปฏิบัติ\wbr{}กา\wbr{}รวิน\wbr{}โดวส์\wbr{}เช่น PhotoShop ได้\wbr{}ใน\wbr{}เกือบ\wbr{}ทุก\wbr{}กรณี. Gimp มี\wbr{}การ\wbr{}จัด\wbr{}การ\wbr{}รูป\wbr{}ด้วย\emph{เล\wbr{}เยอร์ (layer)}, รอง\wbr{}รับ\wbr{}ไฟล์\wbr{}รูป\wbr{}ภาพ\wbr{}หลายฟอร์แ\wbr{}มต, มี\emph{ปลั้ก\wbr{}อิน (plugin)} ช่วย\wbr{}อำนวย\wbr{}ความ\wbr{}สะดวก\wbr{}ใน\wbr{}การ\wbr{}สร้าง\wbr{}เอฟเฟค\wbr{}ต่างๆ. นอก\wbr{}จาก\wbr{}นั้น\wbr{}มี\wbr{}ภาษา scheme\gindex{scheme} ใน\wbr{}ตัว\wbr{}ใช้\wbr{}เขียนสค\wbr{}ริปต์\wbr{}เพื่อ\wbr{}สร้างปลั้ก\wbr{}อิน\wbr{}หรือ\wbr{}เขียนสค\wbr{}ริปต์\wbr{}ประมวล\wbr{}รูป\wbr{}ภาพ\wbr{}โดย\wbr{}ไม่\wbr{}ใช้ GUI ก็\wbr{}ได้.
+
+\subsection{Inkscape}
+\begin{figure}[!hbt]
+\plfigure{.4}{inkscape.eps}{โปรแกรม Inkscape.}{inkscape}
+\end{figure}
+
+
+Inkscape\gindex{inkscape}\cindex{inkscape} เป็น\wbr{}โปรแกรม\wbr{}สำหรับ\wbr{}วาด\wbr{}รูป\wbr{}แบบ\wbr{}เวค\wbr{}เตอร์. ไฟล์\wbr{}ที่\wbr{}สร้าง\wbr{}ด้วย Inkscape เป็นฟอร์แ\wbr{}มต SVG (Scalable Vector Graphic)\gindex{svg@SVG} ซึ่ง\wbr{}เป็น\wbr{}ไฟล์เท็กซ์\wbr{}บันทึก\wbr{}ของ\wbr{}ใน\wbr{}รูป\wbr{}ของ XML.
+
+ภาพ\wbr{}ที่\wbr{}สร้าง\wbr{}ด้วย Inkscape มี\wbr{}ข้อ\wbr{}ดี\wbr{}ที่\wbr{}เป็น\wbr{}เวค\wbr{}เตอร์\wbr{}สามารถ\wbr{}ย่อ\wbr{}ขยาย\wbr{}ได้\wbr{}โดย\wbr{}ที่\wbr{}ภาพ\wbr{}ยัง\wbr{}คง\wbr{}ราย\wbr{}ละเอียด\wbr{}เดิม\wbr{}ไว้. นอก\wbr{}จาก\wbr{}นั้น\wbr{}สามารถ\wbr{}เอ็กซ์\wbr{}พอร์ต\wbr{}เป็นฟอร์แ\wbr{}มต\wbr{}อื่นๆ\wbr{}เช่น eps หรือ png ได้\wbr{}ด้วย. Inkscape รุ่น\wbr{}ใหม่\wbr{}สามารถ\wbr{}กับ\wbr{}โปรแกรม\wbr{}เท\wbr{}รส (trace) รูป\wbr{}ภาพ\wbr{}เช่น \cmd{postrace}\cindex{potrace} ช่วย\wbr{}วาด\wbr{}รูป\wbr{}ได้\wbr{}ง่าย\wbr{}ขึ้น\wbr{}ด้วย.
+
+โปรแกรม\wbr{}ประเภท\wbr{}เดียว\wbr{}กัน\wbr{}กับ Inkscape เช่น \cmd{killustrator}, \cmd{karbon} ฯลฯ.
+
+\subsection{Dia}
+\begin{figure}[!hbt]
+\plfigure{.4}{dia.eps}{โปรแกรม Dia.}{dia}
+\end{figure}
+
+Dia\gindex{dia@Dia}\cindex{dia} เป็น\wbr{}โปรแกรม\wbr{}สำหรับ\wbr{}วาด\wbr{}แผน\wbr{}ภาพ\wbr{}ประกอบ\wbr{}เอก\wbr{}สาร. ตัว\wbr{}โปรแกรม\wbr{}มี\wbr{}ประเภท\wbr{}ของ\wbr{}แผน\wbr{}ภาพ\wbr{}เตรียม\wbr{}ไว้\wbr{}ให้\wbr{}เช่น\wbr{}ใน\wbr{}ประเภท UML จะ\wbr{}มี\wbr{}เครื่อง\wbr{}หมาย\wbr{}ต่างๆ\wbr{}ที่\wbr{}เกี่ยว\wbr{}กับ\wbr{}การ\wbr{}เขียน\wbr{}แผน\wbr{}ภาพ UML, ประเภท\wbr{}ของ Circuit จะ\wbr{}มี\wbr{}รูป\wbr{}ตัว\wbr{}ต้าน\wbr{}ทาน, ได\wbr{}โอด ฯลฯ\wbr{}เตรียม\wbr{}ไว้\wbr{}ให้\wbr{}ใช้ เป็นต้น. โปรแกรม รุ่น\wbr{}ใหม่ๆ\wbr{}เช่น 0.94 สามารถ\wbr{}เอ็กซ์\wbr{}พอร์ต\wbr{}รูป\wbr{}ที่\wbr{}วาด\wbr{}เป็นฟอร์แ\wbr{}มต\wbr{}เวค\wbr{}เตอร์\wbr{}อื่นๆ\wbr{}ได้\wbr{}เช่น eps และ\wbr{}แสดง\wbr{}ฟอนต์\wbr{}ภาษา\wbr{}ไทย\wbr{}ได้\wbr{}ด้วย.
+
+โปรแกรม\wbr{}ประเภท\wbr{}เดียว\wbr{}กัน\wbr{}กับ Dia เช่น \cmd{kivio}, \cmd{xfig}\cindex{xfig}, \cmd{tgif}\cindex{tgif}, \cmd{kdraw}\cindex{kdraw} ฯลฯ.
+
+\subsection{ImageMagick}
+ImageMagick\gindex{imagemagick@ImageMagick} เป็นไ\wbr{}ลบ\wbr{}รา\wbr{}รี\wbr{}ภาษา\wbr{}คอมพิวเตอร์\wbr{}ต่างๆ\wbr{}สำหรับ\wbr{}ประมวล\wbr{}ผล\wbr{}รูป\wbr{}ภาพ\wbr{}และ\wbr{}มี\wbr{}จุด\wbr{}เด่น\wbr{}ที่\wbr{}รับ\wbr{}รู้\wbr{}ประเภท\wbr{}รูป\wbr{}ได้\wbr{}หลายฟอร์แ\wbr{}มต. ในแพ็ก\wbr{}เกจ ImageMagick จะ\wbr{}มี\wbr{}โปรแกรม\wbr{}บรรทัด\wbr{}คำ\wbr{}สั่ง\wbr{}รวม\wbr{}ที่\wbr{}สำคัญๆ\wbr{}อยู่\wbr{}ด้วย\wbr{}ได้\wbr{}แก่
+\begin{itemize}
+\item \cmd{display}\cindex{display} --- สำหรับ\wbr{}แสดง\wbr{}รูปฟอร์แ\wbr{}มต\wbr{}ต่างๆ\wbr{}ใน\wbr{}ระบบ X วิน\wbr{}โดว์. ตัว\wbr{}โปรแกรม\wbr{}จะ\wbr{}มี\wbr{}เมนู\wbr{}สำหรับ\wbr{}ประมวล\wbr{}ผล\wbr{}รูป\wbr{}ภาพ\wbr{}เช่น หนุน\wbr{}รูป, ปรับ\wbr{}แสง\wbr{}สี, แปลงฟอร์แ\wbr{}มต เป็นต้น. วิธี\wbr{}ใช้\wbr{}ที่\wbr{}ง่าย\wbr{}ที่\wbr{}สุด\wbr{}คือ\wbr{}ให้\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}รูป\wbr{}ภาพ\wbr{}ที่\wbr{}ต้องการ\wbr{}แสดง\wbr{}ผล\wbr{}เป็น\wbr{}อาร์กิวเ\wbr{}มนต์\wbr{}ของ\wbr{}คำ\wbr{}สั่ง.
+\item \cmd{convert}\cindex{convert} --- แปลงฟอร์แ\wbr{}มต\wbr{}รูป\wbr{}ภาพ\wbr{}ด้วย\wbr{}บรรทัด\wbr{}คำ\wbr{}สั่ง (ตัว\wbr{}อย่าง\wbr{}ที่ \ref{ex:shellconvert}). คำ\wbr{}สั่ง\wbr{}นี้\wbr{}ถ้า\wbr{}ใช้\wbr{}งาน\wbr{}อย่าง\wbr{}จริง\wbr{}จัง\wbr{}สามารถ\wbr{}ทำ\wbr{}อะไร\wbr{}ได้\wbr{}มาก\wbr{}กว่า\wbr{}การ\wbr{}แปลงฟอร์แ\wbr{}มต, ให้\wbr{}อ่าน\wbr{}ราย\wbr{}ละเอียด\wbr{}เพิ่ม\wbr{}เติม\wbr{}จาก\wbr{}แมน\wbr{}เพจ.
+\item \cmd{composite}\cindex{composite} --- บรรทัด\wbr{}คำ\wbr{}สั่ง\wbr{}สำหรับ\wbr{}สร้าง\wbr{}ประกอบ\wbr{}รูป. เช่น\wbr{}การ\wbr{}สร้าง\wbr{}รูป\wbr{}ใหม่\wbr{}โดย\wbr{}หา\wbr{}ผล\wbr{}ต่าง\wbr{}ของ\wbr{}รูป\wbr{}สอง\wbr{}รูป\wbr{}ที่\wbr{}กำหนด\wbr{}เป็นต้น.
+\item \cmd{conjure}\cindex{conjure} --- ตัวแปร\wbr{}ภาษา MSL (Magick Scripting Language) เป็น\wbr{}ภาษา\wbr{}แบบ XML เขียนสค\wbr{}ริปต์\wbr{}ประมวล\wbr{}ผล\wbr{}รูป\wbr{}ภาพ.
+\item \cmd{identify}\cindex{identify} --- แสดง\wbr{}ข้อ\wbr{}มูล\wbr{}ต่าง\wbr{}ของ\wbr{}รูป\wbr{}ที่\wbr{}ระบุ\wbr{}เป็น\wbr{}อาร์กิวเ\wbr{}มนต์\wbr{}เช่นฟอร์แ\wbr{}มต\wbr{}รูป\wbr{}ภาพ\wbr{}และ\wbr{}ขนาด\wbr{}เป็นต้น. ถ้า\wbr{}ใช้\wbr{}ตัว\wbr{}เลือก \cmd{-verbose} ประกอบ\wbr{}จะ\wbr{}แสดง\wbr{}ราย\wbr{}ละเอียด\wbr{}เพิ่ม\wbr{}ขึ้น\wbr{}กว่า\wbr{}ปรกติ.
+\item \cmd{import}\cindex{import} --- จับ\wbr{}หน้า\wbr{}จอ\wbr{}แล้ว\wbr{}บันทึก\wbr{}เป็น\wbr{}รูป\wbr{}ภาพ\wbr{}ตามฟอร์แ\wbr{}มต\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ที่\wbr{}ระบุ\wbr{}เป็น\wbr{}อาร์กิวเ\wbr{}มนต์. ใน\wbr{}กรณี\wbr{}ที่\wbr{}ต้องการ\wbr{}จับ\wbr{}หน้า\wbr{}จอ\wbr{}พื้นโต็ะ\wbr{}ให้\wbr{}ใช้\wbr{}ตัว\wbr{}เลือก \cmd{-window root}. โปรแกรม\wbr{}ประเภท\wbr{}เดียว\wbr{}กัน\wbr{}เช่น \cmd{gnome-panel-screenshot} เป็นต้น.
+\end{itemize}
+
+\subsection{โปรแกรม\wbr{}ดู\wbr{}รูป\wbr{}ภาพ}
+\cmd{gthumb}\cindex{gthumb} เป็น\wbr{}โปรแกรม\wbr{}สำหรับ\wbr{}ดู\wbr{}รูป\wbr{}ภาพ, ใช้\wbr{}ง่าย. วิธี\wbr{}การ\wbr{}ดู\wbr{}รูป\wbr{}มี\wbr{}หลาย\wbr{}แบบ\wbr{}เช่น\wbr{}ดู\wbr{}รูป\wbr{}แบบ\wbr{}เล็กๆ\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี, ดู\wbr{}รูป\wbr{}เดี่ยวๆ, ดู\wbr{}รูป\wbr{}เต็ม\wbr{}หน้า\wbr{}จอ, และ\wbr{}ดู\wbr{}แบบ\wbr{}สไลด์\wbr{}โชว์. นอก\wbr{}จาก\wbr{}การ\wbr{}ดู\wbr{}รูป\wbr{}แล้ว\wbr{}ยัง\wbr{}สามารถ\wbr{}ปรับ\wbr{}แสง\wbr{}สี, ขนาด\wbr{}ได้\wbr{}และ\wbr{}เลือก\wbr{}รูป\wbr{}สร้างอัลบัม\wbr{}แสดง\wbr{}บนเว็บ, สร้าง\wbr{}ภาพ\wbr{}ดรรชนี\wbr{}จาก\wbr{}รูป\wbr{}ที่\wbr{}เลือก\wbr{}ไว้.
+
+โปรแกรม\wbr{}ประเภท\wbr{}เดียว\wbr{}กัน\wbr{}กับ gThumb เช่น \cmd{eog}\cindex{eog} (Eye Of GNOME), \cmd{xv}\cindex{xv}, \cmd{nautilus} ฯลฯ.
+
+\subsection{โปรแกรม\wbr{}ดู\wbr{}เอก\wbr{}สาร}
+เอก\wbr{}สาร\wbr{}ที่\wbr{}เผย\wbr{}แพร่\wbr{}ทาง\wbr{}อินเ\wbr{}ทอร์เน็ต\wbr{}ใน\wbr{}ปัจจุบัน\wbr{}มัก\wbr{}จะ\wbr{}เป็นฟอร์แ\wbr{}มต\wbr{}ใน\wbr{}ตระกูล PostScript ซึ่ง\wbr{}รวม\wbr{}ถึง\wbr{}เอก\wbr{}สาร\wbr{}แบบ PDF ด้วย. เอก\wbr{}สาร\wbr{}เหล่า\wbr{}นี้\wbr{}สามารถ\wbr{}เปิด\wbr{}ดู\wbr{}ด้วย\wbr{}ตัว\wbr{}แปล\wbr{}ภาษา PostScript ได้\wbr{}แก่\wbr{}โปรแกรม \cmd{gs}\cindex{gs} (GhostScript)\gindex{ghostscript@GhostScript}. โปรแกรม\wbr{}ที่\wbr{}ใช้\wbr{}เปิด\wbr{}อ่าน\wbr{}เอก\wbr{}สาร\wbr{}เหล่า\wbr{}นี้\wbr{}เป็น\wbr{}ซอฟต์แวร์\wbr{}เสรี\wbr{}และ\wbr{}มัก\wbr{}จะ\wbr{}เป็นฟ\wbr{}รอนต์\wbr{}เอ็น (frontend) ของ\wbr{}ตัว\wbr{}แปล\wbr{}ภาษา GhostScript เช่น \cmd{gv}\cindex{gv}, \cmd{ggv}\cindex{ggv}, \cmd{gpdf}, \cmd{xpdf}\cindex{xpdf}, \cmd{kpdf}\cindex{kpdf} ฯลฯ. ส่วน\wbr{}โปรแกรม\wbr{}ที่\wbr{}ไม่\wbr{}เปิด\wbr{}เผย\wbr{}รหัส\wbr{}แต่\wbr{}ใช้\wbr{}เปิด\wbr{}อ่าน\wbr{}เอก\wbr{}สาร PDF ที่\wbr{}นิยม\wbr{}ได้\wbr{}แก่ Adobe Acrobat Reader (\cmd{acroread})\cindex{acroread}.
+
+\begin{figure}[!hbt]
+\plfiguretwo{.4}{gpdf.eps}{acroread.eps}{โปรแกรม \cmd{gpdf} และ \cmd{acroread}.}{pdfreader}
+\end{figure}
+
+%\begin{figure}[!hbt]
+%\plfigure{.45}{acroread.eps}{โปรแกรม \cmd{acroread}.}{acroread}
+%\end{figure}
+
+
+\section{มัล\wbr{}ติ\wbr{}มีเ\wbr{}ดีย}
+โปรแกรม\wbr{}ที่\wbr{}เกี่ยว\wbr{}กับมัล\wbr{}ติ\wbr{}มีเ\wbr{}ดีย\wbr{}ใน\wbr{}ลิ\wbr{}นุกซ์\wbr{}มี\wbr{}ให้\wbr{}ใช้\wbr{}มาก\wbr{}ขึ้น\wbr{}เรื่อยๆ\wbr{}และ\wbr{}พัฒนา\wbr{}ได้\wbr{}ดี\wbr{}ขึ้น. ปัญหา\wbr{}หลัก\wbr{}ของ\wbr{}โปรแกรม\wbr{}เหล่า\wbr{}นี้\wbr{}ไม่\wbr{}ใช่\wbr{}ปัญหา\wbr{}ทาง\wbr{}เทคนิค\wbr{}แต่\wbr{}เป็น\wbr{}ปัญหา\wbr{}เรื่อง\wbr{}สิทธิ\wbr{}บัตร\wbr{}เช่น \emph{codec (compressor-decompressor)} \myvocab{c}{codec}{การ\wbr{}เข้า\wbr{}ถอด\wbr{}รหัส\wbr{}ข้อ\wbr{}มูล\wbr{}เสียง\wbr{}หรือ\wbr{}ภาพ\wbr{}ใน\wbr{}ระบบดิ\wbr{}จิ\wbr{}ตอล.} ที่\wbr{}ใช้\wbr{}เปิด\wbr{}ไฟล์\wbr{}ดู\wbr{}หนัง\wbr{}จด\wbr{}สิทธิ\wbr{}บัตร\wbr{}ไว้\wbr{}และ\wbr{}ไม่\wbr{}สามารถ\wbr{}ใช้\wbr{}ได้\wbr{}อย่าง\wbr{}เสรี. ดัง\wbr{}นั้นดิส\wbr{}โทร\wbr{}บาง\wbr{}ค่าย\wbr{}จะ\wbr{}ไม่\wbr{}เตรียมแพ็ก\wbr{}เกจ\wbr{}สำหรับ\wbr{}ดู\wbr{}หนัง\wbr{}ให้, แต่\wbr{}ผู้\wbr{}ใช้\wbr{}สามารถ\wbr{}ดาว์นโ\wbr{}หลดไบ\wbr{}นารี\wbr{}หรือ\wbr{}รหัส\wbr{}ต้น\wbr{}ฉบับ\wbr{}ได้\wbr{}จากเว็บ\wbr{}ไซด์\wbr{}ของ\wbr{}ผู้\wbr{}พัฒนา\wbr{}ซอฟต์แวร์\wbr{}นั้นๆ\wbr{}โดย\wbr{}ตรง.
+
+
+\subsection{โปรแกรม\wbr{}ฟัง\wbr{}เพลง}
+โปรแกรม\wbr{}เล่น\wbr{}เพลง\wbr{}ใน\wbr{}ยุค\wbr{}แรกๆ\wbr{}เป็น\wbr{}โปรแกรม\wbr{}บรรทัด\wbr{}คำ\wbr{}สั่ง\wbr{}คือ\wbr{}โปรแกรม \cmd{mpg123}\cindex{mpg123} แต่\wbr{}ใช่\wbr{}ซอฟต์แวร์\wbr{}เสรี\wbr{}จึง\wbr{}มี\wbr{}การ\wbr{}พัฒนา\wbr{}ซอฟต์แวร์\wbr{}ใหม่\wbr{}ใน\wbr{}ชื่อ \cmd{mpg321}\cindex{mpg321} และ\wbr{}เปิด\wbr{}เป็น\wbr{}ซอฟต์แวร์\wbr{}เสรี. ปัจจุบัน\wbr{}โปรแกรม\wbr{}เล่น\wbr{}ไฟล์\wbr{}เพลงดิ\wbr{}จิ\wbr{}ตอล\wbr{}เปลี่ยน\wbr{}เป็น\wbr{}โปรแกรม\wbr{}แบบ GUI เสีย\wbr{}ส่วน\wbr{}ใหญ่. โปรแกรม\wbr{}ที่\wbr{}ได้\wbr{}ความ\wbr{}นิยม\wbr{}เช่น \cmd{xmms}\cindex{xmms}, \cmd{beep-media-player}\cindex{beep-media-player}, \cmd{rhythmbox} เป็นต้น. โปรแกรม\wbr{}เหล่า\wbr{}นี้\wbr{}ใช้\wbr{}ฟัง\wbr{}เพลง\wbr{}ได้\wbr{}เหมือน\wbr{}กัน\wbr{}แต่\wbr{}อาจ\wbr{}จะ\wbr{}แตก\wbr{}ต่าง\wbr{}กัน\wbr{}ตรง\wbr{}ที่\wbr{}รูป\wbr{}ร่าง\wbr{}หน้า, ความ\wbr{}สามารถ\wbr{}ต่างๆ\wbr{}แล้ว\wbr{}แต่\wbr{}โปรแกรม.
+
+\begin{figure}[!hbt]
+\plfigure{.45}{xmms.eps}{โปรแกรม \cmd{xmms}.}{xmms}
+\end{figure}
+
+\begin{figure}[!hbt]
+\plfigure{.45}{rhythmbox.eps}{โปรแกรม \cmd{rhythmbox}.}{rhythmbox}
+\end{figure}
+
+
+
+\subsection{โปรแกรม\wbr{}สร้าง\wbr{}ไฟล์\wbr{}เพลงดิ\wbr{}จิ\wbr{}ตอล}
+ใน\wbr{}ลิ\wbr{}นุกซ์\wbr{}มี\wbr{}โรป\wbr{}แก\wbr{}รม\wbr{}สำหรับ\wbr{}แปลง\wbr{}เพลง\wbr{}จาก CD ไป\wbr{}เป็น\wbr{}ไฟล์\wbr{}ในฟอร์แ\wbr{}มต MP3 (MPEG layer 3) หรือฟอร์แ\wbr{}มต\wbr{}อื่นๆ\wbr{}ด้วย\wbr{}โปรแกรม \cmd{cdparanoia}\cindex{cdparanoia} หรือ \cmd{cdda2wav}\cindex{cdda2wav}. โปรแกรม\wbr{}นี้\wbr{}เป็น\wbr{}โปรแกรม\wbr{}บรรทัด\wbr{}คำ\wbr{}สั่ง\wbr{}ทำ\wbr{}หน้า\wbr{}ที่\wbr{}สกัด\wbr{}ข้อ\wbr{}มูล\wbr{}เพลง\wbr{}จาก\wbr{}แผ่น\wbr{}เพลง CD ไป\wbr{}เป็น\wbr{}ไฟล์ฟอร์แ\wbr{}มต WAV หรือฟอร์แ\wbr{}มต\wbr{}พื้น\wbr{}ฐาน\wbr{}อื่นๆ. ไฟล์\wbr{}เพลงดิ\wbr{}จิ\wbr{}ตอล\wbr{}ที่\wbr{}สกัด\wbr{}จาก\wbr{}โปรแกรม\wbr{}จะ\wbr{}เป็นฟอร์แ\wbr{}มต WAV ซึ่ง\wbr{}ไม่\wbr{}มี\wbr{}การ\wbr{}บีบ\wbr{}อัด\wbr{}ข้อ\wbr{}มูล\wbr{}ทำ\wbr{}ให้\wbr{}ไฟล์\wbr{}ที่\wbr{}ได้\wbr{}มี\wbr{}ขนาด\wbr{}ใหญ่.  ดัง\wbr{}นั้น\wbr{}จึง\wbr{}มี\wbr{}ความ\wbr{}จำ\wbr{}เป็น\wbr{}ต้อง\wbr{}บีบ\wbr{}อัด\wbr{}ข้อ\wbr{}มูล\wbr{}เพลง\wbr{}เหล่า\wbr{}นี้\wbr{}ต่อ\wbr{}ไป\wbr{}เป็น\wbr{}ไฟล์ฟอร์แ\wbr{}มต\wbr{}อื่นๆ\wbr{}เช่น MP3, OGG (Ogg Vobris)\gindex{ogg@OGG|see{Ogg Vobris}}\gindex{ogg vobris@Ogg Vobris}, FLAC (Free Loose-less Audio Codec)\gindex{flac@FLAC|see{Free Loose-less Audio Codec}}\gindex{free losse-less audio codec@Free Loose-less Audio Codec} ฯลฯ. โปรแกรม\wbr{}สำหรับ\wbr{}แปลง\wbr{}ไฟล์ WAV เป็นฟอร์แ\wbr{}มต\wbr{}อื่นๆ\wbr{}เช่น flacen, lame, mp3enc??? ฯลฯ.
+
+
+ใน\wbr{}การ\wbr{}ใช้\wbr{}งาน\wbr{}จริง\wbr{}มัก\wbr{}จะ\wbr{}ใช้\wbr{}โปรแกรม\wbr{}แบบ GUI เช่น \cmd{grip}\cindex{grip} จัด\wbr{}การ\wbr{}ตั้ง\wbr{}แต่\wbr{}การ\wbr{}สกัด\wbr{}ข้อ\wbr{}มูล\wbr{}ออก\wbr{}จาก\wbr{}แผ่น CD และ\wbr{}บีบ\wbr{}อัด\wbr{}ให้\wbr{}ด้วย\wbr{}ซึ่ง\wbr{}จะ\wbr{}สะดวก\wbr{}กว่า\wbr{}การ\wbr{}ใช้\wbr{}โปรแกรม\wbr{}บรรทัด\wbr{}คำ\wbr{}สั่ง. \cmd{grip} เป็น\wbr{}โปรแกรมฟ\wbr{}รอนต์\wbr{}เอ็น\wbr{}ของ\wbr{}โปรแกรม\wbr{}ที่\wbr{}เกี่ยว\wbr{}ข้อง\wbr{}ต่างๆ\wbr{}เช่น \cmd{cdparanoia}, \cmd{lame} ฯลฯ และ\wbr{}มี\wbr{}ความ\wbr{}สามารถ\wbr{}ดึง\wbr{}ฐาน\wbr{}ข้อ\wbr{}มูล\wbr{}ของ\wbr{}เพลง\wbr{}ใน\wbr{}แผ่น CD มา\wbr{}เขียน\wbr{}เป็น\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}เพลงดิ\wbr{}จิ\wbr{}ตอล\wbr{}ด้วย.
+
+
+\subsection{โปรแกรม\wbr{}ดู\wbr{}หนัง}
+โปรแกรม\wbr{}ดู\wbr{}หนัง, DVD หรือ\wbr{}ไฟล์\wbr{}วิดิ\wbr{}โอ\wbr{}เช่น\wbr{}ไฟล์ AVI ใน\wbr{}ลิ\wbr{}นุกซ์\wbr{}มี\wbr{}อยู่\wbr{}หลาย\wbr{}ตัว\wbr{}เช่น \cmd{xine}, \cmd{vlc}, \cmd{totem}, \cmd{mplayer} ฯลฯ แล้ว\wbr{}แต่\wbr{}เลือก\wbr{}ใช้\wbr{}ตาม\wbr{}ชอบ. เนื่อง\wbr{}จาก\wbr{}โปรแกรม\wbr{}ดู\wbr{}หนัง\wbr{}เหล่า\wbr{}นี้\wbr{}มัก\wbr{}จะ\wbr{}มี\wbr{}ปัญหา\wbr{}เรื่อง\wbr{}สิทธิ\wbr{}บัตร\wbr{}ทำ\wbr{}ให้ดิส\wbr{}โทร\wbr{}บาง\wbr{}ค่าย\wbr{}ไม่\wbr{}เผย\wbr{}แพร่แพ็ก\wbr{}เกจ\wbr{}นั้นๆ\wbr{}แต่\wbr{}ผู้\wbr{}ใช้\wbr{}สามารถ\wbr{}ดาว์นโ\wbr{}หลด\wbr{}ซอฟต์แวร์\wbr{}และ\wbr{}ติด\wbr{}ตั้ง\wbr{}ด้วย\wbr{}ตัว\wbr{}เอง.
+
+\begin{figure}[!hbt]
+\plfigure{.5}{totem.eps}{ดู\wbr{}หนัง\wbr{}ด้วย \cmd{totem}.}{totem}
+\end{figure}
+
+
+โปรแกรม\wbr{}อื่นๆ\wbr{}ที่\wbr{}เกี่ยว\wbr{}กับ\wbr{}วิดิ\wbr{}โอ\wbr{}ได้\wbr{}แก่\wbr{}โปรแกรม\wbr{}แปลง\emph{โค\wbr{}เดก (codec)}ของ\wbr{}ไฟล์\wbr{}วิดิ\wbr{}โอ. โปรแกรม\wbr{}สำหรับ\wbr{}แปลง\wbr{}โค\wbr{}เดก\wbr{}เช่น \cmd{ffmpeg}\cindex{ffmpeg}, \cmd{transcode}\cindex{transcode} ฯลฯ. สำหรับ\wbr{}การ\wbr{}นำ\wbr{}ข้อ\wbr{}มูล\wbr{}เข้า\wbr{}จาก\wbr{}กล้องดิ\wbr{}จิ\wbr{}ตอล\wbr{}วิดิ\wbr{}โอ\wbr{}ใช้\wbr{}โปรแกรม \cmd{dvgrab}\cindex{dvgrab}, \cmd{kino}\cindex{kino} แล้ว\wbr{}แปลง\wbr{}เป็น\wbr{}ไฟล์\wbr{}โค\wbr{}เดก\wbr{}อื่นๆ\wbr{}ภาย\wbr{}หลัง.
+
+\subsection{โปรแกรม\wbr{}เขียน CD, DVD}
+ขั้น\wbr{}ตอน\wbr{}เขียน CD หรือ DVD ใน\wbr{}ระบบ\wbr{}ปฏิบัติ\wbr{}การ\wbr{}ลิ\wbr{}นุกซ์\wbr{}โดย\wbr{}ปรกติ\wbr{}จะ\wbr{}สร้าง\wbr{}ไฟล์อิม\wbr{}เมจ ISO ก่อน. ไฟล์อิม\wbr{}เมจ ISO สร้าง\wbr{}ด้วย\wbr{}คำ\wbr{}สั่ง \cmd{mkisofs} รวม\wbr{}ไฟล์\wbr{}หรือ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ต่างๆ\wbr{}เข้า\wbr{}ด้วย\wbr{}กัน\wbr{}ใน\wbr{}ไฟล์\wbr{}เดียว\wbr{}และ\wbr{}มัก\wbr{}จะ\wbr{}ตั้ง\wbr{}ชื่อ\wbr{}ส่วน\wbr{}ขยาย\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}เป็น \cmd{.iso} หรือ \cmd{.raw}. หลัง\wbr{}จาก\wbr{}ที่\wbr{}ได้\wbr{}ไฟล์อิม\wbr{}เมจ ISO แล้ว\wbr{}ก็\wbr{}จะ\wbr{}ใช้\wbr{}โปรแกรม \cmd{cdrecord}\cindex{cdrecord} ซึ่ง\wbr{}เป็น\wbr{}โปรแกรม\wbr{}บรรทัด\wbr{}คำ\wbr{}สั่ง\wbr{}เขียน\wbr{}ข้อ\wbr{}มูล\wbr{}ใน\wbr{}ไฟล์อิม\wbr{}เมจ ISO ลง\wbr{}ใน\wbr{}แผ่น CD. ถ้า\wbr{}เป็น\wbr{}การ\wbr{}เขียน\wbr{}แผ่น DVD ก็\wbr{}จะ\wbr{}ใช้\wbr{}โปรแกรม \cmd{growisofs}\cindex{growisofs} หรือ \cmd{dvdrecord}\cindex{dvdrecord}.
+
+การ\wbr{}ใช้\wbr{}งาน\wbr{}จริง\wbr{}จะ\wbr{}ใช้\wbr{}โปรแกรม\wbr{}คำ\wbr{}สั่ง\wbr{}ที่\wbr{}แนะ\wbr{}นำ\wbr{}ก็\wbr{}ได้\wbr{}หรือ\wbr{}ใช้\wbr{}โปรแกรม\wbr{}แบบ GUI เพื่อ\wbr{}อำนวย\wbr{}ความ\wbr{}สะดวก\wbr{}เช่น\wbr{}โปรแกรม \cmd{xcdroast}\cindex{xcdroast}, \cmd{nautilus}, \cmd{k3b}\cindex{k3b} เป็นต้น. ปัจจุบัน\wbr{}โปรแกรม\wbr{}ที่\wbr{}นิยม\wbr{}และ\wbr{}เป็น\wbr{}ที่\wbr{}ยอม\wbr{}รับ\wbr{}ว่า\wbr{}ใช้\wbr{}งาน\wbr{}ได้\wbr{}ดี\wbr{}คือ \cmd{k3b}. \cmd{k3b} ไม่\wbr{}ใช่\wbr{}โปรแกรม\wbr{}เขียน CD หรือ DVD ธรรม\wbr{}ดา, โปรแกรม\wbr{}นี้\wbr{}สามารถ\wbr{}สกัด\wbr{}ข้อ\wbr{}มูล\wbr{}หนัง\wbr{}จาก\wbr{}แผ่น DVD แล้ว\wbr{}แปลง\wbr{}เป็น\wbr{}ไฟล์ MPEG-4 ได้\wbr{}ด้วย.
+
+\begin{figure}[!hbt]
+\plfiguretwo{.38}{k3b-main.eps}{k3b-burn.eps}{โปรแกรม \cmd{k3b} สำหรับ\wbr{}เขียน CD หรือ DVD.}{k3b}
+\end{figure}
+
+
+
+\section{อินเ\wbr{}ทอร์เน็ต}
+
+\subsection{เบ\wbr{}ราเ\wbr{}ซอร์}
+\cmd{xmosaic}\cindex{xmosaic} เป็นเบ\wbr{}ราเ\wbr{}ซอร์\wbr{}ตัว\wbr{}แรกๆ\wbr{}ใน\wbr{}ยุค\wbr{}เริ่ม\wbr{}ต้น\wbr{}ของ\wbr{}อินเ\wbr{}ทอร์เน็ต. โปรแกรม\wbr{}นี้\wbr{}เป็นเบ\wbr{}ราวเ\wbr{}ซอร์\wbr{}ที่\wbr{}ทำ\wbr{}งาน\wbr{}บน\wbr{}ระบบ X วิน\wbr{}โดว์\wbr{}ใน\wbr{}ระบบ\wbr{}ปฏิบัติ\wbr{}การ\wbr{}ยู\wbr{}นิกซ์\wbr{}และ\wbr{}ต่อ\wbr{}มา\wbr{}ผู้\wbr{}สร้าง\wbr{}พัฒนาเบ\wbr{}ราเ\wbr{}ซอร์\wbr{}ตัว\wbr{}ต่อ\wbr{}มา\wbr{}คือ Netscape\gindex{netscape@Netscape} และ\wbr{}เผย\wbr{}แพร่\wbr{}รหัส\wbr{}ต้น\wbr{}ฉบับ\wbr{}เป็น Mozilla ใน\wbr{}ที่\wbr{}สุด\wbr{}ราว\wbr{}ปี 1996?.
+
+Mozilla ยัง\wbr{}คง\wbr{}รูป\wbr{}ร่าง\wbr{}และ\wbr{}คุณสมบัติ\wbr{}ต่างๆ\wbr{}เหมือน Netscape เช่น\wbr{}มี\wbr{}โปรแกรม\wbr{}ประกอบ\wbr{}อื่นๆ\wbr{}นอก\wbr{}จาก\wbr{}ตัวเบ\wbr{}ราเ\wbr{}ซอร์\wbr{}เช่น โปรแกรม\wbr{}อ่านเ\wbr{}มล, โปรแกรม\wbr{}ช่วย\wbr{}เขียน\wbr{}โฮม\wbr{}เพจ ฯลฯ. ต่อ\wbr{}มา\wbr{}มี\wbr{}การ\wbr{}แยก\wbr{}โปรแกรมเบ\wbr{}ราเ\wbr{}ซอร์\wbr{}ออก\wbr{}มา\wbr{}อย่าง\wbr{}เดียว\wbr{}และ\wbr{}เปลี่ยน\wbr{}ชื่อ\wbr{}มา\wbr{}เป็น Firefox ที่\wbr{}รู้\wbr{}จัก\wbr{}กัน\wbr{}อย่าง\wbr{}กว้าง\wbr{}ขวาง\wbr{}ทุก\wbr{}วัน\wbr{}นี้. Firefox เป็นเบ\wbr{}ราเ\wbr{}ซอร์\wbr{}ที่\wbr{}ออก\wbr{}แบบ\wbr{}แยก\wbr{}ส่วน\wbr{}ประกอบ\wbr{}การ\wbr{}ทำ\wbr{}งาน\wbr{}ต่างๆ\wbr{}เช่น XP (Cross Platform), XUI (Extensible User Interface), Gekko ฯลฯ. Gekko เอ็น\wbr{}จิน\wbr{}เป็น\wbr{}ส่วน\wbr{}สำหรับ\wbr{}แสดง\wbr{}ผล\wbr{}ข้อ\wbr{}มูล HTML ทาง\wbr{}หน้า\wbr{}จอ\wbr{}และ\wbr{}โปรแกรม\wbr{}อื่นๆ\wbr{}สามารถ\wbr{}ใช้ Gekko ใน\wbr{}โปรแกรม\wbr{}ของ\wbr{}ตัว\wbr{}เอง\wbr{}ด้วย.
+
+\begin{figure}[!hbt]
+\plfigure{.5}{mozilla-firefox.eps}{Firefox ที่\wbr{}รอง\wbr{}รับ\wbr{}การ\wbr{}ตัด\wbr{}คำ\wbr{}ภาษา\wbr{}ไทย.}{mozilla-firefox}
+\end{figure}
+
+
+สภาพ\wbr{}แวด\wbr{}ล้อม\wbr{}เดสก์ท็\wbr{}อป\wbr{}ต่างๆ\wbr{}มีเบ\wbr{}ราเ\wbr{}ซอร์\wbr{}ของ\wbr{}ตัว\wbr{}เอง\wbr{}เช่น\wbr{}ใน KDE มี Konqueror, ใน GNOME มี Epiphany หรือ Galeon. เบ\wbr{}ราเ\wbr{}ซอร์\wbr{}เหล่า\wbr{}นี้\wbr{}ใช้\wbr{}ทูลคิต\wbr{}ของ\wbr{}สภาพ\wbr{}แวด\wbr{}ล้อม\wbr{}เดสก์ท็\wbr{}อป\wbr{}ที่\wbr{}สังกัด\wbr{}จึง\wbr{}ทำ\wbr{}งาน\wbr{}ร่วม\wbr{}กับ\wbr{}โปรแกรม\wbr{}อื่นๆ\wbr{}ได้\wbr{}ดี\wbr{}ใน\wbr{}สภาพ\wbr{}แวด\wbr{}ล้อม\wbr{}เดสก์ท็\wbr{}อป\wbr{}นั้นๆ. Konqueror ใช้\wbr{}เอ็น\wbr{}จิน\wbr{}การ\wbr{}แสดง\wbr{}ผล KHTML, Epiphany และ Galeon ใช้\wbr{}เอ็น\wbr{}จิน Gekko ของ Mozilla.
+
+Konqueror\gindex{konqueror@Konqueror} เป็นเบ\wbr{}ราเ\wbr{}ซอร์\wbr{}อินเ\wbr{}ทอร์เน็ต\wbr{}และ\wbr{}ไฟล์เบ\wbr{}ราเ\wbr{}ซอร์\wbr{}ภาย\wbr{}ใน\wbr{}ตัว\wbr{}ใน\wbr{}สภาพ\wbr{}แวด\wbr{}ล้อม\wbr{}เดสก์ท็\wbr{}อป KDE. Konqueror ยัง\wbr{}สามารถ\wbr{}ติด\wbr{}ต่อ\wbr{}โปร\wbr{}โต\wbr{}คอล\wbr{}ประเภท\wbr{}ต่างๆ\wbr{}เช่น smb\gindex{smb} โดย\wbr{}เขียน\wbr{}ที่\wbr{}อยู่\wbr{}เป็น \cmd{smb:///\textit{hostname}} ได้\wbr{}ด้วย.
+
+สำหรับ\wbr{}คน\wbr{}ที่\wbr{}ไม่\wbr{}ต้องการ\wbr{}ใช้ GUI ใน\wbr{}การ\wbr{}แสดง\wbr{}ผล\wbr{}อาจ\wbr{}จะ\wbr{}ใช้เบ\wbr{}ราเ\wbr{}ซอร์ \cmd{lynx}\cindex{lynx} หรือ \cmd{w3m}\cindex{w3m} แทน. โปรแกรม\wbr{}เหล่า\wbr{}นี้\wbr{}จะ\wbr{}รัน\wbr{}ในเ\wbr{}ทอร์\wbr{}มิ\wbr{}นอล.
+
+\subsection{Instant Messenger Service}
+ลิ\wbr{}นุกซ์\wbr{}สามารถ\wbr{}ใช้\wbr{}บริการ Instant Messenger Service\gindex{instant messenger service@Instant Messenger Service} ของ MSN Messenger, AOL หรือ Yahoo Messenger ได้\wbr{}โดย\wbr{}ใช้\wbr{}โปรแกรม\wbr{}เช่น \cmd{kopete}\cindex{kopete}, \cmd{gaim}\cindex{gaim} ฯลฯ. โปรแกรม Messaging Service ใน\wbr{}ลิ\wbr{}นุกซ์\wbr{}เช่น \cmd{kopete} มี\wbr{}คุณสมบัติ\wbr{}รอง\wbr{}รับ\wbr{}บริการ\wbr{}หลาย\wbr{}ตัว\wbr{}คือ\wbr{}ติด\wbr{}ต่อ\wbr{}กับ MSN, AOL, Yahoo ได้\wbr{}ด้วย\wbr{}โปรแกรม\wbr{}เดียว. โปรแกรม\wbr{}เหล่า\wbr{}นี้\wbr{}ยัง\wbr{}มี\wbr{}ข้อ\wbr{}จำกัด\wbr{}บาง\wbr{}อย่าง\wbr{}เช่น\wbr{}ยัง\wbr{}ไม่\wbr{}สามารถ\wbr{}สื่อ\wbr{}สาร\wbr{}ด้วย\wbr{}เสียง\wbr{}หรือ\wbr{}ภาพ\wbr{}จาก\wbr{}กล้อง\wbr{}วิดิ\wbr{}โอ\wbr{}แต่\wbr{}ใช้\wbr{}สื่อ\wbr{}สาร\wbr{}ด้วย\wbr{}การ\wbr{}พิมพ์\wbr{}แป้น\wbr{}พิมพ์\wbr{}หรือ\wbr{}ส่ง\wbr{}ไฟล์\wbr{}ให้\wbr{}ซึ่ง\wbr{}กัน\wbr{}และ\wbr{}กัน\wbr{}ได้. บาง\wbr{}ครั้ง\wbr{}โปร\wbr{}โต\wbr{}คอล\wbr{}ที่\wbr{}ใช้\wbr{}ใน\wbr{}การ\wbr{}สื่อ\wbr{}สาร\wbr{}เช่น MSN Messenger มี\wbr{}การ\wbr{}เปลี่ยน\wbr{}แปลง, โปรแกรม\wbr{}เหล่า\wbr{}นี้\wbr{}ไม่\wbr{}สามารถ\wbr{}ใช้\wbr{}ได้\wbr{}จน\wbr{}กว่า\wbr{}จะ\wbr{}อัป\wbr{}เดท\wbr{}ตัว\wbr{}โปรแกรม\wbr{}เป็น\wbr{}รุ่น\wbr{}ล่า\wbr{}สุด.
+
+%\begin{figure}[!hbt]
+%\plfigure{.4}{kopete-services.eps}{\cmd{kopete}, โปรแกรม Instant Messenger Service ที่\wbr{}รอง\wbr{}รับ\wbr{}หลาย\wbr{}เครือ\wbr{}ข่าย\wbr{}ใน\wbr{}ตัว\wbr{}โปรแกรม\wbr{}เดียว.}{kopete}
+%\end{figure}
+\begin{figure}[!hbt]
+\plfiguretwo{.5}{kopete-main.eps}{kopete-message.eps}{\cmd{kopete}, โปรแกรม Instant Messenger Service ที่\wbr{}รอง\wbr{}รับ\wbr{}หลาย\wbr{}เครือ\wbr{}ข่าย\wbr{}ใน\wbr{}ตัว\wbr{}โปรแกรม\wbr{}เดียว.}{kopete}
+\end{figure}
+
+
+Jabber\gindex{jabber@Jabber} เป็น\wbr{}ระบบ Instant Messenger Service แบบ\wbr{}โอเ\wbr{}พน\wbr{}ซอร์ส, ผู้\wbr{}ใช้\wbr{}สามารถ\wbr{}สร้างเ\wbr{}ซิร์ฟ\wbr{}เวอร์\wbr{}ด้วย\wbr{}ตัว\wbr{}เอง\wbr{}โดย\wbr{}ไม่\wbr{}ต้อง\wbr{}ใช้เน็ตเ\wbr{}วิร์ก\wbr{}ปิด\wbr{}ของ Instant Messenger Service อื่นๆ.
+
+
+
+\subsection{โปรแกรม\wbr{}ช่วย\wbr{}ดาว์นโ\wbr{}หลด}
+การ\wbr{}ดาว์นโ\wbr{}หลด\wbr{}ไฟล์\wbr{}ทาง\wbr{}อินเ\wbr{}ทอร์เน็ต\wbr{}คราว\wbr{}ละ\wbr{}ไม่\wbr{}มาก\wbr{}อาจ\wbr{}จะ\wbr{}ใช้เบ\wbr{}ราเ\wbr{}ซอร์\wbr{}ดาว์นโ\wbr{}หลด. แต่\wbr{}สำหรับ\wbr{}การ\wbr{}ดาว์นโ\wbr{}หลด\wbr{}โดย\wbr{}อัตโนมัติ, เขียน\wbr{}เป็นสค\wbr{}ริปต์ หรือ\wbr{}ดาว์นโ\wbr{}หลด\wbr{}หลาย\wbr{}คอนเ\wbr{}นก\wbr{}ชัน\wbr{}ต้อง\wbr{}ใช้\wbr{}โปรแกรม\wbr{}พิเศษ\wbr{}ต่าง\wbr{}หาก.
+
+\cmd{wget}\cindex{wget} เป็น\wbr{}โปรแกรม\wbr{}บรรทัด\wbr{}คำ\wbr{}สั่ง\wbr{}สำหรับ\wbr{}ดาว์นโ\wbr{}หลด\wbr{}ไฟล์\wbr{}ด้วย\wbr{}โปร\wbr{}โต\wbr{}คอล HTTP หรือ FTP. การ\wbr{}ดาว์นโ\wbr{}หลด\wbr{}ด้วย\wbr{}คำ\wbr{}สั่ง \cmd{wget} มี\wbr{}ข้อ\wbr{}ดี\wbr{}ที่\wbr{}ใช้\wbr{}ดาว์นโ\wbr{}หลด\wbr{}ไฟล์\wbr{}แบบ\wbr{}รีเ\wbr{}คอร์\wbr{}ซีฟ (recursive) ทั้ง\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ได้, ดาว์นโ\wbr{}หลด\wbr{}แบบ\wbr{}มิร\wbr{}เรอร์ (mirror), เลือก\wbr{}ดาว์\wbr{}ฯโ\wbr{}หลด\wbr{}เฉพาะ\wbr{}ไฟล์\wbr{}ที่\wbr{}มี\wbr{}ตัว\wbr{}ขยาย\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ตาม\wbr{}ต้องการ\wbr{}เช่น ดาว์นโ\wbr{}หลด\wbr{}ไฟล์ .pdf อย่าง\wbr{}เดียว ฯลฯ. การ\wbr{}ใช้\wbr{}งาน\wbr{}โดย\wbr{}ละเอียด\wbr{}สามารถ\wbr{}อ่าน\wbr{}ได้\wbr{}จาก \cmd{man wget}.
+
+\begin{MyExample}[วิธี\wbr{}ใช้ \cmd{wget}]
+\begin{MyEx}
+$ \cin{SITE=http://linux.thai.net/~poonlap/images}
+$ \cin{wget -nd $SITE/gdm.png} \mycomment{ดาว์นโ\wbr{}หลด\wbr{}ไฟล์ \cmd{gdm.png} ไว้\wbr{}ที่\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ปัจจุบัน}
+$ \cin{wget -r $SITE} \mycomment{ดาว์นโ\wbr{}หลด\wbr{}ไฟล์\wbr{}ทุก\wbr{}ไฟล์\wbr{}ทั้ง\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี}
+$ \cin{wget -nd -r -A .gif $SITE} \mycomment{ดาว์นโ\wbr{}หลด\wbr{}เฉพาะ\wbr{}ไฟล์ \cmd{.gif}}
+\end{MyEx}
+\end{MyExample}%$
+
+Prozilla เป็น\wbr{}โปรแกรม\wbr{}ดาว์นโ\wbr{}หลด\wbr{}ที่\wbr{}สามารถ\wbr{}สร้าง\wbr{}คอนเ\wbr{}นก\wbr{}ชัน\wbr{}เวลา\wbr{}ดาว์นโ\wbr{}หลด\wbr{}ได้\wbr{}หลาย\wbr{}ตัว\wbr{}พร้อมๆ\wbr{}กัน. โปรแกรม\wbr{}ประเภท\wbr{}นี้\wbr{}เรีย\wbr{}กว่า download accelerator ช่วย\wbr{}ให้\wbr{}ดาว์นโ\wbr{}หลด\wbr{}ไฟล์\wbr{}ที่\wbr{}ต้องการ\wbr{}ได้\wbr{}เร็ว\wbr{}ขึ้น\wbr{}โดย\wbr{}การ\wbr{}เพิ่ม\wbr{}คอนเ\wbr{}นก\wbr{}ชัน. \cmd{proz} เป็น\wbr{}โปรแกรม Prozilla ที่\wbr{}ทำ\wbr{}งาน\wbr{}ในเ\wbr{}ทอร์\wbr{}มิ\wbr{}นอล\wbr{}และ\wbr{}มีฟ\wbr{}รอนต์\wbr{}เอ็น\wbr{}แบบ GUI ด้วย\wbr{}แต่\wbr{}อาจ\wbr{}จะ\wbr{}ต้อง\wbr{}ติด\wbr{}ตั้ง\wbr{}ต่าง\wbr{}หาก.
+
+\subsection{Video Conference}
+สำหรับ\wbr{}ระบบ\wbr{}ที่\wbr{}มี\wbr{}กล้อง\wbr{}เช่น USB และ\wbr{}มี\wbr{}ระบบ\wbr{}เสียง\wbr{}และ\wbr{}ไมโครโฟน\wbr{}พร้อม\wbr{}สามารถ\wbr{}ใช้\wbr{}โปรแกรม\wbr{}ประชุม\wbr{}ข้าม\wbr{}เครือย\wbr{}ข่าย\wbr{}ได้\wbr{}ด้วย \cmd{gnome-meeting}\cmd{gnome-meeting}. Gnome meeting เป็น\wbr{}โปรแกรม\wbr{}สร้าง\wbr{}ตาม\wbr{}มาตร\wbr{}ฐาน H.326 ดัง\wbr{}นั้น\wbr{}จึง\wbr{}สามารถ\wbr{}ใช้\wbr{}ได้\wbr{}กับ\wbr{}อุปกรณ์ video conference ที่\wbr{}ใช้\wbr{}มาตร\wbr{}ฐาน\wbr{}เดียว\wbr{}กัน\wbr{}หรือ\wbr{}โปรแกรม NetMeeting ใน\wbr{}ระบบ\wbr{}ปฏิบัติ\wbr{}กา\wbr{}รวิน\wbr{}โดวส์\wbr{}ได้.
+
+\section{โปรแกรม\wbr{}รับ\wbr{}ส่ง\wbr{}อีเ\wbr{}มล}
+โปรแกรม\wbr{}รับ\wbr{}ส่ง\wbr{}อีเ\wbr{}มล\wbr{}ใน\wbr{}ยุค\wbr{}แรกๆ\wbr{}เรียบ\wbr{}ง่าย\wbr{}และ\wbr{}เป็น\wbr{}บรรทัด\wbr{}คำ\wbr{}สั่ง\wbr{}เช่น\wbr{}โปรแกรม \cmd{mail}\cindex{mail} หรือ \cmd{mailx}\cindex{mailx}. ปัจจุบัน\wbr{}คำ\wbr{}สั่ง \cmd{mail} ไม่\wbr{}นิยม\wbr{}ใช้\wbr{}แล้ว\wbr{}ยก\wbr{}เว้น\wbr{}จะ\wbr{}สั่ง\wbr{}ส่งเ\wbr{}มล\wbr{}ด้วย\wbr{}บรรทัด\wbr{}คำ\wbr{}สั่ง.
+
+โปรแกรม\wbr{}รับ\wbr{}ส่งเ\wbr{}มล\wbr{}ที่\wbr{}ได้\wbr{}รับ\wbr{}ความ\wbr{}นิยม\wbr{}ใน\wbr{}ช่วง\wbr{}ต่อ\wbr{}มา\wbr{}คือ \cmd{pine}, Rmail, MH ฯลฯ. โปรแกรม\wbr{}เหล่า\wbr{}นี้\wbr{}เช่น \cmd{pine} ทำ\wbr{}งาน\wbr{}ในเ\wbr{}ทอร์\wbr{}มิ\wbr{}นอล\wbr{}เป็น\wbr{}เมนู\wbr{}อ่าน\wbr{}หรือ\wbr{}เขียนเ\wbr{}มล, Rmail, MH เป็นแพ็ก\wbr{}เกจ\wbr{}รับ\wbr{}ส่งเ\wbr{}มล\wbr{}ที่\wbr{}ใช้\wbr{}ใน Emacs เป็นต้น. สำหรับ\wbr{}คน\wbr{}ที่\wbr{}นิยม\wbr{}ใช้เ\wbr{}ทอร์\wbr{}มิ\wbr{}นอล\wbr{}มัก\wbr{}จะ\wbr{}ใช้ \cmd{mutt}\cindex{mutt} ซึ่ง\wbr{}เป็น\wbr{}โปรแกรม\wbr{}รับ\wbr{}ส่งเ\wbr{}มล\wbr{}ใช้\wbr{}ในเ\wbr{}ทอร์\wbr{}มิ\wbr{}นอล\wbr{}คล้าย \cmd{pine} แต่\wbr{}มี\wbr{}ความ\wbr{}สามารถ\wbr{}ต่างๆ\wbr{}เหนือ\wbr{}กว่า.
+
+ปัจจุบัน\wbr{}โปรแกรม\wbr{}รับ\wbr{}ส่งเ\wbr{}มล\wbr{}แบบ GUI มี\wbr{}ให้\wbr{}เลือก\wbr{}มาก\wbr{}มาย\wbr{}เช่น Thunderbire, Evolution, Kmail ฯลฯ ตาม\wbr{}ความ\wbr{}ชอบ\wbr{}พอ\wbr{}ของ\wbr{}ผู้\wbr{}ใช้\wbr{}แต่\wbr{}ละ\wbr{}คน.
+
+
+
+\section{โปรแกรม\wbr{}มิ่ง}
+การ\wbr{}พัฒนา\wbr{}ซอฟต์แวร์\wbr{}แบบ\wbr{}ดั้งเดิม\wbr{}ใน\wbr{}ระบบ\wbr{}ระบบ\wbr{}ปฏิบัติ\wbr{}การ\wbr{}ลิ\wbr{}นุกซ์\wbr{}นิยม\wbr{}ใช้\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}เช่น Vi, Emacs เขียน\wbr{}รหัส\wbr{}ต้น\wbr{}ฉบับ, สร้าง\wbr{}ไฟล์ Makefile เป็นสค\wbr{}ริปต์\wbr{}สร้าง\wbr{}โปรแกรม\wbr{}ด้วย\wbr{}คอม\wbr{}ไพ\wbr{}เลอร์\wbr{}โดย\wbr{}อัตโนมัติ. IDE (Integrated Deveopment Environment) เป็น\wbr{}แอพ\wbr{}พลิ\wbr{}เค\wbr{}ชัน\wbr{}ที่\wbr{}รวม\wbr{}การ\wbr{}ขั้น\wbr{}ตอน\wbr{}การ\wbr{}พัฒนา\wbr{}ซอฟต์แวร์\wbr{}ต่างๆ\wbr{}ตั้ง\wbr{}แต่\wbr{}การ\wbr{}ควบ\wbr{}คุม\wbr{}โปร\wbr{}เจค, บรรณาธิ\wbr{}กรณ์\wbr{}สำหรับ\wbr{}เขียน\wbr{}รหัส\wbr{}ต้น\wbr{}ฉบับ, การ\wbr{}ออก\wbr{}แบบ\wbr{}อินเ\wbr{}ทอร์เฟส\wbr{}ของ\wbr{}โปรแกรม, การ\wbr{}คอมไพล์, ดี\wbr{}บัก\wbr{}เข้า\wbr{}ด้วย\wbr{}กัน. โปรแกรม IDE ใน\wbr{}ลิ\wbr{}นุกซ์\wbr{}เริ่ม\wbr{}มี\wbr{}บท\wbr{}บาท\wbr{}มาก\wbr{}ขึ้น\wbr{}เรื่อย\wbr{}และ\wbr{}โปรแกรม\wbr{}ที่\wbr{}นิยม\wbr{}ใช้\wbr{}กัน\wbr{}ได้\wbr{}แก่ Kdevelop\gindex{kdevelop@Kdevelop}, Anjuta\gindex{anjuta@Anjuta}, Monodevelop\gindex{monodevelop@Monodevelop} ฯลฯ.
+
+\section{วิทยา\wbr{}ศาสตร์}
+ใน\wbr{}ลิ\wbr{}นุกซ์\wbr{}มี\wbr{}โปรแกรม\wbr{}สำหรับ\wbr{}ใช้\wbr{}งาน\wbr{}คำนวณ, สร้าง\wbr{}กราฟ, สถิติ เหมาะ\wbr{}สำหรับ\wbr{}นัก\wbr{}ศึกษา\wbr{}และ\wbr{}นัก\wbr{}เรียน\wbr{}ทั่ว\wbr{}ไป. โปรแกรม\wbr{}ง่ายๆ\wbr{}ที\wbr{}ตั้ง\wbr{}แต่\wbr{}เครื่อง\wbr{}คิด\wbr{}เลข\wbr{}วิทยา\wbr{}ศาสตร์\wbr{}จน\wbr{}ถึง\wbr{}โปรแกรม\wbr{}คำนวณ\wbr{}ข้อ\wbr{}มูล\wbr{}สถิติ\wbr{}เช่น \cmd{R}\index{command}{r@\cmd{R}}.
+
+สำหรับ\wbr{}การ\wbr{}เขียน\wbr{}กราฟ\wbr{}คณิต\wbr{}ศาสตร์\wbr{}ทั่ว\wbr{}ไป\wbr{}อาจ\wbr{}จะ\wbr{}ใช้ \cmd{gnuplot}\cindex{gnuplot} เขียน\wbr{}กราฟ\wbr{}จาก\wbr{}สมการ, หรือ\wbr{}ข้อ\wbr{}มูล\wbr{}ดิบ. ส่วน\wbr{}การ\wbr{}คำนวณ\wbr{}ด้วย\wbr{}วิทยา\wbr{}ศาสตร์, เมตริก, สถิติ จะ\wbr{}ใช้\wbr{}โปรแกรม \cmd{R} หรือ \cmd{octave}\cindex{octave} เป็นต้น.
+
+\section{รีโ\wbr{}มต\wbr{}เดสก์ท็\wbr{}อป}
+การ\wbr{}ติด\wbr{}ต่อ\wbr{}ใช้\wbr{}ระบบ\wbr{}ปฏิบัติ\wbr{}การ\wbr{}อื่นๆ\wbr{}เช่น\wbr{}ระบบ\wbr{}ปฏิบัติ\wbr{}กา\wbr{}รวิน\wbr{}โดวส์\wbr{}สามารถ\wbr{}ใช้ \cmd{rdesktop}\cindex{rdesktop} ติด\wbr{}ต่อ\wbr{}ขอ\wbr{}หน้า\wbr{}จอล็\wbr{}อก\wbr{}อิน\wbr{}ของ\wbr{}เครื่อง\wbr{}วิน\wbr{}โดวส์\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}เครือ\wbr{}ข่าย. \cmd{rdesktop} เป็น\wbr{}ทาง\wbr{}เลือก\wbr{}แทน \emph{VNC (Virtual Network Computing)} กรณี\wbr{}ที่\wbr{}ต้องการล็\wbr{}อก\wbr{}อิน\wbr{}เครื่อง\wbr{}วิน\wbr{}โดวส์\wbr{}ที่\wbr{}มี Terminal Service ทำ\wbr{}งาน\wbr{}อยู่. การ\wbr{}ใช้ \cmd{rdesktop} สะดวก\wbr{}ใน\wbr{}กรณี\wbr{}ที่\wbr{}ใช้\wbr{}ลิ\wbr{}นุกซ์\wbr{}ประจำ\wbr{}แล้ว\wbr{}ต้องการ\wbr{}ใช้\wbr{}วิน\wbr{}โดวส์\wbr{}ของ\wbr{}เครื่อง\wbr{}คอมพิวเตอร์\wbr{}อีก\wbr{}เครื่อง\wbr{}หนึ่ง\wbr{}ผ่าน\wbr{}ทาง\wbr{}เครือ\wbr{}ข่าย. ผู้\wbr{}ใช้\wbr{}สามารถ\wbr{}เลือก\wbr{}ขนาด\wbr{}หน้า\wbr{}จอ\wbr{}เป็น\wbr{}หน้า\wbr{}ต่าง\wbr{}แอพ\wbr{}พลิ\wbr{}เค\wbr{}ชัน\wbr{}ต่าง\wbr{}หาก\wbr{}หรือ\wbr{}ทำ\wbr{}งาน\wbr{}เต็ม\wbr{}หน้า\wbr{}ต่าง\wbr{}แล้ว\wbr{}เปลี่ยน\wbr{}หน้า\wbr{}จอ\wbr{}ไป\wbr{}มา.
+
+สำหรับ\wbr{}การ\wbr{}รีโ\wbr{}มต\wbr{}เดสก์ท็\wbr{}อป\wbr{}หน้า\wbr{}จอ\wbr{}ลิ\wbr{}นุกซ์\wbr{}หรือ\wbr{}ระบบ\wbr{}ปฏิบัติ\wbr{}การ\wbr{}อื่นๆ\wbr{}จะ\wbr{}ใช้ VNC. ใน\wbr{}ระบบ VNC จะ\wbr{}แบ่ง\wbr{}ออก\wbr{}เป็น\wbr{}ตัว\wbr{}แชร์\wbr{}หน้า\wbr{}จอ\wbr{}และ\wbr{}ตัว\wbr{}ดู\wbr{}หน้า\wbr{}จอ. โปรแกรม\wbr{}สำหรับ\wbr{}แชร์\wbr{}หน้า\wbr{}จอ \cmd{vino-server}, x0vncserver ฯลฯ.   โปรแกรม\wbr{}ดู\wbr{}หน้า\wbr{}จอ\wbr{}ด้วย VNC เช่น \cmd{vncviewer}, \cmd{krdc} ฯลฯ.
+
+\section{พจนานุกรม}
+โปรแกรม\wbr{}พจนานุกรม\wbr{}ใน\wbr{}ลิ\wbr{}นุกซ์\wbr{}มี\wbr{}หลาย\wbr{}ชนิด\wbr{}แบบ\wbr{}ที่\wbr{}เป็น\wbr{}แอพ\wbr{}เพล็ต\wbr{}ฝัง\wbr{}อยู่\wbr{}ใน\wbr{}พาเนล\wbr{}และ\wbr{}เป็น\wbr{}โปรแกรม\wbr{}หน้า\wbr{}ต่าง\wbr{}เช่น \cmd{gdict}\cindex{gdict}, \cmd{kdict}. โปรแกรม\wbr{}เหล่า\wbr{}นี้\wbr{}มัก\wbr{}เป็น\wbr{}โปรแกรม\wbr{}พจนานุกรม\wbr{}อธิบาย\wbr{}ภาษา\wbr{}อังกฤษ\wbr{}ด้วย\wbr{}ภาษา\wbr{}อังกฤษ.
+
+โปรแกรม\wbr{}พจนานุกรม\wbr{}แปล\wbr{}ศัพท์\wbr{}อังกฤษ\wbr{}ไทย\wbr{}มี\wbr{}หลาย\wbr{}ตัว\wbr{}และ\wbr{}พัฒนา\wbr{}โดย\wbr{}อาสา\wbr{}สมัคร.
+\begin{itemize}
+\item Lexitron --- เป็น\wbr{}โปรแกรม\wbr{}พจนานุกรม\wbr{}ที่\wbr{}สร้าง\wbr{}ด้วย Java โดย NECTEC.
+\item \cmd{kdicthai}\cindex{kdicthai} --- โปรแกรม\wbr{}นี้\wbr{}สร้าง\wbr{}ดัด\wbr{}แปลง\wbr{}ต่อ\wbr{}จาก\wbr{}โปรแกรม \cmd{kdict} พัฒนา\wbr{}โดย\wbr{}คุณ Donga. ข้อ\wbr{}มูล\wbr{}ของ\wbr{}ตัว\wbr{}โปรแกรม\wbr{}มา\wbr{}จาก\wbr{}พจนานุกรม DictHope โดย ??? ซึ่ง\wbr{}เป็น\wbr{}โปรแกรม\wbr{}บน\wbr{}วิน\wbr{}โดวส์.
+
+\begin{figure}[!hbt]
+\plfigure{.7}{kdictthai.eps}{โปรแกรม\wbr{}พจนานุกรม\wbr{}แปล\wbr{}อังกฤษ\wbr{}ไทย \cmd{kdictthai}.}{kdictthai}
+\end{figure}
+
+\item \cmd{cetdict}\cindex{cetdict} --- โปรแกรม\wbr{}แปล\wbr{}ศัพท์\wbr{}อังกฤษ\wbr{}ไทย\wbr{}ด้วย\wbr{}บรรทัด\wbr{}คำ\wbr{}สั่ง\wbr{}หรือ\wbr{}โต้\wbr{}ตอบ\wbr{}ในเ\wbr{}ทอร์\wbr{}มิ\wbr{}นอล. มี\wbr{}ความ\wbr{}สามารถ\wbr{}เติม\wbr{}เต็ม\wbr{}คำ\wbr{}หรือ\wbr{}แสดง\wbr{}ราย\wbr{}การ\wbr{}คำ\wbr{}ที่\wbr{}เป็น\wbr{}ไป\wbr{}ได้. ข้อ\wbr{}มูล\wbr{}คำ\wbr{}แปล\wbr{}มา\wbr{}จาก DictHope เช่น\wbr{}เดียว\wbr{}กับ \cmd{kdictthai}
+\item ข้อ\wbr{}มูล\wbr{}ศัพท์\wbr{}อังกฤษ\wbr{}ไทย\wbr{}สำหรับ dictd เ\wbr{}ซิร์ฟ\wbr{}เวอร์ --- ไม่\wbr{}ใช้\wbr{}โปรแกรม\wbr{}แต่\wbr{}เป็น\wbr{}ข้อ\wbr{}มูล\wbr{}คำ\wbr{}ศัพท์\wbr{}ใช้\wbr{}กับเ\wbr{}ซิร์ฟ\wbr{}เวอร์ \cmd{dictd}\cindex{dictd} ซึ่ง\wbr{}เป็นเ\wbr{}ซิร์ฟ\wbr{}เวอร์\wbr{}พจนานุกรม\wbr{}ให้\wbr{}ไคล\wbr{}เอ็นต์\wbr{}เช่น \cmd{gdict}, \cmd{kdict} ติด\wbr{}ต่อ\wbr{}แปล\wbr{}คำ\wbr{}ผ่าน\wbr{}ทาง\wbr{}เครือ\wbr{}ข่าย. ผู้\wbr{}ใช้\wbr{}สามารถ\wbr{}เลือก\wbr{}ใช้\wbr{}โปรแกรม\wbr{}อะไร\wbr{}ก็\wbr{}ได้\wbr{}ที่\wbr{}รอง\wbr{}รับ\wbr{}โปร\wbr{}โต\wbr{}คอล dictd และ\wbr{}ปรับ\wbr{}แต่ง\wbr{}โปรแกรม\wbr{}ให้\wbr{}ใช้\wbr{}ศัพท์\wbr{}จากเ\wbr{}ซิร์ฟ\wbr{}เวอร์\wbr{}ที่\wbr{}เตรียม\wbr{}ไว้.
+\end{itemize}
+
+
+\section{สรุป\wbr{}ท้าย\wbr{}บท}
+\begin{itemize}
+\item ใน\wbr{}บท\wbr{}นี้\wbr{}เป็น\wbr{}การ\wbr{}แนะ\wbr{}นำ\wbr{}โปรแกรม\wbr{}ใช้\wbr{}งาน\wbr{}ลิ\wbr{}นุกซ์\wbr{}อย่าง\wbr{}คร่าวๆ\wbr{}โดย\wbr{}เน้น\wbr{}อธิบาย\wbr{}การ\wbr{}ใช้\wbr{}งาน\wbr{}บรรณาธิ\wbr{}กรณ์ Vi และ Emacs.
+\item ผู้\wbr{}ใช้\wbr{}ควร\wbr{}จะ\wbr{}เรียน\wbr{}รู้\wbr{}การ\wbr{}ใช้\wbr{}งาน\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}อะไร\wbr{}ก็\wbr{}ได้\wbr{}ตัว\wbr{}หนึ่ง\wbr{}ที่\wbr{}มี\wbr{}ใช้\wbr{}ใน\wbr{}ลิ\wbr{}นุกซ์\wbr{}ทุกดิส\wbr{}โทร\wbr{}โดย\wbr{}ปริยาย\wbr{}เช่น Vi.
+\item โปรแกรม\wbr{}ต่างๆ\wbr{}อาจ\wbr{}จะ\wbr{}เป็น\wbr{}โปรแกรม\wbr{}บรรทัด\wbr{}คำ\wbr{}สั่ง\wbr{}และ\wbr{}มี\wbr{}โปรแกรม\wbr{}แบบ GUI เป็นฟ\wbr{}รอนต์\wbr{}เอ็น. สำหรับ\wbr{}การ\wbr{}ใช้\wbr{}งาน\wbr{}ทั่ว\wbr{}ไป\wbr{}ควร\wbr{}ใช้\wbr{}โปรแกรมฟ\wbr{}รอนต์\wbr{}เอ็นต์\wbr{}จะ\wbr{}สะดวก\wbr{}กว่า.
+\item โปรแกรม\wbr{}ใช้\wbr{}งาน\wbr{}ใน\wbr{}ลิ\wbr{}นุกซ์\wbr{}ยัง\wbr{}มี\wbr{}อีก\wbr{}มาก\wbr{}มาย, ผู้\wbr{}ใช้\wbr{}อาจ\wbr{}จะ\wbr{}หา\wbr{}โปรแกรม\wbr{}หรือแพ็ก\wbr{}เกจ\wbr{}ที่\wbr{}ต้องการ\wbr{}ใช้\wbr{}เพิ่ม\wbr{}เติม\wbr{}ได้\wbr{}จาก\wbr{}อินเ\wbr{}ทอร์เน็ต.
+\item โปรแกรม\wbr{}ติด\wbr{}ตั้งแพ็ก\wbr{}เกจ\wbr{}บาง\wbr{}ระบบ\wbr{}มี\wbr{}คำ\wbr{}สั่ง\wbr{}สำหรับ\wbr{}หา\wbr{}โปรแกรม\wbr{}หรือ\wbr{}แยก\wbr{}ประเภทแพ็ก\wbr{}เกจ\wbr{}ตาม\wbr{}การ\wbr{}ใช้\wbr{}งาน\wbr{}ให้\wbr{}แล้ว. ผู้\wbr{}ใช้\wbr{}อาจ\wbr{}จะ\wbr{}ใช้\wbr{}ระบบ\wbr{}ติด\wbr{}ตั้งแพ็ก\wbr{}เกจ\wbr{}ช่วย\wbr{}หา\wbr{}โปรแกรม\wbr{}ที่\wbr{}ต้องการ.
+\end{itemize}
+
+

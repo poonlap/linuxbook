@@ -1,0 +1,1347 @@
+\chapter{ไฟล์}
+\begin{flushright}
+{\it\latintext ``Everything in the Unix system is a file.''}\\
+{\bf\latintext  Brian W. Kernighan, Rob Pike \cite{upe}}
+\end{flushright}
+
+ใน\wbr{}หนังสือ The Unix Programming Environment \cite{upe} ซึ่ง\wbr{}จัด\wbr{}เป็น\wbr{}หนังสือ\wbr{}ต้อง\wbr{}มี\wbr{}เล่ม\wbr{}หนึ่ง\wbr{}สำหรับ\wbr{}ผู้\wbr{}ใช้\wbr{}ยู\wbr{}นิกซ์\wbr{}กล่าว\wbr{}ไว้\wbr{}ว่า ``ทุก\wbr{}อย่าง\wbr{}ใน\wbr{}ยู\wbr{}นิกซ์\wbr{}คือ\wbr{}ไฟล์''. ประโยค\wbr{}ยัง\wbr{}เป็น\wbr{}ความ\wbr{}จริง\wbr{}สำหรับ\wbr{}ระบบ\wbr{}ปฏิบัติ\wbr{}การ\wbr{}ลิ\wbr{}นุกซ์\wbr{}ด้วย. ใน\wbr{}การ\wbr{}ใช้\wbr{}ลิ\wbr{}นุกซ์\wbr{}ใน\wbr{}แต่\wbr{}ละ\wbr{}วัน, การ\wbr{}ทำ\wbr{}งาน\wbr{}กับ\wbr{}ไฟล์\wbr{}เป็น\wbr{}สิ่ง\wbr{}ที่\wbr{}หลีก\wbr{}เลี่ยง\wbr{}ไม่\wbr{}ได้ ตั้ง\wbr{}แต่\wbr{}การ\wbr{}สร้าง\wbr{}ไฟล์, แก้\wbr{}ไข\wbr{}ไฟล์ ฯลฯ. ดัง\wbr{}นั้น\wbr{}จึง\wbr{}มี\wbr{}ความ\wbr{}จำ\wbr{}เป็น\wbr{}ที่\wbr{}จะ\wbr{}ต้อง\wbr{}เรียน\wbr{}รู้\wbr{}เกี่ยว\wbr{}กับ\wbr{}ไฟล์\wbr{}ใน\wbr{}ลิ\wbr{}นุกซ์\wbr{}เป็น\wbr{}อย่าง\wbr{}ดี\wbr{}ใน\wbr{}บท\wbr{}นี้.
+
+
+\section{พาร์ทิ\wbr{}ชัน, และ\wbr{}ระบบ\wbr{}ไฟล์}
+ปรกติ\wbr{}แล้ว, ไฟล์\wbr{}ที่\wbr{}ใช้\wbr{}ใน\wbr{}ระบบ\wbr{}ปฏิบัติ\wbr{}การ\wbr{}ลิ\wbr{}นุกซ์\wbr{}จะ\wbr{}อยู่\wbr{}ใน\wbr{}หน่วย\wbr{}ความ\wbr{}ถาวร\wbr{}เช่น\wbr{}ฮาร์ดดิสก์. และ\wbr{}ก่อน\wbr{}ที่\wbr{}จะ\wbr{}สร้าง\wbr{}ไฟล์\wbr{}ใน\wbr{}ฮาร์ดดิสก์\wbr{}ได้\wbr{}นั้น\wbr{}ต้อง\wbr{}สร้าง\wbr{}พาร์ทิ\wbr{}ชัน\wbr{}และ\wbr{}สร้าง\wbr{}ระบบ\wbr{}ไฟล์\wbr{}ให้\wbr{}กับ\wbr{}พาร์ทิ\wbr{}ชัน\wbr{}นั้น\wbr{}ก่อน\wbr{}จึง\wbr{}จะ\wbr{}สามารถ\wbr{}กระทำ\wbr{}การ\wbr{}ต่างๆ\wbr{}กับ\wbr{}ไฟล์\wbr{}ได้.
+
+\subsection{พาร์ทิ\wbr{}ชัน}
+\emph{พาร์ทิ\wbr{}ชัน (partition)} คือ\wbr{}หน่วย\wbr{}ย่อย\wbr{}ของ\wbr{}ฮาร์ด\wbr{}ดิกส์, หรือ\wbr{}ฮาร์ดดิสก์\wbr{}ย่อย\wbr{}แบบ logical ที่\wbr{}แบ่ง\wbr{}มา\wbr{}จาก\wbr{}ฮาร์ด\wbr{}ดิกส์\wbr{}ที่\wbr{}มี\wbr{}อยู่\wbr{}จริง. พาร์ทิ\wbr{}ชัน\wbr{}ยัง\wbr{}แบ่ง\wbr{}ได้\wbr{}เป็น\wbr{}สอง\wbr{}ประเภท\wbr{}คือ\emph{พาร์ทิ\wbr{}ชัน\wbr{}หลัก (primary partition)} และ\emph{พาร์ทิ\wbr{}ชัน\wbr{}เสริม (extended partition)}. เรา\wbr{}สามารถ\wbr{}แบ่ง\wbr{}พาร์ทิ\wbr{}ชัน\wbr{}หลัก\wbr{}ได้\wbr{}มาก\wbr{}ที่\wbr{}สุด 4 ส่วน. ถ้า\wbr{}ต้องการ\wbr{}แบ่ง\wbr{}พาร์ทิ\wbr{}ชัน\wbr{}มาก\wbr{}กว่า\wbr{}นั้น\wbr{}ต้อง\wbr{}ให้\wbr{}พาร์ทิ\wbr{}ชัน\wbr{}หลัก\wbr{}หนึ่ง\wbr{}ใน\wbr{}สี่\wbr{}นั้น\wbr{}เป็น\wbr{}พาร์ทิ\wbr{}ชัน\wbr{}เสริม\wbr{}ตาม\wbr{}ที่\wbr{}แสดง\wbr{}ใน\wbr{}รูป\wbr{}ที่ \ref{fig:partition}. ใน\wbr{}พาร์ทิ\wbr{}ชัน\wbr{}สามารถ\wbr{}สร้าง\wbr{}พาร์ทิ\wbr{}ชัน\wbr{}ที่\wbr{}เรีย\wbr{}กว่า\wbr{}พาร์ทิ\wbr{}ชัน logical ต่อ\wbr{}ไป\wbr{}ได้\wbr{}อีก\wbr{}เรื่อยๆ.
+
+
+\begin{figure}[!htbp]
+\plfigure{1.0}{partition.eps}{พาร์ทิ\wbr{}ชัน\wbr{}หลัก\wbr{}และ\wbr{}พาร์ทิ\wbr{}ชัน\wbr{}เสริม.}{partition}
+\end{figure}
+
+ข้อ\wbr{}มูล\wbr{}ตำแหน่ง\wbr{}ของ\wbr{}พาร์ทิ\wbr{}ชัน\wbr{}เหล่า\wbr{}นี้\wbr{}จะ\wbr{}เก็บ\wbr{}อยู่\wbr{}ใน\wbr{}ส่วน\wbr{}ที่\wbr{}เรีย\wbr{}กว่า \emph{partition table} และ\wbr{}โปรแกรม\wbr{}ที่\wbr{}ทำ\wbr{}หน้า\wbr{}ที่\wbr{}จัด\wbr{}การ\wbr{}ข้อ\wbr{}มูล\wbr{}พาร์ทิ\wbr{}ชัน\wbr{}ของ\wbr{}ฮาร์ดดิสก์\wbr{}ได้\wbr{}แก่\wbr{}โปรแกรม \cmd{fdisk}.\cindex{fdisk}\refcmd{fdisk} โปรแกรม\wbr{}นี้\wbr{}จะ\wbr{}ใช้\wbr{}โดย\wbr{}ผู้\wbr{}ดู\wbr{}แล\wbr{}ระบบ\wbr{}หรือ root เพื่อ\wbr{}จัด\wbr{}การ\wbr{}แบ่ง\wbr{}พาร์ทิ\wbr{}ชัน\wbr{}และ\wbr{}กำหนด\wbr{}ประเภท\wbr{}ของ\wbr{}พาร์ทิ\wbr{}ชัน.
+
+\begin{MyExample}[ใช้ \cmd{fdisk} แสดง partition table.]
+\begin{MyEx}
+# \cin{fdisk /dev/hdb} \mycomment{ฮาร์ดดิสก์\wbr{}แบบ EIDE ตัว\wbr{}ที่\wbr{}สอง. ตัว\wbr{}แรก\wbr{}จะ\wbr{}มี\wbr{}ชื่อ\wbr{}เป็น hda}
+
+The number of cylinders for this disk is set to 38166.
+There is nothing wrong with that, but this is larger than 1024,
+and could in certain setups cause problems with:
+1) software that runs at boot time (e.g., old versions of LILO)
+2) booting and partitioning software from other OSs
+   (e.g., DOS FDISK, OS/2 FDISK)
+
+Command (m for help): \cin{p}
+
+Disk /dev/hdb: 40.0 GB, 40020664320 bytes
+64 heads, 32 sectors/track, 38166 cylinders
+Units = cylinders of 2048 * 512 = 1048576 bytes
+
+   Device Boot      Start         End      Blocks   Id  System
+/dev/hdb1               1       19074    19531760   83  Linux
+/dev/hdb2           19075       37672    19044352   83  Linux
+/dev/hdb3           37673       38166      505856   82  Linux swap
+
+Command (m for help): \cin{q}
+
+# \cursorprompt
+\end{MyEx}
+\end{MyExample}
+
+สำหรับ\wbr{}ระบบ\wbr{}ปฏิบัติ\wbr{}การ\wbr{}ลิ\wbr{}นุกซ์\wbr{}แล้ว, ควร\wbr{}จะ\wbr{}แบ่ง\wbr{}พาร์ทิ\wbr{}ชัน\wbr{}อย่าง\wbr{}น้อย 2 ส่วน\wbr{}ขึ้น\wbr{}ไป. ส่วน\wbr{}แรก\wbr{}ใช้\wbr{}สำหรับ\wbr{}เป็น\wbr{}พื้น\wbr{}ที่\wbr{}ที่\wbr{}จะ\wbr{}สร้าง\wbr{}ระบบ\wbr{}ไฟล์\wbr{}เพื่อ\wbr{}เก็บ\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}จำ\wbr{}เป็น\wbr{}ต่อ\wbr{}ไป. ส่วน\wbr{}พาร์ทิ\wbr{}ชัน\wbr{}ที\wbr{}เหลือ\wbr{}ใช้\wbr{}เป็น\wbr{}พื้น\wbr{}ที่\wbr{}สำหรับ virtual memory\gindex{virutual memory}\myvocab{v}{virtual memory}{} ซึ่ง\wbr{}มัก\wbr{}จะ\wbr{}เรียก\wbr{}กัน\wbr{}ว่า \emph{swap partition}\gindex{swap partition}. swap partition มี\wbr{}ไว้\wbr{}สำหรับ\wbr{}ให้เ\wbr{}คอร์เนล\wbr{}เก็บ\wbr{}ข้อ\wbr{}มูล\wbr{}บาง\wbr{}ส่วน\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}หน่วย\wbr{}ความ\wbr{}จำ\wbr{}ชั่ว\wbr{}คราว (memory) ลง\wbr{}ใน\wbr{}ฮาร์ดดิสก์\wbr{}ได้. และ\wbr{}เรียก\wbr{}ข้อ\wbr{}มูล\wbr{}ส่วน\wbr{}นั้น\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}ฮาร์ดดิสก์\wbr{}กลับ\wbr{}มา\wbr{}ใน\wbr{}หน่วย\wbr{}ความ\wbr{}จำ\wbr{}ใหม่\wbr{}เมื่อ\wbr{}ต้องการ. วิธี\wbr{}การ\wbr{}นี้\wbr{}ทำ\wbr{}ให้\wbr{}จำนวน\wbr{}หน่วย\wbr{}ความ\wbr{}จำ\wbr{}โดย\wbr{}รวม\wbr{}ไม่\wbr{}ขาด\wbr{}แคลน, และ\wbr{}ใน\wbr{}บาง\wbr{}กรณี\wbr{}สามารถ\wbr{}ช่วย\wbr{}ให้\wbr{}ประสิทธิภาพ\wbr{}การ\wbr{}ทำ\wbr{}งาน\wbr{}ของ\wbr{}โปรแกรม\wbr{}บาง\wbr{}อย่าง\wbr{}ดี\wbr{}ขึ้น\wbr{}ด้วย. \mymemo{ผู้\wbr{}ใช้\wbr{}สามารถ\wbr{}ระบบ\wbr{}ที่\wbr{}ไม่\wbr{}มี swap ก็\wbr{}ได้\wbr{}แต่\wbr{}ไม่\wbr{}แนะ\wbr{}นำ. พื้น\wbr{}ที่\wbr{}ที่\wbr{}เป็น swap นี้\wbr{}ไม่\wbr{}จำ\wbr{}เป็น\wbr{}ต้อง\wbr{}เป็น\wbr{}พาร์ทิ\wbr{}ชัน\wbr{}แต่\wbr{}อาจ\wbr{}จะ\wbr{}เป็น\wbr{}ไฟล์\wbr{}ก็\wbr{}ได้. swap ที่\wbr{}เป็น\wbr{}ไฟล์\wbr{}นั้น\wbr{}มัก\wbr{}จะ\wbr{}สร้าง\wbr{}เมื่อ\wbr{}ต้องการ\wbr{}เพิ่ม\wbr{}จำนวน swap ภาย\wbr{}หลัง\wbr{}ที่\wbr{}สร้าง\wbr{}พาร์ทิ\wbr{}ชัน\wbr{}ไป\wbr{}เรียบ\wbr{}ร้อย\wbr{}แล้ว.}
+
+
+\subsection{ระบบ\wbr{}ไฟล์}
+การ\wbr{}สร้าง\wbr{}พาร์ทิ\wbr{}ชัน\wbr{}เป็น\wbr{}เพียง\wbr{}แค่\wbr{}การ\wbr{}แบ่ง\wbr{}ฮาร์ดดิสก์\wbr{}ให้\wbr{}มี\wbr{}จำนวน\wbr{}และ\wbr{}ขนาด\wbr{}ตาม\wbr{}ที่\wbr{}ต้องการ. พาร์ทิ\wbr{}ชัน\wbr{}ที่\wbr{}สร้าง\wbr{}ขึ้น\wbr{}มา\wbr{}นั้น\wbr{}ต้อง\wbr{}ผ่าน\wbr{}การ\wbr{}สร้าง\emph{ระบบ\wbr{}ไฟล์ (file system)} ก่อน\wbr{}จึง\wbr{}จะ\wbr{}ใช้\wbr{}งาน, อ่าน\wbr{}เขียน\wbr{}ไฟล์\wbr{}ได้. การ\wbr{}สร้าง\wbr{}ระบบ\wbr{}ไฟล์\wbr{}ใน\wbr{}พาร์ทิ\wbr{}ชัน\wbr{}เป็น\wbr{}การ\wbr{}สร้าง\wbr{}ข้อ\wbr{}มูล\wbr{}พื้น\wbr{}ฐาน\wbr{}เพื่อ\wbr{}ที่\wbr{}จะ\wbr{}เก็บ\wbr{}ข้อ\wbr{}มูล\wbr{}เป็น\wbr{}ไฟล์, จัด\wbr{}โครง\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ต่อ\wbr{}ไป. การ\wbr{}จัด\wbr{}เก็บ\wbr{}ไฟล์\wbr{}และ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ใน\wbr{}ระบบ\wbr{}ปฏิบัติ\wbr{}การ\wbr{}ลิ\wbr{}นุกซ์\wbr{}และ\wbr{}ยู\wbr{}นิกซ์\wbr{}จะ\wbr{}มี\wbr{}โครง\wbr{}สร้าง\wbr{}เป็น\wbr{}แผน\wbr{}ภาพ\wbr{}ต้น\wbr{}ไม้\wbr{}ตาม\wbr{}รูป\wbr{}ที่ \ref{fig:directory_struct}.
+
+\begin{figure}[!htb]
+\plfigure{.7}{directory_struct.eps}{โครง\wbr{}สร้าง\wbr{}ไฟล์\wbr{}และ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี}{directory_struct}
+\end{figure}
+
+ระบบ\wbr{}ไฟล์\wbr{}ที่\wbr{}ออก\wbr{}แบบ\wbr{}มา\wbr{}สำหรับ\wbr{}ลิ\wbr{}นุกซ์\wbr{}เพื่อ\wbr{}สร้าง\wbr{}โครง\wbr{}สร้าง\wbr{}ไฟล์\wbr{}และ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}มี\wbr{}หลาย\wbr{}ประเภท\wbr{}เช่น ext2 (Second Extended Filesystem), ext3, xfs, Reiserfs ฯลฯ. ระบบ\wbr{}ไฟล์\wbr{}เหล่า\wbr{}นี้\wbr{}จะ\wbr{}เก็บ\wbr{}ข้อ\wbr{}มูล\wbr{}เกี่ยว\wbr{}กับ\wbr{}ตำแหน่ง\wbr{}ของ\wbr{}ไฟล์\wbr{}ต่างๆ\wbr{}และ\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}เกี่ยว\wbr{}ข้อง\wbr{}อื่นๆ\wbr{}เช่น ข้อ\wbr{}มูล\wbr{}เกี่ยว\wbr{}กับ\wbr{}เจ้า\wbr{}ของ\wbr{}ไฟล์, สิทธิ์\wbr{}ใน\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์, เวลา\wbr{}บันทึก\wbr{}ไฟล์ เป็นต้น.
+
+
+การ\wbr{}สร้าง\wbr{}ระบบ\wbr{}ไฟล์\wbr{}ให้\wbr{}กับ\wbr{}พาร์ทิ\wbr{}ชัน\wbr{}ที่\wbr{}แบ่ง\wbr{}ไว้\wbr{}แล้\wbr{}วจะ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{mkfs} ซึ่ง root มัก\wbr{}จะ\wbr{}เป็น\wbr{}ผู้\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง\wbr{}นี้\wbr{}สร้าง\wbr{}ระบบ\wbr{}ไฟล์.\cindex{mkfs}\refcmd{mkfs}
+
+\begin{MyExample}[การ\wbr{}สร้าง\wbr{}ระบบ\wbr{}ไฟล์.]
+\begin{MyEx}
+# \cin{mkfs -t ext2 /dev/fd0}
+\end{MyEx}
+\end{MyExample}
+
+ใน\wbr{}ความ\wbr{}เป็น\wbr{}จริง\wbr{}แล้ว\wbr{}คำ\wbr{}สั่ง \cmd{mkfs} เป็น\wbr{}เพียง front-end\myvocab{f}{front-end}{โปรแกรม\wbr{}ที่\wbr{}เรียก\wbr{}ใช้\wbr{}โปรแกรม\wbr{}เฉพาะ\wbr{}ต่อ\wbr{}อีก\wbr{}ที\wbr{}หนึ่ง. เช่น\wbr{}โปรแกรม \cmd{mkfs} เรียก\wbr{}ใช้\wbr{}โปรแกรม \cmd{mkfs.ext2} หรือ \cmd{mkfs.xfs} อีก\wbr{}ทอด\wbr{}หนึ่ง\wbr{}แล้ว\wbr{}แต่\wbr{}ตัว\wbr{}เลือก\wbr{}ที่\wbr{}ใช้\wbr{}กับ \cmd{mkfs}. โปรแกรม front-end เหล่า\wbr{}นี้\wbr{}เป็น\wbr{}เพียง\wbr{}อินเ\wbr{}ทอร์เฟส, ไม่\wbr{}ได้\wbr{}เป็น\wbr{}ตัว\wbr{}ที่\wbr{}ทำ\wbr{}งาน\wbr{}หลัก\wbr{}เอง.} ของ\wbr{}โปรแกรม\wbr{}ที่\wbr{}สร้าง\wbr{}ระบบ\wbr{}ไฟล์\wbr{}อื่นๆ\wbr{}เช่น \cmd{mkfs.ext2}, \cmd{mkfs.xfs} ฯลฯ. ดัง\wbr{}นั้น\wbr{}เรา\wbr{}อาจ\wbr{}จะ\wbr{}เรียก\wbr{}ใช้\wbr{}โปรแกรม \cmd{mkfs.ext2} โดย\wbr{}ตรง\wbr{}ก็\wbr{}ได้.
+
+นอก\wbr{}จาก\wbr{}ระบบ\wbr{}ไฟล์\wbr{}ที่\wbr{}ออก\wbr{}แบบ\wbr{}มา\wbr{}สำหรับ\wbr{}ลิ\wbr{}นุกซ์\wbr{}แล้ว, เรา\wbr{}ยัง\wbr{}สามารถ\wbr{}สร้าง\wbr{}หรือ\wbr{}ใช้\wbr{}ระบบ\wbr{}ไฟล์\wbr{}อื่นๆ\wbr{}เช่น\wbr{}ระบบ\wbr{}ไฟล์\wbr{}สำหรับ DOS, vfat (วิน\wbr{}โดวส์), ntfs (วิน\wbr{}โดวส์) ฯลฯ และ\wbr{}นำ\wbr{}มา\wbr{}ใช้\wbr{}กับ\wbr{}ลิ\wbr{}นุกซ์\wbr{}ได้\wbr{}ด้วย. ปรกติ\wbr{}เรา\wbr{}จะ\wbr{}สร้าง\wbr{}ระบบ\wbr{}ไฟล์\wbr{}เหล่า\wbr{}นี้\wbr{}ให้\wbr{}กับ\wbr{}ฮาร์ดดิสก์\wbr{}พก\wbr{}พา, USB flash memory, ฟล็\wbr{}อป\wbr{}ปี้ดิสก์ เพื่อ\wbr{}ที่\wbr{}จะ\wbr{}ได้\wbr{}ใช้\wbr{}กับ\wbr{}เครื่อง\wbr{}คอมพิวเตอร์\wbr{}วิน\wbr{}โดวส์\wbr{}ได้\wbr{}ด้วย.
+
+\subsection{mount และ unmount}
+
+\begin{figure}[!htb]
+\plfigure{.7}{mount.eps}{mount พาร์ทิ\wbr{}ชัน\wbr{}เข้า\wbr{}ใน\wbr{}โครง\wbr{}สร้าง\wbr{}ไฟล์.}{mount}
+\end{figure}
+
+ขั้น\wbr{}ตอน\wbr{}ต่อ\wbr{}ไป\wbr{}เพื่อ\wbr{}ที่\wbr{}จะ\wbr{}ใช้\wbr{}พาร์ทิ\wbr{}ชัน\wbr{}ที่\wbr{}สร้าง\wbr{}ระบบ\wbr{}ไฟล์\wbr{}เรียบ\wbr{}ร้อย\wbr{}แล้ว\wbr{}เก็บ\wbr{}บันทึก\wbr{}ไฟล์\wbr{}ได้\wbr{}แก่\wbr{}การ \emph{mount}\gindex{mount} ระบบ\wbr{}ไฟล์\wbr{}นั้น\wbr{}เข้า\wbr{}ไป\wbr{}ใน\wbr{}โครง\wbr{}สร้าง\wbr{}ไฟล์\wbr{}และ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}แสดง\wbr{}ใน\wbr{}รูป\wbr{}ที่ \ref{fig:directory_struct}.
+
+การ mount คือ\wbr{}การ\wbr{}นำ\wbr{}ระบบ\wbr{}ไฟล์\wbr{}ที่\wbr{}สร้าง\wbr{}ใน\wbr{}พาร์ทิ\wbr{}ชัน (ดี\wbr{}ไวซ์, ฮาร์ดดิสก์) ไป\wbr{}ปะ\wbr{}ติด\wbr{}กับ\wbr{}โครง\wbr{}สร้าง\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}ใน\wbr{}ตำแหน่ง\wbr{}ที่\wbr{}ต้องการ. ตำแหน่ง\wbr{}ที่\wbr{}นำ\wbr{}ระบบ\wbr{}ไฟล์\wbr{}ไป\wbr{}ปะ\wbr{}ติด\wbr{}นี้\wbr{}เรีย\wbr{}กว่า\emph{จุด mount (mount point)} ซึ่ง\wbr{}จะ\wbr{}เป็น\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}สร้าง\wbr{}เตรียม\wbr{}ไว้\mymemo{จะ\wbr{}เป็น\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}ว่าง\wbr{}เปล่า\wbr{}หรือ\wbr{}ไม่\wbr{}ว่าง\wbr{}เปล่า\wbr{}ก็\wbr{}ได้.}. ตัว\wbr{}อย่าง\wbr{}เช่น\wbr{}รูป\wbr{}ที่ \ref{fig:mount}, ระบบ\wbr{}ไฟล์\wbr{}ที่\wbr{}สร้าง\wbr{}ไว้\wbr{}บน\wbr{}พาร์ทิ\wbr{}ชัน\wbr{}ที่ 1 จะ\wbr{}ปะ\wbr{}ติด\wbr{}กับ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{/} (รูท). ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{/home} สร้าง\wbr{}ใน\wbr{}พาร์ทิ\wbr{}ชัน\wbr{}ที่ 1 แต่\wbr{}หลัง\wbr{}จาก\wbr{}ที่ mount ระบบ\wbr{}ไฟล์\wbr{}ที่\wbr{}สร้าง\wbr{}ไว้\wbr{}บน\wbr{}พาร์ทิ\wbr{}ชัน\wbr{}ที่ 2 ปะ\wbr{}ติด\wbr{}กับ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{/home} แล้ว, ข้อ\wbr{}มูล\wbr{}ที่\wbr{}อยู่\wbr{}ใต้\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{/home} จะ\wbr{}ไป\wbr{}เก็บ\wbr{}อยู่\wbr{}ใน\wbr{}พาร์ทิ\wbr{}ชัน\wbr{}ที่ 2. การ mount ไม่\wbr{}จำ\wbr{}เป็น\wbr{}ต้อง mount กับ\wbr{}พาร์ทิ\wbr{}ชัน\wbr{}หรือ\wbr{}ฮาร์ดดิสก์\wbr{}เสมอ\wbr{}ไป, อาจ\wbr{}จะ mount ระบบ\wbr{}ไฟล์\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}เครื่อง\wbr{}คอมพิวเตอร์\wbr{}อื่นๆ\wbr{}ผ่าน\wbr{}ทางเน็ตเ\wbr{}วิร์ก\wbr{}ก็\wbr{}ได้\mymemo{ระบบ\wbr{}ไฟล์\wbr{}ที่\wbr{}ใช้เน็ตเ\wbr{}วิร์ก\wbr{}เช่น smbfs (Samba filesystem), netfs (network filesystem) เป็นต้น.}. ตอน\wbr{}ที่\wbr{}เครื่อง\wbr{}เริ่ม\wbr{}ทำ\wbr{}งาน\wbr{}จะ mount ระบบ\wbr{}ไฟล์\wbr{}ต่างๆ\wbr{}ตาม\wbr{}ที่\wbr{}กำหนด\wbr{}ไว้\wbr{}ใน\wbr{}ไฟล์ \cmd{/etc/fstab}.
+
+\bigskip
+คำ\wbr{}สั่ง \cmd{mount}\refcmd{mount} เป็น\wbr{}คำ\wbr{}สั่ง\wbr{}ที่\wbr{}ใช้ mount ระบบ\wbr{}ไฟล์\wbr{}เข้า\wbr{}ไป\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}หรือ\wbr{}ดู\wbr{}ระบบ\wbr{}ไฟล์\wbr{}และ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่ mount อยู่.
+
+\begin{MyExample}[คำ\wbr{}สั่ง \cmd{mount} แสดง\wbr{}ระบบ\wbr{}ไฟล์\wbr{}ที่ mount อยู่.]
+\begin{MyEx}
+$ \cin{mount}
+/dev/hdb1 on / type ext3 (rw,noatime)
+devfs on /dev type devfs (rw)
+none on /proc type proc (rw)
+none on /sys type sysfs (rw)
+none on /dev/pts type devpts (rw)
+/dev/hdb2 on /home type ext3 (rw,noatime)
+none on /dev/shm type tmpfs (rw)
+none on /proc/bus/usb type usbfs (rw)
+/dev/hda2 on /mnt/usb type ntfs (rw,uid=1000)
+/dev/cdrom on /mnt/cdrom type iso9660 (ro)
+\end{MyEx}
+\end{MyExample}%$
+
+เนื่อง\wbr{}จาก\wbr{}การ mount เป็น\wbr{}การ\wbr{}นำ\wbr{}ระบบ\wbr{}ไฟล์\wbr{}เข้า\wbr{}ไป\wbr{}ปะ\wbr{}ติด\wbr{}กับ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}ต้องการ\wbr{}ใน\wbr{}โครง\wbr{}สร้าง\wbr{}ไฟล์\wbr{}และ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี, ดัง\wbr{}นั้น\wbr{}จาก\wbr{}มุม\wbr{}มอง\wbr{}ของ\wbr{}ผู้\wbr{}ใช้\wbr{}แล้ว\wbr{}เรา\wbr{}จึง\wbr{}มอง\wbr{}โครง\wbr{}สร้าง\wbr{}ไฟล์\wbr{}และ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ได้\wbr{}เป็น\wbr{}หนึ่ง\wbr{}เดียว\wbr{}คือ\wbr{}ใน\wbr{}รูป\wbr{}ที่ \ref{fig:directory_struct}, ไม่\wbr{}มี\wbr{}การ\wbr{}บอ\wbr{}กว่า\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นี้\wbr{}เป็น\wbr{}ของ\wbr{}พาร์ทิ\wbr{}ชัน\wbr{}นี้\wbr{}ชัดเจน\wbr{}เหมือน\wbr{}ระบบ\wbr{}ปฏิบัติ\wbr{}กา\wbr{}รวิน\wbr{}โดวส์\wbr{}ที่\wbr{}ใช้\wbr{}ตัว\wbr{}อักษร\wbr{}ภาษา\wbr{}อังกฤษ\wbr{}กำกับ\wbr{}พาร์ทิ\wbr{}ชัน.
+
+
+คำ\wbr{}สั่ง \cmd{mount} ที่\wbr{}ใช้ mount ระบบ\wbr{}ไฟล์\wbr{}ปะ\wbr{}ติด\wbr{}กับ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ต้อง\wbr{}ใช้\wbr{}ตัว\wbr{}เลือก \cmd{-t} (type) เพื่อ\wbr{}ระบุ\wbr{}ระบบ\wbr{}ไฟล์\wbr{}และ\wbr{}มี\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}เป็น\wbr{}อาร์กิวเ\wbr{}มนต์\wbr{}ดัง\wbr{}ต่อ\wbr{}ไป\wbr{}นี้.
+\begin{MyExample}[การ mount ฟล็\wbr{}อป\wbr{}ปี้ดิสก์.]
+\begin{MyEx}
+# \cin{mount -t ext2 /dev/fd0 /mnt/floppy -o ro}
+\end{MyEx}
+\end{MyExample}
+จาก\wbr{}ตัว\wbr{}อย่าง\wbr{}เป็น\wbr{}การ mount ฟล็\wbr{}อป\wbr{}ปี้\wbr{}ปะ\wbr{}ติด\wbr{}กับ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{/mnt/floppy}.\mymemo{ต้อง\wbr{}สร้าง\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}ต้องการ mount เตรียม\wbr{}ไว้\wbr{}ก่อน\wbr{}เสมอ.} ตัว\wbr{}เลือก \cmd{-o} (option) เป็น\wbr{}การ\wbr{}ระบุ\wbr{}ราย\wbr{}ละเอียด\wbr{}ปลีก\wbr{}ย่อย\wbr{}ของ\wbr{}การ mount. ใน\wbr{}ตัว\wbr{}อย่าง ``ro'' คือ read-only ให้\wbr{}อ่าน\wbr{}ได้\wbr{}อย่าง\wbr{}เดียว\wbr{}เท่า\wbr{}นั้น, ไม่\wbr{}สามารถ\wbr{}เขียน\wbr{}ได้. ราย\wbr{}ละเอียด\wbr{}ปลีก\wbr{}ย่อย\wbr{}นี้\wbr{}บาง\wbr{}อย่าง\wbr{}จะ\wbr{}ขึ้น\wbr{}กับ\wbr{}ระบบ\wbr{}ไฟล์\wbr{}ที่\wbr{}ใช้, ให้\wbr{}อ่าน\wbr{}ราย\wbr{}ละเอียด\wbr{}เพิ่ม\wbr{}เติม\wbr{}จาก \cmd{mount(8)}. หลัง\wbr{}จาก\wbr{}ที่ mount เรียบ\wbr{}ร้อย\wbr{}แล้ว\wbr{}ผู้\wbr{}ใช้\wbr{}ก็\wbr{}สามารถ\wbr{}อ่าน\wbr{}ไฟล์\wbr{}ที่\wbr{}อยู่\wbr{}ในฟล็\wbr{}อป\wbr{}ปี้\wbr{}ได้\wbr{}จาก\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{/mnt/floppy}.
+
+\begin{table}[!htb]
+\caption{ระบบ\wbr{}ไฟล์\wbr{}ที่\wbr{}ใช้\wbr{}ใน\wbr{}ลิ\wbr{}นุกซ์.}\label{tab:filesystem}
+\medskip
+\begin{tabular}{lp{.8\textwidth}}
+\toprule
+\multicolumn{1}{c}{ระบบ\wbr{}ไฟล์} & \multicolumn{1}{c}{คำ\wbr{}อธิบาย}\\
+\midrule
+ext2 & เป็น\wbr{}ระบบ\wbr{}ไฟล์\wbr{}มาตร\wbr{}ฐาน\wbr{}สำหรับ\wbr{}ลิ\wbr{}นุกซ์. เดิม\wbr{}เป็น\wbr{}ระบบ\wbr{}ไฟล์\wbr{}ที่\wbr{}นิยม\wbr{}ใช้\wbr{}ใน\wbr{}ลิ\wbr{}นุกซ์. แต่\wbr{}ใน\wbr{}ปัจจุบัน\wbr{}เริ่ม\wbr{}ใช้ extended 3 ซึ่ง\wbr{}เป็น\wbr{}ระบบ\wbr{}ไฟล์\wbr{}ที่\wbr{}พัฒนา\wbr{}ต่อ\wbr{}จาก extended 2 อีก\wbr{}ที.\\
+ext3 & เป็น\wbr{}ระบบ\wbr{}ไฟล์\wbr{}แบบ ext2 ที่\wbr{}มี\wbr{}คุณสมบัติ journal เพิ่ม\wbr{}เติม.\\
+fat, vfat & ระบบ\wbr{}ไฟล์\wbr{}ที่\wbr{}ใช้\wbr{}ใน DOS, วิน\wbr{}โดวส์.\\
+ntfs & ระบบ\wbr{}ไฟล์\wbr{}ที่\wbr{}ใช้\wbr{}ใน\wbr{}วิน\wbr{}โดวส์ 2000 หรือ XP.\\
+iso9660 & เป็น\wbr{}ระบบ\wbr{}ไฟล์\wbr{}ที่\wbr{}มัก\wbr{}ใช้\wbr{}กับ\wbr{}แผ่น\wbr{}ซี\wbr{}ดี.\\
+smbfs & ระบบ\wbr{}ไฟล์\wbr{}แบบเน็ตเ\wbr{}วิร์ก, ใช้\wbr{}สำหรับ mount ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}แชร์\wbr{}จาก\wbr{}เครื่อง\wbr{}วิน\wbr{}โดวส์\wbr{}หรือเ\wbr{}ซิฟร์\wbr{}เวอร์\wbr{}ที่\wbr{}ใช้ samba.\\
+nfs & ระบบ\wbr{}ไฟล์ Network File System. สำหรับ\wbr{}ใช้\wbr{}ไฟล์\wbr{}ผ่านเน็ตเ\wbr{}วิร์\wbr{}กระ\wbr{}หว่าง\wbr{}เครื่อง\wbr{}ยู\wbr{}นิกซ์\wbr{}หรือ\wbr{}ลิ\wbr{}นุกซ์.\\
+reiserfs, xfs, jfs & ระบบ\wbr{}ไฟล์\wbr{}สมัย\wbr{}ใหม่\wbr{}ที่\wbr{}ออก\wbr{}แบบ\wbr{}โดย\wbr{}คำนึง\wbr{}ถึง\wbr{}ประสิทธิภาพ\wbr{}การ\wbr{}ทำ\wbr{}งาน\wbr{}ด้าน\wbr{}ต่างๆ\wbr{}เช่น\wbr{}ความเร็ว, ขีด\wbr{}จำกัด\wbr{}ของ\wbr{}ขนาด\wbr{}ไฟล์, ระบบ journal เป็นต้น.\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\bigskip
+unmount คือ\wbr{}การ\wbr{}เอา\wbr{}ระบบ\wbr{}ไฟล์\wbr{}ออก\wbr{}จาก\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่ mount อยู่. คำ\wbr{}สั่ง\wbr{}ที่\wbr{}ใช้\wbr{}สำหรับ unmount ได้\wbr{}แก่ \cmd{umount}.\cindex{umount}\refcmd{umount}\mymemo{ใ\wbr{}หระ\wbr{}วัง\wbr{}ชื่อ\wbr{}คำ\wbr{}สั่ง\wbr{}คือ \cmd{umount} ไม่\wbr{}ใช่ \cmd{unmount}} ตัว\wbr{}อย่าง\wbr{}เช่น
+\begin{MyExample}[การ unmount.]
+\begin{MyEx}
+# \cin{umount /mnt/floppy}
+\end{MyEx}
+\end{MyExample}
+จาก\wbr{}มุม\wbr{}มอง\wbr{}ของ\wbr{}ระบบ\wbr{}ปฏิบัต\wbr{}การ, ถ้า\wbr{}มี\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}ต้อง\wbr{}เขียน\wbr{}ลง\wbr{}ระบบ\wbr{}ไฟล์\wbr{}นั้น\wbr{}แต่\wbr{}ข้อ\wbr{}มูล\wbr{}นั้น\wbr{}ยัง\wbr{}อยู่\wbr{}ใน\wbr{}หน่วย\wbr{}ความ\wbr{}จำ\wbr{}ชั่ว\wbr{}คราว, ก็\wbr{}จะ\wbr{}ทำ\wbr{}การ\wbr{}เขียน\wbr{}ลง\wbr{}ระบบ\wbr{}ไฟล์\wbr{}นั้น. การ\wbr{}กระทำ\wbr{}นี้\wbr{}เรีย\wbr{}กว่า \emph{sync} (synchronize) ข้อ\wbr{}มูล\wbr{}เพื่อ\wbr{}ให้\wbr{}ข้อ\wbr{}มูล\wbr{}ถูก\wbr{}ต้อง\wbr{}ก่อน\wbr{}จะ\wbr{}เอา\wbr{}ระบบ\wbr{}ไฟล์\wbr{}ออก\wbr{}จาก\wbr{}โครง\wbr{}สร้าง\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี. นอก\wbr{}จาก\wbr{}จะ sync ข้อ\wbr{}มูล\wbr{}แล้ว, เ\wbr{}คอร์เนล\wbr{}ยัง\wbr{}ตรวจ\wbr{}สอบ\wbr{}ด้วย\wbr{}ว่า\wbr{}มี\wbr{}ไฟล์\wbr{}ใด\wbr{}บ้าง\wbr{}ที่\wbr{}ยัง\wbr{}เปิด\wbr{}อยู่\wbr{}หรือ\wbr{}มี\wbr{}โปรแกรม\wbr{}ใช้\wbr{}ไฟล์\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}ระบบ\wbr{}ไฟล์\wbr{}นั้น\wbr{}หรือ\wbr{}ไม่. ถ้า\wbr{}มี\wbr{}ก็\wbr{}ไม่\wbr{}สามารถ unmount ได้\wbr{}และ\wbr{}จะ\wbr{}เกิด error ว่า ``device is busy''. ใน\wbr{}กรณี\wbr{}นี้\wbr{}ต้อง\wbr{}กำจัด\wbr{}โปร\wbr{}เซส\wbr{}ที่\wbr{}เปิด\wbr{}ไฟล์\wbr{}ใต้\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นั้น\wbr{}ให้\wbr{}หมด\wbr{}ก่อน\wbr{}จึง\wbr{}จะ unmount ได้.
+
+\section{ไฟล์}
+\emph{ไฟล์ (file)}\gindex{file}\gindex{ไฟล์} %
+\mymemo{ใน\wbr{}ภาษา\wbr{}ไทย\wbr{}อาจ\wbr{}แปล\wbr{}คำ\wbr{}ว่า file เป็น\wbr{}แฟ้ม\wbr{}ข้อ\wbr{}มูล.}%
+คือ\wbr{}อะไร? ไฟล์\wbr{}คือ\wbr{}กลุ่ม\wbr{}ก้อน\wbr{}ของ\wbr{}ข้อ\wbr{}มูล. ข้อ\wbr{}มูล\wbr{}นี้\wbr{}มี\wbr{}จุด\wbr{}เริ่ม\wbr{}ต้น\wbr{}และ\wbr{}จุด\wbr{}จบ. ตั้ง\wbr{}แต่\wbr{}จุด\wbr{}เริ่ม\wbr{}ต้น\wbr{}จน\wbr{}ถึง\wbr{}จุด\wbr{}จบ\wbr{}จะ\wbr{}เป็น\wbr{}ข้อ\wbr{}มูล\wbr{}ต่อ\wbr{}เนื่อง\wbr{}ไป\wbr{}เรื่อยๆ\wbr{}เป็น\emph{สาย\wbr{}ข้อ\wbr{}มูล (data stream)}. สรุป\wbr{}แนว\wbr{}คิด\wbr{}ของ\wbr{}ไฟล์\wbr{}สั้น\wbr{}ได้\wbr{}ว่า, ไฟล์\wbr{}คือ\wbr{}สาย\wbr{}ข้อ\wbr{}มูล. สาย\wbr{}ข้อ\wbr{}มูล\wbr{}นี้\wbr{}ไม่\wbr{}มี\wbr{}การ\wbr{}แยก\wbr{}แยะ\wbr{}ประเภท\wbr{}ของ\wbr{}ข้อ\wbr{}มูล\wbr{}ว่า\wbr{}จะ\wbr{}เป็น\emph{ไบ\wbr{}นารี (binary)} หรือ\emph{เท็กซ์ (text)}. ความ\wbr{}แตก\wbr{}ต่าง\wbr{}ของ\wbr{}ข้อ\wbr{}มูลไบ\wbr{}นารี\wbr{}และ\wbr{}ข้อ\wbr{}มูลเท็กซ์\wbr{}เป็น\wbr{}เพียง\wbr{}ความ\wbr{}แตก\wbr{}ต่าง\wbr{}ที่\wbr{}มนุษย์สัง\wbr{}เกตุ\wbr{}เห็น, คือ\wbr{}เป็น\wbr{}ข้อ\wbr{}มูล\wbr{}อักขระ\wbr{}ที่\wbr{}มนุษย์\wbr{}อ่าน\wbr{}ได้\wbr{}หรือ\wbr{}อ่าน\wbr{}ไม่\wbr{}ได้\wbr{}เท่า\wbr{}นั้น. สำหรับ\wbr{}คอมพิวเตอร์\wbr{}แล้ว, ข้อ\wbr{}มูล\wbr{}คือ\wbr{}ค่าที่\wbr{}แสดง\wbr{}ใน\wbr{}หน่วย\wbr{}ของ\emph{ไบต์ (byte)} %
+\myvocab{b}{byte}{หน่วย\wbr{}ของ\wbr{}ข้อ\wbr{}มูล. จำนวน\wbr{}หนึ่งไบต์\wbr{}สามารถ\wbr{}แสดง\wbr{}หรือ\wbr{}เก็บ\wbr{}ค่า\wbr{}ได้\wbr{}ตั้ง\wbr{}แต่ 0 ถึง 255.}.%
+จริง\wbr{}ไม่\wbr{}มี\wbr{}การ\wbr{}แยก\wbr{}แยะ\wbr{}ความ\wbr{}แตก\wbr{}ต่าง\wbr{}ระหว่าง\wbr{}ข้อ\wbr{}มูลไบ\wbr{}นารี\wbr{}กับ\wbr{}ข้อ\wbr{}มูลเท็กซ์.
+
+\subsection{ชื่อ\wbr{}ไฟล์}
+ไฟล์\wbr{}ต้อง\wbr{}มี\wbr{}ชื่อ\wbr{}และ\wbr{}จำนวน\wbr{}อักขระ\wbr{}ที่\wbr{}สามารถ\wbr{}ใช้\wbr{}เป็น\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}มี\wbr{}ขนาด\wbr{}ไม่\wbr{}เกิน 255 ตัว\wbr{}อักษร\mymemo{ขีด\wbr{}จำกัด\wbr{}นี้\wbr{}ดู\wbr{}ได้\wbr{}จาก \cmd{limit.h} ที่\wbr{}อยู่\wbr{}ใน\wbr{}รหัส\wbr{}ต้น\wbr{}ฉบับ\wbr{}ของเ\wbr{}คอร์เนล.}. ชื่อ\wbr{}ไฟล์\wbr{}สามารถ\wbr{}ใช้\wbr{}อักษร\wbr{}หรือ\wbr{}เครื่อง\wbr{}หมาย\wbr{}ได้\wbr{}แต่\wbr{}ใน\wbr{}ทาง\wbr{}ปฏิบัติ\wbr{}ควร\wbr{}จะ\wbr{}หลีก\wbr{}เลี่ยง\wbr{}เครื่อง\wbr{}หมาย\wbr{}ที่\wbr{}มี\wbr{}ความ\wbr{}หมาย\wbr{}พิเศษ\wbr{}สำหรับ\wbr{}เชลล์\wbr{}เช่น ช่อง\wbr{}ไฟ, วง\wbr{}เล็บ \cmd{()} เป็นต้น. เนื่อง\wbr{}จาก\wbr{}ช่อง\wbr{}ไฟ\wbr{}เป็น\wbr{}ตัว\wbr{}แบ่ง\wbr{}อาร์กิวเ\wbr{}มนต์\wbr{}ใน\wbr{}เชลล์\wbr{}จึง\wbr{}ไม่\wbr{}ควร\wbr{}ใช้\wbr{}ช่อง\wbr{}ไฟ\wbr{}ใน\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ถ้า\wbr{}ไม่\wbr{}มี\wbr{}ความ\wbr{}จำ\wbr{}เป็น\wbr{}จริงๆ. โดย\wbr{}ทั่ว\wbr{}ไป\wbr{}มัก\wbr{}จะ\wbr{}ใช้\wbr{}เครื่อง\wbr{}หมาย underscore (\cmd{\_}) แทน\wbr{}ช่อง\wbr{}ไฟ. ตัว\wbr{}อย่าง\wbr{}เช่น\wbr{}แทน\wbr{}ที่\wbr{}จะ\wbr{}ใช้\wbr{}ชื่อ\wbr{}ไฟล์ ``\cmd{important file}'' ก็\wbr{}ใช้ ``\cmd{important\_file}'' แทน. นอก\wbr{}จาก\wbr{}นี้\wbr{}ลิ\wbr{}นุกซ์\wbr{}ยัง\wbr{}แยก\wbr{}แยะ\wbr{}ความ\wbr{}แตก\wbr{}ต่าง\wbr{}ระหว่าง\wbr{}อักษร\wbr{}ตัว\wbr{}ใหญ่ (capital letter) และ\wbr{}อักษร\wbr{}ตัว\wbr{}เล็ก (small letter) ด้วย.
+
+สำหรับ\wbr{}ระบบ\wbr{}ที่\wbr{}ปรับ\wbr{}แต่ง\wbr{}ให้\wbr{}ใช้\emph{ภาษา\wbr{}นานา\wbr{}ชาติ (internationalization, i18n)}\myvocab{i}{internationalization}{ความ\wbr{}สามารถ\wbr{}ที่\wbr{}โปรแกรม\wbr{}สามารถ\wbr{}ปรับ\wbr{}ตัว\wbr{}ให้\wbr{}เข้า\wbr{}กับ\wbr{}สภาพ\wbr{}แวด\wbr{}ล้อม\wbr{}ภาษา\wbr{}และ\wbr{}วัฒนธรรม\wbr{}ที่\wbr{}ผู้\wbr{}ใช้\wbr{}กำหนด. ตัว\wbr{}อย่าง\wbr{}เช่น\wbr{}โปรแกรม\wbr{}สามารถ\wbr{}แสดง\wbr{}ผล\wbr{}นอก\wbr{}เหนือ\wbr{}จาก\wbr{}ภาษา\wbr{}อังกฤษ\wbr{}ได้\wbr{}ถ้า\wbr{}สภาพ\wbr{}แวด\wbr{}ล้อม\wbr{}ของ\wbr{}ผู้\wbr{}ใช้\wbr{}ไม่\wbr{}ใช่\wbr{}ภาษา\wbr{}อังกฤษ. Internationalization มี\wbr{}คำ\wbr{}ย่อ\wbr{}ว่า i18n โดย\wbr{}ตัว\wbr{}เลข 18 คือ\wbr{}จำนวน\wbr{}อักษร\wbr{}ระหว่าง\wbr{}อักษร i และ n.} ได้\wbr{}ก็\wbr{}สามารถ\wbr{}ใช้\wbr{}ภาษา\wbr{}อื่น\wbr{}นอก\wbr{}จาก\wbr{}ภาษา\wbr{}อังกฤษ\wbr{}เป็น\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ได้\wbr{}ด้วย. แต่\wbr{}อย่าง\wbr{}ไร\wbr{}ก็\wbr{}ตาม\wbr{}หาก\wbr{}มี\wbr{}การ\wbr{}ก็\wbr{}อป\wbr{}ปี้\wbr{}ไฟล์\wbr{}นั้น\wbr{}ข้าม\wbr{}ระบบ, หรือ\wbr{}ใช้\wbr{}กับ\wbr{}คอมพิวเตอร์\wbr{}อื่นๆ\wbr{}ก็\wbr{}ควร\wbr{}จะ\wbr{}ใช้\wbr{}ภาษา\wbr{}อังกฤษ\wbr{}เป็น\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}เพื่อ\wbr{}หลีก\wbr{}เลี่ยง\wbr{}ปัญหา\wbr{}ที่\wbr{}เกิด\wbr{}ขึ้น\wbr{}จาก\wbr{}เครื่อง\wbr{}คอมพิวเตอร์\wbr{}อื่น\wbr{}ที่\wbr{}อาจ\wbr{}จะ\wbr{}ไม่\wbr{}สนับสนุน\wbr{}การ\wbr{}ใช้\wbr{}ภาษา\wbr{}นานา\wbr{}ชาติ.
+
+\subsubsection{ส่วน\wbr{}ขยาย\wbr{}ชื่อ\wbr{}ไฟล์}
+เนื่อง\wbr{}จาก\wbr{}ไฟล์\wbr{}คือ\wbr{}สาย\wbr{}ข้อ\wbr{}มูล, และ\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}จะ\wbr{}ใช้\wbr{}ตัว\wbr{}อักษร\wbr{}หรือ\wbr{}เครื่อง\wbr{}หมาย\wbr{}อะไร\wbr{}ก็\wbr{}ได้, หมาย\wbr{}ความ\wbr{}ว่า\emph{ส่วน\wbr{}ขยาย\wbr{}ชื่อ\wbr{}ไฟล์ (filename extension)} %
+\gindex{ส่วน\wbr{}ขยาย\wbr{}ชื่อ\wbr{}ไฟล์}\gindex{filename extension}%
+เช่น \cmd{.txt}, \cmd{.zip} ฯลฯ เป็น\wbr{}เพียง\wbr{}แค่\wbr{}ส่วน\wbr{}หนึ่ง\wbr{}ของ\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}และ\wbr{}ไม่\wbr{}มี\wbr{}ความ\wbr{}หมาย\wbr{}พิเศษ\wbr{}สำหรับ\wbr{}โปรแกรม\wbr{}ที่\wbr{}ใช้\wbr{}ไฟล์\wbr{}นั้น. กล่าว\wbr{}คือ\wbr{}ไม่\wbr{}ว่า\wbr{}ไฟล์\wbr{}จะ\wbr{}ชื่อ \cmd{file.txt} หรือ \cmd{file} อย่าง\wbr{}เดียว, ถ้า\wbr{}ไม่\wbr{}เปิด\wbr{}ดู\wbr{}เนื้อ\wbr{}หา\wbr{}ของ\wbr{}ไฟล์\wbr{}ข้าง\wbr{}ใน\wbr{}ก็\wbr{}จะ\wbr{}ไม่\wbr{}รู้\wbr{}ว่า\wbr{}ไฟล์\wbr{}นั้น\wbr{}เป็น\wbr{}ไฟล์\wbr{}แบบ\wbr{}ไหน.
+
+ใน\wbr{}ลิ\wbr{}นุกซ์\wbr{}จะ\wbr{}มี\wbr{}คำ\wbr{}สั่ง \cmd{file} %
+\cindex{file}%
+\refcmd{file}%
+เพื่อ\wbr{}ใช้\wbr{}ตรวจ\wbr{}สอบ\wbr{}ประเภท\wbr{}ของ\wbr{}ไฟล์. ตัว\wbr{}อย่าง\wbr{}เช่น,
+\begin{MyExample}[การ\wbr{}ใช้ \cmd{file} ตรวจ\wbr{}สอบ\wbr{}ประเภท\wbr{}ของ\wbr{}ไฟล์.]\label{ex:filetype}
+\begin{MyEx}
+$ \cin{file /etc/passwd /bin/bash}
+/etc/passwd: ASCII text
+/bin/bash:   ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), for GNU/L\wrap
+inux 2.4.1, dynamically linked (uses shared libs), stripped
+$ \cin{file /boot/initrd-2.6.5-gentoo-r1}
+/boot/initrd-2.6.5-gentoo-r1: gzip compressed data, was "initrd-loop", from Unix\wrap
+, max compression
+$ \cin{file /dev/hda}
+/dev/hda: symbolic link to `ide/host0/bus0/target0/lun0/disc'
+$ \cin{file /dev/ide/host0/bus0/target0/lun0/disc}
+/dev/ide/host0/bus0/target0/lun0/disc: block special (3/0)
+$ \cin{file /dev/null}
+/dev/null: character special (1/3)
+\end{MyEx}
+\end{MyExample}%$
+คำ\wbr{}สั่ง\wbr{}ไฟล์\wbr{}มี\wbr{}ประโยชน์\wbr{}เช่น\wbr{}ใน\wbr{}กรณี\wbr{}ที่\wbr{}เรา\wbr{}มี\wbr{}ไฟล์\wbr{}ที่\wbr{}ไม่\wbr{}ส่วน\wbr{}ขยาย\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}และ\wbr{}ต้องการ\wbr{}รู้\wbr{}ว่า\wbr{}ไฟล์\wbr{}นั้น\wbr{}เป็น\wbr{}อะไร, หรือ\wbr{}ส่วน\wbr{}ขยาย\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ไม่\wbr{}ตรง\wbr{}กับ\wbr{}ประเภท\wbr{}ของ\wbr{}ไฟล์\wbr{}นั้น, ก็\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{file} สำรวจ\wbr{}ประเภท\wbr{}ของ\wbr{}ไฟล์\wbr{}ได้. คำ\wbr{}สั่ง \cmd{file} จะ\wbr{}มี\wbr{}ฐาน\wbr{}ข้อ\wbr{}มูล\wbr{}ของ\wbr{}ไฟล์\wbr{}ประเภท\wbr{}ต่างๆ\wbr{}ทำ\wbr{}ให้\wbr{}สามารถ\wbr{}ตรวจ\wbr{}สอบ\wbr{}ประเภท\wbr{}ของ\wbr{}ไฟล์\wbr{}ได้\wbr{}อย่าง\wbr{}ละเอียด. ใน\wbr{}บาง\wbr{}กรณี\wbr{}สามารถ\wbr{}บอก\wbr{}ได้\wbr{}ว่า\wbr{}เป็น\wbr{}ไฟล์\wbr{}ที่\wbr{}สร้าง\wbr{}โปรแกรม\wbr{}อะไร\wbr{}ได้\wbr{}ด้วย. ตัว\wbr{}อย่าง\wbr{}เช่น,
+\begin{MyExample}[การ\wbr{}ตรวจ\wbr{}สอบ\wbr{}ไฟล์\wbr{}ที่\wbr{}ไม่\wbr{}มี\wbr{}ส่วน\wbr{}ขยาย\wbr{}ชื่อ\wbr{}ไฟล์]
+\begin{MyEx}
+$ \cin{file unknown_file}
+unknown_file: PDF document, version 1.2
+\end{MyEx}
+\end{MyExample}%$
+ใน\wbr{}กรณี\wbr{}นี้\wbr{}ก็\wbr{}ทำ\wbr{}ให้\wbr{}เรา\wbr{}รู้\wbr{}ไว้\wbr{}ไฟล์\wbr{}นี้\wbr{}เป็น\wbr{}ไฟล์ PDF และ\wbr{}ต้อง\wbr{}ใช้\wbr{}โปรแกรม\wbr{}เช่น \cmd{acroread}, \cmd{xpdf}, \cmd{ggv} ฯลฯ ใน\wbr{}การ\wbr{}เปิด\wbr{}อ่าน. นอก\wbr{}จาก\wbr{}นั้น\wbr{}ยัง\wbr{}ทำ\wbr{}ให้\wbr{}เรา\wbr{}รู้\wbr{}ว่า\wbr{}ควร\wbr{}เปลี่ยน\wbr{}ชื่อ\wbr{}โดย\wbr{}เพิ่ม\wbr{}ส่วน\wbr{}ขยาย\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}เป็น \cmd{.pdf} เพื่อ\wbr{}ความ\wbr{}สะดวก\wbr{}ของ\wbr{}ผู้\wbr{}ใช้\wbr{}ใน\wbr{}โอกาส\wbr{}ต่อ\wbr{}ไป.
+
+จาก\wbr{}ตัว\wbr{}อย่าง\wbr{}ที่ \ref{ex:filetype} จะ\wbr{}เห็น\wbr{}ได้\wbr{}ว่า\wbr{}คำ\wbr{}สั่ง \cmd{file} สามารถ\wbr{}แยก\wbr{}ประเภท\wbr{}ของ\wbr{}ไฟล์\wbr{}ได้\wbr{}ละเอียด. เช่น\wbr{}ถ้า\wbr{}เป็น\wbr{}ไฟล์\wbr{}ข้อ\wbr{}มูล\wbr{}ก็\wbr{}จะ\wbr{}บอก\wbr{}ได้\wbr{}ว่า\wbr{}เป็น\wbr{}ข้อ\wbr{}มูล\wbr{}แบบ\wbr{}ไหน, ของ\wbr{}โปรแกรม\wbr{}อะไร\wbr{}เป็นต้น. ถ้า\wbr{}เป็น\wbr{}ไฟล์เท็กซ์, คำ\wbr{}สั่ง \cmd{file} ก็\wbr{}อาจ\wbr{}จะ\wbr{}บอก\wbr{}ได้\wbr{}ว่า\wbr{}ไฟล์\wbr{}นั้น\wbr{}มี\wbr{}เนื้อ\wbr{}หา\wbr{}เป็น ASCII หรือ\wbr{}อย่าง\wbr{}อื่น.
+
+การ\wbr{}ที่\wbr{}คำ\wbr{}สั่ง \cmd{file} สามารถ\wbr{}บอก\wbr{}ประเภท\wbr{}ของ\wbr{}ไฟล์\wbr{}ได้\wbr{}ละเอียด\wbr{}เป็น\wbr{}เพราะ\wbr{}คำ\wbr{}สั่ง \cmd{file} ดู\wbr{}เนื้อ\wbr{}หา\wbr{}ข้าง\wbr{}ใน\wbr{}แล้ว\wbr{}เทียบ\wbr{}กับ\wbr{}ฐาน\wbr{}ข้อ\wbr{}มูล\wbr{}ของ\wbr{}ไฟล์\wbr{}ต่างๆ\wbr{}ที่\wbr{}เตรียม\wbr{}ไว้.\mymemo{ฐาน\wbr{}ข้อ\wbr{}มูล\wbr{}นี้\wbr{}เก็บ\wbr{}ไว้\wbr{}ใน\wbr{}ไฟล์ \cmd{/usr/share/misc/file/magic}.}
+
+จริงๆ\wbr{}แล้ว\wbr{}เรา\wbr{}สามารถ\wbr{}เปิด\wbr{}ดู\wbr{}เนื้อ\wbr{}หา\wbr{}ไฟล์\wbr{}ไม่\wbr{}ว่า\wbr{}จะ\wbr{}เป็น\wbr{}ไฟล์เท็กซ์\wbr{}หรือ\wbr{}ไฟล์ไบ\wbr{}นารี, และ\wbr{}บาง\wbr{}ครั้ง\wbr{}สามารถ\wbr{}บอก\wbr{}ได้\wbr{}ว่า\wbr{}ไฟล์\wbr{}นั้น\wbr{}เป็น\wbr{}ไฟล์\wbr{}อะไร. ไฟล์ไบ\wbr{}นารี\wbr{}ส่วน\wbr{}ใหญ่\wbr{}จะ\wbr{}มี\wbr{}อักขระ ASCII ปะปน\wbr{}อยู่\wbr{}ด้วย. ใน\wbr{}บาง\wbr{}กรณี\wbr{}อักขระ\wbr{}ที่\wbr{}อ่าน\wbr{}ได้\wbr{}เหล่า\wbr{}นี้\wbr{}เป็น\wbr{}ตัว\wbr{}บอก\wbr{}ใบ้\wbr{}ให้\wbr{}เรา\wbr{}รู้\wbr{}ว่า\wbr{}ไฟล์\wbr{}นั้น\wbr{}เป็น\wbr{}ไฟล์\wbr{}อะไร. คำ\wbr{}สั่ง \cmd{file} ก็\wbr{}เช่น\wbr{}กัน\wbr{}อาศัย\wbr{}ตัว\wbr{}บอก\wbr{}ใบ้\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}ไฟล์\wbr{}ที่\wbr{}ตรวจ\wbr{}สอบ\wbr{}แล้ว\wbr{}เทียบ\wbr{}เอา\wbr{}กับ\wbr{}ฐาน\wbr{}ข้อ\wbr{}มูล\wbr{}ประเภท\wbr{}ของ\wbr{}ไฟล์\wbr{}ที่\wbr{}เตรียม\wbr{}ไว้. ส่วน\wbr{}บอก\wbr{}ใบ้\wbr{}นี้\wbr{}เรียก\wbr{}กัน\wbr{}ว่า \emph{magic number}\gindex{magic number}. %
+\myvocab{m}{magic number}{ข้อ\wbr{}มูล\wbr{}หรือ\wbr{}ค่าที่\wbr{}อยู่\wbr{}ใน\wbr{}ไฟล์, เป็น\wbr{}เอกลักษณ์\wbr{}พิเศษ\wbr{}ที่\wbr{}บอก\wbr{}ประเภท\wbr{}ของ\wbr{}ไฟล์\wbr{}ได้. ตัว\wbr{}อย่าง\wbr{}เช่น magic number ของสค\wbr{}ริปต์\wbr{}ที่\wbr{}ใช้\wbr{}ใน\wbr{}ยู\wbr{}นิกซ์\wbr{}หรือ\wbr{}ลิ\wbr{}นุกซ์\wbr{}คือ\wbr{}อักขระ \cmd{\#!}.}%
+โดย\wbr{}ทั่ว\wbr{}ไป magic number จะ\wbr{}อยู่\wbr{}ใน\wbr{}ช่วง\wbr{}ต้นๆ\wbr{}ของ\wbr{}ไฟล์\wbr{}เช่น ถ้า\wbr{}เป็น\wbr{}ไฟล์\wbr{}รูป\wbr{}ภาพ\wbr{}แบบ png ก็\wbr{}จะ\wbr{}มี\wbr{}ข้อ\wbr{}มูล\wbr{}หนึ่งไบต์\wbr{}มี\wbr{}ค่า\wbr{}เป็น \cmd{0x89} แล้ว\wbr{}ตาม\wbr{}ด้วย\wbr{}อักขระ ASCII ว่า PNG เป็นต้น. ไฟล์\wbr{}แบบ\wbr{}นี้\wbr{}ถ้า\wbr{}เป็น\wbr{}คน\wbr{}ดู\wbr{}เอง\wbr{}จะ\wbr{}ง่าย\wbr{}และ\wbr{}พอ\wbr{}เดา\wbr{}ได้\wbr{}เพราะ\wbr{}มี\wbr{}อักขระ ASCII เขียน\wbr{}สื่อ\wbr{}ความ\wbr{}หมาย\wbr{}ไว้. แต่\wbr{}บาง\wbr{}กรณี magic number อาจ\wbr{}จะ\wbr{}เป็น\wbr{}ข้อ\wbr{}มูลไบ\wbr{}นารี\wbr{}ล้วนๆ.
+
+
+\subsection{ประเภท\wbr{}ไฟล์}
+การ\wbr{}แบ่ง\wbr{}ประเภท\wbr{}ของ\wbr{}ไฟล์\wbr{}ขึ้น\wbr{}อยู่\wbr{}กับ\wbr{}มุม\wbr{}มอง\wbr{}ว่า\wbr{}จะ\wbr{}แบ่ง\wbr{}ด้วย\wbr{}เกณฑ์\wbr{}อย่าง\wbr{}ไร. ถ้า\wbr{}จะ\wbr{}แบ่ง\wbr{}ด้วย\wbr{}เกณฑ์\wbr{}ของ\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}มนุษย์\wbr{}สามารถ\wbr{}อ่าน\wbr{}ได้ (แสดง\wbr{}ผล\wbr{}ทาง\wbr{}หน้า\wbr{}จอ\wbr{}ได้) ก็\wbr{}อาจ\wbr{}จะ\wbr{}แบ่ง\wbr{}ได้\wbr{}เป็น\emph{ไฟล์เท็กซ์ (text file)} และ\emph{ไฟล์ไบ\wbr{}นารี (binary file)}. ถ้า\wbr{}จะ\wbr{}แบ่ง\wbr{}ไฟล์ไบ\wbr{}นารี\wbr{}ให้\wbr{}ละเอียด\wbr{}กว่า\wbr{}นี้\wbr{}ก็\wbr{}แบ่ง\wbr{}ได้\wbr{}เป็น\wbr{}ไฟล์\wbr{}ภาษา\wbr{}เครื่อง\wbr{}กล\wbr{}ที่\wbr{}คอมพิวเตอร์\wbr{}สามารถ\wbr{}กระทำ\wbr{}การ\wbr{}ได้\wbr{}หรือ\wbr{}ที่\wbr{}เรีย\wbr{}กว่า \emph{executable file} %
+\gindex{file!executable} %
+และ\emph{ไฟล์\wbr{}ข้อ\wbr{}มูลไบ\wbr{}นารี (binary data file)}. \gindex{file!binary data} %
+
+ใน\wbr{}หนังสือ\wbr{}นี้\wbr{}ขอ\wbr{}แบ่ง\wbr{}ประเภท\wbr{}ไฟล์\wbr{}แต่\wbr{}ละ\wbr{}ประเภท\wbr{}ดัง\wbr{}นี้.
+\begin{enumerate}
+\item ไฟล์\wbr{}ธรรม\wbr{}ดา
+\item ไฟล์\wbr{}ดี\wbr{}ไวซ์
+\item ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี
+\item FIFO
+\item UNIX domain socket
+\end{enumerate}
+
+\section{ไฟล์\wbr{}ธรรม\wbr{}ดา}
+ไฟล์\wbr{}ธรรม\wbr{}ดา\wbr{}คือ\wbr{}ไฟล์\wbr{}ที่\wbr{}มี\wbr{}ข้อ\wbr{}มูล\wbr{}จริง\wbr{}เก็บ\wbr{}อยู่\wbr{}ใน\wbr{}ฮาร์ดดิสก์. ใน\wbr{}ที่\wbr{}นี้\wbr{}จะ\wbr{}ไม่\wbr{}แยก\wbr{}ความ\wbr{}แตก\wbr{}ต่าง\wbr{}ของ\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}เก็บ\wbr{}อยู่\wbr{}ใน\wbr{}ไฟล์\wbr{}ว่า\wbr{}เป็นเท็กซ์\wbr{}หรือไบ\wbr{}นารี.
+
+\subsection{ไฟล์\wbr{}จุด}
+\emph{ไฟล์\wbr{}จุด (dot file)} เป็น\wbr{}ไฟล์\wbr{}ธรรม\wbr{}ดา\wbr{}แต่\wbr{}มี\wbr{}ความ\wbr{}หมาย\wbr{}พิเศษ\wbr{}สำหรับ\wbr{}คำ\wbr{}สั่ง \cmd{ls} โดย\wbr{}ที่\wbr{}คำ\wbr{}สั่ง \cmd{ls} จะ\wbr{}ไม่\wbr{}แสดง\wbr{}ไฟล์\wbr{}เหล่า\wbr{}นี้\wbr{}ถ้า\wbr{}ไม่\wbr{}ใช้\wbr{}ตัว\wbr{}เลือก \cmd{-a} หรือ \cmd{-A}. ไฟล์\wbr{}เหล่า\wbr{}นี้\wbr{}มัก\wbr{}จะ\wbr{}เป็น\wbr{}ไฟล์เท็กซ์\wbr{}หรือ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ใช้\wbr{}สำหรับ\wbr{}เป็น\wbr{}ไฟล์\wbr{}ตั้ง\wbr{}ค่า\wbr{}เริ่ม\wbr{}ต้น\wbr{}ของ\wbr{}โปรแกรม\wbr{}ต่างๆ. ถ้า\wbr{}เป็น\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ก็\wbr{}จะ\wbr{}เป็น\wbr{}ที่\wbr{}สำหรับ\wbr{}เก็บ\wbr{}ไฟล์\wbr{}ตั้ง\wbr{}ค่า\wbr{}เริ่ม\wbr{}ต้น\wbr{}หลายๆ\wbr{}ไฟล์\wbr{}ไว้\wbr{}ด้วย\wbr{}กัน. ตัว\wbr{}อย่าง\wbr{}ไฟล์\wbr{}จุด\wbr{}ที่\wbr{}แนะ\wbr{}นำ\wbr{}ไป\wbr{}แล้ว\wbr{}ได้\wbr{}แก่ \cmd{.bashrc} เป็นต้น.
+
+\subsection{ไฟล์สค\wbr{}ริปต์}
+ไฟล์สค\wbr{}ริปต์ (script)\gindex{script} คือ\wbr{}ไฟล์\wbr{}ข้อ\wbr{}มูลเท็กซ์\wbr{}ที่\wbr{}มี\wbr{}เนื้อ\wbr{}หา\wbr{}เป็น\wbr{}คำ\wbr{}สั่ง\wbr{}ของ\wbr{}ภาษา\wbr{}คอมพิวเตอร์\wbr{}แบบ\emph{อินเ\wbr{}ทอร์พ\wbr{}รี\wbr{}เตอร์ (interpreter)}%
+\myvocab{i}{interpreter}{\emph{โปรแกรม\wbr{}แปล\wbr{}คำ\wbr{}สั่ง}, \emph{ตัวแปร\wbr{}คำ\wbr{}สั่ง}. ภาษา\wbr{}คอมพิวเตอร์\wbr{}แบบ\wbr{}หนึ่ง\wbr{}ซึ่ง\wbr{}จะ\wbr{}รับ\wbr{}ข้อ\wbr{}มูลเท็กซ์, แปล\wbr{}ความ\wbr{}หมาย, แล้ว\wbr{}กระทำ\wbr{}การ. ภาษา\wbr{}คอมพิวเตอร์\wbr{}แบบ\wbr{}นี้\wbr{}มี\wbr{}ข้อ\wbr{}ดี\wbr{}ที่\wbr{}พัฒนา\wbr{}ได้\wbr{}รวด\wbr{}เร็ว, ไม่\wbr{}ต้อง\wbr{}คอมไพล์ และ\wbr{}มัก\wbr{}จะ\wbr{}มี\wbr{}วิธี\wbr{}การ\wbr{}จัด\wbr{}การ\wbr{}หน่วย\wbr{}ความ\wbr{}จำ\wbr{}ให้\wbr{}โดย\wbr{}อัตโนมัติ. ข้อ\wbr{}เสีย\wbr{}ของ\wbr{}ภาษา\wbr{}คอมพิวเตอร์\wbr{}แบบ\wbr{}นี้\wbr{}คือ\wbr{}จะ\wbr{}ทำ\wbr{}งาน\wbr{}ช้า\wbr{}กว่า\wbr{}โปรแกรม\wbr{}ที่\wbr{}สร้าง\wbr{}ด้วย\wbr{}คอม\wbr{}ไพ\wbr{}เลอร์. โปรแกรม\wbr{}แปล\wbr{}ภาษา\wbr{}ที่\wbr{}นิยม\wbr{}ใช้\wbr{}กัน\wbr{}ได้\wbr{}แก่ เชลล์, Perl, Python, Ruby ฯลฯ.}%
+บรรทัด\wbr{}แรก\wbr{}ของ\wbr{}ไฟล์สค\wbr{}ริปต์\wbr{}จะ\wbr{}ขึ้น\wbr{}ต้น\wbr{}ด้วย\wbr{}เครื่อง\wbr{}หมาย ``\cmd{\#!}'' และ\wbr{}ตาม\wbr{}ด้วย\wbr{}ชื่อ\wbr{}โปรแกรม\wbr{}แปล\wbr{}ภาษา\wbr{}แบบ full path. เช่น\wbr{}ไฟล์สค\wbr{}ริปต์\wbr{}ที่\wbr{}ใช้\wbr{}เชลล์\wbr{}เป็น\wbr{}ตัว\wbr{}แปล\wbr{}ภาษา\wbr{}ที่\wbr{}เรียก\wbr{}กัน\wbr{}ว่า\wbr{}เชลล์สค\wbr{}ริปต์\wbr{}จะ\wbr{}มี\wbr{}บรรทัด\wbr{}แรก\wbr{}เป็น
+\begin{MyVerbatim}
+#!/bin/sh
+\end{MyVerbatim}
+และ\wbr{}ตั้ง\wbr{}แต่\wbr{}บรรทัด\wbr{}ที่\wbr{}สอง\wbr{}เป็นต้น\wbr{}ไป\wbr{}จะ\wbr{}เป็น\wbr{}คำ\wbr{}สั่ง\wbr{}ที่\wbr{}ใช้\wbr{}ใน\wbr{}เชลล์. ไฟล์สค\wbr{}ริปต์\wbr{}นี้\wbr{}ต้อง\wbr{}ตั้ง\wbr{}ค่า\wbr{}ไฟล์\wbr{}ให้\wbr{}กระทำ\wbr{}การ\wbr{}ได้\wbr{}ด้วย\wbr{}คำ\wbr{}สั่ง ``\cmd{chmod +x}''\mymemo{เกี่ยว\wbr{}กับ\wbr{}คำ\wbr{}สั่ง \cmd{chmod} ให้\wbr{}ดู\wbr{}ที่\wbr{}หน้า \pageref{sec:chmod}} ก่อน\wbr{}จึง\wbr{}จะ\wbr{}ใช้\wbr{}งาน\wbr{}ได้\wbr{}เหมือน\wbr{}ไฟล์\wbr{}โปรแกรมไบ\wbr{}นารี\wbr{}ทั่ว\wbr{}ไป.
+
+สำหรับ\wbr{}การ\wbr{}สร้าง\wbr{}ไฟล์สค\wbr{}ริปต์\wbr{}ตัว\wbr{}แปล\wbr{}ภาษา\wbr{}อื่น, ให้\wbr{}เปลี่ยน \cmd{/bin/sh} เป็น\wbr{}โปรแกรม\wbr{}แปล\wbr{}ภาษา\wbr{}ที่\wbr{}ต้องการ\wbr{}เช่น\wbr{}ถ้า\wbr{}เป็น perl script บรรทัด\wbr{}แรก\wbr{}ของ\wbr{}ไฟล์\wbr{}จะ\wbr{}เป็น ``\cmd{\#!/usr/bin/perl}''.
+
+จะ\wbr{}สังเกต\wbr{}เห็น\wbr{}ว่า\wbr{}เรา\wbr{}ต้อง\wbr{}เขียน\wbr{}ชื่อ\wbr{}โปรแกรม\wbr{}แปล\wbr{}ภาษา\wbr{}ด้วย full path ซึ่ง\wbr{}บาง\wbr{}ครั้ง\wbr{}โปรแกรม\wbr{}แปล\wbr{}ภาษา\wbr{}อาจ\wbr{}จะ\wbr{}อยู่\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}ไม่\wbr{}มาตร\wbr{}ฐาน\wbr{}เช่น \cmd{/usr/local/bin} ดัง\wbr{}นั้น\wbr{}การ\wbr{}เขียน\wbr{}โปรแกรม\wbr{}แปล\wbr{}ภาษา\wbr{}เช่น \cmd{/usr/bin/perl} อาจ\wbr{}จะ\wbr{}ทำ\wbr{}ให้สค\wbr{}ริปต์\wbr{}นั้น\wbr{}ไม่\wbr{}ทำ\wbr{}งาน\wbr{}ถ้า \cmd{perl} บังเอิญ\wbr{}อยู่\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{/usr/local/bin}. วิธี\wbr{}การ\wbr{}แก้\wbr{}ปัญหา\wbr{}นี้\wbr{}ทำ\wbr{}ได้\wbr{}โดย\wbr{}การ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{env}\refcmd{env}\cindex{env} ช่วย\wbr{}โดย\wbr{}เขียน\wbr{}บรรทัด\wbr{}แรก\wbr{}ของสค\wbr{}ริปต์\wbr{}เป็น
+
+\begin{MyVerbatim}
+#!/bin/env perl
+\end{MyVerbatim}
+
+ใน\wbr{}กรณี\wbr{}นี้ \cmd{env} จะ\wbr{}ใช้\wbr{}โปรแกรม \cmd{perl} ที่\wbr{}หา\wbr{}เจอ\wbr{}ตัว\wbr{}แรก\wbr{}จาก\wbr{}ตัวแปร\wbr{}สภาพ\wbr{}แวด\wbr{}ล้อม \cmd{PATH} ทำ\wbr{}ให้\wbr{}ไม้\wbr{}ต้อง\wbr{}กังวล\wbr{}ว่า\wbr{}ตัว\wbr{}แปล\wbr{}ภาษา \cmd{perl} จะ\wbr{}อยู่\wbr{}ที่ \cmd{/usr/bin}, \cmd{/usr/local/bin} หรือ\wbr{}ที่\wbr{}อื่นๆ. ถ้า\wbr{}ใน\wbr{}สภาพ\wbr{}แวด\wbr{}ล้อม\wbr{}ของ\wbr{}ผู้\wbr{}ใช้\wbr{}นั้น\wbr{}ใช้ \cmd{perl} ได้, สค\wbr{}ริปต์\wbr{}นี้\wbr{}ก็\wbr{}จะ\wbr{}ทำ\wbr{}งาน\wbr{}ได้.
+
+
+\section{ไฟล์\wbr{}ดี\wbr{}ไวซ์}
+\emph{ไฟล์\wbr{}ดี\wbr{}ไวซ์ (device file)} เป็น\wbr{}ไฟล์\wbr{}พิเศษ\wbr{}แทน\wbr{}ฮาร์ดแวร์\wbr{}ใน\wbr{}คอมพิวเตอร์\wbr{}ต่างๆ\wbr{}เช่น ฮาร์ดดิสก์, แป้น\wbr{}พิมพ์, เมาส์ ฯลฯ. ไฟล์\wbr{}เหล่า\wbr{}นี้\wbr{}จะ\wbr{}อยู่\wbr{}ใต้\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{/dev}. จาก\wbr{}ความ\wbr{}หมาย\wbr{}ของ\wbr{}ไฟล์\wbr{}ที่\wbr{}ได้\wbr{}กล่าว\wbr{}ไป\wbr{}แล้ว\wbr{}ว่า\wbr{}ไฟล์\wbr{}คือ\wbr{}สาย\wbr{}ของ\wbr{}ข้อ\wbr{}มูล, ดัง\wbr{}นั้น\wbr{}ฮาร์ดแวร์\wbr{}ต่างๆ\wbr{}เช่น\wbr{}ฮาร์ด\wbr{}ดิกส์\wbr{}ก็\wbr{}เป็น\wbr{}แหล่ง\wbr{}ข้อ\wbr{}มูล\wbr{}อย่าง\wbr{}หนึ่ง\wbr{}และเ\wbr{}คอร์เนล\wbr{}ก็\wbr{}ถือ\wbr{}ให้\wbr{}ฮาร์ดแวร์\wbr{}เหล่า\wbr{}นี้\wbr{}เป็น\wbr{}เสมือน\wbr{}ไฟล์.
+
+\begin{MyExample}[ตัว\wbr{}อย่าง\wbr{}ไฟล์\wbr{}ดี\wbr{}ไวซ์]\label{ex:lsdevice}
+\begin{MyEx}
+$ \cin{ls -l /dev/input/mouse0}
+crw-r--r--    1 root     root      13,  32 Jan  1  1970 /dev/input/mouse0
+$ \cin{ls -l /dev/hda*}
+lr-xr-xr-x    1 root     root           32 Sep  5  2004 /dev/hda -> \wrap
+ide/host0/bus0/target0/lun0/disc
+lr-xr-xr-x    1 root     root           33 Sep  5  2004 /dev/hda1 -> \wrap
+ide/host0/bus0/target0/lun0/part1
+lr-xr-xr-x    1 root     root           33 Sep  5  2004 /dev/hda2 -> \wrap
+ide/host0/bus0/target0/lun0/part2
+lr-xr-xr-x    1 root     root           33 Sep  5  2004 /dev/hda3 -> \wrap
+ide/host0/bus0/target0/lun0/part3
+$ \cin{cd /dev/ide/host0/bus0/target0/lun0}
+$ \cin{ls -l}
+total 0
+brw-------    1 root     root       3,   0 Jan  1  1970 disc
+brw-------    1 root     root       3,   1 Jan  1  1970 part1
+brw-------    1 root     root       3,   2 Jan  1  1970 part2
+brw-------    1 root     root       3,   3 Jan  1  1970 part3
+\end{MyEx}
+\end{MyExample}
+
+ถ้า\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{ls} ดู\wbr{}ราย\wbr{}ละเอียด\wbr{}ของ\wbr{}ไฟล์\wbr{}ดี\wbr{}ไวซ์\wbr{}จะ\wbr{}เห็น\wbr{}ว่า\wbr{}ไฟล์\wbr{}ดี\wbr{}ไวซ์\wbr{}บาง\wbr{}ไฟล์\wbr{}เช่น \cmd{/dev/hda} เป็น\wbr{}ซอฟต์\wbr{}ลิงค์\mymemo{เรื่อง\wbr{}ของ\wbr{}ซอฟต์\wbr{}ลิงค์\wbr{}อยู่\wbr{}ที่\wbr{}หน้า \pageref{sec:softlink}.} ไป\wbr{}ยัง\wbr{}ไฟล์\wbr{}ดี\wbr{}ไวซ์\wbr{}จริง. ส่วน\wbr{}ราย\wbr{}ละเอียด\mymemo{ดู\wbr{}คำ\wbr{}อธิบาย\wbr{}เกี่ยว\wbr{}กับ\wbr{}ราย\wbr{}ละเอียด\wbr{}ของ\wbr{}ไฟล์\wbr{}ได้\wbr{}ที่\wbr{}หน้า \pageref{ls-l}.}ของ\wbr{}ไฟล์\wbr{}ดี\wbr{}ไวซ์\wbr{}จะ\wbr{}มี\wbr{}อยู่\wbr{}สอง\wbr{}กรณี\wbr{}คือ \cmd{crw-r--r--} และ \cmd{brw-------}. ตัว\wbr{}อักษร \cmd{c} และ \cmd{b} บ่ง\wbr{}บอ\wbr{}กว่า\wbr{}ไฟล์\wbr{}ดัง\wbr{}กล่าว\wbr{}เป็น\wbr{}ไฟล์\wbr{}ดี\wbr{}ไวซ์.
+
+ไฟล์\wbr{}ดี\wbr{}ไวซ์\wbr{}ยัง\wbr{}แบ่ง\wbr{}เป็น 2 ประเภท\wbr{}ใหญ่ๆ\wbr{}ได้\wbr{}แก่\emph{ดี\wbr{}ไวซ์ character (character device)} และ \emph{ดี\wbr{}ไวซ์ block (block device)}. ดี\wbr{}ไวซ์ character \gindex{device!character} เป็น\wbr{}ดี\wbr{}ไวซ์\wbr{}ที่\wbr{}คอมพิวเตอร์\wbr{}ต้อง\wbr{}รับ\wbr{}ข้อ\wbr{}มูล\wbr{}มาก\wbr{}จาก\wbr{}ดี\wbr{}ไวซ์\wbr{}นั้นๆ\wbr{}เป็น\wbr{}ลำดับไบต์\wbr{}ต่อไบต์, ไม่\wbr{}สามารถ\wbr{}ข้าม\wbr{}หรือ\wbr{}กระโดด\wbr{}ไป\wbr{}อ่าน\wbr{}ข้อ\wbr{}มูล\wbr{}ใน\wbr{}ตำแหน่ง\wbr{}ที่\wbr{}ต้องการ\wbr{}ได้. ส่วน\wbr{}ดี\wbr{}ไวซ์ block\gindex{device!block} เป็น\wbr{}ดี\wbr{}ไวซ์\wbr{}ที่\wbr{}ส่ง\wbr{}รับ\wbr{}ข้อ\wbr{}มูล\wbr{}เป็น\wbr{}บล็อก. การ\wbr{}ส่ง\wbr{}รับ\wbr{}ข้อ\wbr{}มูล\wbr{}เป็น\wbr{}บล็อก\wbr{}จะ\wbr{}มี\wbr{}การ\wbr{}ใช้ \emph{buffer}\gindex{buffer} ซึ่ง\wbr{}เป็น\wbr{}พื้น\wbr{}ที่\wbr{}หน่วย\wbr{}ความ\wbr{}จำ\wbr{}ที่\wbr{}กำหนด\wbr{}ไว้\wbr{}คอ\wbr{}รับ\wbr{}เก็บ\wbr{}ข้อ\wbr{}มูล\wbr{}เป็น\wbr{}บล็อก\wbr{}ก่อน\wbr{}ที่\wbr{}จะ\wbr{}ส่ง\wbr{}ไป\wbr{}ดี\wbr{}ไวซ์\wbr{}จริงๆ. ตัว\wbr{}อย่าง\wbr{}ของ\wbr{}ดี\wbr{}ไวซ์ block ได้\wbr{}แก่\wbr{}ฮาร์ดดิสก์, ส่วน\wbr{}ตัว\wbr{}อย่าง\wbr{}ของ\wbr{}ดี\wbr{}ไวซ์ character ได้\wbr{}แก่ เมาส์, เทป, แป้น\wbr{}พิมพ์ ฯลฯ.
+
+จาก\wbr{}ตัว\wbr{}อย่าง\wbr{}ที่ \ref{ex:lsdevice} ให้\wbr{}สังเกต\wbr{}ผล\wbr{}ลัพธ์\wbr{}ของ\wbr{}คำ\wbr{}สั่ง \cmd{ls -l} ที่\wbr{}แสดง\wbr{}ราย\wbr{}ละเอียด\wbr{}ของ\wbr{}ไฟล์\wbr{}ดี\wbr{}ไวซ์\wbr{}เช่น \cmd{/dev/input/mouse0}. ตัว\wbr{}เลข\wbr{}ที่\wbr{}อยู่\wbr{}หลัง\wbr{}เจ้า\wbr{}ของ\wbr{}ไฟล์\wbr{}และ\wbr{}กลุ่ม (root) คือ\wbr{}ตัว\wbr{}เลข\wbr{}สอง\wbr{}ตัว\wbr{}ได้\wbr{}แก่ 13 และ 32. ตัว\wbr{}เลข\wbr{}ตัว\wbr{}แรก\wbr{}เรีย\wbr{}กว่า \emph{major device number}\gindex{major device number}, และ\wbr{}ตัว\wbr{}เลข\wbr{}ถัด\wbr{}มา\wbr{}เรีย\wbr{}กว่า \emph{minor device number}\gindex{minor device number}. major device number คือ\wbr{}ตัว\wbr{}เลข\wbr{}เฉพาะ\wbr{}ที่\wbr{}ใช้\wbr{}ในเ\wbr{}คอร์เนล\wbr{}บ่ง\wbr{}บอก\wbr{}ไดร์\wbr{}เวอร์ (driver) ที่\wbr{}ใช้\wbr{}ควบ\wbr{}คุ\wbr{}มดี\wbr{}ไวซ์\wbr{}นั้น. ตัว\wbr{}อย่าง\wbr{}เช่น\wbr{}หมาย\wbr{}เลข 1 เป็น\wbr{}ไดร์\wbr{}เวอร์\wbr{}ที่\wbr{}ใช้\wbr{}เกี่ยว\wbr{}กับ\wbr{}หน่วย\wbr{}ความ\wbr{}จำ. ชื่อ\wbr{}ไดร์\wbr{}เวอร์\wbr{}และ\wbr{}หมาย\wbr{}เลข major device นี้\wbr{}ดู\wbr{}ได้\wbr{}จาก\wbr{}ไฟล์ \cmd{/proc/devices} หรือ\wbr{}จาก\wbr{}ไฟล์ \cmd{/usr/src/linux/Documentation/devices.txt} ซึ่ง\wbr{}เป็น\wbr{}เอก\wbr{}สาร\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}รหัส\wbr{}ต้น\wbr{}ฉบับ\wbr{}ของ\wbr{}ลิ\wbr{}นุกซ์เ\wbr{}คอร์เนล. ดี\wbr{}ไวซ์\wbr{}หลาย\wbr{}ตัว\wbr{}อาจ\wbr{}จะ\wbr{}ใช้\wbr{}ไดร์\wbr{}เวอร์\wbr{}ตัว\wbr{}เดียว\wbr{}กัน, กล่าว\wbr{}คือ\wbr{}มี major device number เป็น\wbr{}เลข\wbr{}ตัว\wbr{}เดียว\wbr{}กัน. ตัว\wbr{}อย่าง\wbr{}เช่น\wbr{}ฮาร์ดดิสก์\wbr{}จะ\wbr{}มี major device number ตัว\wbr{}เดียว\wbr{}กัน, แต่\wbr{}จะ\wbr{}มี minor device number ต่าง\wbr{}กัน\wbr{}เพื่อ\wbr{}แยก\wbr{}แยะ\wbr{}ว่า\wbr{}เป็น\wbr{}ดี\wbr{}ไวซ์.
+
+\medskip
+ไฟล์\wbr{}ดี\wbr{}ไวซ์\wbr{}ก็\wbr{}มี\wbr{}คุณสมบัติ\wbr{}เหมือน\wbr{}กัน\wbr{}ไฟล์\wbr{}ทั่ว\wbr{}ไป\wbr{}คือ\wbr{}สามารถ\wbr{}อ่าน\wbr{}หรือ\wbr{}เขียน\wbr{}ลง\wbr{}ไฟล์\wbr{}ได้. ตัว\wbr{}อย่าง\wbr{}เช่น\wbr{}ถ้า\wbr{}ลอง\wbr{}อ่าน\wbr{}ไฟล์ \cmd{/dev/input/mouse0} ด้วย\wbr{}คำ\wbr{}สั่ง \cmd{cat} แล้ว\wbr{}ลาก\wbr{}เมาส์\wbr{}ไป\wbr{}มา\wbr{}ก็\wbr{}จะ\wbr{}เห็น\wbr{}ข้อ\wbr{}มูล\wbr{}จาก\wbr{}เมาส์\wbr{}ตาม\wbr{}รูป\wbr{}ที่ \ref{fig:catmouse}.
+
+\begin{figure}[!htb]
+\plfigure{.4}{cat_mouse.eps}{ข้อ\wbr{}มูล\wbr{}ที่\wbr{}อ่าน\wbr{}จาก\wbr{}เมาส์\wbr{}โดย\wbr{}ใช้ \cmd{cat}}{catmouse}
+\end{figure}
+
+การ\wbr{}เขียน\wbr{}ข้อ\wbr{}มูล\wbr{}ลง\wbr{}ไฟล์\wbr{}ก็\wbr{}ทำ\wbr{}ได้\wbr{}เหมือน\wbr{}กับ\wbr{}ไฟล์\wbr{}ทั่ว\wbr{}ไป\wbr{}เช่น\wbr{}กัน. ตัว\wbr{}อย่าง\wbr{}เช่น\wbr{}เรา\wbr{}สามารถ\wbr{}เอา\wbr{}ข้อ\wbr{}มูล\wbr{}จาก\wbr{}ไฟล์\wbr{}เสียงฟอร์แ\wbr{}มต au %
+\mymemo{au เป็นฟอร์แ\wbr{}มต\wbr{}ของ\wbr{}ไฟล์\wbr{}เสียง\wbr{}แบบ\wbr{}ง่ายๆ\wbr{}ที่\wbr{}สร้าง\wbr{}โดย Sun Microsystem แต่\wbr{}เป็น\wbr{}ที่\wbr{}นิยม\wbr{}ใช้\wbr{}แพร่\wbr{}หลาย\wbr{}เท่า\wbr{}ที่\wbr{}ควร. มัก\wbr{}ใช้\wbr{}ส่วน\wbr{}ขยาย\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}เป็น \cmd{.au}.} %
+ใส่\wbr{}ใน \cmd{/dev/audio} ได้\wbr{}ตาม\wbr{}ตัว\wbr{}อย่าง\wbr{}ต่อ\wbr{}ไป\wbr{}นี้
+\begin{MyExample}[การ\wbr{}รี\wbr{}ไดเ\wbr{}รก\wbr{}ของ\wbr{}ไฟล์\wbr{}เสียง\wbr{}ไป\wbr{}หา \cmd{/dev/audio}.]
+\begin{MyEx}
+$ \cin{cat sound.au > /dev/audio}
+\end{MyEx}
+\end{MyExample}%$
+
+การ\wbr{}รี\wbr{}ไดเ\wbr{}รก\wbr{}ไป\wbr{}หา\wbr{}ไฟล์\wbr{}ดี\wbr{}ไวซ์\wbr{}ไม่\wbr{}ใช่\wbr{}ทำ\wbr{}ได้\wbr{}ทุก\wbr{}กรณี\wbr{}โดย\wbr{}จะ\wbr{}ขึ้น\wbr{}อยู่\wbr{}กับไ\wbr{}ดร\wbr{}เวอร์\wbr{}ของ\wbr{}ดี\wbr{}ไวซ์\wbr{}นั้นๆ. เช่น\wbr{}ถ้า\wbr{}เป็น\wbr{}การ\wbr{}รี\wbr{}ไดเ\wbr{}รก\wbr{}ไฟล์\wbr{}เสียง wave %
+\mymemo{wave มัก\wbr{}มี\wbr{}ส่วน\wbr{}ขยาย\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}เป็น \cmd{.wav}} %
+ให้\wbr{}รี\wbr{}ไดเ\wbr{}รก\wbr{}ไป\wbr{}ที่ \cmd{/dev/dsp}.\mymemo{dsp ย่อ\wbr{}มา\wbr{}จาก Digital Signal Processor.}
+
+
+ตา\wbr{}ราง\wbr{}ที่ \ref{tab:device} แสดง\wbr{}ไฟล์\wbr{}ดี\wbr{}ไวซ์\wbr{}ทั่ว\wbr{}ไป\wbr{}ที่\wbr{}ใช้\wbr{}ใน\wbr{}ลิ\wbr{}นุกซ์. ไฟล์\wbr{}ดี\wbr{}ไวซ์\wbr{}บาง\wbr{}ไฟล์\wbr{}อาจ\wbr{}จะ\wbr{}ไม่\wbr{}ใช่\wbr{}ไฟล์\wbr{}จริงๆ\wbr{}แต่\wbr{}เป็น\wbr{}ลิงก์\wbr{}ไป\wbr{}ที่\wbr{}ไฟล์\wbr{}ดี\wbr{}ไวซ์\wbr{}อื่น.
+
+\begin{table}[!htb]
+\caption{ไฟล์\wbr{}ดี\wbr{}ไวซ์\wbr{}ทั่ว\wbr{}ไป\wbr{}ที่\wbr{}ใช้\wbr{}ใน\wbr{}ลิ\wbr{}นุกซ์}\label{tab:device}
+\bigskip
+\begin{tabular}{l|p{.6\textwidth}}
+\hline
+\multicolumn{1}{c|}{ไฟล์\wbr{}ดี\wbr{}ไวซ์} & \multicolumn{1}{|c}{คำ\wbr{}อธิบาย}\\
+\hline
+\cmd{/dev/audio}& ไฟล์\wbr{}ดี\wbr{}ไวซ์\wbr{}ที่\wbr{}เกี่ยว\wbr{}กับ\wbr{}เสียง. ไฟล์\wbr{}ที่\wbr{}เกี่ยว\wbr{}ข้อง\wbr{}อื่นๆ\wbr{}ได้\wbr{}แก่ \cmd{/dev/dsp}, \cmd{/dev/mixer} เป็นต้น.\\
+\cmd{/dev/cdrom}& ไฟล์\wbr{}ดี\wbr{}ไวซ์\wbr{}ของ CD โดย\wbr{}ปริยาย. โดย\wbr{}ปรกติ\wbr{}จะ\wbr{}เป็น\wbr{}ลิงก์\wbr{}ไป\wbr{}หา\wbr{}ดี\wbr{}ไวซ์\wbr{}ตัว\wbr{}จริง\wbr{}ที่\wbr{}อื่น.\\
+\cmd{/dev/fd0} & ไฟล์\wbr{}ดี\wbr{}ไวซ์\wbr{}ของฟล็\wbr{}อป\wbr{}ปี้ดิสก์.\\
+\cmd{/dev/hda} & ไฟล์\wbr{}ดี\wbr{}ไวซ์\wbr{}ของ\wbr{}ฮาร์ดดิสก์\wbr{}ตัว\wbr{}แรก\wbr{}ที่\wbr{}ใช้\wbr{}อินเ\wbr{}ทอร์เฟส\wbr{}แบบ IDE.\\
+\cmd{/dev/sda} & ไฟล์\wbr{}ดี\wbr{}ไวซ์\wbr{}ของ\wbr{}ฮาร์ดดิสก์\wbr{}ตัว\wbr{}แรก\wbr{}ที่\wbr{}มี\wbr{}อินเ\wbr{}ทอร์เฟส\wbr{}แบบ SCSI.\\
+\hline
+\end{tabular}
+\end{table}
+
+%\subsection{การ\wbr{}ใช้\wbr{}ดี\wbr{}ไวซ์\wbr{}ที่\wbr{}ถอด\wbr{}เข้า\wbr{}ออก\wbr{}ได้}
+%ดี\wbr{}ไวซ์\wbr{}ที่\wbr{}ถอด\wbr{}เข้า\wbr{}ออก\wbr{}ได้ (removable device) ได้\wbr{}เช่น\emph{แผ่น\wbr{}บันทึก (floppy disk)}\myvocab{f}{floppy disk}{\emph{แผ่น\wbr{}บันทึก.} แผ่น\wbr{}แม่\wbr{}เหล็ก\wbr{}บางๆ\wbr{}สำหรับ\wbr{}บันทึก\wbr{}ข้อ\wbr{}มูล. โดย\wbr{}ปรกติ\wbr{}จะ\wbr{}มี\wbr{}พลาสติก\wbr{}หุ้ม\wbr{}เป็น\wbr{}แผ่น\wbr{}แข็ง.}, แผ่น\wbr{}ซี\wbr{}ดี หรือ USB flash memory เหล่า\wbr{}นี้\wbr{}ล้วน\wbr{}แสดง\wbr{}ได้\wbr{}ด้วย\wbr{}ไฟล์\wbr{}ดี\wbr{}ไวซ์\wbr{}ทั้ง\wbr{}สิ้น. การ\wbr{}ใช้\wbr{}อุปกรณ์\wbr{}เหล่า\wbr{}นี้\wbr{}ต้อง\wbr{}ทำ\wbr{}การ mount ให้\wbr{}เข้า\wbr{}กับ\wbr{}ระบบ\wbr{}ไฟล์\wbr{}ก่อน\wbr{}จึง\wbr{}จะ\wbr{}สามารถ\wbr{}อ่าน\wbr{}หรือ\wbr{}เขียน\wbr{}ข้อ\wbr{}มูล\wbr{}ได้. ดิสท\wbr{}ริ\wbr{}บิว\wbr{}ชัน\wbr{}โดย\wbr{}ทั่ว\wbr{}ไป\wbr{}มัก\wbr{}จะ\wbr{}เตรียม\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{/mnt} ให้\wbr{}เป็น\wbr{}ที่\wbr{}สำหรับ mount อุปกรณ์\wbr{}เหล่า\wbr{}นี้. เช่น\wbr{}ถ้า\wbr{}เป็น\wbr{}แผ่น\wbr{}บันทึก\wbr{}ก็\wbr{}มัก\wbr{}จะ mount ไว้\wbr{}ที่ \cmd{/mnt/floppy}, ถ้า\wbr{}เป็น\wbr{}แผ่น\wbr{}ซี\wbr{}ดี\wbr{}ก็\wbr{}จะ mount ไว้\wbr{}ที่ \cmd{/mnt/cdrom}.
+%
+%ใน\wbr{}ความ\wbr{}เป็น\wbr{}จริง\wbr{}แล้ว\wbr{}เรา\wbr{}จะ mount ไฟล์\wbr{}ดี\wbr{}ไวซ์\wbr{}เหล่า\wbr{}นี้\wbr{}กับ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ใด\wbr{}ก็\wbr{}ได้\wbr{}แล้ว\wbr{}แต่\wbr{}สะดวก. สิ่ง\wbr{}ที่\wbr{}สำคัญ\wbr{}คือ\wbr{}เรา\wbr{}ต้อง\wbr{}รู้\wbr{}ว่า\wbr{}ไฟล์\wbr{}ดี\wbr{}ไวซ์\wbr{}ที่\wbr{}ต้องการ mount นั้น\wbr{}มี\wbr{}ชื่อ\wbr{}ว่า\wbr{}อะไร, ระบบ\wbr{}ไฟล์\wbr{}ที่\wbr{}สร้าง\wbr{}ไว้\wbr{}ใน\wbr{}อุปกรณ์\wbr{}นั้น\wbr{}เป็น\wbr{}แบบ\wbr{}ไหน. เช่น\wbr{}ถ้า\wbr{}เรา\wbr{}มี\wbr{}แผ่น\wbr{}บันทึก\wbr{}ที่\wbr{}ใช้\wbr{}กับ\wbr{}ระบบ\wbr{}ปฏิบัติ\wbr{}กา\wbr{}รวิน\wbr{}โดวส์\wbr{}และ\wbr{}ต้องการ\wbr{}อ่าน\wbr{}หรือ\wbr{}แก้\wbr{}ไข\wbr{}ใน\wbr{}ระบบ\wbr{}ปฏิบัติ\wbr{}การ\wbr{}ลิ\wbr{}นุกซ์\wbr{}ก็\wbr{}สามารถ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{mount} ได้\wbr{}ดัง\wbr{}นี้.
+%\begin{MyExample}[การ\wbr{}ใช้\wbr{}แผ่น\wbr{}บันทึก\wbr{}ของ\wbr{}วิน\wbr{}โดวส์\wbr{}ใน\wbr{}ลิ\wbr{}นุกซ์.]
+%\begin{MyEx}
+%# mount -t vfat /dev/fd0 /mnt/floppy
+%\end{MyEx}
+%\end{MyExample}
+
+
+\subsection{ไฟล์ \cmd{/dev/null} และ \cmd{/dev/zero}}
+ไฟล์\wbr{}ดี\wbr{}ไวซ์ \cmd{/dev/null}\gindex{/dev/null} และ \cmd{/dev/zero}\gindex{/dev/zero} เป็น\wbr{}ไฟล์\wbr{}ดี\wbr{}ไวซ์\wbr{}ที่\wbr{}ไม่\wbr{}ใช่\wbr{}ฮาร์ดแวร์ (ซอฟต์แวร์). ไฟล์\wbr{}ทั้ง\wbr{}สอง\wbr{}นี้\wbr{}น่า\wbr{}สน\wbr{}ใจ\wbr{}และ\wbr{}มัก\wbr{}ใช้\wbr{}กับ\wbr{}คำ\wbr{}สั่ง\wbr{}ใน\wbr{}เชลล์. \cmd{/dev/null} เป็น\wbr{}ดี\wbr{}ไวซ์\wbr{}ที่\wbr{}ไม่\wbr{}มี\wbr{}อะไร, ไม่\wbr{}ทำ\wbr{}อะไร. ถ้า\wbr{}อ่าน\wbr{}หรือ\wbr{}เขียน\wbr{}ข้อ\wbr{}มูล\wbr{}ลง\wbr{}ใน\wbr{}ไฟล์\wbr{}นี้\wbr{}ก็\wbr{}ไม่\wbr{}มี\wbr{}อะไร\wbr{}เกิด\wbr{}ขึ้น. ดัง\wbr{}นั้น\wbr{}จึง\wbr{}มัก\wbr{}ใช้ \cmd{/dev/null} เป็น\wbr{}ที่\wbr{}รอง\wbr{}รับ\wbr{}ไม่\wbr{}ต้องการ\wbr{}รี\wbr{}ไดเ\wbr{}รก\wbr{}สิ่ง\wbr{}ที่\wbr{}ไม่\wbr{}ต้องการ\wbr{}แสดง\wbr{}ไป\wbr{}หา \cmd{/dev/null} ตาม\wbr{}ที่\wbr{}แสดง\wbr{}ใน\wbr{}ตัว\wbr{}อย่าง\wbr{}ที่ \ref{ex:catnull}.
+
+ไฟล์\wbr{}ดี\wbr{}ไวซ์ \cmd{/dev/zero} ทำ\wbr{}หน้า\wbr{}ที่\wbr{}ตรง\wbr{}ข้าม\wbr{}กับ \cmd{/dev/null} คือ\wbr{}เป็น\wbr{}ดี\wbr{}ไวซ์\wbr{}ที่\wbr{}ให้\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}มี\wbr{}ค่า\wbr{}เป็น NULL (อักขระ ASCII ตัว\wbr{}แรก) ให้\wbr{}กับ\wbr{}โปรแกรม\wbr{}ที่\wbr{}ต้องการ\wbr{}ไป\wbr{}เรื่อยๆ. มัก\wbr{}จะ\wbr{}ใช้\wbr{}กับ\wbr{}คำ\wbr{}สั่ง \cmd{dd}\refcmd{dd} สร้าง\wbr{}ไฟล์\wbr{}ที่\wbr{}มี\wbr{}ขนาด\wbr{}ที่\wbr{}ต้องการ. ตัว\wbr{}อย่าง\wbr{}ต่อ\wbr{}ไป\wbr{}นี้\wbr{}เป็น\wbr{}การ\wbr{}สร้าง\wbr{}ไฟล์ (ชื่อ\wbr{}ไฟล์ \cmd{file}) ที่\wbr{}มี\wbr{}ขนาด 1 กิโลไบต์\wbr{}พอ\wbr{}ดีๆ\wbr{}ด้วย\wbr{}คำ\wbr{}สั่ง \cmd{dd}. ไฟล์\wbr{}ที่\wbr{}สร้าง\wbr{}นี้\wbr{}สามารถ\wbr{}เอา\wbr{}ไป\wbr{}ใช้\wbr{}เป็น swap ของ\wbr{}ระบบ\wbr{}ปฏิบัติ\wbr{}การ\wbr{}ได้.
+\begin{MyExample}[สร้าง\wbr{}ไฟล์\wbr{}ที่\wbr{}มี\wbr{}ขนาด\wbr{}ตาม\wbr{}ต้องการ\wbr{}ด้วย \cmd{dd}]\label{ex:dd}
+\begin{MyEx}
+$ \cin{dd if=/dev/zero of=file bs=1k count=1}
+1+0 records in
+1+0 records out
+$ \cin{ls -l file}
+-rw-r--r--    1 somchai  users        1024 Jun  7 00:32 file
+\end{MyEx}
+\end{MyExample}
+
+%\bigskip
+%นอก\wbr{}จาก\wbr{}ประเภท\wbr{}ไฟล์\wbr{}ที่\wbr{}ได้\wbr{}แนะ\wbr{}นำ\wbr{}ไป\wbr{}แล้ว\wbr{}ประเภท\wbr{}ของ\wbr{}ไฟล์\wbr{}อื่นๆ\wbr{}ยัง\wbr{}มี ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี, fifo และ socket ซึ่ง\wbr{}จะ\wbr{}แนะ\wbr{}นำ\wbr{}แยก\wbr{}ต่าง\wbr{}หาก\wbr{}ใน\wbr{}ช่วง\wbr{}ต่อ\wbr{}ไป.
+
+\section{ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี}
+\begin{figure}[!htb]
+\plfigure{.7}{directory.eps}{ไฟล์, ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี และ\wbr{}ความ\wbr{}สัมพันธ์\wbr{}ต่างๆ}{directory}
+\end{figure}
+\emph{ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี (directory)}\gindex{directory}\gindex{ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี}\mymemo{ใน\wbr{}ระบบ\wbr{}ปฏิบัติ\wbr{}การ Windows จะ\wbr{}เรีย\wbr{}กว่า directory ว่า folder.} เป็น\wbr{}ที่\wbr{}ที่\wbr{}เก็บ\wbr{}รวม\wbr{}รวม\wbr{}ไฟล์\wbr{}ต่างๆ\wbr{}ให้\wbr{}เป็น\wbr{}ระบบ\wbr{}ระเบียบ. ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}หนึ่ง\wbr{}สามารถ\wbr{}เก็บ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ย่อยๆ\wbr{}ออก\wbr{}ไป\wbr{}ได้\wbr{}อีก\wbr{}เรีย\wbr{}กว่า sub-directory หรือ\wbr{}เก็บ\wbr{}ไฟล์\wbr{}ต่างๆ\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นั้น. ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}เก็บ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ย่อย\wbr{}ไว้\wbr{}เรีย\wbr{}กว่า\emph{ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}แม่ (parent directory)} ของ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ย่อย\wbr{}นั้น. จาก\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ย่อย, ถ้า\wbr{}ต้องการ\wbr{}อ้าง\wbr{}อิง\wbr{}ถึง\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}แม่\wbr{}จะ\wbr{}ใช้\wbr{}เครื่อง\wbr{}หมาย\wbr{}จุด (\cmd{..})\gindex{..} แทน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}แม่. ความ\wbr{}จริง\wbr{}แล้ว\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ก็\wbr{}คือ\wbr{}ไฟล์\wbr{}แต่\wbr{}เป็น\wbr{}ไฟล์\wbr{}พิเศษ\wbr{}ชนิด\wbr{}หนึ่ง\wbr{}ที่\wbr{}เก็บ\wbr{}ที่\wbr{}ชื่อ\wbr{}ของ\wbr{}ไฟล์\wbr{}และ\wbr{}ที่\wbr{}อยู่\wbr{}ของ\wbr{}ไฟล์\wbr{}ไว้\wbr{}ด้วย\wbr{}กัน\wbr{}โดย\wbr{}มี \cmd{ls} เป็น\wbr{}โปรแกรม\wbr{}ที่\wbr{}อ่าน\wbr{}เนื้อ\wbr{}หา\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}แล้ว\wbr{}แสดง\wbr{}ผล\wbr{}ทาง\wbr{}หน้า\wbr{}จอ.
+
+
+
+
+\subsection{โฮม\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี}
+\emph{โฮม\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี (home directory)}\gindex{directory!home}\gindex{ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี!โฮม} เป็น\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}พิเศษ\wbr{}และ\wbr{}เป็น\wbr{}ที่\wbr{}เริ่ม\wbr{}ต้น\wbr{}ของ\wbr{}เชลล์. ผู้\wbr{}ใช้\wbr{}ทุก\wbr{}คน\wbr{}ใน\wbr{}ระบบ\wbr{}จะ\wbr{}มี\wbr{}โฮม\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}เฉพาะ\wbr{}แต่\wbr{}ละ\wbr{}คน\wbr{}ซึ่ง\wbr{}โดย\wbr{}ปรกติ\wbr{}โฮม\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}มัก\wbr{}จะ\wbr{}อยู่\wbr{}ใต้\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{/home} และ\wbr{}ชื่อ\wbr{}ของ\wbr{}โฮม\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}มัก\wbr{}จะ\wbr{}เป็น\wbr{}ชื่อล็\wbr{}อก\wbr{}อิน\wbr{}ของ\wbr{}ผู้\wbr{}ใช้.
+
+ถ้า\wbr{}ผู้\wbr{}ใช้\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง \cmd{cd} โดย\wbr{}ไม่\wbr{}มี\wbr{}ตัว\wbr{}เลือก, จะ\wbr{}เป็น\wbr{}การ\wbr{}เปลี่ยน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ไป\wbr{}ที่\wbr{}โฮม\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}โดย\wbr{}ปริยาย. การ\wbr{}อ้าง\wbr{}อิง\wbr{}ตำแหน่ง\wbr{}ของ\wbr{}โฮม\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}อาจ\wbr{}ทำ\wbr{}ได้\wbr{}โดย\wbr{}ใช้\wbr{}เครื่อง\wbr{}หมาย tilde (\cmd{\~}). ตัว\wbr{}อย่าง\wbr{}เช่น \cmd{\~{}/.bashrc} เป็น\wbr{}การ\wbr{}อ้าง\wbr{}อิง\wbr{}ถึง\wbr{}ไฟล์ \cmd{.bashrc} ที่\wbr{}อยู่\wbr{}ใน\wbr{}โฮม\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี. วิธี\wbr{}อื่น\wbr{}ที่\wbr{}ใช้\wbr{}อ้าง\wbr{}อิง\wbr{}ไฟล์\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}โฮม\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ได้\wbr{}คือ\wbr{}การ\wbr{}ใช้\wbr{}ตัวแปร\wbr{}สภาพ\wbr{}แวด\wbr{}ล้อม \cmd{HOME} เช่น \cmd{\dollar{}HOME/.bashrc} เป็น\wbr{}การ\wbr{}อ้าง\wbr{}อิง\wbr{}ไฟล์\wbr{}ให้\wbr{}ผล\wbr{}เหมือน\wbr{}กับ \cmd{\~{}/.bashrc}.
+
+\subsection{ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ปัจจุบัน}
+ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}เชลล์\wbr{}ทำ\wbr{}งาน\wbr{}อยู่\wbr{}เรียก\wbr{}เป็น\wbr{}ภาษา\wbr{}อังกฤษ\wbr{}ว่า working direcotory หรือ\emph{ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ปัจจุบัน (current working directory)}. ผู้\wbr{}ใช้\wbr{}จะ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{cd} เพื่อ\wbr{}เปลี่ยน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ปัจจุบัน\wbr{}ไป\wbr{}ที่\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}อื่นๆ\wbr{}และ\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นั้น. คำ\wbr{}สั่ง\wbr{}ที่\wbr{}ทำ\wbr{}งาน\wbr{}อยู่\wbr{}จะ\wbr{}มี\wbr{}ความ\wbr{}สัมพันธ์\wbr{}กับ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ปัจจุบัน\wbr{}โดย\wbr{}ที่\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง\wbr{}นั้น\wbr{}โดย\wbr{}จะ\wbr{}เป็น\wbr{}สถาน\wbr{}ที่\wbr{}อ้าง\wbr{}อิง\wbr{}ไฟล์\wbr{}ของ\wbr{}คำ\wbr{}สั่ง.
+
+\begin{MyExample}[ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}ทำ\wbr{}งาน\wbr{}อยู่\wbr{}กับ\wbr{}คำ\wbr{}สั่ง]
+\begin{MyEx}
+$ \cin{pwd}
+/home/somchai
+$ \cin{ls file.txt}
+file.txt
+$ \cin{cd ..}
+$ \cin{ls /home/somchai/file.txt}
+/home/somchai/file.txt
+$ \cin{ls somchai/file.txt}
+somchai/file.txt
+\end{MyEx}
+\end{MyExample}%$
+
+จาก\wbr{}ตัว\wbr{}อย่าง\wbr{}จะ\wbr{}เห็น\wbr{}ได้\wbr{}ว่า\wbr{}ถ้า\wbr{}การ\wbr{}ระบุ\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ให้\wbr{}เป็น\wbr{}อาร์กิวเ\wbr{}มนต์\wbr{}ให้\wbr{}คำ\wbr{}สั่ง\wbr{}เช่น \cmd{file.txt} เป็น\wbr{}การ\wbr{}ระบุ\wbr{}แบบ\wbr{}นัยๆ\wbr{}ว่า\wbr{}ไฟล์ \cmd{file.txt} อยู่\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ปัจจุบัน. หมาย\wbr{}ความ\wbr{}ว่า\wbr{}คำ\wbr{}สั่ง \cmd{ls} รับ\wbr{}รู้\wbr{}ว่า\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}ทำ\wbr{}งาน\wbr{}อยู่\wbr{}นี้\wbr{}คือ \cmd{/home/somchai} แล้ว\wbr{}ไฟล์ \cmd{file.txt} อยู่\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นี้. หลัง\wbr{}จาก\wbr{}ที่\wbr{}เปลี่ยน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ไป\wbr{}ที่\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}แม่ (\cmd{..}, \cmd{/home}) แล้\wbr{}วจะ\wbr{}อ้าง\wbr{}อิง\wbr{}ถึง\wbr{}ไฟล์\wbr{}เดิม\wbr{}ก็\wbr{}ต้อง\wbr{}เขียน\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}เต็ม \cmd{/home/somchai/file.txt} ที่\wbr{}เรีย\wbr{}กว่า\wbr{}การ\wbr{}เขียน\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}แบบ full path. หรือ\wbr{}อ้าง\wbr{}อิง\wbr{}ไฟล์\wbr{}เป็น \cmd{somchai/file.txt} เรีย\wbr{}กว่า\wbr{}การ\wbr{}เขียน\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}แบบ relative path. relative หมาย\wbr{}ถึง\wbr{}การ\wbr{}อ้าง\wbr{}อิง\wbr{}จาก\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ปัจจุบัน\wbr{}นั่น\wbr{}เอง. ถ้า\wbr{}จะ\wbr{}อ้าง\wbr{}อิง\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ปัจจุบัน\wbr{}ให้\wbr{}ชัดเจน\wbr{}ก็\wbr{}อาจ\wbr{}จะ\wbr{}เขียน \cmd{./somchai/file.txt} ก็\wbr{}ได้. เครื่อง\wbr{}หมาย\wbr{}จุด (\cmd{.})\gindex{.} เป็น\wbr{}เครื่อง\wbr{}หมาย\wbr{}แทน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ปัจจุบัน.
+
+\medskip
+บ่อย\wbr{}ครั้ง\wbr{}ที่\wbr{}ผู้\wbr{}ใช้\wbr{}เชลล์\wbr{}ต้อง\wbr{}เปลี่ยน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ไป\wbr{}มา\wbr{}และ\wbr{}ต้องการ\wbr{}เปลี่ยน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}กลับ\wbr{}ไป\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ก่อน\wbr{}หน้า\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ปัจจุบัน. สมมติ\wbr{}ว่า\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ก่อน\wbr{}หน้า\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ปัจจุบัน\wbr{}เป็น\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ย่อยๆ\wbr{}หลาย\wbr{}ชั้น, การ\wbr{}ที่\wbr{}จะ\wbr{}เปลี่ยน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}กลับ\wbr{}ไป\wbr{}นั้น\wbr{}ผู้\wbr{}ใช้\wbr{}อาจ\wbr{}จะ\wbr{}ใช้\wbr{}การ\wbr{}เติม\wbr{}เต็ม\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ช่วย. เทคนิค\wbr{}หนึ่ง\wbr{}ที่\wbr{}นิยม\wbr{}ใช้\wbr{}กัน\wbr{}คือ\wbr{}ใช้\wbr{}เครื่อง\wbr{}หมาย ``\cmd{-}'' เป็น\wbr{}อาร์กิวเ\wbr{}มนต์\wbr{}ของ\wbr{}คำ\wbr{}สั่ง \cmd{cd} จะ\wbr{}เป็น\wbr{}การ\wbr{}เปลี่ยน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ไป\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ล่า\wbr{}สุด\wbr{}ที่\wbr{}เคย\wbr{}อยู่. ทำ\wbr{}ให้\wbr{}ประหยัด\wbr{}เวลา\wbr{}ใน\wbr{}การ\wbr{}เปลี่ยน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ไป\wbr{}หา\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ก่อน\wbr{}หน้า\wbr{}ปัจจุบัน.
+\begin{MyExample}[การ\wbr{}เปลี่ยน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ไป\wbr{}หา\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ก่อน\wbr{}หน้า\wbr{}ปัจจุบัน.]
+\begin{MyEx}
+$ \cin{pwd}
+/usr/src/linux/Documentation/filesystems
+$ \cin{cd /tmp}
+$ \cin{cd -} \mycomment{ไม่\wbr{}ต้อง\wbr{}เขียน\wbr{}ชื่อ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ก่อน\wbr{}หน้า\wbr{}นี้\wbr{}ให้\wbr{}เสีย\wbr{}เวลา}
+$ \cin{pwd}
+/usr/src/linux/Documentation/filesystems
+\end{MyEx}
+\end{MyExample}
+
+คำ\wbr{}สั่ง\wbr{}เฉพาะ\wbr{}ที่\wbr{}ใช้\wbr{}จำ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}เคย\wbr{}อยู่\wbr{}ได้\wbr{}แก่\wbr{}คำ\wbr{}สั่ง \cmd{pushd}\cindex{pushd} และ\wbr{}คำ\wbr{}สั่ง\wbr{}ที่\wbr{}เปลี่ยน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ไป\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}จำ\wbr{}ไว้\wbr{}ได้\wbr{}แก่ \cmd{popd}\cindex{popd} แต่\wbr{}จาก\wbr{}ประสบการณ์\wbr{}ของ\wbr{}ผู้\wbr{}เขียน\wbr{}แล้ว\wbr{}ไม่\wbr{}ค่อย\wbr{}ได้\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง\wbr{}เหล่า\wbr{}นี้\wbr{}มาก\wbr{}เท่า\wbr{}ไหร่\wbr{}นัก.
+
+
+\subsection{โครง\wbr{}สร้าง\wbr{}ไฟล์\wbr{}และ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี}
+ใน\wbr{}ระบบ\wbr{}ปฏิบัติ\wbr{}การ\wbr{}ยู\wbr{}นิกซ์\wbr{}และ\wbr{}ลิ\wbr{}นุกซ์\wbr{}จะ\wbr{}มี\wbr{}โครง\wbr{}สร้าง\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}แสดง\wbr{}ด้วย\wbr{}แผน\wbr{}ภาพ\wbr{}ต้น\wbr{}ไม้\wbr{}ได้\wbr{}ใน\wbr{}รูป\wbr{}ที่ \ref{fig:directory_struct}. ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}เริ่ม\wbr{}ต้น\wbr{}ของ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}อื่นๆ\wbr{}และ\wbr{}ไฟล์\wbr{}ทั้ง\wbr{}หมด\wbr{}ได้\wbr{}แก่\emph{ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}รูท (root directory)} ซึ่ง\wbr{}ใช้\wbr{}เครื่อง\wbr{}หมาย slash (\cmd{/}) แทน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นี้. ใต้\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}รูท\wbr{}ประกอบ\wbr{}ด้วย\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ย่อยๆ\wbr{}ต่างๆ\wbr{}ซึ่ง\wbr{}แต่\wbr{}ละดิสท\wbr{}ริ\wbr{}บิว\wbr{}ชัน\wbr{}อาจ\wbr{}จะ\wbr{}มี\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ย่อย\wbr{}ไม่\wbr{}เหมือน\wbr{}กัน. ใน\wbr{}บาง\wbr{}ครั้ง\wbr{}ไฟล์\wbr{}ที่\wbr{}ที่\wbr{}ทำ\wbr{}หน้า\wbr{}ที่\wbr{}เหมือน\wbr{}กัน\wbr{}อาจ\wbr{}จะ\wbr{}อยู่\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}ต่างๆ\wbr{}กัน\wbr{}ขึ้น\wbr{}อยู่\wbr{}กับดิสท\wbr{}ริ\wbr{}บิว\wbr{}ชัน\wbr{}ที่\wbr{}ใช้. ด้วย\wbr{}เหตุ\wbr{}นี้\wbr{}เอง\wbr{}จึง\wbr{}มี\wbr{}ความ\wbr{}พยายาม\wbr{}สร้าง\wbr{}มาตร\wbr{}ฐาน\wbr{}โครง\wbr{}สร้าง\wbr{}ระบบ\wbr{}ไฟล์\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}เรีย\wbr{}กว่า \emph{Filesystem Hierarchy Standard (FHS)} \cite{fhs}. %
+\gindex{filesystem hierarchy standard@Filesystem Hierarchy Standard}\gindex{fhs@FHS}%
+FHS เป็น\wbr{}เอก\wbr{}สาร\wbr{}อ้าง\wbr{}อิง\wbr{}มี\wbr{}ประโยชน์\wbr{}สำหรับ\wbr{}ผู้\wbr{}ใช้\wbr{}ทั่ว\wbr{}ไป, ผู้\wbr{}พัฒนา\wbr{}ซอฟต์แวร์, หรือ\wbr{}ตัว\wbr{}โปรแกรม\wbr{}เอง\wbr{}สามารถ\wbr{}คาด\wbr{}เดา\wbr{}ได้\wbr{}ว่า\wbr{}ไฟล์\wbr{}หรือ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}ต้องการ\wbr{}ใช้\wbr{}อยู่\wbr{}ที่\wbr{}ไหน.
+
+
+
+\subsubsection{ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}รูท, \cmd{/}}
+FHS ได้\wbr{}กำหนด\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ต่างๆ\wbr{}ใต้\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}รูท\wbr{}ไว้ \cite{fhs}, แต่ดิสท\wbr{}ริ\wbr{}บิว\wbr{}ชัน\wbr{}ทั่ว\wbr{}ไป\wbr{}ก็\wbr{}ไม่\wbr{}ได้\wbr{}มี\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ทั้ง\wbr{}หมด\wbr{}ที่ FHS กำหนด\wbr{}ไว้. ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ทอ\wbr{}ที่\wbr{}อยู่\wbr{}ใต้\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}รูท\wbr{}ที่\wbr{}สำคัญๆ\wbr{}ได้\wbr{}แก่.
+\begin{itemize}
+\item \cmd{bin}\\
+เป็น\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}เก็บ\wbr{}โปรแกรม\wbr{}หลัก\wbr{}ที่\wbr{}จำ\wbr{}เป็น\wbr{}ต่างๆ\wbr{}เช่น \cmd{bash}, \cmd{ls}, \cmd{pwd} เป็นต้น. ชื่อ \cmd{bin} ย่อ\wbr{}มา\wbr{}จาก binaries หมาย\wbr{}ถึง\wbr{}เป็น\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}เก็บ\wbr{}ไฟล์ไบ\wbr{}นารี\wbr{}ซึ่ง\wbr{}หมาย\wbr{}ถึง\wbr{}โปรแกรม\wbr{}นั่น\wbr{}เอง.
+\item \cmd{boot}\\
+ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}เก็บ\wbr{}ไฟล์\wbr{}ที่\wbr{}เกี่ยว\wbr{}ข้อง\wbr{}กับ boot loader\myvocab{b}{boot loader}{} %
+เ\wbr{}คอร์เนล ฯลฯ.
+\item \cmd{dev}\\
+ชื่อ \cmd{dev} ย่อ\wbr{}มาก\wbr{}จาก devices เป็น\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}เก็บ\wbr{}ไฟล์\wbr{}ดี\wbr{}ไวซ์\wbr{}ต่างๆ.
+\item \cmd{etc}\\
+เป็น\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}สำคัญ\wbr{}ที่\wbr{}เก็บ\wbr{}ไฟล์\wbr{}หรือ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ย่อย\wbr{}ที่\wbr{}เกี่ยว\wbr{}กับ\wbr{}การ\wbr{}ปรับ\wbr{}แต่ง\wbr{}หรือ\wbr{}ติด\wbr{}ตั้ง\wbr{}ระบบ. ชื่อ \cmd{etc} มา\wbr{}จาก\wbr{}คำ\wbr{}ว่า etcetera.
+\item \cmd{home}\\
+เป็น\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}มี\wbr{}หรือ\wbr{}ไม่\wbr{}มี\wbr{}ก็\wbr{}ได้. เป็น\wbr{}ที่\wbr{}ของ\wbr{}โฮม\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ของ\wbr{}ผู้\wbr{}ใช้\wbr{}แต่\wbr{}ละ\wbr{}คน.
+\item \cmd{lib}\\
+ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}เก็บไ\wbr{}ลบ\wbr{}รา\wbr{}รี (library) หลัก\wbr{}ที่\wbr{}จำ\wbr{}เป็น\wbr{}และ\wbr{}โม\wbr{}ดูล\wbr{}ของเ\wbr{}คอร์เนล.
+\item \cmd{mnt}\\
+ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}สำหรับ mount\myvocab{m}{mount}{การ\wbr{}นำ\wbr{}ดี\wbr{}ไวซ์\wbr{}หน่วย\wbr{}ความ\wbr{}จำ\wbr{}ข้อ\wbr{}มูล\wbr{}เช่น\wbr{}ฮาร์ดดิสก์\wbr{}มา\wbr{}ปะ\wbr{}ติด\wbr{}ใน\wbr{}ระบบ\wbr{}โครง\wbr{}สร้าง\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี. เช่น\wbr{}การ\wbr{}นำ\wbr{}ซี\wbr{}ดี\wbr{}รอม\wbr{}มา\wbr{}ปะ\wbr{}ติด (mount) ไว้\wbr{}กับ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{/mnt/cdrom} เป็นต้น. การ mount นี้\wbr{}สามารถ\wbr{}ระบุ\wbr{}ไฟล์\wbr{}ซิส\wbr{}เต็ม\wbr{}ของ\wbr{}ดี\wbr{}ไวซ์\wbr{}ได้\wbr{}ด้วย\wbr{}เมื่อ mount ไฟล์\wbr{}ซิส\wbr{}เต็ม\wbr{}เข้า\wbr{}สู่\wbr{}โครง\wbr{}สร้าง\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}แล้ว\wbr{}ก็\wbr{}จะ\wbr{}ใช้\wbr{}งาน\wbr{}ได้\wbr{}อย่าง\wbr{}โปร่ง\wbr{}ใส, อาจ\wbr{}จะ\wbr{}ไม่สัง\wbr{}เกตุ\wbr{}เห็น\wbr{}ความ\wbr{}แตก\wbr{}ต่าง\wbr{}ระหว่าง\wbr{}ไฟล์\wbr{}ซิส\wbr{}เต็ม.} ไฟล์\wbr{}ซิส\wbr{}เต็ม\wbr{}ต่างๆ\wbr{}ชั่ว\wbr{}คราว. ตัว\wbr{}อย่าง\wbr{}เช่น\wbr{}เมื่อ\wbr{}ต้องการ\wbr{}ใช้\wbr{}ซี\wbr{}ดี\wbr{}รอม\wbr{}ก็\wbr{}จะ mount ไว้\wbr{}ที่ \cmd{/mnt/cdrom} แล้ว\wbr{}ไฟล์\wbr{}ต่างๆ\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}ซี\wbr{}ดี\wbr{}รอม\wbr{}ก็\wbr{}จะ\wbr{}อยู่\wbr{}ใต้\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{/mnt/cdrom}.
+\item \cmd{opt}\\
+ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}เก็บแ\wbr{}พก\wbr{}เกจ\wbr{}โปรแกรม\wbr{}เพิ่ม\wbr{}เติม\wbr{}อื่นๆ\wbr{}ที่\wbr{}ไม่\wbr{}ใช่\wbr{}โปรแกรม\wbr{}มาตร\wbr{}ฐาน\wbr{}เช่นแ\wbr{}พก\wbr{}เกจ\wbr{}โปรแกรม\wbr{}ที่\wbr{}ไม่\wbr{}ใช่\wbr{}ซอฟต์แวร์\wbr{}เสรี\wbr{}เป็นต้น.
+\item \cmd{root}\\
+เป็น\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}ไม่\wbr{}บังคับ. ใช้\wbr{}เป็น\wbr{}โฮม\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ของ root. \mymemo{ใน\wbr{}สมัย\wbr{}ก่อน, โฮม\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ของ root ใน\wbr{}ระบบ\wbr{}ปฏิบัติ\wbr{}การ\wbr{}ยู\wbr{}นิกซ์\wbr{}คือ \cmd{/} ซึ่ง\wbr{}หมาย\wbr{}ถึง\wbr{}โครง\wbr{}สร้าง\wbr{}ไฟล์\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ทั้ง\wbr{}หมด. การ\wbr{}ที่\wbr{}โฮม\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ของ root เป็น \cmd{/} อาจ\wbr{}เป็น\wbr{}อันตราย\wbr{}ได้\wbr{}ถ้า\wbr{}เผลอ\wbr{}ลบ\wbr{}ไฟล์\wbr{}ที่\wbr{}จำ\wbr{}เป็น\wbr{}ต่อ\wbr{}ระบบ\wbr{}โดย\wbr{}ไม่\wbr{}ตั้ง\wbr{}ใจ.}
+\item \cmd{sbin}\\
+ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}เก็บ\wbr{}โปรแกรม\wbr{}ใช้\wbr{}งาน\wbr{}เกี่ยว\wbr{}กับ\wbr{}ระบบ (system) เช่น \cmd{shutdown}, \cmd{reboot} ฯลฯ. โปรแกรม\wbr{}คำ\wbr{}สั่ง\wbr{}เหล่า\wbr{}นี้\wbr{}มัก\wbr{}ใช้\wbr{}โดย\wbr{}ผู้\wbr{}ดู\wbr{}แล\wbr{}ระบบ (root). ผู้\wbr{}ใช้\wbr{}ทั่ว\wbr{}ไป\wbr{}อาจ\wbr{}ไม่\wbr{}มี\wbr{}ความ\wbr{}จำ\wbr{}เป็น\wbr{}ที่\wbr{}ต้อง\wbr{}รวม\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นี้\wbr{}ใน\wbr{}ตัวแปร\wbr{}สภาพ\wbr{}แวด\wbr{}ล้อม \cmd{PATH}.
+\item \cmd{tmp}\\
+ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}เก็บ\wbr{}ไฟล์\wbr{}ชั่ว\wbr{}คราว. ไฟล์\wbr{}ชั่ว\wbr{}คราว\wbr{}เหล่า\wbr{}นี้\wbr{}ไม่\wbr{}ได้\wbr{}สร้าง\wbr{}โดย\wbr{}ผู้\wbr{}ใช้\wbr{}โดย\wbr{}ตรง\wbr{}แต่\wbr{}มัก\wbr{}สร้าง\wbr{}โดย\wbr{}โปรแกรม\wbr{}ที่\wbr{}มี\wbr{}ความ\wbr{}จำ\wbr{}เป็น\wbr{}ต้อง\wbr{}สร้าง\wbr{}ไฟล์\wbr{}ชั่ว\wbr{}คราว\wbr{}ก็\wbr{}จะ\wbr{}สร้าง\wbr{}ไว้\wbr{}ที่\wbr{}นี่. ใคร\wbr{}ก็\wbr{}ได้\wbr{}สามารถ\wbr{}สร้าง\wbr{}ไฟล์\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นี้\wbr{}ได้\wbr{}แต่\wbr{}ไม่\wbr{}สามารถ\wbr{}ลบ\wbr{}ไฟล์\wbr{}ของ\wbr{}คน\wbr{}อื่น\wbr{}ที่\wbr{}สร้าง\wbr{}ได้\wbr{}ถ้า\wbr{}ไม่\wbr{}มี\wbr{}สิทธิ์\wbr{}ใน\wbr{}ไฟล์\wbr{}นั้น. เนื่อง\wbr{}จาก\wbr{}เป็น\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}สำหรับ\wbr{}ไฟล์\wbr{}ชั่ว\wbr{}คราว\wbr{}จึง\wbr{}มี\wbr{}การ\wbr{}ลบ\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}อยู่\wbr{}ใต้\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นี้\wbr{}บ้าง\wbr{}ตาม\wbr{}ความ\wbr{}เหมาะ\wbr{}สม.
+\item \cmd{usr}\\
+เป็น\wbr{}โครง\wbr{}สร้าง\wbr{}ระบบ\wbr{}ไฟล์\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ลำดับ\wbr{}ที่\wbr{}สอง. กล่าว\wbr{}คือ\wbr{}ใต้\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นี้\wbr{}จะ\wbr{}มี\wbr{}โครง\wbr{}สร้าง\wbr{}คล้าย\wbr{}กับ \cmd{/} ที่\wbr{}เป็น\wbr{}โครง\wbr{}สร้าง\wbr{}ระบบ\wbr{}ไฟล์\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}หลัก, มี\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{bin}, \cmd{sbin} และ \cmd{lib} เหมือน\wbr{}กัน. นอก\wbr{}จาก\wbr{}นี้\wbr{}ยัง\wbr{}มี\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ย่อย\wbr{}ที่\wbr{}สำคัญ\wbr{}อื่นๆ\wbr{}ได้\wbr{}แก่ \cmd{include}, \cmd{local}, \cmd{share} ฯลฯ.
+\item \cmd{var}\\
+ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}เก็บ\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}แปร\wbr{}ผัน (variable) ได้\wbr{}เช่น\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}เกี่ยว\wbr{}กับ\wbr{}บันทึก\wbr{}ของ\wbr{}ระบบ (system log) เป็นต้น. ล็\wbr{}อก\wbr{}ของ\wbr{}ระบบ\wbr{}อยู่\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นี้\wbr{}เพราะ\wbr{}ขนาด\wbr{}ของ\wbr{}ไฟล์\wbr{}ที่\wbr{}บันทึก\wbr{}นั้น\wbr{}แปร\wbr{}ผัน\wbr{}ไป\wbr{}ตาม\wbr{}วัน, มาก\wbr{}บ้าง, น้อย\wbr{}บ้าง. ไฟล์\wbr{}ที่\wbr{}มี\wbr{}ลักษณ์\wbr{}เหมือนกั\wbr{}บล็อก\wbr{}ของ\wbr{}ระบบ\wbr{}ก็\wbr{}ควร\wbr{}จะ\wbr{}อยู่\wbr{}ใต้\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นี้.
+\end{itemize}
+
+\subsubsection{ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{/usr}}
+ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{/usr} เป็น\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}สำคัญ\wbr{}รอง\wbr{}มา\wbr{}จาก\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}รูท. ใต้\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นี้\wbr{}เป็น\wbr{}ที่\wbr{}ประกอบ\wbr{}ด้วย\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ย่อย\wbr{}อื่นๆ\wbr{}อีก\wbr{}มาก\wbr{}มาย, ส่วน\wbr{}ใหญ่\wbr{}เป็น\wbr{}ข้อ\wbr{}มูล\wbr{}หรือ\wbr{}โปรแกรม\wbr{}ที่\wbr{}ใช้\wbr{}ร่วม\wbr{}กัน\wbr{}ใน\wbr{}ระบบ. ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ย่อย\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นี้\wbr{}มัก\wbr{}จะ\wbr{}เป็น\wbr{}ข้อ\wbr{}มูล\wbr{}อ่าน\wbr{}ได้\wbr{}อย่าง\wbr{}เดียว, ไม่\wbr{}ใช่\wbr{}ที่\wbr{}ที่\wbr{}เก็บ\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}มี\wbr{}การ\wbr{}เปลี่ยน\wbr{}แปลง\wbr{}บ่อยๆ.
+
+ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ย่อย\wbr{}ที่\wbr{}อยู่\wbr{}ใน \cmd{/usr} สำคัญๆ\wbr{}ได้\wbr{}แก่.
+\begin{itemize}
+\item \cmd{bin}\\
+เป็น\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}เก็บ\wbr{}ไฟล์\wbr{}โปรแกรม (binary) เกือบ\wbr{}ทั้ง\wbr{}หมด\wbr{}ที่\wbr{}ใช้\wbr{}ได้\wbr{}ใน\wbr{}ระบบ. จะ\wbr{}แตก\wbr{}ต่าง\wbr{}จาก \cmd{/bin} ที่\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{/bin} เป็น\wbr{}ที่\wbr{}เก็บ\wbr{}ไฟล์\wbr{}โปรแกรม\wbr{}หลัก (จำ\wbr{}เป็น\wbr{}ต่อ\wbr{}ระบบ), ส่วน \cmd{/usr/bin} เป็น\wbr{}ที่\wbr{}เก็บ\wbr{}ไฟล์\wbr{}โปรแกรม\wbr{}ที่\wbr{}อำนวย\wbr{}ความ\wbr{}สะดวก\wbr{}แก่\wbr{}ผู้\wbr{}ใช้\wbr{}แต่\wbr{}อาจ\wbr{}จะ\wbr{}ไม่\wbr{}มี\wbr{}ความ\wbr{}จำ\wbr{}เป็น\wbr{}ต่อ\wbr{}ระบบ\wbr{}ก็\wbr{}ได้. ตัว\wbr{}อย่าง\wbr{}ไฟล์\wbr{}โปรแกรม\wbr{}ที่\wbr{}เก็บ\wbr{}ไว้\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นี้\wbr{}เช่น \cmd{bc}, \cmd{gcc}, \cmd{man}, \cmd{perl} เป็นต้น.
+\item \cmd{include}\\
+ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}เก็บ\emph{ไฟล์ header (header file)}\myvocab{h}{header file}{} ที่\wbr{}จำ\wbr{}เป็น\wbr{}ใน\wbr{}การ\wbr{}พัฒนา\wbr{}ซอฟต์แวร์, คอมไพล์\wbr{}โปรแกรม\wbr{}ต่างๆ.
+\item \cmd{lib}\\
+ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}เก็บไ\wbr{}ลบ\wbr{}รา\wbr{}รี\wbr{}ที่\wbr{}ใช้\wbr{}ใน\wbr{}ระบบ. ใต้\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นี้\wbr{}อาจ\wbr{}จะ\wbr{}มี\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ย่อย\wbr{}แยก\wbr{}เฉพาะ\wbr{}สำหรับ\wbr{}แต่ไ\wbr{}ลบ\wbr{}รา\wbr{}รี\wbr{}ด้วย.
+\item \cmd{local}\\
+เป็น\wbr{}โครง\wbr{}สร้าง\wbr{}ระบบ\wbr{}ไฟล์\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}แยก\wbr{}ย่อย\wbr{}ต่อ\wbr{}ไป\wbr{}อีก. ใช้\wbr{}สำหรับ\wbr{}ผู้\wbr{}ดู\wbr{}และ\wbr{}ระบบ\wbr{}ติด\wbr{}ตั้ง\wbr{}โปรแกรม\wbr{}หรือแ\wbr{}พก\wbr{}เกจ\wbr{}โปรแกรม\mymemo{แ\wbr{}พก\wbr{}เกจ\wbr{}โปรแกรม\wbr{}หมาย\wbr{}ถึง\wbr{}โปรแกรม\wbr{}ที่\wbr{}ไม่\wbr{}ใช่\wbr{}ไฟล์\wbr{}เดี่ยวๆ. เป็น\wbr{}ชุด\wbr{}โปรแกรม\wbr{}ที่\wbr{}มี\wbr{}ข้อ\wbr{}มูล, คู่\wbr{}มือ, ไ\wbr{}ลบ\wbr{}รา\wbr{}รี มา\wbr{}ด้วย\wbr{}กัน.}ที่\wbr{}อาจ\wbr{}จะ\wbr{}ไป\wbr{}ซ้ำ\wbr{}ซ้อน\wbr{}กับ \cmd{/usr} หรือ\wbr{}ใช้\wbr{}ติด\wbr{}ตั้งแ\wbr{}พก\wbr{}เกจ\wbr{}โปรแกรม\wbr{}ที่\wbr{}ไม่\wbr{}ต้องการ\wbr{}ไว้\wbr{}ใต้ \cmd{/usr}. ใต้\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นี้\wbr{}จะ\wbr{}มี\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ย่อย\wbr{}เหมือน \cmd{/usr}.
+\item \cmd{sbin}\\
+ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}เก็บ\wbr{}ไฟล์\wbr{}โปรแกรม\wbr{}เกี่ยว\wbr{}กับ\wbr{}การ\wbr{}ดู\wbr{}แล\wbr{}ระบบ. ไฟล์\wbr{}โปรแกรม\wbr{}นี้\wbr{}อาจ\wbr{}จะ\wbr{}ไม่\wbr{}มี\wbr{}ความ\wbr{}จำ\wbr{}เป็น\wbr{}แต่\wbr{}สะดวก\wbr{}ใน\wbr{}การ\wbr{}ใช้\wbr{}งาน.
+\item \cmd{share}\\
+ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}เก็บ\wbr{}ไฟล์\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}ไม่\wbr{}ขึ้น\wbr{}กับ\wbr{}สถาปัตยกรรม\wbr{}คอมพิวเตอร์.
+\item \cmd{X11R6}\mymemo{X11R6 ย่อ\wbr{}มา\wbr{}จาก X Window System, Version 11 Release 6.}\\
+ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}เก็บ\wbr{}ไฟล์, โปรแกรม, ข้อ\wbr{}มูล\wbr{}ที่\wbr{}เกี่ยว\wbr{}กับ X วิน\wbr{}โดว์.
+\item \cmd{src}
+ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}เก็บ\wbr{}รหัส\wbr{}ต้น\wbr{}ฉบับ\wbr{}ของ\wbr{}โปรแกรม\wbr{}ต่างๆ\wbr{}เช่น\wbr{}รหัส\wbr{}ต้น\wbr{}ฉบับ\wbr{}ของเ\wbr{}คอร์เนล.
+\end{itemize}
+
+\subsubsection{ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{/usr/share}}
+ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{/usr/share} จะ\wbr{}มี\wbr{}ข้อ\wbr{}ไฟล์\wbr{}ข้อ\wbr{}มูล\wbr{}ต่างๆ\wbr{}ที่\wbr{}น่า\wbr{}สน\wbr{}ใจ. ไฟล์\wbr{}ที่\wbr{}อยู่\wbr{}ใต้\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นี้\wbr{}จะ\wbr{}มัก\wbr{}จะ\wbr{}เป็น\wbr{}ข้อ\wbr{}มูล\wbr{}หรือ\wbr{}เอก\wbr{}สาร\wbr{}ที่\wbr{}สามารถ\wbr{}ใช้\wbr{}ได้\wbr{}ด้วย\wbr{}กัน\wbr{}ไม่\wbr{}ขึ้น\wbr{}กับ\wbr{}ว่า\wbr{}ต้อง\wbr{}เป็น\wbr{}คอมพิวเตอร์\wbr{}สถาปัตยกรรม\wbr{}ใด.
+\begin{itemize}
+\item \cmd{doc}\\
+ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}เก็บ\wbr{}เอก\wbr{}สาร\wbr{}ของ\wbr{}แต่\wbr{}ละ\wbr{}โปรแกรม. ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นี้\wbr{}จะ\wbr{}มี\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ย่อย\wbr{}แบ่ง\wbr{}เป็น\wbr{}ชื่อ\wbr{}โปรแกรม\wbr{}หรือ\wbr{}ชื่อแ\wbr{}พก\wbr{}เกจ\wbr{}ต่างๆ. ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ย่อย\wbr{}เหล่า\wbr{}นี้\wbr{}จะ\wbr{}มี\wbr{}เอก\wbr{}สาร\wbr{}ที่\wbr{}เกี่ยว\wbr{}ข้อง\wbr{}กับ\wbr{}โปรแกรม\wbr{}หรือแ\wbr{}พก\wbr{}เกจ\wbr{}นั้นๆ.
+\item \cmd{man}\\
+ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}เก็บ\wbr{}ไฟล์\wbr{}ข้อ\wbr{}มูล\wbr{}ของ on-line manual. โดย\wbr{}ปรกติ\wbr{}การ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{man} ดู\wbr{}คู่\wbr{}มือ\wbr{}การ\wbr{}ใช้\wbr{}งาน\wbr{}จะ\wbr{}เปิด\wbr{}อ่าน\wbr{}ข้อ\wbr{}มูล\wbr{}จาก\wbr{}ไฟล์\wbr{}ที่\wbr{}อยู่\wbr{}ใต้\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นี้.
+\item \cmd{info}\\
+เป็น\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}เก็บ\wbr{}ไฟล์\wbr{}ข้อ\wbr{}มูล\wbr{}เอก\wbr{}สาร\wbr{}การ\wbr{}ใช้\wbr{}งาน\wbr{}ที่\wbr{}อยู่\wbr{}รูป\wbr{}ของ GNU info.
+\end{itemize}
+
+\subsubsection{ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{/var}}
+ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{var} เป็น\wbr{}ที่\wbr{}เก็บ\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}มี\wbr{}ขนาด\wbr{}แปร\wbr{}ผัน\wbr{}ไป\wbr{}เรื่อยๆ. ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ย่อย\wbr{}ที่\wbr{}สำคัญๆ\wbr{}ได้\wbr{}แก่.
+\begin{itemize}
+\item \cmd{cache}\\
+ไฟล์\wbr{}ที่\wbr{}อยู่\wbr{}ใต้\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นี้\wbr{}จะ\wbr{}เป็น\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}ใช้\wbr{}บ่อยๆ\wbr{}และ\wbr{}สร้าง\wbr{}ขึ้น\wbr{}โดย\wbr{}โปรแกรม\wbr{}ที่\wbr{}ใช้\wbr{}ข้อ\wbr{}มูล\wbr{}นั้น. โปรแกรม\wbr{}บาง\wbr{}อย่าง\wbr{}อาจ\wbr{}จะ\wbr{}สร้าง\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}ใช้\wbr{}บ่อยๆ\wbr{}ไว้\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นี้. เมื่อ\wbr{}ต้องการ\wbr{}ใช้\wbr{}ข้อ\wbr{}มูล\wbr{}เหล่า\wbr{}นี้\wbr{}จึง\wbr{}ไม่\wbr{}ต้อง\wbr{}สร้าง\wbr{}ข้อ\wbr{}มูล\wbr{}ใหม่\wbr{}ทำ\wbr{}ให้\wbr{}ทำ\wbr{}งาน\wbr{}เร็ว\wbr{}กว่า\wbr{}สร้าง\wbr{}ข้อ\wbr{}มูล\wbr{}ทุก\wbr{}ครั้ง.
+\item \cmd{lib}\\
+ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}เก็บ\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}เกี่ยว\wbr{}กับ\wbr{}สถานะ\wbr{}ของ\wbr{}โปรแกรม\wbr{}ที่\wbr{}ทำ\wbr{}งาน\wbr{}อยู่\wbr{}ใน\wbr{}ระบบ. ข้อ\wbr{}มูล\wbr{}เหล่า\wbr{}นี้\wbr{}จะ\wbr{}ไม่\wbr{}สูญ\wbr{}หาย\wbr{}หลัง\wbr{}จา\wbr{}กรีบูท\wbr{}ระบบ.
+\item \cmd{log}\\
+ใต้\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นี้\wbr{}จะ\wbr{}เป็น\wbr{}ที่\wbr{}เก็บ\emph{ล็\wbr{}อก (log)} ของ\wbr{}โปรแกรม\wbr{}ต่างๆ. โปรแกรม\wbr{}ที่\wbr{}ว่า\wbr{}นี้\wbr{}มัก\wbr{}จะ\wbr{}เป็น\wbr{}โปรแกรมเ\wbr{}ซิฟร์\wbr{}เวอร์\wbr{}หรือล็\wbr{}อก\wbr{}ของ\wbr{}ระบบ. ล็\wbr{}อก\wbr{}เหล่า\wbr{}นี้\wbr{}มี\wbr{}ประโยชน์\wbr{}ใช้\wbr{}ดู\wbr{}แล\wbr{}ความ\wbr{}เป็น\wbr{}ไป\wbr{}ของ\wbr{}ระบบ\wbr{}ปฏิบัติ\wbr{}การ\wbr{}หรือเ\wbr{}ซิฟร์\wbr{}เวอร์\wbr{}ว่า\wbr{}ทำ\wbr{}งาน\wbr{}ปรกติ\wbr{}ดี\wbr{}หรือ\wbr{}ไม่. ถ้า\wbr{}เกิด\wbr{}มี\wbr{}ข้อ\wbr{}ผิด\wbr{}พลาด (error) บาง\wbr{}กรณี\wbr{}ก็\wbr{}สามารถ\wbr{}บอก\wbr{}ได้\wbr{}จากล็\wbr{}อก\wbr{}ว่า\wbr{}มี\wbr{}สาเหตุ\wbr{}จาก\wbr{}อะไร.
+\item \cmd{run}\\
+เป็น\wbr{}ที่\wbr{}เก็บ\wbr{}ข้อ\wbr{}มูล\wbr{}เกี่ยว\wbr{}กับ\wbr{}โปร\wbr{}เซส\wbr{}ได้\wbr{}แก่\wbr{}โปร\wbr{}เซส ID ของ\wbr{}โปรแกรม\wbr{}ต่างๆ. ตัว\wbr{}อย่าง\wbr{}เช่น\wbr{}ไฟล์ \cmd{syslog-ng.pid} เป็น\wbr{}ไฟล์\wbr{}ที่\wbr{}เก็บ\wbr{}โปร\wbr{}เซส ID ของ \cmd{syslog-ng}.\mymemo{\cmd{syslog} เป็น\wbr{}โปรแกรม\wbr{}ที่\wbr{}จัด\wbr{}การ\wbr{}เกี่ยวกั\wbr{}บล็อก\wbr{}ของ\wbr{}โปรแกรม\wbr{}ต่างๆ.} ถ้า\wbr{}ต้องการ\wbr{}จะ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง\wbr{}ที่\wbr{}ต้องการ\wbr{}โปร\wbr{}เซส ID เช่น \cmd{kill} ก็\wbr{}ทำ\wbr{}ได้\wbr{}โดย \cmd{kill `cat /var/log/syslog-ng`} คือ\wbr{}ใช้\wbr{}การ\wbr{}แทน\wbr{}ที่\wbr{}คำ\wbr{}สั่ง\wbr{}เรียก\wbr{}โปร\wbr{}เซส ID ของ\wbr{}โปรแกรม\wbr{}ที่\wbr{}ต้องการ\wbr{}ได้\wbr{}เลย. ไฟล์\wbr{}ที่\wbr{}เก็บ\wbr{}โปร\wbr{}เซส ID แบบ\wbr{}นี้\wbr{}ไม่\wbr{}ได้\wbr{}มี\wbr{}ให้\wbr{}ทุก\wbr{}โปรแกรม. มัก\wbr{}จะ\wbr{}เป็น\wbr{}โปรแกรมเ\wbr{}ซิฟร์\wbr{}เวอร์\wbr{}หรือ\wbr{}โปรแกรม\wbr{}ที่\wbr{}เกี่ยว\wbr{}ข้อง\wbr{}กับ\wbr{}ระบบ.
+\item \cmd{spool}\\
+ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}เก็บ\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}รอ\wbr{}การ\wbr{}ประมวล\wbr{}ผล\wbr{}และ\wbr{}เมื่อ\wbr{}ประมวล\wbr{}ผล\wbr{}เรียบ\wbr{}ร้อย\wbr{}แล้ว\wbr{}ก็\wbr{}จะ\wbr{}ลบ\wbr{}ทิ้ง. ข้อ\wbr{}มูล\wbr{}พวก\wbr{}นี้\wbr{}เช่น\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}รอ\wbr{}ประมวล\wbr{}ผล\wbr{}พิมพ์\wbr{}ออก\wbr{}ทาง\wbr{}เครื่อง\wbr{}พิมพ์\wbr{}เป็นต้น.
+\item \cmd{tmp}\\
+เป็น\wbr{}ที่\wbr{}เก็บ\wbr{}ไฟล์\wbr{}ข้อ\wbr{}มูล\wbr{}ชั่ว\wbr{}คราว\wbr{}ของ\wbr{}โปรแกรม\wbr{}ต่างๆ. ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นี้\wbr{}ทำ\wbr{}หน้า\wbr{}ที่\wbr{}คล้าย\wbr{}กับ\wbr{}ได\wbr{}เรอ\wbr{}ทอ\wbr{}รี \cmd{/tmp} แต่\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{/tmp} จะ\wbr{}มี\wbr{}ความถี่\wbr{}ของ\wbr{}การ\wbr{}ลบ\wbr{}ข้อ\wbr{}มูล\wbr{}มาก\wbr{}กว่า\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นี้.
+\end{itemize}
+
+\subsection{ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{proc}}
+ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{proc} หรือ\wbr{}เรียก\wbr{}อีก\wbr{}อย่าง\wbr{}ว่า\emph{ระบบ\wbr{}ไฟล์ proc (proc filesystem)}\gindex{proc filesystem} \cite{kerneldoc} เป็น\wbr{}อินเ\wbr{}ทอร์เฟส\wbr{}สำหรับ\wbr{}ติด\wbr{}ต่อ\wbr{}กับเ\wbr{}คอร์เนล\wbr{}ใน\wbr{}รูป\wbr{}แบบ\wbr{}ของ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี. ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{proc} ไม่\wbr{}ใช่\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}จริง, แต่\wbr{}เป็น\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}เสมือน\wbr{}ที่\wbr{}สร้าง\wbr{}อยู่\wbr{}ใน\wbr{}หน่วย\wbr{}ความ\wbr{}จำ\wbr{}ใช้\wbr{}ใน\wbr{}การ\wbr{}แสดง\wbr{}ข้อ\wbr{}มูล\wbr{}ต่างๆ\wbr{}ของ\wbr{}ระบบ\wbr{}หรือ\wbr{}ใช้\wbr{}ตั้ง\wbr{}ค่า\wbr{}ตัวแปร\wbr{}ของเ\wbr{}คอร์เนล.
+
+\begin{MyExample}[ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{proc}]
+\begin{MyEx}
+$ \cin{ls -F /proc}
+1/      17700/  5908/  7526/  7697/  7743/  7927/      driver/      mounts@
+10/     17706/  6/     7527/  7698/  7745/  8/         execdomains  mtrr
+11/     17707/  6558/  7545/  7699/  7747/  8228/      fb           net/
+12/     17710/  6560/  7547/  7701/  7749/  8235/      filesystems  partitions
+13/     17711/  671/   7548/  7702/  7750/  8246/      fs/          pci
+14/     18888/  7/     7613/  7703/  7751/  9/         ide/         scsi/
+149/    2/      7045/  7631/  7722/  7756/  acpi/      interrupts   self@
+15/     21388/  7064/  7633/  7723/  7757/  asound/    iomem        slabinfo
+16/     21389/  7141/  7636/  7724/  7782/  buddyinfo  ioports      speakup/
+16801/  21454/  7201/  7638/  7726/  7783/  bus/       irq/         stat
+17670/  3/      7202/  7640/  7727/  7784/  cmdline    kallsyms     swaps
+17671/  333/    7361/  7642/  7728/  7791/  config.gz  kcore        sys/
+17673/  386/    7449/  7665/  7730/  7805/  cpuinfo    kmsg         sysvipc/
+17677/  4/      7453/  7680/  7732/  7811/  crypto     loadavg      tty/
+17682/  495/    7522/  7691/  7734/  7823/  devices    locks        uptime
+17683/  5/      7523/  7693/  7736/  7840/  diskstats  meminfo      version
+17690/  5230/   7524/  7695/  7738/  7924/  dma        misc         vmnet/
+17695/  5867/   7525/  7696/  7740/  7925/  dri/       modules      vmstat
+\end{MyEx}
+\end{MyExample}%$
+
+ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{proc} จะ\wbr{}มี\wbr{}ไฟล์\wbr{}และ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ย่อย\wbr{}ต่างๆ. การ\wbr{}ดู\wbr{}ข้อ\wbr{}มูล\wbr{}ต่างๆ\wbr{}สามารถ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง\wbr{}เช่น \cmd{cat} หรือ \cmd{less} เปิด\wbr{}ไฟล์\wbr{}ดู\wbr{}เนื้อ\wbr{}หา\wbr{}ที่\wbr{}ต้องการ\wbr{}ได้. ข้อ\wbr{}มูล\wbr{}ที่\wbr{}เกี่ยว\wbr{}กับ\wbr{}ระบบ\wbr{}ที่\wbr{}สามารถ\wbr{}ดู\wbr{}ได้\wbr{}เช่น ข้อ\wbr{}มูล\wbr{}เกี่ยว\wbr{}กับ\wbr{}โปร\wbr{}เซส\wbr{}ที่\wbr{}ทำ\wbr{}งาน\wbr{}ใน\wbr{}ระบบ, ข้อ\wbr{}มูล\wbr{}เฉพาะ\wbr{}ของเ\wbr{}คอร์เนล, ข้อ\wbr{}มูล\wbr{}เกี่ยว\wbr{}กับ\wbr{}หน่วย\wbr{}ความ\wbr{}จำ, ข้อ\wbr{}มูล\wbr{}เกี่ยว\wbr{}กับ\wbr{}หน่วย\wbr{}ประมวล\wbr{}กลาง เป็นต้น. ข้อ\wbr{}มูล\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}ไฟล์\wbr{}ใต้\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{proc} ส่วน\wbr{}ใหญ่\wbr{}จะ\wbr{}ไม่\wbr{}มี\wbr{}การ\wbr{}ปรับ\wbr{}แต่ง\wbr{}ให้\wbr{}อ่าน\wbr{}ง่าย\wbr{}เพราะ\wbr{}จุด\wbr{}ประสงค์\wbr{}หลัก\wbr{}คือ\wbr{}การ\wbr{}เสนอ\wbr{}ข้อ\wbr{}มูล\wbr{}โดย\wbr{}ตรง\wbr{}จากเ\wbr{}คอร์เนล\wbr{}ใน\wbr{}รูป\wbr{}แบบ\wbr{}ของ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี. ดัง\wbr{}นั้น\wbr{}ถ้า\wbr{}ต้องการ\wbr{}ดู\wbr{}ราย\wbr{}ละเอียด\wbr{}ของ\wbr{}ระบบ, ให้\wbr{}ใช้\wbr{}โปรแกรม\wbr{}เฉพาะ\wbr{}สำหรับ\wbr{}ดู\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}เกี่ยว\wbr{}กับ\wbr{}ระบบ\wbr{}เช่น ถ้า\wbr{}ต้องการ\wbr{}ดู\wbr{}การ\wbr{}ใช้\wbr{}งาน\wbr{}ของ\wbr{}หน่วย\wbr{}ความ\wbr{}จำ\wbr{}ตอน\wbr{}นี้\wbr{}ก็\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{free}\refcmd{free} แทน\wbr{}ที่\wbr{}จะ\wbr{}ดู\wbr{}ข้อ\wbr{}มูล\wbr{}โดย\wbr{}ตรง\wbr{}จาก\wbr{}ไฟล์ \cmd{/proc/meminfo}, หรือ\wbr{}ถ้า\wbr{}ต้องการ\wbr{}ดู\wbr{}ราย\wbr{}การ\wbr{}และ\wbr{}ราย\wbr{}ละเอียด\wbr{}เบื้อง\wbr{}ต้น\wbr{}ของ\wbr{}โปร\wbr{}เซส\wbr{}ต่างๆ\wbr{}ก็\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{ps} แทน\wbr{}ที่\wbr{}จะ\wbr{}ดู\wbr{}ไฟล์\wbr{}ที่\wbr{}เกี่ยว\wbr{}กับ\wbr{}โปร\wbr{}เซส\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{proc} เป็นต้น. อย่าง\wbr{}ไร\wbr{}ก็\wbr{}ตาม\wbr{}เนื่อง\wbr{}จาก\wbr{}ระบบ\wbr{}ไฟล์ proc เป็น\wbr{}การ\wbr{}แสดง\wbr{}ข้อ\wbr{}มูล\wbr{}จากเ\wbr{}คอร์เนล\wbr{}โดย\wbr{}ตรง, ส่วน\wbr{}โปรแกรม\wbr{}แสดง\wbr{}ข้อ\wbr{}มูล\wbr{}ของ\wbr{}ระบบ\wbr{}เช่น \cmd{ps} เป็น\wbr{}โปรแกรม\wbr{}ที่\wbr{}อาจ\wbr{}ถูก\wbr{}แก้\wbr{}ไข\wbr{}ได้\wbr{}ง่าย\wbr{}ใน\wbr{}กรณี\wbr{}ที่\wbr{}เครื่อง\wbr{}ถูกบุ\wbr{}กรุก\wbr{}และ\wbr{}ใช้\wbr{}งาน\wbr{}โดย\wbr{}ไม่\wbr{}พึง\wbr{}ประสงค์. ดัง\wbr{}นั้น\wbr{}การ\wbr{}รู้\wbr{}จัก\wbr{}กับ\wbr{}ระบบ\wbr{}ไฟล์ proc จะ\wbr{}ช่วย\wbr{}ให้\wbr{}เรา\wbr{}สำรวจ\wbr{}ข้อ\wbr{}มูล\wbr{}ได้\wbr{}แม่น\wbr{}ยำ\wbr{}กว่า\wbr{}โปรแกรม\wbr{}แสดง\wbr{}ข้อ\wbr{}มูล\wbr{}ของ\wbr{}ระบบ, และ\wbr{}ใน\wbr{}บาง\wbr{}กรณี\wbr{}จะ\wbr{}สามารถ\wbr{}ดู\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}โปรแกรม\wbr{}เหล่า\wbr{}นั้น\wbr{}ไม่\wbr{}สามารถ\wbr{}แสดง\wbr{}ได้\wbr{}ด้วย.
+
+ไฟล์\wbr{}และ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ย่อย\wbr{}ที่\wbr{}น่า\wbr{}สน\wbr{}ใจ\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{proc} ได้\wbr{}แก่.
+\begin{itemize}
+\item ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}เป็น\wbr{}ตัว\wbr{}เลข\\
+ตัว\wbr{}เลข\wbr{}ที่\wbr{}เป็น\wbr{}ชื่อ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}คือ\wbr{}โปร\wbr{}เซส ID. ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ย่อย\wbr{}เหล่า\wbr{}นี้\wbr{}จะ\wbr{}เก็บ\wbr{}ข้อ\wbr{}มูล\wbr{}ต่างๆ\wbr{}ที่\wbr{}เกี่ยว\wbr{}กับ\wbr{}โปร\wbr{}เซส\wbr{}นั้น\wbr{}เช่น คำ\wbr{}สั่ง\wbr{}บรรทัด\wbr{}ที่\wbr{}ใช้ (\cmd{cmdline}), ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}โปร\wbr{}เซส\wbr{}นั้น\wbr{}ทำ\wbr{}งาน\wbr{}อยู่ (\cmd{cwd}), สภาพ\wbr{}แวด\wbr{}ล้อม\wbr{}ที่\wbr{}ทำ\wbr{}งาน\wbr{}อยู่ (\cmd{environ}), file descriptor ที่\wbr{}โปร\wbr{}เซส\wbr{}ใช้ (\cmd{fd}) เป็นต้น.
+\item \cmd{cmdline}\\
+บรรทัด\wbr{}คำ\wbr{}สั่ง\wbr{}ของเ\wbr{}คอร์เนล. ใน\wbr{}ไฟล์\wbr{}นี้\wbr{}สามารถ\wbr{}ดู\wbr{}ตัว\wbr{}เลือก, ค่า\wbr{}ตัวแปร\wbr{}ต่างๆ\wbr{}ที่\wbr{}ส่ง\wbr{}ให้เ\wbr{}คอร์เนล\wbr{}ตอน\wbr{}เริ่ม\wbr{}ทำ\wbr{}งาน\wbr{}ได้.
+\item \cmd{cpuinfo}\\
+ข้อ\wbr{}มูล\wbr{}ต่างๆ\wbr{}ที่\wbr{}เกี่ยว\wbr{}กับ\wbr{}หน่วย\wbr{}ประมวล\wbr{}ผล.
+\item \cmd{devices}\\
+แสดง major device number และ\wbr{}ดี\wbr{}ไวซ์ character หรือ block ที่\wbr{}มี\wbr{}ใน\wbr{}ระบบ.
+\item \cmd{filesystems}\\
+ราย\wbr{}การ\wbr{}ระบบ\wbr{}ไฟล์\wbr{}ที่\wbr{}ใช้\wbr{}ได้\wbr{}ใน\wbr{}ระบบ.
+\item ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{driver}\\
+ข้อ\wbr{}มูล\wbr{}เกี่ยว\wbr{}กับ\wbr{}ไดร์\wbr{}เวอร์\wbr{}ต่างๆ. ปัจจุบัน\wbr{}ยัง\wbr{}เพียง\wbr{}เฉพาะ\wbr{}ไดร์\wbr{}เวอร์\wbr{}บาง\wbr{}ตัว\wbr{}เท่า\wbr{}นั้น\wbr{}ที่\wbr{}ใช้\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นี้.
+\item ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{fs}\\
+ข้อ\wbr{}มูล\wbr{}เกี่ยว\wbr{}กับ\wbr{}ระบบ\wbr{}ไฟล์\wbr{}ต่างๆ\wbr{}เช่น nfs, reiserfs, xfs ฯลฯ.
+\item ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{ide}\\
+ข้อ\wbr{}มูล\wbr{}ต่างๆ\wbr{}ที่\wbr{}เกี่ยว\wbr{}กับ\wbr{}ดี\wbr{}ไวซ์\wbr{}แบบ ide เช่น\wbr{}ฮาร์ดดิสก์, ซี\wbr{}ดี\wbr{}รอม ฯลฯ.
+\item \cmd{interrupts}\\
+ข้อ\wbr{}มูล\wbr{}เกี่ยว\wbr{}กับ\wbr{}การ\wbr{}ใช้ interrupt.
+\item \cmd{iomem}\\
+ข้อ\wbr{}มูล\wbr{}ตำแหน่ง\wbr{}การ\wbr{}ใช้\wbr{}หน่วย\wbr{}ความ\wbr{}จำ.
+\item \cmd{ioports}\\
+ข้อ\wbr{}มูล\wbr{}พอร์ต I/O ต่าง.
+\item \cmd{meminfo}\\
+ข้อ\wbr{}มูล\wbr{}ทั่ว\wbr{}ไป\wbr{}ของ\wbr{}การ\wbr{}ใช้\wbr{}งาน\wbr{}หน่วย\wbr{}ความ\wbr{}จำ. คำ\wbr{}สั่ง \cmd{free} จะ\wbr{}แสดง\wbr{}ผล\wbr{}ใน\wbr{}รูป\wbr{}แบบ\wbr{}ที่\wbr{}เข้า\wbr{}ใจ\wbr{}ง่าย\wbr{}กว่า.
+\item \cmd{modules}\\
+ราย\wbr{}ชื่อ\wbr{}โม\wbr{}ดูล\wbr{}ที่โ\wbr{}หลด\wbr{}อยู่\wbr{}ในเ\wbr{}คอร์เนล (kernel module) ที่\wbr{}ใช้\wbr{}อยู่. คำ\wbr{}สั่ง \cmd{lsmod}\refcmd{lsmod} จะ\wbr{}แสดง\wbr{}ราย\wbr{}ชื่อ\wbr{}โม\wbr{}ดูล\wbr{}ต่างๆ\wbr{}ให้\wbr{}ดู\wbr{}ง่าย\wbr{}กว่า.
+\item \cmd{mounts}\\
+ราย\wbr{}ชื่อ\wbr{}ระบบ\wbr{}ไฟล์\wbr{}ที่ mount อยู่\wbr{}ใน\wbr{}ระบบ. คำ\wbr{}สั่ง\wbr{}ที่\wbr{}เกี่ยว\wbr{}ข้อง\wbr{}คือ \cmd{mount}.
+\item ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{net}\\
+ข้อ\wbr{}มูล\wbr{}เกี่ยว\wbr{}กับเน็ตเ\wbr{}วิร์ก\wbr{}ต่างๆ.
+\item \cmd{paritions}\\
+ข้อ\wbr{}มูล\wbr{}พื้น\wbr{}ฐาน\wbr{}ของ\wbr{}พาร์ทิ\wbr{}ชัน\wbr{}ต่างๆ. ข้อ\wbr{}มูล\wbr{}ที่\wbr{}ได้\wbr{}จาก\wbr{}โปรแกรม \cmd{fdisk} จะ\wbr{}ละเอียด\wbr{}กว่า.
+\item \cmd{pci}\\
+ราย\wbr{}ละเอียด\wbr{}ของ\wbr{}อุปกรณ์\wbr{}ที่\wbr{}ต่อ\wbr{}กับบัส PCI ใน\wbr{}ระบบ. จะ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{lspci}\refcmd{lspci} เพื่อ\wbr{}ดู\wbr{}ราย\wbr{}ละเอียด\wbr{}ต่างๆ\wbr{}ก็\wbr{}ได้.
+\item ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{scsi}\\
+ข้อ\wbr{}มูล\wbr{}ต่างๆ\wbr{}ที่\wbr{}เกี่ยว\wbr{}กับ\wbr{}ดี\wbr{}ไวซ์\wbr{}แบบ scsi เช่น\wbr{}ฮาร์ดดิสก์, ซี\wbr{}ดี\wbr{}รอม ฯลฯ.
+\item \cmd{uptime}\\
+เวลา\wbr{}ทั้ง\wbr{}หมด\wbr{}ตั้ง\wbr{}แต่\wbr{}เครื่อง\wbr{}เริ่ม\wbr{}ทำ\wbr{}งาน. ให้\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{uptime}\refcmd{uptime} แทน\wbr{}ที่\wbr{}จะ\wbr{}ดู\wbr{}ไฟล์\wbr{}นี้.
+\item \cmd{version}\\
+ข้อ\wbr{}มูล\wbr{}รุ่น\wbr{}ของเ\wbr{}คอร์เนล\wbr{}ที่\wbr{}ใช้. ให้\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{uname}\refcmd{uname} จะ\wbr{}แสดง\wbr{}ผล\wbr{}ได้\wbr{}เข้า\wbr{}ใจ\wbr{}ง่าย\wbr{}กว่า.
+\end{itemize}
+
+การ\wbr{}ตั้ง\wbr{}ค่า\wbr{}ต่างๆ\wbr{}ให้\wbr{}กับเ\wbr{}คอร์เนล\wbr{}ทำ\wbr{}ได้\wbr{}โดย\wbr{}การ\wbr{}แก้\wbr{}ไข\wbr{}ไฟล์\wbr{}ที่\wbr{}อยู่\wbr{}ใต้\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{/proc/sys}. ใต้\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{/proc/sys} จะ\wbr{}มี\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ย่อย\wbr{}แบ่ง\wbr{}ตาม\wbr{}หมวด\wbr{}หมู่. การ\wbr{}ตั้ง\wbr{}ค่าที่\wbr{}ต้องการ\wbr{}ทำ\wbr{}ได้\wbr{}โดย\wbr{}การ\wbr{}ใช้ \cmd{echo}\mymemo{การ\wbr{}ตั้ง\wbr{}ค่า\wbr{}ต่างๆ\wbr{}ของเ\wbr{}คอร์เนล\wbr{}อีก\wbr{}วิธี\wbr{}คือ\wbr{}การ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{sysctl}.} ค่าที่\wbr{}ต้องการ\wbr{}ตั้ง\wbr{}แล้ว\wbr{}รี\wbr{}ไดเ\wbr{}รก\wbr{}ลง\wbr{}ใน\wbr{}ไฟล์. เมื่อ\wbr{}ตั้ง\wbr{}ค่า\wbr{}ใหม่\wbr{}เรียบ\wbr{}ร้อย\wbr{}แล้\wbr{}วจะ\wbr{}มี\wbr{}ผล\wbr{}ทัน\wbr{}ที, ดัง\wbr{}นั้น\wbr{}ควร\wbr{}ระ\wbr{}มัด\wbr{}ถ้า\wbr{}ไม่\wbr{}มั่น\wbr{}ใจ\wbr{}ใน\wbr{}สิ่ง\wbr{}ที่\wbr{}กำลัง\wbr{}ทำ\wbr{}อยู่\wbr{}ควร\wbr{}จะ\wbr{}อ่าน\wbr{}เอก\wbr{}สาร\wbr{}ที่\wbr{}เกี่ยว\wbr{}ข้อง\wbr{}กับเ\wbr{}คอร์เนล\wbr{}ก่อน\wbr{}ลง\wbr{}มือ.
+
+ตัว\wbr{}อย่าง\wbr{}เช่น\wbr{}ถ้า\wbr{}ไม่\wbr{}ต้องการ\wbr{}ตอบ\wbr{}สนอง\wbr{}การ ping จาก\wbr{}เครื่อง\wbr{}คอมพิวเตอร์\wbr{}ที่\wbr{}อยู่\wbr{}ในเน็ตเ\wbr{}วิร์ก\wbr{}ก็\wbr{}สามารถ\wbr{}ปรับ\wbr{}แต่ง\wbr{}ค่า\wbr{}ในเ\wbr{}คอร์เนล\wbr{}โดย\wbr{}ใส่\wbr{}ตัว\wbr{}เลข 1 ใน\wbr{}ไฟล์ \cmd{/procs/{\wbr}sys/{\wbr}net/{\wbr}ipv4/{\wbr}icmp\_echo\_ignore\_all}.
+
+\begin{MyExample}[การ\wbr{}ปรับ\wbr{}แต่ง\wbr{}ระบบ\wbr{}ด้วย\wbr{}ไฟล์\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{/proc}.]
+\begin{MyEx}
+# \cin{cat /proc/sys/net/ipv4/icmp_echo_ignore_all}
+0
+# \cin{echo 1 > /proc/sys/net/ipv4/icmp_echo_ignore_all}
+# \cin{cat /proc/sys/net/ipv4/icmp_echo_ignore_all}
+1
+\end{MyEx}
+\end{MyExample}
+
+
+
+
+\section{FIFO}
+จาก\wbr{}บท\wbr{}ที่\wbr{}แล้ว\wbr{}เรา\wbr{}ได้\wbr{}รู้\wbr{}จัก\wbr{}ไปป์ (หน้า \pageref{sec:pipe}) ซึ่ง\wbr{}เป็น\wbr{}วิธี\wbr{}การ\wbr{}รับ\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}ส่ง\wbr{}ออก\wbr{}ทาง stdout ของ\wbr{}โปร\wbr{}เซ\wbr{}สห\wbr{}นึ่ง\wbr{}ให้\wbr{}กับ stdin ของ\wbr{}อีก\wbr{}โปร\wbr{}เซ\wbr{}สห\wbr{}นึ่ง\wbr{}เพื่อ\wbr{}เป็น\wbr{}การ\wbr{}ส่ง\wbr{}ข้อ\wbr{}มูล\wbr{}ระหว่าง\wbr{}โปร\wbr{}เซส. ข้อ\wbr{}มูล\wbr{}ที่\wbr{}ส่ง\wbr{}ผ่าน\wbr{}ไปป์\wbr{}มี\wbr{}ลำดับ, กล่าว\wbr{}คือ\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}ส่ง\wbr{}ไป\wbr{}ก่อน\wbr{}ก็\wbr{}จะ\wbr{}ถึง\wbr{}ก่อน. การ\wbr{}ถ่าย\wbr{}โอน\wbr{}ข้อ\wbr{}มูล\wbr{}โดย\wbr{}ตาม\wbr{}ลำดับ\wbr{}เช่น\wbr{}นี้\wbr{}เรีย\wbr{}กว่า \emph{FIFO (First In First Out)}.\gindex{fifo@FIFO} ใน\wbr{}ระบบ\wbr{}ยู\wbr{}นิกซ์, คำ\wbr{}ว่า FIFO จะ\wbr{}หมาย\wbr{}ถึง \emph{named pipe}\gindex{named pipe} ไม่\wbr{}ได้\wbr{}หมาย\wbr{}ถึง\wbr{}ไปป์. named pipe แปล\wbr{}เป็น\wbr{}ภาษา\wbr{}ไทย\wbr{}ว่า ``ไปป์\wbr{}ที่\wbr{}มี\wbr{}ชื่อ'' คือ\wbr{}ไฟล์\wbr{}ที่\wbr{}ทำ\wbr{}หน้า\wbr{}ที่\wbr{}เหมือน\wbr{}ไปป์.\mymemo{ใน\wbr{}ที่\wbr{}นี้\wbr{}จะ\wbr{}เรีย\wbr{}กว่า ``ไฟล์\wbr{}ไปป์''} %การ\wbr{}ใช้\wbr{}ไฟล์\wbr{}ไปป์\wbr{}คล้าย\wbr{}กับ\wbr{}การ\wbr{}ใช้\wbr{}ไปป์\wbr{}คือ\wbr{}จะ\wbr{}มี\wbr{}โปร\wbr{}เซ\wbr{}สห\wbr{}นึ่ง\wbr{}เป็น\wbr{}ตัว\wbr{}ส่ง\wbr{}ข้อ\wbr{}มูล\wbr{}ลง\wbr{}ใน\wbr{}ไฟล์\wbr{}ไปป์, และ\wbr{}โปร\wbr{}เซส\wbr{}อีก\wbr{}ตัว\wbr{}จะ\wbr{}รับ\wbr{}ข้อ\wbr{}มูล\wbr{}ผ่าน\wbr{}ทาง\wbr{}ไฟล์\wbr{}ไปป์\wbr{}นั้น.
+
+การ\wbr{}สร้าง\wbr{}ไฟล์\wbr{}ไปป์\wbr{}จะ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{mkfifo} หรือ \cmd{mknod}\cindex{mknod}.\mymemo{คำ\wbr{}สั่ง \cmd{mknod} เป็น\wbr{}คำ\wbr{}สั่ง\wbr{}เก่า\wbr{}ซึ่ง\wbr{}นอก\wbr{}จาก\wbr{}จะ\wbr{}สร้าง\wbr{}ไฟล์\wbr{}ไปป์\wbr{}แล้ว\wbr{}ยัง\wbr{}สามารถ\wbr{}สร้าง\wbr{}ไฟล์\wbr{}ดี\wbr{}ไวซ์\wbr{}ได้\wbr{}ด้วย.} ต่อ\wbr{}ไป\wbr{}นี้\wbr{}เป็น\wbr{}ตัว\wbr{}อย่าง\wbr{}การ\wbr{}สร้าง\wbr{}ไฟล์\wbr{}ไปป์\wbr{}ด้วย\wbr{}คำ\wbr{}สั่ง \cmd{mkfifo}\cindex{mkfifo}\refcmd{mkfifo} และ\wbr{}ไฟล์\wbr{}นั้น\wbr{}มี\wbr{}ชื่อ\wbr{}เป็น \cmd{in\_out}.
+
+\begin{MyExample}[การ\wbr{}สร้าง named pipe]
+\begin{MyEx}
+$ \cin{mkfifo in_out}
+$ \cin{ls -lF in_out}
+prw-r--r--    1 poonlap  users           0 Jun 17 00:25 in_out|
+\end{MyEx}
+\end{MyExample}
+
+คำ\wbr{}สั่ง \cmd{ls -l} แสดง\wbr{}ราย\wbr{}เอียด\wbr{}ของ\wbr{}ไฟล์\wbr{}ใน\wbr{}ช่วง\wbr{}แรก\wbr{}เป็น \cmd{prw-r--r--}. ตัว\wbr{}อักษร \cmd{p} ใน\wbr{}ที่\wbr{}นี้\wbr{}บ่ง\wbr{}บอ\wbr{}กว่า\wbr{}ไฟล์\wbr{}ดัง\wbr{}กล่าว\wbr{}เป็น\wbr{}ไฟล์\wbr{}ไปป์. ถ้า\wbr{}ใช้\wbr{}ตัว\wbr{}เลือก \cmd{-F} ประกอบ, \cmd{ls} จะ\wbr{}เติม\wbr{}เครื่อง\wbr{}หมาย \cmd{|} ท้าย\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}เพื่อ\wbr{}ให้\wbr{}รู้\wbr{}ว่า\wbr{}เป็น\wbr{}ไฟล์\wbr{}ไปป์.
+
+ไฟล์\wbr{}ไปป์\wbr{}เป็น\wbr{}ไฟล์\wbr{}สำหรับ\wbr{}รับ\wbr{}ส่ง\wbr{}ข้อ\wbr{}มูล\wbr{}ระหว่าง\wbr{}โปร\wbr{}เซส. การ\wbr{}ใช้\wbr{}ไฟล์\wbr{}ไปป์\wbr{}ก็\wbr{}เช่น\wbr{}เดียว\wbr{}กัน\wbr{}กับ\wbr{}ไปป์\wbr{}คือ\wbr{}ต้อง\wbr{}มี\wbr{}โปรแกรม\wbr{}ที่\wbr{}ส่ง\wbr{}ข้อ\wbr{}มูล\wbr{}เข้า\wbr{}ไฟล์\wbr{}ไปป์\wbr{}และ\wbr{}มี\wbr{}อีก\wbr{}โปรแกรม\wbr{}หนึ่ง\wbr{}รับ\wbr{}ข้อ\wbr{}มูล\wbr{}จาก\wbr{}ไฟล์\wbr{}ไปป์. ตัว\wbr{}อย่าง\wbr{}เช่น
+\begin{MyExample}[รับ\wbr{}ส่ง\wbr{}ข้อ\wbr{}มูล\wbr{}ระหว่าง\wbr{}โปร\wbr{}เซส\wbr{}ด้วย\wbr{}ไฟล์\wbr{}ไปป์.]
+\begin{MyEx}
+$ \cin{echo abc > in_out &}
+[1] 10024
+$ \cin{cut -b2 in_out} \mycomment{สกัด\wbr{}เอาไบต์\wbr{}ตัว\wbr{}ที่\wbr{}สอง\wbr{}จาก\wbr{}ไฟล์\wbr{}ไปป์}
+b
+[1]+  Done                    echo abc >in_out
+\end{MyEx}
+\end{MyExample}
+ให้\wbr{}สังเกต\wbr{}ว่า\wbr{}ถ้า\wbr{}ส่ง\wbr{}ข้อ\wbr{}มูล\wbr{}ลง\wbr{}ไฟล์\wbr{}ที่\wbr{}ไม่\wbr{}ใช่\wbr{}ไปป์\wbr{}ด้วย \cmd{echo} เมื่อ\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง\wbr{}เสร็จ\wbr{}แล้\wbr{}วจะ\wbr{}สามารถ\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง\wbr{}ต่อ\wbr{}ไป\wbr{}ได้\wbr{}เลย. แต่\wbr{}จาก\wbr{}ตัว\wbr{}อย่าง\wbr{}ถ้า\wbr{}ไม่\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง \cmd{echo} แบบ background (หน้า \pageref{sec:job}) จะ\wbr{}ไม่\wbr{}สามารถ\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง\wbr{}ต่อ\wbr{}ไป\wbr{}ได้\wbr{}เพราะ\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}ส่ง\wbr{}ไป\wbr{}ทาง\wbr{}ไฟล์\wbr{}ไปป์\wbr{}ไม่\wbr{}มี\wbr{}โปร\wbr{}เซ\wbr{}สมา\wbr{}รับ\wbr{}ข้อ\wbr{}มูล\wbr{}ไป. การ\wbr{}ที่\wbr{}โปร\wbr{}เซส \cmd{echo} ค้าง\wbr{}ไป\wbr{}ชั่ว\wbr{}คราว (ถ้า\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง\wbr{}แบบ foreground) แบบ\wbr{}นี้\wbr{}เรีย\wbr{}กว่า\wbr{}โปร\wbr{}เซส\wbr{}นั้น\wbr{}ถูก \emph{block} โดยเ\wbr{}คอร์เนล. ถ้า\wbr{}ไม่\wbr{}มี\wbr{}โปร\wbr{}เซ\wbr{}สมา\wbr{}รับ\wbr{}ข้อ\wbr{}มูล\wbr{}จาก\wbr{}ไปป์\wbr{}ไป\wbr{}ก็\wbr{}โปร\wbr{}เซส\wbr{}ที่\wbr{}เป็น\wbr{}ตัว\wbr{}ป้อน\wbr{}ข้อ\wbr{}มูล\wbr{}ก็\wbr{}จะ\wbr{}ค้าง\wbr{}อยู่\wbr{}อย่าง\wbr{}นั้น. การ\wbr{}ที่\wbr{}เรา\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง\wbr{}แบบ background ก็\wbr{}เพื่อ\wbr{}ที่\wbr{}จะ\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง\wbr{}ต่อ\wbr{}ไป\wbr{}ได้\wbr{}แต่\wbr{}โปร\wbr{}เซส \cmd{echo} ก็\wbr{}ยัง\wbr{}ถูก\wbr{}บล็อก\wbr{}อยู่\wbr{}จน\wbr{}กว่า\wbr{}จะ\wbr{}มี\wbr{}โปร\wbr{}เซส\wbr{}อื่น\wbr{}มา\wbr{}รับ\wbr{}ข้อ\wbr{}มูล\wbr{}จาก\wbr{}ไปป์\wbr{}ไป. เมื่อ\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง \cmd{cut} ให้\wbr{}อ่าน\wbr{}ข้อ\wbr{}มูล\wbr{}จาก\wbr{}ไฟล์\wbr{}ไปป์\wbr{}เสร็จ\wbr{}เรียบ\wbr{}ร้อย\wbr{}แล้ว, คำ\wbr{}สั่ง \cmd{echo} ก็\wbr{}จบ\wbr{}การ\wbr{}ทำ\wbr{}งาน\wbr{}ได้\wbr{}เป็น\wbr{}ปรกติ.
+
+มี\wbr{}น้อย\wbr{}ครั้ง\wbr{}ที่\wbr{}จะ\wbr{}ใช้\wbr{}ไฟล์\wbr{}ไปป์\wbr{}แต่\wbr{}ไฟล์\wbr{}ไปป์\wbr{}จะ\wbr{}ช่วย\wbr{}แก้\wbr{}ปัญหา\wbr{}ได้\wbr{}ใน\wbr{}บาง\wbr{}กรณี\wbr{}เช่น สมมติ\wbr{}ว่า\wbr{}มี\wbr{}โปรแกรม\wbr{}ชื่อ \cmd{genbigfile}  เป็น\wbr{}โปรแกรม\wbr{}ประมวล\wbr{}ผล\wbr{}และ\wbr{}เก็บ\wbr{}ข้อ\wbr{}มูล\wbr{}เป็น\wbr{}ไฟล์\wbr{}ขนาด\wbr{}ใหญ่\wbr{}มาก\wbr{}ชื่อ \cmd{bigfile}.\mymemo{สมมติ\wbr{}ว่า\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง \cmd{genbigfile} แล้\wbr{}วจะ\wbr{}สร้าง\wbr{}ไฟล์\wbr{}ชื่อ \cmd{bigfile} ให้\wbr{}โดย\wbr{}ปริยาย.} เพื่อ\wbr{}ที่\wbr{}จะ\wbr{}ประหยัด\wbr{}พื้น\wbr{}ที่\wbr{}ใน\wbr{}การ\wbr{}เก็บ\wbr{}ไฟล์\wbr{}นี้\wbr{}เรา\wbr{}จึง\wbr{}ต้อง\wbr{}อัด\wbr{}บีบ\wbr{}ด้วย\wbr{}โปรแกรม\wbr{}เช่น \cmd{gzip} ให้\wbr{}ไฟล์\wbr{}มี\wbr{}ขนาด\wbr{}เล็ก\wbr{}ลง. ถ้า\wbr{}โปรแกรม \cmd{genbigfile} สามารถ\wbr{}ส่ง\wbr{}ข้อ\wbr{}มูล\wbr{}ออก\wbr{}ทาง stdout ได้, เรา\wbr{}สามารถ\wbr{}ใช้ \cmd{gzip} บีบ\wbr{}อัด\wbr{}ข้อ\wbr{}มูล\wbr{}จาก stdin ได้\wbr{}ทัน\wbr{}ที\wbr{}โดย\wbr{}ไม่\wbr{}ต้อง\wbr{}รอ\wbr{}ให้\wbr{}เขียน\wbr{}ไฟล์\wbr{}ลง\wbr{}ใน\wbr{}ฮาร์ดดิสก์\wbr{}ก่อน\wbr{}โดย\wbr{}ใช้\wbr{}ไปป์. แต่\wbr{}โปรแกรม \cmd{genbigfile} ที่\wbr{}สมมติ\wbr{}นี้\wbr{}ไม่\wbr{}สามารถ\wbr{}แสดง\wbr{}ผล\wbr{}ทาง stdout ได้, และ\wbr{}จุด\wbr{}นี้\wbr{}เอง\wbr{}ที่\wbr{}ไฟล์\wbr{}ไปป์\wbr{}มี\wbr{}บท\wbr{}บาท\wbr{}สำคัญ. เรา\wbr{}สามารถ\wbr{}บีบ\wbr{}อัด\wbr{}ไฟล์\wbr{}ผล\wbr{}ลัพธ์ \cmd{bigfile} ได้\wbr{}โดย\wbr{}ไม่\wbr{}ต้อง\wbr{}รอ\wbr{}ให้\wbr{}บันทึก\wbr{}ไฟล์\wbr{}นี้\wbr{}ลง\wbr{}ฮาร์ดดิสก์\wbr{}ก่อน\wbr{}ได้\wbr{}ดัง\wbr{}นี้.
+\begin{MyExample}[การ\wbr{}ใช้\wbr{}ไฟล์\wbr{}ไปป์]
+\begin{MyEx}
+$ \cin{mkfifo bigfile} \mycomment{เตรียม fifo เป็น\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ที่\wbr{}จะ\wbr{}เกิด\wbr{}ขึ้น}
+$ \cin{genbigfile &} \mycomment{คำ\wbr{}สั่ง\wbr{}นี้\wbr{}ไม่\wbr{}ทำ\wbr{}งาน\wbr{}ทัน\wbr{}ที\wbr{}เพราะ\wbr{}ถูก\wbr{}บล็อก\wbr{}โดยเ\wbr{}คอร์เนล}
+$ \cin{gzip - < bigfile > bigfile.gz} \mycomment{ใช้ gzip บีด\wbr{}อัด\wbr{}ลง\wbr{}ข้อ\wbr{}มูล\wbr{}ผ่าน\wbr{}ไฟล์\wbr{}ไปป์}
+\end{MyEx}
+\end{MyExample}%$
+ก่อน\wbr{}ที่\wbr{}เรา\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง \cmd{genbigfile} ให้\wbr{}สร้าง\wbr{}ไฟล์\wbr{}ไปป์\wbr{}ที่\wbr{}มี\wbr{}ชื่อ\wbr{}เดียว\wbr{}กัน\wbr{}กับ\wbr{}ไฟล์\wbr{}ที่\wbr{}จะ\wbr{}เกิด\wbr{}ขึ้น\wbr{}ก่อน. หลัง\wbr{}จาก\wbr{}นั้น\wbr{}ค่อย\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง \cmd{genbigfile}. เมื่อ\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง \cmd{genbigfile} ไป\wbr{}แล้ว, โปร\wbr{}เซส\wbr{}นี้\wbr{}จะ\wbr{}ถูกเ\wbr{}คอร์เนล\wbr{}บล็อก\wbr{}เพราะ\wbr{}โปร\wbr{}เซส\wbr{}นี้\wbr{}ส่ง\wbr{}ข้อ\wbr{}มูล\wbr{}ออก\wbr{}ทาง\wbr{}ไฟล์\wbr{}ไปป์\wbr{}และ\wbr{}ยัง\wbr{}ไม่\wbr{}มี\wbr{}โปร\wbr{}เซส\wbr{}ปลาย\wbr{}ทาง\wbr{}รับ\wbr{}ข้อ\wbr{}มูล. โดย\wbr{}ปรกติ\wbr{}คำ\wbr{}สั่ง \cmd{gzip}\cindex{gzip}\refcmd{gzip} รับ\wbr{}อาร์กิวเ\wbr{}มนต์\wbr{}เป็น\wbr{}ไฟล์\wbr{}ได้\wbr{}แต่\wbr{}ไฟล์ \cmd{bigfile} เป็น\wbr{}ไฟล์\wbr{}พิเศษ\wbr{}จึง\wbr{}ต้อง\wbr{}ใช้\wbr{}การ\wbr{}รี\wbr{}ไดเ\wbr{}รก\wbr{}ข้อ\wbr{}มูล\wbr{}จาก\wbr{}ไฟล์ \cmd{bigfile} เข้า\wbr{}มา\wbr{}ทาง stdin และ\wbr{}ใช้ \cmd{gzip} กับ\wbr{}ตัว\wbr{}เลือก ``\cmd{-}'' ซึ่ง\wbr{}หมาย\wbr{}ถึง\wbr{}รับ\wbr{}ข้อ\wbr{}มูล\wbr{}เข้า\wbr{}จาก stdin. เมื่อ \cmd{gzip} เริ่ม\wbr{}ทำ\wbr{}งาน, \cmd{genbigfile} ก็\wbr{}ออก\wbr{}จาก\wbr{}การ\wbr{}ถูก\wbr{}บล็อก\wbr{}แล้ว\wbr{}เริ่ม\wbr{}ทำ\wbr{}งาน\wbr{}ส่ง\wbr{}ข้อ\wbr{}มูล\wbr{}ผ่าน\wbr{}ไปป์, และ \cmd{gzip} ก็\wbr{}รับ\wbr{}ข้อ\wbr{}มูล\wbr{}นั้น\wbr{}มา\wbr{}บีบ\wbr{}อัด\wbr{}เก็บ\wbr{}เป็น\wbr{}ไฟล์ \cmd{bigfile.gz} ต่อ\wbr{}ไป. วิธี\wbr{}การ\wbr{}นี้\wbr{}ทำ\wbr{}ให้\wbr{}บีบ\wbr{}อัด\wbr{}ข้อ\wbr{}มูล\wbr{}ได้\wbr{}ทัน\wbr{}ที\wbr{}โดย\wbr{}ที่\wbr{}ไม่\wbr{}ต้อง\wbr{}เขียน\wbr{}ข้อ\wbr{}มูล\wbr{}นั้น\wbr{}เป็น\wbr{}ไฟล์\wbr{}ลง\wbr{}ใน\wbr{}ฮาร์ดดิสก์\wbr{}ก่อน (สมมติ\wbr{}ว่า\wbr{}โปรแกรม \cmd{genbigfile} ส่ง\wbr{}ข้อ\wbr{}มูล\wbr{}ออก\wbr{}เป็น\wbr{}ไฟล์\wbr{}ได้\wbr{}อย่าง\wbr{}เดียว, ใช้ stdout ไม่\wbr{}ได้).
+
+\section{UNIX Domain socket}
+socket\myvocab{s}{socket}{วิธี\wbr{}การ\wbr{}ที่\wbr{}ใช้\wbr{}เขียน\wbr{}โปรแกรม\wbr{}ติด\wbr{}ต่อ\wbr{}กัน\wbr{}ผ่าน\wbr{}ทางเน็ตเ\wbr{}วิร์ก. socket นี้\wbr{}จะ\wbr{}เกี่ยว\wbr{}ข้อง\wbr{}กับ TCP, IP และ port.} ที่\wbr{}จะ\wbr{}แนะ\wbr{}นำ\wbr{}ต่อ\wbr{}ไป\wbr{}นี้\wbr{}ไม่\wbr{}ใช่ network socket แต่\wbr{}เป็น \emph{UNIX domain socket}. UNIX domain socket นี้\wbr{}เป็น\wbr{}ไฟล์\mymemo{ใน\wbr{}ที่\wbr{}นี้\wbr{}จะ\wbr{}เรีย\wbr{}กว่า\wbr{}ไฟล์ socket เพื่อ\wbr{}ความ\wbr{}ชัดเจน.}ที่\wbr{}สร้าง\wbr{}โดย\wbr{}โปรแกรม. ผู้\wbr{}ใช้\wbr{}ไม่\wbr{}สามารถ\wbr{}สร้าง\wbr{}ไฟล์\wbr{}พิเศษ\wbr{}นี้\wbr{}ด้วย\wbr{}คำ\wbr{}สั่ง\wbr{}เหมือน\wbr{}กับ FIFO. ไฟล์ socket นี้\wbr{}จะ\wbr{}ใช้\wbr{}แลก\wbr{}เปลี่ยน\wbr{}ข้อ\wbr{}มูล\wbr{}ระหว่าง\wbr{}โปร\wbr{}เซส (IPC, inter-process communications)\mymemo{บ้าง\wbr{}ก็\wbr{}เรียก\wbr{}ไฟล์ socket ว่า IPC socket.} เช่น\wbr{}เดียว\wbr{}กับ FIFO. นอก\wbr{}เหนือ\wbr{}จาก\wbr{}นี้\wbr{}แล้ว\wbr{}ไฟล์ socket ยัง\wbr{}จะ\wbr{}ใช้\wbr{}โดย\wbr{}โปรแกรม\wbr{}ที่\wbr{}ใช้\wbr{}งาน\wbr{}ผ่าน\wbr{}ทางเน็ตเ\wbr{}วิร์ก\wbr{}ด้วย.
+
+ตัว\wbr{}อย่าง\wbr{}ของ\wbr{}โปรแกรม\wbr{}ที่\wbr{}ใช้\wbr{}ไฟล์ socket ได้\wbr{}แก่ X เ\wbr{}ซิฟร์\wbr{}เวอร์. โดย\wbr{}ปรกติ X เ\wbr{}ซิฟร์\wbr{}เวอร์\wbr{}สามารถ\wbr{}รับ\wbr{}การ\wbr{}ติด\wbr{}ต่อ\wbr{}จาก client ได้\wbr{}ทางเน็ตเ\wbr{}วิร์ก socket และ\wbr{}ไฟล์ socket. ถ้า\wbr{}เป็น\wbr{}การ\wbr{}ติด\wbr{}ต่อ\wbr{}กับเ\wbr{}ซิฟร์\wbr{}เวอร์\wbr{}ผ่าน\wbr{}ทางเน็ตเ\wbr{}วิร์ก, ตัวเ\wbr{}ซิฟร์\wbr{}เวอร์\wbr{}ก็\wbr{}จะ\wbr{}ใช้เน็ตเ\wbr{}วิร์ก socket, ถ้า\wbr{}เป็น\wbr{}การ\wbr{}ติด\wbr{}ต่อ\wbr{}กับเ\wbr{}ซิฟร์\wbr{}เวอร์\wbr{}จาก\wbr{}เครื่อง\wbr{}ที่\wbr{}รันเ\wbr{}ซิฟร์\wbr{}เวอร์\wbr{}นั้น\wbr{}เช่น\wbr{}ระบบ\wbr{}เดกสท็\wbr{}อป\wbr{}ส่วน\wbr{}บุคคล\wbr{}ก็\wbr{}จะ\wbr{}ใช้\wbr{}ไฟล์ socket แทน\wbr{}ที่\wbr{}จะ\wbr{}ใช้เน็ตเ\wbr{}วิร์ก socket.
+
+ไฟล์ socket เป็น\wbr{}ไฟล์\wbr{}ที่\wbr{}สร้าง\wbr{}โดย\wbr{}ตัว\wbr{}โปรแกรม\wbr{}ที่\wbr{}ใช้\wbr{}ไฟล์ socket นั้น. ผู้\wbr{}ใช้\wbr{}ไม่\wbr{}ต้อง\wbr{}ใส่\wbr{}ใจ\wbr{}กับ\wbr{}การ\wbr{}สร้าง\wbr{}ไฟล์\wbr{}เหล่า\wbr{}นี้. ส่วน\wbr{}ใหญ่\wbr{}โปรแกรม\wbr{}ที่\wbr{}ใช้\wbr{}ไฟล์ socket จะ\wbr{}สร้าง\wbr{}ไฟล์ socket ที่\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{/tmp} เช่น\wbr{}ไฟล์ \cmd{/tmp/.X11-unix/X0} เป็น\wbr{}ไฟล์ socket ที่\wbr{}ใช้\wbr{}โดย X เ\wbr{}ซิฟร์\wbr{}เวอร์.
+
+\begin{MyExample}[ไฟล์ socket ที่\wbr{}ใช้\wbr{}โดย X เ\wbr{}ซิฟร์\wbr{}เวอร์]
+\begin{MyEx}
+$ \cin{ls -lF /tmp/.X11-unix/X0}
+srwxrwxrwx    1 root     root            0 Jun 23 20:57 /tmp/.X11-unix/X0=
+\end{MyEx}
+\end{MyExample}%$
+
+คำ\wbr{}สั่ง \cmd{ls -l} แสดง\wbr{}ราย\wbr{}ละเอียด\wbr{}ไฟล์\wbr{}ใน\wbr{}ช่วง\wbr{}แรก\wbr{}เป็น \cmd{srwxrwxrwx} และ\wbr{}ตัว\wbr{}อักษร \cmd{s} บอ\wbr{}กว่า\wbr{}ไฟล์\wbr{}นี้\wbr{}คือ\wbr{}ไฟล์ socket. ตัว\wbr{}เลือก \cmd{-F} ช่วย\wbr{}เติม\wbr{}เครื่อง\wbr{}หมาย \cmd{=} หลัง\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}เพื่อ\wbr{}ทำ\wbr{}ให้\wbr{}รู้\wbr{}ว่า\wbr{}ไฟล์\wbr{}นี้\wbr{}คือ\wbr{}ไฟล์ socket.
+
+
+
+\section{i-node}
+จาก\wbr{}ที่\wbr{}ได้\wbr{}แนะ\wbr{}นำ\wbr{}ไป\wbr{}แล้ว\wbr{}ว่า\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}เป็น\wbr{}ไฟล์\wbr{}พิเศษ\wbr{}ที่\wbr{}เก็บ\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}และ\wbr{}ที่\wbr{}อยู่\wbr{}ของ\wbr{}ไฟล์. โดย\wbr{}ปรกติ\wbr{}แล้ว\wbr{}ไฟล์\wbr{}จะ\wbr{}เก็บ\wbr{}อยู่\wbr{}ใน\wbr{}ฮาร์ดดิสก์\wbr{}และ\wbr{}ที่\wbr{}อยู่\wbr{}ของ\wbr{}ไฟล์\wbr{}นี้\wbr{}เรีย\wbr{}กว่า \emph{i-node (index node)}. นอก\wbr{}จาก i-node จะ\wbr{}เป็น\wbr{}ตัว\wbr{}บอก\wbr{}ที่\wbr{}อยู่\wbr{}ของ\wbr{}ไฟล์\wbr{}แล้ว\wbr{}ยัง\wbr{}มี\wbr{}ข้อ\wbr{}มูล\wbr{}เกี่ยว\wbr{}กับ\wbr{}ไฟล์\wbr{}ต่างๆ\wbr{}เช่น เจ้า\wbr{}ของ\wbr{}หรือ\wbr{}กรุป\wbr{}ที่\wbr{}เกี่ยว\wbr{}ข้อง\wbr{}กับ\wbr{}ไฟล์, สิทธิ์\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์, และ\wbr{}ประเภท\wbr{}ของ\wbr{}ไฟล์. ตอน\wbr{}ที่\wbr{}ติด\wbr{}ตั้ง\wbr{}ระบบ\wbr{}ปฏิบัติ\wbr{}การ\wbr{}ลิ\wbr{}นุกซ์, i-node จะ\wbr{}ถูก\wbr{}สร้าง\wbr{}ช่วง\wbr{}ที่\wbr{}สร้าง\emph{ระบบ\wbr{}ไฟล์ (file system)} %
+\myvocab{f}{file system}{\emph{ระบบ\wbr{}ไฟล์}. วิธี\wbr{}การ\wbr{}ที่\wbr{}ระบบ\wbr{}ปฏิบัติ\wbr{}ใช้\wbr{}ใน\wbr{}การ\wbr{}เข้า\wbr{}ถึง\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}หน่วย\wbr{}ความ\wbr{}จำ\wbr{}ถาวร. ระบบ\wbr{}ไฟล์\wbr{}ที่\wbr{}ใช้\wbr{}ใน\wbr{}ลิ\wbr{}นุกซ์\wbr{}มี\wbr{}หลาย\wbr{}ประเภท\wbr{}ได้\wbr{}เช่น ext2, ext3, xfs ฯลฯ.}%
+ หลัง\wbr{}จาก\wbr{}ที่\wbr{}แบ่ง\emph{พาร์ทิ\wbr{}ชัน (partition)}.%
+\myvocab{p}{partition}{\emph{พาร์ทิ\wbr{}ชัน}. พื้น\wbr{}ที่\wbr{}ใน\wbr{}ฮาร์ดดิสก์\wbr{}ที่\wbr{}แบ่ง\wbr{}เป็น\wbr{}ส่วนๆ. เมื่อ\wbr{}แบ่ง\wbr{}พาร์ทิ\wbr{}ชัน\wbr{}แล้ว\wbr{}ยัง\wbr{}ไม่\wbr{}สามารถ\wbr{}ใช้\wbr{}งาน\wbr{}ได้\wbr{}ทัน\wbr{}ที\wbr{}ต้อง\wbr{}สร้าง\wbr{}ระบบ\wbr{}ไฟล์ (file system) ก่อน.}%
+
+เวลา\wbr{}ที่\wbr{}เรา\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง\wbr{}ประมวล\wbr{}ผล\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}ไฟล์, เรา\wbr{}จะ\wbr{}มัก\wbr{}จะ\wbr{}ใช้\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}เป็น\wbr{}อาร์กิวเ\wbr{}มนต์\wbr{}ของ\wbr{}คำ\wbr{}สั่ง. \textbf{ชื่อ\wbr{}ไฟล์}นี้\wbr{}เป็น\wbr{}เพียง\wbr{}แค่\textbf{ชื่อ}, ส่วน\wbr{}พื้น\wbr{}ที่\wbr{}ใน\wbr{}หน่วย\wbr{}ความ\wbr{}จำ\wbr{}ถาวร\wbr{}ที่\wbr{}เป็น\wbr{}ที่\wbr{}เก็บ\wbr{}ข้อ\wbr{}มูล\wbr{}นั้น\wbr{}คือ\textbf{ไฟล์}ตัว\wbr{}จริง. ระบบ\wbr{}ปฏิบัติ\wbr{}การ\wbr{}จะ\wbr{}อ้าง\wbr{}อิง\wbr{}ถึง\wbr{}ไฟล์\wbr{}ด้วย i-node. และ\wbr{}ใช้\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}แสดง\wbr{}ให้\wbr{}มนุษย์\wbr{}เข้า\wbr{}ใจ\wbr{}โดย\wbr{}ที่\wbr{}ไม่\wbr{}ต้อง\wbr{}รู้ i-node ของ\wbr{}ไฟล์\wbr{}นั้น.
+
+\begin{figure}[!htb]
+\plfigure{.8}{inode.eps}{ความ\wbr{}สัมพันธ์\wbr{}ระหว่าง\wbr{}ไฟล์, ชื่อ\wbr{}ไฟล์\wbr{}และ i-node}{inode}
+\end{figure}
+
+กรณี\wbr{}ที่\wbr{}ต้องการ\wbr{}ดู\wbr{}ค่า i-node ของ\wbr{}ไฟล์\wbr{}ทำ\wbr{}ได้\wbr{}ด้วย\wbr{}คำ\wbr{}สั่ง \cmd{ls -i}.
+\begin{MyExample}[แสดง\wbr{}ค่า i-node ของ\wbr{}ไฟล์]
+\begin{MyEx}
+$ \cin{ls -i file}
+1283419 -rwxr--r--    1 poonlap  users           7 May 16 08:38 file
+\end{MyEx}
+\end{MyExample}%$
+จาก\wbr{}ตัว\wbr{}อย่าง\wbr{}ค่า i-node ของ\wbr{}ไฟล์ \cmd{file} (ชื่อ\wbr{}ไฟล์) คือ 1283419. และ\wbr{}จาก\wbr{}รูป\wbr{}ที่ \ref{fig:inode} จะ\wbr{}เห็น\wbr{}ได้\wbr{}ว่า\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}หนึ่ง\wbr{}ชื่อ\wbr{}จะ\wbr{}จับ\wbr{}คู่\wbr{}กับ i-node หนึ่ง\wbr{}ค่า. ใน\wbr{}บาง\wbr{}กรณี\wbr{}เรา\wbr{}สามารถ\wbr{}สร้าง\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ให้\wbr{}อ้าง\wbr{}อิง\wbr{}ถึง\wbr{}ไฟล์ (i-node) ที่\wbr{}มี\wbr{}อยู่\wbr{}แล้ว\wbr{}ได้\wbr{}ดัง\wbr{}รูป\wbr{}ที่ \ref{fig:link}
+
+\begin{figure}[!htb]
+\plfigure{.8}{link.eps}{ฮาร์ด\wbr{}ลิงค์ (hard link)}{link}
+\end{figure}
+
+\subsection{ฮาร์ด\wbr{}ลิงค์}
+การ\wbr{}สร้าง\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ใหม่\wbr{}อ้าง\wbr{}อิง\wbr{}ถึง\wbr{}ไฟล์\mymemo{ใน\wbr{}ช่วง\wbr{}นี้\wbr{}ขอ\wbr{}ให้\wbr{}ผู้\wbr{}อ่าน\wbr{}แยก\wbr{}แยะ\wbr{}ความ\wbr{}แตก\wbr{}ต่าง\wbr{}ระหว่าง ``ไฟล์'' กับ ``ชื่อ\wbr{}ไฟล์'' ให้\wbr{}ดี.} (ไฟล์\wbr{}จริง) ที่\wbr{}มี\wbr{}อยู่\wbr{}แล้ว\wbr{}เรีย\wbr{}กว่า\wbr{}การ\wbr{}สร้าง\emph{ฮาร์ด\wbr{}ลิงค์ (hard link)}.\gindex{hard link}\gindex{ฮาร์ด\wbr{}ลิงค์}\gindex{link} ซึ่ง\wbr{}ใน\wbr{}ความ\wbr{}เป็น\wbr{}จริง\wbr{}แล้ว\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ที่\wbr{}มี\wbr{}ตั้ง\wbr{}แต่\wbr{}แรก (ใน\wbr{}ตัว\wbr{}อย่าง\wbr{}คือ \cmd{file}) ก็\wbr{}เรีย\wbr{}กว่า\wbr{}เป็น\wbr{}ฮาร์ด\wbr{}ลิงค์\wbr{}เช่น\wbr{}กัน.
+
+ตัว\wbr{}อย่าง\wbr{}ต่อ\wbr{}ไป\wbr{}นี้\wbr{}จะ\wbr{}เป็น\wbr{}การ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง\wbr{}สร้าง\wbr{}ฮาร์ด\wbr{}ลิงค์\wbr{}ซึ่ง\wbr{}ได้\wbr{}แก่\wbr{}คำ\wbr{}สั่ง \cmd{ln} \cindex{ln}\refcmd{ln} สร้าง\wbr{}ลิงค์\wbr{}เหมือน\wbr{}กับ\wbr{}ที่\wbr{}แสดง\wbr{}ใน\wbr{}รูป\wbr{}ที่ \ref{fig:link}.\\
+\begin{MyExample}[การ\wbr{}สร้าง\wbr{}ฮาร์ด\wbr{}ลิงค์.]
+\begin{MyEx}
+$ \cin{ln file link}
+$ \cin{ls -li file link}
+1283419 -rwxr--r--    2 poonlap  users           7 May 16 08:38 file
+1283419 -rwxr--r--    2 poonlap  users           7 May 16 08:38 link
+                      \arrowup \thtt{จำนวน\wbr{}ฮาร์ด\wbr{}ลิงค์\wbr{}ที่\wbr{}อ้าง\wbr{}อิง\wbr{}กับ i-node 1283419}
+\end{MyEx}
+\end{MyExample}
+จะ\wbr{}เห็น\wbr{}ว่า\wbr{}ชื่อ\wbr{}ไฟล์ (ฮาร์ด\wbr{}ลิงค์) ทั้ง\wbr{}สอง\wbr{}อ้าง\wbr{}อิง\wbr{}ไฟล์\wbr{}ไฟล์\wbr{}เดียว\wbr{}กัน. ให้\wbr{}สังเกต\wbr{}ว่า\wbr{}ค่า i-node ของ\wbr{}ไฟล์\wbr{}ทั้ง\wbr{}สอง\wbr{}มี\wbr{}ค่า\wbr{}เหมือน\wbr{}กัน, นั้น\wbr{}คือ\wbr{}เป็น\wbr{}ไฟล์\wbr{}ไฟล์\wbr{}เดียว\wbr{}กัน\wbr{}แต่\wbr{}มี\wbr{}การ\wbr{}อ้าง\wbr{}อิง\wbr{}ด้วย\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}สอง\wbr{}ชื่อ. จาก\wbr{}ตัว\wbr{}อย่าง \cmd{ls -li} ยัง\wbr{}แสดง\wbr{}จำนวน\wbr{}ฮาร์ด\wbr{}ลิงค์\wbr{}ที่\wbr{}จับ\wbr{}คู่\wbr{}กับ i-node ด้วย.
+
+ถ้า\wbr{}เรา\wbr{}ลบ\wbr{}ไฟล์\wbr{}ด้วย\wbr{}คำ\wbr{}สั่ง \cmd{rm} เช่น ``\cmd{rm file}'', ไฟล์ \cmd{file} จะ\wbr{}หาย\wbr{}ไป (รูป\wbr{}ที่ \ref{fig:link_rm}). แต่\wbr{}ใน\wbr{}ความ\wbr{}เป็น\wbr{}จริง\wbr{}แล้ว \cmd{rm} เป็น\wbr{}การ\wbr{}ลบ\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ไม่\wbr{}ได้\wbr{}ลบ\wbr{}ไฟล์\wbr{}จริง. ไฟล์\wbr{}จริง\wbr{}ที่\wbr{}อ้าง\wbr{}อิง\wbr{}ด้วย i-node นั้น\wbr{}จะ\wbr{}ถู\wbr{}กลบ\wbr{}หรือ\wbr{}หาย\wbr{}ไป\wbr{}ก็\wbr{}ต่อ\wbr{}เมื่อ\wbr{}ไม่\wbr{}มี\wbr{}ฮาร์ด\wbr{}ลิงค์\wbr{}อ้าง\wbr{}อิง\wbr{}ถึง. ดัง\wbr{}นั้น\wbr{}ถ้า\wbr{}ไม่\wbr{}มี\wbr{}ฮาร์ด\wbr{}ลิงค์ \cmd{link} อยู่, เมื่อ\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง ``\cmd{rm file}'' ทั้ง\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}และ\wbr{}ไฟล์\wbr{}จริง\wbr{}ก็\wbr{}จะ\wbr{}หาย\wbr{}ไป\wbr{}เพราะ\wbr{}ไฟล์\wbr{}นั้น\wbr{}ไม่\wbr{}มี\wbr{}ฮาร์ด\wbr{}ลิงค์\wbr{}อื่นๆ\wbr{}มา\wbr{}อ้าง\wbr{}อิง\wbr{}อีก\wbr{}ต่อ\wbr{}ไป.\mymemo{ไฟล์\wbr{}ข้อ\wbr{}มูล\wbr{}นั้น\wbr{}ถ้า\wbr{}ไม่\wbr{}มี\wbr{}ฮาร์ด\wbr{}ลิงค์\wbr{}มา\wbr{}อ้าง\wbr{}อิง\wbr{}ก็\wbr{}ไม่\wbr{}หาย\wbr{}ไป\wbr{}ไหน. แต่\wbr{}ถ้า\wbr{}มี\wbr{}การ\wbr{}สร้าง\wbr{}ไฟล์\wbr{}ใหม่\wbr{}และ\wbr{}เผอิญ\wbr{}ระบบ\wbr{}ปฏิบัติ\wbr{}การ\wbr{}ใช้ i-node นั้น\wbr{}เป็น\wbr{}ที่\wbr{}เก็บ\wbr{}ไฟล์\wbr{}ใหม่, ข้อ\wbr{}มูล\wbr{}ที่\wbr{}เคย\wbr{}อยู่\wbr{}ใน\wbr{}ไฟล์\wbr{}เก่า\wbr{}ก็\wbr{}จะ\wbr{}หาย\wbr{}ไป\wbr{}จริงๆ\wbr{}และ\wbr{}กู้\wbr{}กลับ\wbr{}มา\wbr{}ไม่\wbr{}ได้.}
+
+\begin{figure}[!htb]
+\plfigure{.55}{link_rm.eps}{การ\wbr{}ลบ\wbr{}ไฟล์\wbr{}ด้วย \cmd{rm}}{link_rm}
+\end{figure}
+
+คำ\wbr{}สั่ง\wbr{}ที่\wbr{}อธิบาย\wbr{}ประกอบ\wbr{}รูป \ref{fig:link_rm} ได้\wbr{}แก่\wbr{}ตัว\wbr{}อย่าง\wbr{}ต่อ\wbr{}ไป\wbr{}นี้. จะ\wbr{}เห็น\wbr{}ว่า\wbr{}ค่า i-node ไม่\wbr{}เปลี่ยน\wbr{}แปลง, หมาย\wbr{}ความ\wbr{}ว่า\wbr{}ไฟล์\wbr{}ยัง\wbr{}ไม่\wbr{}ได้\wbr{}ถู\wbr{}กลบ\wbr{}ไป\wbr{}เพราะ\wbr{}ยัง\wbr{}มี\wbr{}ฮาร์ด\wbr{}ลิงค์ (ชื่อ\wbr{}ไฟล์ link) อ้าง\wbr{}อิง\wbr{}ถึง\wbr{}ไฟล์\wbr{}จริง\wbr{}อยู่.
+\begin{MyExample}[การ\wbr{}ลบ\wbr{}ไฟล์\wbr{}ด้วย \cmd{rm}]
+\begin{MyEx}
+$ \cin{rm file}
+$ \cin{ls -li link}
+1283419 -rwxr--r--    1 poonlap  users          13 Jun 26 02:35 link
+                      \arrowup \thtt{จำนวน\wbr{}ฮาร์ด\wbr{}ลิงค์\wbr{}ลด\wbr{}ลง\wbr{}หนึ่ง\wbr{}ตัว}
+\end{MyEx}
+\end{MyExample}
+
+ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}เป็น\wbr{}ไฟล์\wbr{}พิเศษ\wbr{}ประเภท\wbr{}หนึ่ง, ดัง\wbr{}นั้น\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ก็\wbr{}สามารถ\wbr{}มี\wbr{}ฮาร์ด\wbr{}ลิงค์\wbr{}ได้\wbr{}เช่น\wbr{}กัน. แต่\wbr{}ฮาร์ด\wbr{}ลิงค์\wbr{}ของ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นี้เ\wbr{}คอร์เนล\wbr{}จะ\wbr{}เป็น\wbr{}ตัว\wbr{}จัด\wbr{}การ\wbr{}สร้าง\wbr{}ตอน\wbr{}นี้\wbr{}สร้าง\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี. สำหรับ\wbr{}ผู้\wbr{}ใช้\wbr{}ทั่ว\wbr{}ไป\wbr{}หรือ\wbr{}แม้\wbr{}กระทั่ง\wbr{}ก็\wbr{}ไม่\wbr{}สามารถ\wbr{}สร้าง\wbr{}ฮาร์ด\wbr{}ลิงค์\wbr{}ด้วย\wbr{}คำ\wbr{}สั่ง \cmd{ln} เหมือน\wbr{}กับ\wbr{}ฮาร์ด\wbr{}ลิงค์\wbr{}ของ\wbr{}ไฟล์\wbr{}ธรรม\wbr{}ดา.
+
+สมมติ\wbr{}ว่า\wbr{}เรา\wbr{}อยู่\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{\~{}/tmp} และ\wbr{}สร้าง\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ใหม่\wbr{}ชื่อ \cmd{subdir} ด้วย\wbr{}คำ\wbr{}สั่ง \cmd{mkdir}\cindex{mkdir}.
+\begin{MyExample}[สร้าง\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี]
+\begin{MyEx}
+$ \cin{mkdir subdir}
+$ \cin{ls -li}
+total 4
+1283467 drwxr-xr-x    2 poonlap  users        4096 Jun 28 00:51 subdir/
+\end{MyEx}
+\end{MyExample}
+จะ\wbr{}เห็น\wbr{}ได้\wbr{}ว่า i-node ของ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}สร้าง\wbr{}ใหม่\wbr{}จะ\wbr{}ลิงค์\wbr{}อ้าง\wbr{}อิง\wbr{}อยู่\wbr{}สอง\wbr{}ตัว. ตัว\wbr{}หนึ่ง\wbr{}คือ\wbr{}ชื่อ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี (\cmd{subdir}) และ\wbr{}อีก\wbr{}ตัว\wbr{}หนึ่ง\wbr{}คือ\wbr{}ลิงค์\wbr{}พิเศษ\wbr{}ที่เ\wbr{}คอร์เนล\wbr{}สร้าง\wbr{}ให้\wbr{}โดย\wbr{}อัตโนมัติ. ลิงค์\wbr{}พิเศษ\wbr{}ที่เ\wbr{}คอร์เนล\wbr{}สร้าง\wbr{}ให้\wbr{}นี้\wbr{}อยู่\wbr{}ใต้\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}สร้าง\wbr{}และ\wbr{}มี\wbr{}ชื่อ\wbr{}เป็น \cmd{.} (จุด) และ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{.} นี้\wbr{}ใช้\wbr{}สำหรับ\wbr{}อ้าง\wbr{}อิง\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}อยู่\wbr{}ในปัจจั\wbr{}บัน.
+
+นอก\wbr{}จาก\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{.} แล้ว, เ\wbr{}คอร์เนล\wbr{}ยัง\wbr{}สร้าง\wbr{}ลิงค์\wbr{}พิเศษ\wbr{}อีก\wbr{}ตัว\wbr{}คือ \cmd{..} ใต้\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}สร้าง\wbr{}ใหม่\wbr{}เป็น\wbr{}ลิงค์\wbr{}ไป\wbr{}หา\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}แม่. ดัง\wbr{}นั้น\wbr{}เมื่อ\wbr{}มี\wbr{}การ\wbr{}สร้าง\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ใหม่\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ใดๆ, จำนวน\wbr{}ลิงค์\wbr{}ที่\wbr{}อ้าง\wbr{}อิง\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}สร้าง\wbr{}นั้น\wbr{}จะ\wbr{}เพิ่ม\wbr{}ขึ้น\wbr{}เสมอ. ใน\wbr{}ตัว\wbr{}อย่าง\wbr{}ข้าง\wbr{}ต้น, ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{\~{}/tmp} จะ\wbr{}มี\wbr{}จำนวน\wbr{}ลิงค์\wbr{}ที่\wbr{}อ้าง\wbr{}อิง\wbr{}เพิ่ม\wbr{}ขึ้น.
+
+
+
+
+
+\subsection{ซอฟต์\wbr{}ลิงค์}\label{sec:softlink}
+ฮาร์ด\wbr{}ลิงค์\wbr{}มี\wbr{}ข้อ\wbr{}จำกัด\wbr{}บาง\wbr{}ประการ\wbr{}ได้\wbr{}แก่, ไม่\wbr{}สามารถ\wbr{}สร้าง\wbr{}ฮาร์ด\wbr{}ลิงค์\wbr{}ไป\wbr{}หา\wbr{}ไฟล์\wbr{}ที่\wbr{}อยู่\wbr{}คนละ\wbr{}พาร์ทิ\wbr{}ชัน\wbr{}ได้ และ\wbr{}ไม่\wbr{}สามารถ\wbr{}สร้าง\wbr{}ฮาร์ด\wbr{}ลิงค์\wbr{}ไป\wbr{}หา\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี. การ\wbr{}แก้\wbr{}ไข\wbr{}ข้อ\wbr{}จำกัด\wbr{}นี้\wbr{}สามารถ\wbr{}ทำ\wbr{}ได้\wbr{}โดย\wbr{}การ\wbr{}สร้าง\emph{ซอฟต์\wbr{}ลิงค์ (soft link)}\gindex{soft link}\gindex{ซอฟต์\wbr{}ลิงค์}. ซอฟต์\wbr{}ลิงค์\wbr{}มี\wbr{}ชื่อ\wbr{}เรียก\wbr{}อีก\wbr{}อย่าง\wbr{}ว่า \emph{symbolic link}\gindex{symbolic link} คือ\wbr{}ไฟล์\wbr{}ที่\wbr{}มี\wbr{}ตัว\wbr{}ตน\wbr{}จริง\wbr{}ใน\wbr{}หน่วย\wbr{}ความ\wbr{}จำ\wbr{}ถาวร\wbr{}โดย\wbr{}ที่\wbr{}ข้อ\wbr{}มูล\wbr{}ของ\wbr{}ไฟล์\wbr{}นี้\wbr{}จะ\wbr{}ไป\wbr{}เชื่อม\wbr{}ต่อ\wbr{}กับ\wbr{}ไฟล์\wbr{}ปลาย\wbr{}ทาง\wbr{}ที่\wbr{}กำหนด\wbr{}ไว้ (รูป\wbr{}ที่ \ref{fig:softlink}).
+
+\begin{figure}[!htb]
+\plfigure{.8}{softlink.eps}{ซอฟต์\wbr{}ลิงค์ (soft link)}{softlink}
+\end{figure}
+
+การ\wbr{}สร้าง\wbr{}ซอฟต์\wbr{}ลิงค์\wbr{}จะ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{ln} เหมือน\wbr{}กับ\wbr{}การ\wbr{}สร้าง\wbr{}ฮาร์ด\wbr{}ลิงค์\wbr{}แต่\wbr{}จะ\wbr{}ใช้\wbr{}ตัว\wbr{}เลือก \cmd{-s} ประกอบ.
+
+
+\begin{MyExample}[การ\wbr{}สร้าง\wbr{}ซอฟต์\wbr{}ลิงค์]
+\begin{MyEx}
+$ \cin{ln -s file softlink}
+$ \cin{ls -li file softlink}
+1283419 -rwxr--r--    1 poonlap  users          13 Jun 26 02:35 file
+1283465 lrwxrwxrwx    1 poonlap  users           4 Jun 27 22:17 softlink -> file
+\end{MyEx}
+\end{MyExample}%
+ราย\wbr{}ละเอียด\wbr{}ของ\wbr{}คำ\wbr{}สั่ง \cmd{ls} ช่วง\wbr{}แรก\wbr{}ได้\wbr{}แก่ \cmd{lrwxrwxrwx}, และ\wbr{}ตัว\wbr{}อักษร \cmd{l} นี้\wbr{}บ่ง\wbr{}บอ\wbr{}กว่า\wbr{}ไฟล์\wbr{}นี้\wbr{}คือ\wbr{}ซอฟต์\wbr{}ลิงค์. ให้\wbr{}สังเกต\wbr{}ว่า\wbr{}ค่า i-node เป็น\wbr{}คนละ\wbr{}ค่า\wbr{}กับ\wbr{}ไฟล์\wbr{}ที่\wbr{}ลิงค์\wbr{}ไป\wbr{}หา. และ\wbr{}ราย\wbr{}ละเอียด\wbr{}ของ\wbr{}ตัว\wbr{}เลือก \cmd{-l} จะ\wbr{}แสดง\wbr{}ไฟล์\wbr{}ที่\wbr{}ลิงค์\wbr{}ไป\wbr{}หา\wbr{}ด้วย. ถ้า\wbr{}ใช้\wbr{}ตัว\wbr{}เลือก \cmd{-F}, คำ\wbr{}สั่ง \cmd{ls} จะ\wbr{}เติม\wbr{}ตัว\wbr{}อักษร \cmd{@} หลัง\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}เพื่อ\wbr{}บ่ง\wbr{}บอ\wbr{}กว่า\wbr{}ไฟล์\wbr{}นั้น\wbr{}เป็น\wbr{}ลิงค์.
+
+\section{ราย\wbr{}ละเอียด\wbr{}ของ\wbr{}ไฟล์}\label{ls-l}
+การ\wbr{}แสดง\wbr{}ราย\wbr{}ละเอียด\wbr{}ของ\wbr{}ไฟล์\wbr{}จะ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{ls} กับ\wbr{}ตัว\wbr{}เลือก \cmd{-l}.
+\begin{MyExample}[คำ\wbr{}สั่ง \cmd{ls -l} แสดง\wbr{}ราย\wbr{}ละเอียด\wbr{}ของ\wbr{}ไฟล์.]\label{ex:ls-l}
+\begin{MyEx}
+$ \cin{ls -l}
+total 4
+drwxr-xr-x    2 poonlap  users        4096 Jul 20 00:21 bar
+-rw-r--r--    1 poonlap  users           0 Jul 20 00:21 foo
+\end{MyEx}
+\end{MyExample}%$
+เมื่อ\wbr{}ใช้\wbr{}ตัว\wbr{}เลือก \cmd{-l} ดู\wbr{}ราย\wbr{}ละเอียด\wbr{}ของ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ตาม\wbr{}ตัว\wbr{}อย่าง, บรรทัด\wbr{}แรก (\cmd{total 4}) จะ\wbr{}แสดง\wbr{}จำนวน\wbr{}พื้น\wbr{}ที่\wbr{}ที่\wbr{}ใช้\wbr{}ไป\wbr{}โดย\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นั้น\wbr{}ใน\wbr{}หน่วย\wbr{}บล็อก (block)\mymemo{โดย\wbr{}ทั่ว\wbr{}ไป 1 บล็อก\wbr{}จะ\wbr{}หมาย\wbr{}ถึง 1024 ไบต์.}. จาก\wbr{}นั้น\wbr{}จะ\wbr{}แสดง\wbr{}ราย\wbr{}ละเอียด\wbr{}ของ\wbr{}ไฟล์\wbr{}หรือ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}บรรทัด\wbr{}ต่อ\wbr{}บรรทัด.
+
+ตัว\wbr{}อักษร\wbr{}ที่\wbr{}เรียง\wbr{}กัน 10 เช่น \cmd{drwxr-xr-x} ใน\wbr{}ตัว\wbr{}อย่าง\wbr{}จะ\wbr{}บอก\wbr{}ประเภท\wbr{}ของ\wbr{}ไฟล์\wbr{}โดย\wbr{}ใช้\wbr{}อักษร\wbr{}ตัว\wbr{}แรก, ส่วน\wbr{}อักษร 9 ตัว\wbr{}ที่\wbr{}เหลือ\wbr{}จะ\wbr{}แสดง\wbr{}ราย\wbr{}ละเอียด\wbr{}สิทธิ์\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์\wbr{}หรือ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี่\wbr{}นั้น. ตัว\wbr{}เลข\wbr{}ที่\wbr{}อยู่\wbr{}ถัด\wbr{}จาก\wbr{}ตัว\wbr{}อักษร 10 ตัว\wbr{}คือ\wbr{}จำนวน\wbr{}ฮาร์ด\wbr{}ลิงค์\wbr{}ที่\wbr{}อ้าง\wbr{}อิง\wbr{}ไฟล์. ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}จะ\wbr{}มี\wbr{}จำนวน\wbr{}ฮาร์ด\wbr{}ลิงค์\wbr{}อย่าง\wbr{}น้อย 2 ตัว. ฮาร์ด\wbr{}ลิงค์\wbr{}ตัว\wbr{}แรก\wbr{}คือ\wbr{}ชื่อ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี (\cmd{bar}) และ\wbr{}ฮาร์ด\wbr{}ลิงค์\wbr{}อีก\wbr{}ตัว\wbr{}คือ\wbr{}ชื่อ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{.} ที่\wbr{}อ้าง\wbr{}อิง\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ตัว\wbr{}เอง (\cmd{bar/.}).
+
+\begin{table}[!htb]
+\center
+\caption{ตัว\wbr{}อักษร\wbr{}ที่\wbr{}ใช้\wbr{}แสดง\wbr{}ประเภท\wbr{}ของ\wbr{}ไฟล์.}\label{tab:filetype}
+\medskip
+\begin{tabular}{cl}
+\toprule
+ตัว\wbr{}อักษร & \multicolumn{1}{c}{คำ\wbr{}อธิบาย}\\
+\midrule
+\cmd{d} & ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\\
+\cmd{b} & ไฟล์\wbr{}ดี\wbr{}ไวซ์ (block device)\\
+\cmd{c} & ไฟล์\wbr{}ดี\wbr{}ไวซ์ (character device)\\
+\cmd{l} & ซอฟต์\wbr{}ลิงค์\\
+\cmd{p} & ไฟล์\wbr{}ไปป์\\
+\cmd{s} & ไฟล์ socket\\
+\cmd{-} & ไฟล์\wbr{}ธรรม\wbr{}ดา\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+ราย\wbr{}ละเอียด\wbr{}ที่\wbr{}แสดง\wbr{}ต่อ\wbr{}จำนวน\wbr{}ฮาร์ด\wbr{}ลิงค์\wbr{}คือ\wbr{}ชื่อ\wbr{}เจ้า\wbr{}ของ\wbr{}ไฟล์\wbr{}ซึ่ง\wbr{}ได้\wbr{}แก่\wbr{}ชื่อล็\wbr{}อก\wbr{}อิน, และ\wbr{}ชื่อ\wbr{}กลุ่ม (group) ของ\wbr{}ไฟล์. โดย\wbr{}ปรกติ\wbr{}ผู้\wbr{}ใช้\wbr{}ใน\wbr{}ระบบ\wbr{}มี\wbr{}อยู่\wbr{}ใน\wbr{}กลุ่ม\wbr{}ผู้\wbr{}ใช้\wbr{}ที่\wbr{}กำหนด\wbr{}ไว้\wbr{}กลุ่ม\wbr{}ใด\wbr{}กลุ่ม\wbr{}หนึ่ง\wbr{}เช่น\wbr{}ผู้\wbr{}ใช้\wbr{}ทั่ว\wbr{}ไป\wbr{}จะ\wbr{}อยู่\wbr{}ใน\wbr{}กลุ่ม users. เวลา\wbr{}ที่\wbr{}สร้าง\wbr{}ไฟล์\wbr{}หรือ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ขึ้น\wbr{}มา\wbr{}ก็\wbr{}จะ\wbr{}ถือ\wbr{}ว่า\wbr{}เจ้า\wbr{}ของ\wbr{}ไฟล์\wbr{}คือ\wbr{}ผู้\wbr{}ที่\wbr{}สร้าง\wbr{}ไฟล์\wbr{}นั้น, และ\wbr{}กลุ่ม\wbr{}ของ\wbr{}ไฟล์\wbr{}คือ\wbr{}กลุ่ม\wbr{}ที่\wbr{}ผู้\wbr{}สร้าง\wbr{}ไฟล์\wbr{}นั้น\wbr{}อยู่.
+
+ข้อ\wbr{}มูล\wbr{}ที่\wbr{}ถัด\wbr{}จาก\wbr{}เจ้า\wbr{}ของ\wbr{}ไฟล์\wbr{}และ\wbr{}กลุ่ม\wbr{}ได้\wbr{}แก่ ขนาด\wbr{}ของ\wbr{}ไฟล์, timestamp และ\wbr{}ชื่อ\wbr{}ไฟล์. ขนาด\wbr{}ของ\wbr{}ไฟล์\wbr{}จะ\wbr{}แสดง\wbr{}เป็น\wbr{}จำนวนไบต์. หรือ\wbr{}ใช้\wbr{}ตัว\wbr{}เลือก\wbr{}ที่\wbr{}แสดง\wbr{}ใน\wbr{}ตา\wbr{}ราง\wbr{}ที่ \ref{tab:lssize} แสดง\wbr{}ขนาด\wbr{}ของ\wbr{}ไฟล์\wbr{}ใน\wbr{}หน่วย\wbr{}ที่\wbr{}ต้องการ. timestamp คือ\wbr{}เวลา\wbr{}ที่\wbr{}ไฟล์\wbr{}นั้น\wbr{}ถูก\wbr{}แก้\wbr{}ไข\wbr{}เป็น\wbr{}ครั้ง\wbr{}สุด\wbr{}ท้าย.
+
+\begin{table}[!htb]
+\center
+\caption{ตัว\wbr{}เลือก\wbr{}ของ \cmd{ls} ที่\wbr{}เกี่ยว\wbr{}กับ\wbr{}การ\wbr{}แสดง\wbr{}ขนาด\wbr{}ของ\wbr{}ไฟล์.}\label{tab:lssize}
+\medskip
+\begin{tabular}{lp{.7\textwidth}}
+\toprule
+\multicolumn{1}{c}{ตัว\wbr{}เลือก} & \multicolumn{1}{c}{ความ\wbr{}หมาย}\\
+\midrule
+\cmd{-h} & แสดง\wbr{}หน่วย\wbr{}ที่\wbr{}มนุษย์\wbr{}อ่าน\wbr{}แล้ว\wbr{}เข้า\wbr{}ใจ\wbr{}เช่น M (megabytes) หรือ G (gigabytes) เป็นต้น.\\
+\cmd{-k} & แสดง\wbr{}หน่วย\wbr{}เป็น\wbr{}กิโลไบต์.\\
+\cmd{-s} & แสดง\wbr{}หน่วย\wbr{}เป็น\wbr{}บล็อก (1024 ไบต์)\\
+\cmd{-S} & เรียง\wbr{}ลำดับ\wbr{}ไฟล์\wbr{}ที่\wbr{}แสดง\wbr{}ตาม\wbr{}พื้น\wbr{}ที่\wbr{}ไฟล์.\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{คำ\wbr{}สั่ง \cmd{stat}}
+คำ\wbr{}สั่ง\wbr{}ที่\wbr{}แสดง\wbr{}ราย\wbr{}ละเอียด\wbr{}ของ\wbr{}ไฟล์\wbr{}ได้\wbr{}ละเอียด\wbr{}กว่า\wbr{}คำ\wbr{}สั่ง \cmd{ls} คือ \cmd{stat}\cindex{stat}\refcmd{stat}. คำ\wbr{}สั่ง \cmd{stat} จะ\wbr{}แสดง\wbr{}สถานะ\wbr{}ของ\wbr{}ไฟล์\wbr{}หรือ\wbr{}ระบบ\wbr{}ไฟล์\wbr{}ที่\wbr{}ใช้\wbr{}บันทึก\wbr{}ไฟล์\wbr{}นั้น.
+\begin{MyExample}[แสดง\wbr{}สถานะ\wbr{}ของ\wbr{}ไฟล์\wbr{}ด้วย \cmd{stat}.]
+\begin{MyEx}
+$ \cin{stat foo}
+  File: `foo'
+  Size: 2               Blocks: 8          IO Block: 4096   regular file
+Device: 342h/834d       Inode: 575494      Links: 1
+Access: (0600/-rw-------)  Uid: ( 1000/ poonlap)   Gid: (  100/   users)
+Access: 2004-07-20 23:03:01.000000000 +0900
+Modify: 2004-07-20 01:29:37.000000000 +0900
+Change: 2004-07-20 23:02:14.000000000 +0900
+\end{MyEx}
+\end{MyExample}%$
+ผล\wbr{}ลัพธ์\wbr{}ของ\wbr{}คำ\wbr{}สั่ง\wbr{}มี\wbr{}คำ\wbr{}อธิบาย\wbr{}สั้นๆ\wbr{}และ\wbr{}มี\wbr{}ความ\wbr{}หมาย\wbr{}ใน\wbr{}ตัว\wbr{}เอง. ใน\wbr{}ที่\wbr{}นี้\wbr{}ขอ\wbr{}อธิบาย\wbr{}เกี่ยว\wbr{}กับ timestamp ของ\wbr{}ไฟล์\wbr{}ซึ่ง\wbr{}จาก\wbr{}คำ\wbr{}สั่ง \cmd{stat} จะ\wbr{}แสดง timestamp สาม\wbr{}อย่าง\wbr{}คือ
+\begin{enumerate}
+\item Time of last access (atime)\gindex{atime} ได้\wbr{}แก่\wbr{}เวลา\wbr{}ล่า\wbr{}สุด\wbr{}ที่\wbr{}มี\wbr{}การ\wbr{}เปิด\wbr{}ไฟล์. การ\wbr{}ใช้\wbr{}ไฟล์\wbr{}ใน\wbr{}ที่\wbr{}นี้\wbr{}รวม\wbr{}ถึง\wbr{}การ\wbr{}อ่าน, สร้าง, แก้\wbr{}ไข\wbr{}ไฟล์.
+\item Time of last modification (mtime)\gindex{mtime} ได้\wbr{}แก่\wbr{}เวลา\wbr{}ล่า\wbr{}สุด\wbr{}ที่\wbr{}มี\wbr{}การ\wbr{}แก้\wbr{}ไข\wbr{}เนื้อ\wbr{}หา\wbr{}ไฟล์.
+\item Time of last status change (ctime)\gindex{ctime} ได้\wbr{}แก่\wbr{}เวลา\wbr{}ล่า\wbr{}สุด\wbr{}ที่\wbr{}มี\wbr{}การ\wbr{}เปลี่ยน\wbr{}สภาพ\wbr{}ของ\wbr{}ไฟล์\wbr{}เช่น\wbr{}การ\wbr{}แก้\wbr{}สิทธิ์\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์.
+\end{enumerate}
+
+จะ\wbr{}เห็น\wbr{}ว่าเ\wbr{}คอร์เนล\wbr{}จะ\wbr{}บันทึก\wbr{}เวลา atime ทุก\wbr{}ครั้ง\wbr{}เมื่อ\wbr{}เปิด\wbr{}ไฟล์\wbr{}ใดๆ\wbr{}ก็\wbr{}ตาม. สำหรับ\wbr{}ระบบ\wbr{}ที่\wbr{}ไม่\wbr{}สน\wbr{}ใจ\wbr{}ข้อ\wbr{}มูล\wbr{}ของ atime อาจ\wbr{}จะ\wbr{}ปรับ\wbr{}แต่ง\wbr{}ระบบ\wbr{}ให้\wbr{}ไม่\wbr{}บันทึก\wbr{}ค่า atime ก็\wbr{}ได้\wbr{}โดย\wbr{}ตอน\wbr{}ที่ mount ให้\wbr{}ใช้\wbr{}ตัว\wbr{}เลือก \cmd{-o noatime}. การ\wbr{}ไม่\wbr{}บันทึก atime อาจ\wbr{}จะ\wbr{}ช่วย\wbr{}เพิ่ม\wbr{}ประสิทธิภาพ\wbr{}การ\wbr{}ทำ\wbr{}งาน\wbr{}ของ\wbr{}ระบบ\wbr{}ได้\wbr{}ด้วย.
+
+
+\section{การ\wbr{}เปลี่ยน\wbr{}เจ้า\wbr{}ของ\wbr{}และ\wbr{}กลุ่ม\wbr{}ของ\wbr{}ไฟล์}
+คำ\wbr{}สั่ง \cmd{chown}\cindex{chown}\refcmd{chown} เป็น\wbr{}คำ\wbr{}สั่ง\wbr{}สำหรับ\wbr{}เปลี่ยน\wbr{}เจ้า\wbr{}ของ\wbr{}ไฟล์\wbr{}ซึ่ง\wbr{}ผู้\wbr{}ใช้\wbr{}ที่\wbr{}จะ\wbr{}เปลี่ยน\wbr{}เจ้า\wbr{}ของ\wbr{}ไฟล์\wbr{}นั้น\wbr{}คือ root เท่า\wbr{}นั้น. คำ\wbr{}สั่ง \cmd{chown} นอก\wbr{}จาก\wbr{}จะ\wbr{}เปลี่ยน\wbr{}เจ้า\wbr{}ของ\wbr{}ไฟล์\wbr{}ได้\wbr{}แล้ว\wbr{}ยัง\wbr{}เปลี่ยน\wbr{}กลุ่ม\wbr{}ผู้\wbr{}ใช้\wbr{}ที่\wbr{}เกี่ยว\wbr{}ข้อง\wbr{}ได้\wbr{}พร้อมๆ\wbr{}กัน\wbr{}ตาม\wbr{}ตัว\wbr{}อย่าง\wbr{}ต่อ\wbr{}ไป\wbr{}นี้.
+\begin{MyExample}[การ\wbr{}เปลี่ยน\wbr{}เจ้า\wbr{}ของ\wbr{}ไฟล์.]
+\begin{MyEx}
+# \cin{ls -l foo}
+-rw-r--r--    1 root     root            0 Jul 24 13:28 foo
+# \cin{chown poonlap:users foo}
+# \cin{ls -f foo}
+-rw-r--r--    1 poonlap  users           0 Jul 24 13:28 foo
+\end{MyEx}
+\end{MyExample}
+
+สำหรับ\wbr{}ผู้\wbr{}ใช้\wbr{}ทั่ว\wbr{}ไป\wbr{}แล้ว\wbr{}ไม่\wbr{}มี\wbr{}สิทธิ์\wbr{}ที่\wbr{}จะ\wbr{}เปลี่ยน\wbr{}เจ้า\wbr{}ของ\wbr{}ไฟล์, แต่\wbr{}สามารถ\wbr{}เปลี่ยน\wbr{}กลุ่ม\wbr{}ผู้\wbr{}ใช้\wbr{}ที่\wbr{}เกี่ยว\wbr{}ข้อง\wbr{}กับ\wbr{}ไฟล์\wbr{}นั้น\wbr{}ได้\wbr{}ถ้า\wbr{}ผู้\wbr{}ใช้\wbr{}นั้น\wbr{}อยู่\wbr{}ใน\wbr{}กลุ่ม\wbr{}ที่\wbr{}ต้องการ\wbr{}เปลี่ยน. เช่น\wbr{}ถ้า\wbr{}ผู้\wbr{}ใช้\wbr{}อยู่\wbr{}ใน\wbr{}กลุ่ม wheel ก็\wbr{}สามารถ\wbr{}เปลี่ยน\wbr{}กลุ่ม\wbr{}ผู้\wbr{}ใช้\wbr{}ที่\wbr{}เกี่ยว\wbr{}ข้อง\wbr{}กับ\wbr{}ไฟล์\wbr{}นั้น\wbr{}ไป\wbr{}เป็น wheel ได้\wbr{}ด้วย\wbr{}คำ\wbr{}สั่ง \cmd{chgrp}\cindex{chgrp}\refcmd{chgrp}.
+\begin{MyExample}[การ\wbr{}เปลี่ยน\wbr{}กลุ่ม\wbr{}ของ\wbr{}ไฟล์.]
+\begin{MyEx}
+$ \cin{ls -l foo}
+-rw-r--r--    1 poonlap  users           0 Jul 24 13:28 foo
+$ \cin{chgrp wheel foo}
+$ \cin{ls -l foo}
+-rw-r--r--    1 poonlap  wheel           0 Jul 24 13:28 foo
+\end{MyEx}
+\end{MyExample}%$
+
+\section{สิทธิ\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์}
+%สิทธิ์\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์\wbr{}ใน\wbr{}ระบบ\wbr{}ปฏิบัติ\wbr{}การ\wbr{}ยู\wbr{}นิกซ์\wbr{}และ\wbr{}ลิ\wbr{}นุกซ์\wbr{}จะ\wbr{}ขึ้น\wbr{}อยู่\wbr{}กับ\wbr{}ค่าที่\wbr{}กำหนด\wbr{}ไว้\wbr{}กับ\wbr{}ไฟล์\wbr{}นั้นๆ. เรา\wbr{}สามารถ\wbr{}กำหนด\wbr{}สิทธิ์\wbr{}การ\wbr{}กระทำ\wbr{}กับ\wbr{}ไฟล์\wbr{}ตาม\wbr{}ผู้\wbr{}ใช้\wbr{}ที่\wbr{}ต้องการ\wbr{}ใช้\wbr{}ไฟล์\wbr{}นั้น\wbr{}ตาม
+%\begin{enumerate}
+%\item เจ้า\wbr{}ของ\wbr{}ไฟล์ (owner)
+%\item ผู้\wbr{}ใช้\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}กลุ่ม\wbr{}เดียว\wbr{}กัน\wbr{}กับ\wbr{}กลุ่ม\wbr{}ที่\wbr{}เป็น\wbr{}เจ้า\wbr{}ของ\wbr{}ไฟล์\wbr{}นั้น (group)
+%\item ผู้\wbr{}ใช้\wbr{}อื่นๆ (others)
+%\end{enumerate}
+%การ\wbr{}กระทำ\wbr{}ที่\wbr{}สามารถ\wbr{}กระทำ\wbr{}ได้\wbr{}กับ\wbr{}ไฟล์\wbr{}แบ่ง\wbr{}เป็น
+
+
+เนื่อง\wbr{}จาก\wbr{}ระบบ\wbr{}ปฏิบัติ\wbr{}การ\wbr{}ลิ\wbr{}นุกซ์\wbr{}และ\wbr{}ยู\wbr{}นิกซ์\wbr{}สามารถ\wbr{}มี\wbr{}ผู้\wbr{}ใช้\wbr{}ใน\wbr{}ระบบ\wbr{}ได้\wbr{}หลาย\wbr{}คน, จึง\wbr{}มี\wbr{}แนว\wbr{}คิด\wbr{}เกี่ยว\wbr{}กับ\wbr{}การ\wbr{}กำหนด\wbr{}สิทธิ์ (permission) อนุ\wbr{}ญาติ\wbr{}ให้\wbr{}ผู้\wbr{}ใช้\wbr{}ใน\wbr{}ระบบ\wbr{}ใช้\wbr{}ไฟล์\wbr{}ที่\wbr{}ต้องการ\wbr{}ได้. ไฟล์\wbr{}หรือ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ใน\wbr{}ลิ\wbr{}นุกซ์\wbr{}แต่\wbr{}ละ\wbr{}ไฟล์\wbr{}จะ\wbr{}มี\wbr{}เจ้า\wbr{}ของ\wbr{}ไฟล์, และ\wbr{}กลุ่ม\wbr{}ของ\wbr{}ไฟล์. เรา\wbr{}สามารถ\wbr{}อนุ\wbr{}ญาติ\wbr{}ประเภท\wbr{}การ\wbr{}ใช้\wbr{}งาน\wbr{}ไฟล์\wbr{}แบบ\wbr{}ต่างๆ\wbr{}เช่น\wbr{}การ\wbr{}อ่าน, สร้าง, แก้\wbr{}ไข ฯลฯ โดย\wbr{}แยก\wbr{}ประเภท\wbr{}ผู้\wbr{}ใช้\wbr{}ไฟล์\wbr{}ออก\wbr{}เป็น\wbr{}เจ้า\wbr{}ของ\wbr{}ไฟล์ (owner), ผู้\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}กลุ่ม\wbr{}เดียว\wbr{}กัน (group) และ\wbr{}ผู้\wbr{}ใช้\wbr{}อื่นๆ (other).
+
+\begin{figure}[!htb]
+\plfigure{.8}{permission.eps}{ผล\wbr{}ลัพธ์\wbr{}ของ\wbr{}คำ\wbr{}สั่ง \cmd{ls -l} ที่\wbr{}เกี่ยว\wbr{}กับ\wbr{}สิทธิ์\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์\wbr{}และ\wbr{}ประเภท\wbr{}ของ\wbr{}ไฟล์.}{permission}
+\end{figure}
+
+คำ\wbr{}สั่ง \cmd{ls} กับ\wbr{}ตัว\wbr{}เลือก \cmd{-l} จะ\wbr{}แสดง\wbr{}สิทธิ์\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์\wbr{}ของ\wbr{}ไฟล์\wbr{}นั้นๆ. จาก\wbr{}ตัว\wbr{}อย่าง\wbr{}ที่ \ref{ex:ls-l} ส่วน\wbr{}ที่\wbr{}เกี่ยว\wbr{}ข้อง\wbr{}กับ\wbr{}สิทธิ์\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์\wbr{}คือ\wbr{}ตัว\wbr{}อักษร \cmd{rw-r--r--} ซึ่ง\wbr{}เป็น\wbr{}ตัว\wbr{}อักษร\wbr{}ที่\wbr{}อยู่\wbr{}ถัด\wbr{}จาก\wbr{}ตัว\wbr{}อักษร\wbr{}ที่\wbr{}แสดง\wbr{}ประเภท\wbr{}ของ\wbr{}ไฟล์. อักษร\wbr{}สาม\wbr{}ตัว\wbr{}แรก (\cmd{rw-}) เป็น\wbr{}สิทธิ์\wbr{}ที่\wbr{}เจ้า\wbr{}ของ\wbr{}ไฟล์\wbr{}ได้\wbr{}รับ\wbr{}อนุญาต. อักษร\wbr{}สาม\wbr{}ตัว\wbr{}ถัด\wbr{}ไป\wbr{}เป็น\wbr{}สิทธิ์\wbr{}ที่\wbr{}ผู้\wbr{}ใช้\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}กลุ่ม\wbr{}เดียว\wbr{}กัน\wbr{}ได้\wbr{}รับ\wbr{}อนุญาต. และ\wbr{}อักษร\wbr{}สาม\wbr{}ตัว\wbr{}สุด\wbr{}ท้าย\wbr{}เป็น\wbr{}สิทธิ์\wbr{}ที่\wbr{}ผู้\wbr{}ใช้\wbr{}นอก\wbr{}เหนือ\wbr{}จาก\wbr{}ที่\wbr{}กล่าว\wbr{}มา\wbr{}แล้ว\wbr{}ได้\wbr{}รับ\wbr{}อนุญาต.
+
+\begin{figure}[!htb]
+\plfigure{.8}{mode.eps}{ความ\wbr{}สัมพันธ์\wbr{}ระหว่าง\wbr{}โหมด\wbr{}และ\wbr{}ตำแหน่ง\wbr{}บิต.}{mode}
+\end{figure}
+
+
+ใน\wbr{}ระบบ\wbr{}ปฏิบัติ\wbr{}การ\wbr{}ยู\wbr{}นิกซ์\wbr{}และ\wbr{}ลิ\wbr{}นุกซ์\wbr{}สิทธิ์\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์\wbr{}กำหนด\wbr{}โดย\emph{โหมด (mode)}\gindex{mode}\gindex{โหมด} ซึ่ง\wbr{}เป็น\wbr{}ค่า\wbr{}ตัว\wbr{}เลข\wbr{}ที่\wbr{}แสดง\wbr{}ได้\wbr{}ด้วย\wbr{}บิต 9 ตัว (รูป\wbr{}ที่ \ref{fig:mode}) ที่\wbr{}เกี่ยว\wbr{}กับ\wbr{}สิทธิ์\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์\wbr{}และ\wbr{}บิต\wbr{}พิเศษ 3 ตัว\wbr{}ที่\wbr{}เกี่ยว\wbr{}กับ\wbr{}คุณสมบัติ\wbr{}ของ\wbr{}ไฟล์นัน.\mymemo{ช่วง\wbr{}ที่ \ref{sec:suid} จะ\wbr{}อธิบาย\wbr{}เกี่ยว\wbr{}กับ\wbr{}บิต\wbr{}พิเศษ.}
+
+บิต\wbr{}ที่\wbr{}เกี่ยว\wbr{}กับ\wbr{}สิทธิ์\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์\wbr{}จะ\wbr{}อยู่\wbr{}ใน\wbr{}ตำแหน่ง\wbr{}ล่าง 9 หลัก, และ\wbr{}ใช้\wbr{}สัญลักษณ์ \cmd{r}, \cmd{w} และ \cmd{x} แทน\wbr{}บิต\wbr{}ใน\wbr{}แต่\wbr{}ละ\wbr{}ตำแหน่ง. เช่น\wbr{}ถ้า\wbr{}บิต\wbr{}ใน\wbr{}หลัก\wbr{}แรก\wbr{}เป็น 1 ตัว\wbr{}อักษร\wbr{}ที่\wbr{}ใช้\wbr{}ใน\wbr{}ตำแหน่ง\wbr{}นั้น\wbr{}จะ\wbr{}แทน\wbr{}ค่า\wbr{}บิต\wbr{}ด้วย \cmd{x}, ถ้า\wbr{}ไม่\wbr{}มี\wbr{}การ\wbr{}ตั้ง\wbr{}ค่า\wbr{}บิต\wbr{}นี้ (ค่า\wbr{}เป็น 0) ก็\wbr{}จะ\wbr{}แสดง\wbr{}ด้วย\wbr{}ตัว\wbr{}อักษร \cmd{-}.
+
+\subsection{สิทธิ์\wbr{}การ\wbr{}กระทำ}
+สิทธิ์\wbr{}ที่\wbr{}สามารถ\wbr{}กระทำ\wbr{}ได้\wbr{}กับ\wbr{}ไฟล์\wbr{}แบ่ง\wbr{}ออก\wbr{}เป็น 3 ชนิด\wbr{}ใหญ่ๆ\wbr{}ได้\wbr{}แก่ read permission (\cmd{r}), write permission (\cmd{w}) และ execute permission (\cmd{x}). การ\wbr{}กระทำ\wbr{}เหล่า\wbr{}นี้\wbr{}มี\wbr{}ความ\wbr{}หมาย\wbr{}แตก\wbr{}ต่าง\wbr{}กัน\wbr{}ขึ้น\wbr{}อยู่\wbr{}กับ\wbr{}ว่า\wbr{}ตัว\wbr{}ถูก\wbr{}กระทำ\wbr{}เป็น\wbr{}ไฟล์\wbr{}หรือ\wbr{}เป็น\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี.
+\subsubsection{การ\wbr{}กระทำ\wbr{}กับ\wbr{}ไฟล์}
+\begin{itemize}
+\item \cmd{r} : อนุญาต\wbr{}ให้\wbr{}เปิด\wbr{}อ่าน\wbr{}ข้อ\wbr{}มูล\wbr{}ใน\wbr{}ไฟล์\wbr{}ได้.
+\item \cmd{w} : อนุญาต\wbr{}ให้\wbr{}แก้\wbr{}ไข\wbr{}ข้อ\wbr{}มูล\wbr{}ใน\wbr{}ไฟล์\wbr{}ได้.
+\item \cmd{x} : อนุญาต\wbr{}ให้\wbr{}ไฟล์\wbr{}นั้น\wbr{}กระทำ\wbr{}การ\wbr{}ได้. ไฟล์\wbr{}ที่\wbr{}กระทำ\wbr{}การ\wbr{}ได้\wbr{}หมาย\wbr{}ถึง\wbr{}ไฟล์\wbr{}โปรแกรม. ถ้า\wbr{}มี\wbr{}ไฟล์\wbr{}โปรแกรม\wbr{}แต่\wbr{}ไม่\wbr{}อนุ\wbr{}ญาติ\wbr{}สิทธิ์\wbr{}กระทำ\wbr{}การ\wbr{}กับ\wbr{}ไฟล์\wbr{}โปรแกรม\wbr{}นั้น\wbr{}ก็\wbr{}ไม่\wbr{}สามารถ\wbr{}ทำ\wbr{}งาน\wbr{}ได้.
+\end{itemize}
+\subsubsection{การ\wbr{}กระทำ\wbr{}กับ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี}
+\begin{itemize}
+\item \cmd{r} : อนุญาต\wbr{}ให้\wbr{}แสดง\wbr{}ราย\wbr{}การ\wbr{}ไฟล์\wbr{}ต่างๆ\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี. หมาย\wbr{}ถึง\wbr{}อนุญาต\wbr{}ให้\wbr{}เปิด\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}แล้ว\wbr{}อ่าน\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}บันทึก\wbr{}อยู่\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี. ข้อ\wbr{}มูล\wbr{}ที่\wbr{}บันทึก\wbr{}อยู่\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}คือ\wbr{}ราย\wbr{}การ\wbr{}ไฟล์\wbr{}หรือ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ย่อย\wbr{}ต่างๆ.
+\item \cmd{w} : อนุญาต\wbr{}ให้\wbr{}สร้าง\wbr{}หรือ\wbr{}ลบ\wbr{}ไฟล์\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี. หมาย\wbr{}ถึง\wbr{}อนุญาต\wbr{}ให้\wbr{}แก้\wbr{}ไข\wbr{}ราย\wbr{}การ\wbr{}ไฟล์\wbr{}หรือ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ย่อย\wbr{}ที่\wbr{}บันทึก\wbr{}อยู่\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี.
+\item \cmd{x} : อนุญาต\wbr{}ให้\wbr{}เข้า\wbr{}ไป\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี. หมาย\wbr{}ถึง\wbr{}อนุญาต\wbr{}ให้\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{cd} เปลี่ยน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ปัจจุบัน\wbr{}ไป\wbr{}เป็น\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นั้น\wbr{}ได้. เพราะ\wbr{}ฉะนั้น\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ต้อง\wbr{}ตั้ง\wbr{}ค่า\wbr{}บิต\wbr{}นี้\wbr{}ไว้\wbr{}เสมอ\wbr{}อย่าง\wbr{}น้อย\wbr{}ใน\wbr{}ตำแหน่ง\wbr{}เจ้า\wbr{}ของ\wbr{}ไฟล์. มิ\wbr{}ฉะนั้น\wbr{}จะ\wbr{}ไม่\wbr{}สามารถ\wbr{}เปลี่ยน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}เป็น\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นั้น.
+\end{itemize}
+
+
+
+\subsection{การ\wbr{}แก้\wbr{}สิทธิ์\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์}\label{sec:chmod}
+เจ้า\wbr{}ของ\wbr{}ไฟล์\wbr{}สามารถ\wbr{}แก้\wbr{}สิทธิ์\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์\wbr{}ได้\wbr{}ด้วย\wbr{}คำ\wbr{}สั่ง \cmd{chmod}.\cindex{chmod}\refcmd{chmod} ผู้\wbr{}ใช้\wbr{}ต้อง\wbr{}ระบุ\wbr{}โหมด\wbr{}ซึ่ง\wbr{}ก็\wbr{}คือ\wbr{}ราย\wbr{}ละเอียด\wbr{}ของ\wbr{}สิทธิ์\wbr{}ที่\wbr{}ต้องการ\wbr{}ตั้ง\wbr{}เป็น\wbr{}อาร์กิวเ\wbr{}มนต์\wbr{}ให้\wbr{}กับ\wbr{}คำ\wbr{}สั่ง. วิธี\wbr{}การ\wbr{}ระบุ\wbr{}โหมด\wbr{}มี 2 แบบ\wbr{}คือ\wbr{}การ\wbr{}ระบุ\wbr{}เป็น\wbr{}ตัว\wbr{}อักษร\wbr{}หรือ\wbr{}ระบุ\wbr{}เป็น\wbr{}บิต\wbr{}ด้วย\wbr{}เลข\wbr{}ฐาน\wbr{}แปด.
+
+การ\wbr{}ระบุ\wbr{}เป็น\wbr{}ตัว\wbr{}อักษร\wbr{}เรีย\wbr{}กว่า \emph{symbolic mode}\gindex{symbolic mode} โดย\wbr{}มี\wbr{}รูป\wbr{}แบบ\wbr{}ดัง\wbr{}นี้.
+\begin{MyVerbatim}
+ chmod [ugoa][+-=][rwx] \textit{file}
+\end{MyVerbatim}
+
+\cmd{[ugoa]} เป็น\wbr{}ช่วง\wbr{}ที่\wbr{}ระบุ\wbr{}ว่า\wbr{}ใคร\wbr{}ได้\wbr{}รับ\wbr{}อนุญาต\wbr{}ให้\wbr{}ทำ\wbr{}อะไร\wbr{}กับ\wbr{}ไฟล์\wbr{}ได้. เครื่อง\wbr{}หมาย \cmd{+} หมาย\wbr{}ถึง\wbr{}เพิ่ม\wbr{}สิทธิ์. เครื่อง\wbr{}หมาย \cmd{-} หมาย\wbr{}ถึง\wbr{}การ\wbr{}ตัด\wbr{}สิทธิ์. และ\wbr{}เครื่อง\wbr{}หมาย \cmd{=} เป็น\wbr{}การ\wbr{}ให้\wbr{}สิทธิ์\wbr{}ที่\wbr{}ต้องการ. และ\wbr{}สิทธิ์\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์\wbr{}ได้\wbr{}อธิบาย\wbr{}ไป\wbr{}แล้ว\wbr{}ใน\wbr{}ตา\wbr{}ราง\wbr{}ที่ \ref{tab:rwx}.
+\begin{table}[!htb]
+\center
+\caption{ตัวแปร\wbr{}โหมด\wbr{}ที่\wbr{}เกี่ยว\wbr{}ข้อง\wbr{}กับ\wbr{}ผู้\wbr{}ใช้}\label{tab:ugo}
+\medskip
+\begin{tabular}{cl}
+\toprule
+ตัว\wbr{}อักษร & \multicolumn{1}{c}{ความ\wbr{}หมาย}\\
+\midrule
+\cmd{u} & เจ้า\wbr{}ของ\wbr{}ไฟล์ \\
+\cmd{g} & ผู้\wbr{}ใช้\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}กลุ่ม\wbr{}เดียว\wbr{}กัน\\
+\cmd{o} & ผู้\wbr{}ใช้\wbr{}อื่นๆ\\
+\cmd{a} & ผู้\wbr{}ใช้\wbr{}ทั้ง\wbr{}หมด. มี\wbr{}ค่า\wbr{}เท่า\wbr{}กับ \cmd{ugo}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+ตัว\wbr{}อย่าง\wbr{}เช่น\wbr{}การ\wbr{}อนุญาต\wbr{}ให้\wbr{}ผู้\wbr{}ใช้\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}กลุ่ม\wbr{}เดียว\wbr{}กัน\wbr{}ดู\wbr{}ราย\wbr{}การ\wbr{}ไฟล์\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}โฮม\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ของ\wbr{}ตัว\wbr{}เอง, ตั้ง\wbr{}ค่า\wbr{}ได้\wbr{}ดัง\wbr{}นี้.
+\begin{MyExample}[อนุญาต\wbr{}ให้\wbr{}ผู้\wbr{}ใช้\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}กลุ่ม\wbr{}เดียว\wbr{}กัน\wbr{}ดู\wbr{}ราย\wbr{}การ\wbr{}ไฟล์\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}โฮม\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี.]\label{ex:chmod}
+\begin{MyEx}
+$ \cin{chmod g+rx ~}
+\end{MyEx}
+\end{MyExample}%$
+
+\medskip
+วิธี\wbr{}การ\wbr{}ระบุ\wbr{}โหมด\wbr{}ของ\wbr{}สิทธิ์\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์\wbr{}อีก\wbr{}วิธี\wbr{}หนึ่ง\wbr{}คือ\wbr{}การ\wbr{}ระบุ\wbr{}โหม\wbr{}ด้วย\wbr{}บิต\wbr{}ที่\wbr{}ต้องการ\wbr{}ตั้ง. ให้\wbr{}คิด\wbr{}ว่า \cmd{rwxrwxrwx} เป็น\wbr{}การ\wbr{}เรียง\wbr{}กัน\wbr{}ของ\wbr{}ตัว\wbr{}เลข\wbr{}ฐาน\wbr{}สอง (บิต) 9 ตัว\wbr{}คือ \cmd{111111111}. สิทธิ์\wbr{}ที่\wbr{}อนุญาต\wbr{}จะ\wbr{}ให้\wbr{}บิต\wbr{}ที่\wbr{}สอด\wbr{}คล้อง\wbr{}เป็น 1 และ\wbr{}สิทธิ์\wbr{}ที่\wbr{}ไม่\wbr{}อนุญาต\wbr{}จะ\wbr{}ให้\wbr{}บิต\wbr{}ที่\wbr{}สอด\wbr{}คล้อง\wbr{}เป็น 0. เช่น \cmd{rw-rw----} จะ\wbr{}เขียน\wbr{}ใน\wbr{}รูป\wbr{}ของ\wbr{}เลข\wbr{}ฐาน\wbr{}สอง\wbr{}เป็น \cmd{110110000}. เวลา\wbr{}ใช้\wbr{}กับ\wbr{}คำ\wbr{}สั่ง \cmd{chmod} ให้\wbr{}แปลง\wbr{}บิต\wbr{}เหล่า\wbr{}นี้\wbr{}เป็น\wbr{}เลข\wbr{}ฐาน\wbr{}แปด\wbr{}ก่อน. %ส่วน\wbr{}สิทธิ์\wbr{}ที่\wbr{}เกี่ยว\wbr{}ข้อง\wbr{}กับ suid, sgid และ sticky bit จะ\wbr{}ใช้\wbr{}บิต\wbr{}สาม\wbr{}ตัว\wbr{}แทน\wbr{}ค่า\wbr{}เหล่า\wbr{}นี้\wbr{}เช่น\wbr{}กัน. โดย\wbr{}จะ\wbr{}เขียน\wbr{}บิต\wbr{}เหล่า\wbr{}นี้\wbr{}นำ\wbr{}หน้า\wbr{}บิต \cmd{rwxrwxrwx}.
+
+
+ตัว\wbr{}อย่าง\wbr{}เช่น\wbr{}ถ้า\wbr{}ต้องการ\wbr{}อนุญาต\wbr{}ให้\wbr{}เจ้า\wbr{}ของ\wbr{}ไฟล์\wbr{}และ\wbr{}คน\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}กลุ่ม\wbr{}สามารถ\wbr{}แก้\wbr{}ไข\wbr{}และ\wbr{}อ่าน\wbr{}ไฟล์\wbr{}ชื่อ \cmd{file} ได้\wbr{}ให้\wbr{}ตั้ง\wbr{}ค่า\wbr{}โหมด\wbr{}เป็น 660.%\mymemo{ตัว\wbr{}เลข 0 ที่\wbr{}อยู่\wbr{}หน้า 660 เป็น\wbr{}การ\wbr{}ระบุ\wbr{}ให้\wbr{}ชัดเจน\wbr{}ว่า\wbr{}ไม่\wbr{}มี\wbr{}การ\wbr{}ตั้ง\wbr{}ค่า\wbr{}บิต suid, sgid และ sticky bit. การ\wbr{}ใช้\wbr{}งาน\wbr{}จริง\wbr{}ใช้\wbr{}เขียน\wbr{}แค่ 660 ก็\wbr{}ได้.}.
+ใน\wbr{}ตา\wbr{}ราง\wbr{}ที่ \ref{tab:mode} แสดง\wbr{}โหมด\wbr{}ต่างๆ\wbr{}ที่\wbr{}ใช้\wbr{}บ่อย\wbr{}และ\wbr{}ความ\wbr{}หมาย.
+\begin{MyExample}[การ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{chmod} โดย\wbr{}ใช้\wbr{}เลข\wbr{}ฐาน\wbr{}แปด\wbr{}เป็น\wbr{}โหมด.]
+\begin{MyEx}
+$ \cin{chmod 660 file}
+$ \cin{ls -l file}
+-rw-rw----    1 poonlap  users          13 Jun 26 02:35 file
+\end{MyEx}
+\end{MyExample}
+
+
+
+
+\begin{table}[!tb]
+\center
+\caption{โหมด\wbr{}ที่\wbr{}ใช้\wbr{}บ่อย.}\label{tab:mode}
+\medskip
+\begin{tabular}{lcp{.6\textwidth}}
+\toprule
+\multicolumn{1}{c}{สิทธิ์\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์} & \multicolumn{1}{c}{โหมด} & \multicolumn{1}{c}{ความ\wbr{}หมาย}\\
+\midrule
+\cmd{-rw-------} & \cmd{600} & เจ้า\wbr{}ของ\wbr{}ไฟล์\wbr{}เป็น\wbr{}ผู้\wbr{}ใช้\wbr{}คน\wbr{}เดียว\wbr{}ที่\wbr{}รับ\wbr{}อนุ\wbr{}ญาติ\wbr{}อ่าน\wbr{}และ\wbr{}เขียน\wbr{}ไฟล์\wbr{}นั้น.\\
+\cmd{-rw-r--r--} & \cmd{644} & เจ้า\wbr{}ของ\wbr{}ไฟล์\wbr{}สามารถ\wbr{}อ่าน\wbr{}และ\wbr{}เขียน\wbr{}ไฟล์\wbr{}ได้, ผู้\wbr{}ใช้\wbr{}คน\wbr{}อื่นๆ\wbr{}อ่าน\wbr{}ได้\wbr{}อย่าง\wbr{}เดียว. ตั้ง\wbr{}ค่า\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์\wbr{}แบบ\wbr{}นี้\wbr{}เมื่อ\wbr{}ต้องการ\wbr{}ให้\wbr{}คน\wbr{}อื่น\wbr{}อ่าน\wbr{}ไฟล์\wbr{}นี้.\\
+\cmd{-rw-rw-rw-} & \cmd{666} & ใคร\wbr{}ก็\wbr{}ได้\wbr{}อ่าน\wbr{}เขียน\wbr{}ไฟล์\wbr{}นี้\wbr{}ได้. การ\wbr{}ตั้ง\wbr{}ค่า\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์\wbr{}แบบ\wbr{}นี้\wbr{}ไม่\wbr{}คำนึง\wbr{}ถึง\wbr{}ความ\wbr{}ปลอด\wbr{}ภัย\wbr{}และ\wbr{}ไม่\wbr{}เหมาะ\wbr{}สม\wbr{}เพราะ\wbr{}ใคร\wbr{}ก็\wbr{}ได้\wbr{}สามารถ\wbr{}แก้\wbr{}ไข\wbr{}เนื้อ\wbr{}หา\wbr{}ได้.\\
+\cmd{-rwx------} & \cmd{700} & เจ้า\wbr{}ของ\wbr{}ไฟล์\wbr{}เท่า\wbr{}นั้น\wbr{}ที่\wbr{}สามารถ\wbr{}อ่าน\wbr{}เขียน\wbr{}และ\wbr{}รัน\wbr{}ไฟล์\wbr{}นี้. ไฟล์\wbr{}นี้\wbr{}อาจ\wbr{}จะ\wbr{}เป็น\wbr{}ไฟล์\wbr{}โปรแกรม\wbr{}ที่\wbr{}ไม่\wbr{}ต้องการ\wbr{}ให้\wbr{}คน\wbr{}อื่น\wbr{}รัน\wbr{}ได้\wbr{}นอก\wbr{}จาก\wbr{}เจ้า\wbr{}ของ\wbr{}ไฟล์.\\
+\cmd{-rwxr-xr-x} & \cmd{755} & เจ้า\wbr{}ของ\wbr{}ไฟล์\wbr{}มี\wbr{}สิทธิ์\wbr{}เขียน\wbr{}อ่าน\wbr{}และ\wbr{}รัน. สำหรับ\wbr{}ผู้\wbr{}ใช้\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}กลุ่ม\wbr{}เดียว\wbr{}กัน\wbr{}และ\wbr{}คน\wbr{}อื่นๆ\wbr{}จะ\wbr{}อ่าน\wbr{}และ\wbr{}รัน\wbr{}ได้, แต่\wbr{}แก้\wbr{}ไข\wbr{}ไฟล์\wbr{}ไม่\wbr{}ได้.\\
+\cmd{-rwxrwxrwx} & \cmd{777} & ใคร\wbr{}ก็\wbr{}ได้\wbr{}เขียน, อ่าน, และ\wbr{}รัน\wbr{}ไฟล์\wbr{}นั้น\wbr{}ได้. การ\wbr{}ตั้ง\wbr{}ค่า\wbr{}สิทธิ์\wbr{}แบบ\wbr{}นี้\wbr{}ไม่\wbr{}ปลอด\wbr{}ภัย\wbr{}เพราะ\wbr{}ใคร\wbr{}ก็\wbr{}ได้\wbr{}แก้\wbr{}ไข\wbr{}ไฟล์\wbr{}นี้\wbr{}ได้.\\
+\cmd{-rwx--x--x} & \cmd{711} & เจ้า\wbr{}ของ\wbr{}ไฟล์\wbr{}มี\wbr{}สิทธิ์\wbr{}หมด. คน\wbr{}อื่น\wbr{}ที่\wbr{}เหลือ\wbr{}อนุญาต\wbr{}ให้\wbr{}รัน\wbr{}ไฟล์\wbr{}นั้น\wbr{}ได้\wbr{}อย่าง\wbr{}เดียว. ใน\wbr{}กรณี\wbr{}นี้\wbr{}ผู้\wbr{}ใช้\wbr{}ที่\wbr{}ไม่\wbr{}ใช่\wbr{}เจ้า\wbr{}ของ\wbr{}ไฟล์\wbr{}จะ\wbr{}ไม่\wbr{}สามารถ\wbr{}ก็\wbr{}อป\wbr{}ปี้\wbr{}ไฟล์\wbr{}ได้.\\
+\cmd{drwx------} & \cmd{700} & ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นี้\wbr{}เจ้า\wbr{}ของ\wbr{}มี\wbr{}สิทธิ์\wbr{}การ\wbr{}ทำ\wbr{}ทุก\wbr{}อย่าง. ผู้\wbr{}ใช้\wbr{}อื่นๆ\wbr{}ไม่\wbr{}มี\wbr{}สิทธิ์\wbr{}ทำ\wbr{}อะไร\wbr{}ทั้ง\wbr{}สิ้น.\\
+\cmd{drwxr-xr-x} & \cmd{755} & เจ้า\wbr{}ของ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}มี\wbr{}สิทธิ์\wbr{}ทุก\wbr{}อย่าง. คน\wbr{}อื่นๆ\wbr{}เข้า\wbr{}มา\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นี้\wbr{}ได้\wbr{}และ\wbr{}แสดง\wbr{}ราย\wbr{}การ\wbr{}ไฟล์\wbr{}ได้.\\
+\cmd{drwx--x--x} & \cmd{711} & เจ้า\wbr{}ของ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}มี\wbr{}สิทธิ์\wbr{}ทุก\wbr{}อย่าง. คน\wbr{}อื่นๆ\wbr{}ไม่\wbr{}มี\wbr{}สิทธิ์\wbr{}ดู\wbr{}ราย\wbr{}การ\wbr{}ไฟล์\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี. แต่\wbr{}ถ้า\wbr{}รู้\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นั้น\wbr{}ก็\wbr{}สามารถ\wbr{}อ่าน\wbr{}ไฟล์\wbr{}นั้น\wbr{}ได้.\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\medskip
+นอก\wbr{}จาก\wbr{}การ\wbr{}ตั้ง\wbr{}สิทธิ์\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์\wbr{}ด้วย\wbr{}คำ\wbr{}สั่ง \cmd{chmod} แล้ว, ถ้าเ\wbr{}คอร์เนล\wbr{}ที่\wbr{}ใช้\wbr{}อยู่\wbr{}สนับสนุน \emph{Extended attribute} ของ\wbr{}ระบบ\wbr{}ไฟล์, \emph{Access Control List (ACL)} ก็\wbr{}จะ\wbr{}สามารถ\wbr{}ตั้ง\wbr{}สิทธิ์\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์\wbr{}ได้\wbr{}ละเอียด\wbr{}ขึ้น\wbr{}เช่น ระบุ\wbr{}สิทธิ์\wbr{}เฉพาะ\wbr{}ของ\wbr{}ผู้\wbr{}ใช้\wbr{}หรือ\wbr{}กลุ่ม, ป้อง\wbr{}กัน\wbr{}ไม่\wbr{}ให้\wbr{}ลบ\wbr{}ไฟล์ เป็นต้น.
+
+
+
+\subsection{สิทธิ์\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์\wbr{}โดย\wbr{}ปริยาย}
+เรา\wbr{}สามารถ\wbr{}ตั้ง\wbr{}ค่า\wbr{}สิทธิ์\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์\wbr{}โดย\wbr{}ปริยาย\wbr{}ได้\wbr{}จาก\wbr{}ค่า\wbr{}ของ umask\gindex{umask}. umask คือ\wbr{}ค่า\wbr{}บิต (เลข\wbr{}ฐาน\wbr{}แปด) ที่\wbr{}ใช้\wbr{}ตั้ง\wbr{}สิทธิ์\wbr{}ที่\wbr{}ไม่\wbr{}ต้องการ\wbr{}อนุญาต. ตัว\wbr{}อย่าง\wbr{}เช่น umask ที่\wbr{}มี\wbr{}ค่า\wbr{}เป็น 022 จะ\wbr{}หมาย\wbr{}ถึง\wbr{}ถ้า\wbr{}มี\wbr{}การ\wbr{}สร้าง\wbr{}ไฟล์\wbr{}ใหม่, จะ\wbr{}ไม่\wbr{}อนุญาต\wbr{}ให้\wbr{}ผู้\wbr{}ใช้\wbr{}ใน\wbr{}กลุ่ม\wbr{}เดียว\wbr{}กัน\wbr{}และ\wbr{}ผู้\wbr{}ใช้\wbr{}อื่นๆ\wbr{}เขียน\wbr{}ไฟล์. คำ\wbr{}สั่ง\wbr{}ที่\wbr{}ใช้\wbr{}ตั้ง\wbr{}ค่า\wbr{}หรือ\wbr{}ดู\wbr{}ค่า umask ได้\wbr{}แก่\wbr{}คำ\wbr{}สั่ง \cmd{umask}\cindex{umask}\refcmd{umask}. โดย\wbr{}ปรกติ\wbr{}จะ\wbr{}ตั้ง\wbr{}ค่า umask ไว้\wbr{}ใน\wbr{}ไฟล์\wbr{}ตั้ง\wbr{}ค่า\wbr{}เริ่ม\wbr{}ต้น\wbr{}ของ\wbr{}เชลล์.
+\begin{MyExample}[ตั้ง\wbr{}และ\wbr{}ดู\wbr{}ค่า umask.]
+\begin{MyEx}
+$ \cin{umask}
+0022
+$ \cin{touch foo}
+$ \cin{ls -l foo}
+-rw-r--r--    1 poonlap  users           0 Jul 22 00:48 foo
+$ \cin{umask 066}
+$ \cin{touch bar}
+-rw-------    1 poonlap  users           0 Jul 22 00:53 bar
+\end{MyEx}
+\end{MyExample}%$
+
+เวลา\wbr{}สร้าง\wbr{}ไฟล์\wbr{}ใหม่, ลิ\wbr{}นุกซ์\wbr{}จะ\wbr{}ตั้ง\wbr{}สิทธิ์\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์\wbr{}เป็น 666 และ\wbr{}ลบ\wbr{}ออก\wbr{}ด้วย\wbr{}ค่า\wbr{}ของ umask. ดัง\wbr{}นั้น\wbr{}ถ้า umask มี\wbr{}ค่า\wbr{}เป็น 022, สิทธิ์\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์\wbr{}ของ\wbr{}ไฟล์\wbr{}ที่\wbr{}สร้าง\wbr{}ใหม่\wbr{}จะ\wbr{}เป็น 666 - 022 ซึ่ง\wbr{}ได้\wbr{}ผล\wbr{}ลัพธ์\wbr{}เป็น 644 (\cmd{-rw-r--r--}). การ\wbr{}สร้าง\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ใหม่\wbr{}ก็\wbr{}มี\wbr{}หลัก\wbr{}การ\wbr{}คล้าย\wbr{}กัน, ลิ\wbr{}นุกซ์\wbr{}จะ\wbr{}ตั้ง\wbr{}สิทธิ์\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์\wbr{}เป็น 777 และ\wbr{}ลบ\wbr{}ออก\wbr{}ด้วย\wbr{}ค่า\wbr{}ของ umask. ถ้า\wbr{}ค่า umask เป็น 022 ก็\wbr{}ได้\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}มี\wbr{}สิทธิ์\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์\wbr{}เป็น 755 (\cmd{-rwxr-xr-x}).
+
+
+
+\section{บิต suid, sgid และ sticky}\label{sec:suid}
+ใน\wbr{}ค่า\wbr{}ของ\wbr{}โหมด\wbr{}ที่\wbr{}ใช้\wbr{}ตั้ง\wbr{}สิทธิ์\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์\wbr{}มี\wbr{}บิต\wbr{}พิเศษ 3 ตัว\wbr{}ที่\wbr{}เกี่ยว\wbr{}กับ\wbr{}ประเภท\wbr{}ของ\wbr{}ไฟล์\wbr{}อยู่\wbr{}ด้วย\wbr{}ซึ่ง\wbr{}ใน\wbr{}ช่วง\wbr{}ที่\wbr{}ผ่าน\wbr{}มา\wbr{}ไม่\wbr{}ได้\wbr{}ระบุ\wbr{}ค่า\wbr{}บิต\wbr{}พิเศษ\wbr{}เหล่า\wbr{}นี้. บิต\wbr{}พิเศษ 3 ตัว\wbr{}ได้\wbr{}แก่.
+\begin{enumerate}
+\item \emph{บิต suid}\gindex{suid} เป็น\wbr{}บิต\wbr{}ที่\wbr{}เกี่ยว\wbr{}กับ\wbr{}ไฟล์\wbr{}โปรแกรม. สำหรับ\wbr{}ไฟล์\wbr{}โปรแกรม\wbr{}ที่\wbr{}มี\wbr{}การ\wbr{}ตั้ง\wbr{}ค่า\wbr{}บิต suid ไว้, เวลา\wbr{}ที่\wbr{}ผู้\wbr{}ใช้\wbr{}ใดๆ\wbr{}รัน\wbr{}ไฟล์ (โปรแกรม) นั้น\wbr{}จะ\wbr{}มี\wbr{}ผล\wbr{}เหมือน\wbr{}กับ\wbr{}เจ้า\wbr{}ของ\wbr{}ไฟล์\wbr{}นั้น\wbr{}เป็น\wbr{}ผู้\wbr{}กระทำ\wbr{}การ\wbr{}รัน\wbr{}โปรแกรม. การ\wbr{}ที่ UID ของ\wbr{}ผู้\wbr{}ใช้\wbr{}ที่\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง\wbr{}นั้น\wbr{}เปลี่ยน\wbr{}ไป\wbr{}เป็น UID ของ\wbr{}เจ้า\wbr{}ของ\wbr{}ไฟล์\wbr{}ขณะ\wbr{}ที่\wbr{}โปรแกรม\wbr{}นั้น\wbr{}ทำ\wbr{}งาน\wbr{}อยู่\wbr{}เรีย\wbr{}กว่า \cmd{effective UID}\gindex{uid@UID!effective} คือ UID ที่\wbr{}มี\wbr{}ผล\wbr{}จริง\wbr{}เมื่อ\wbr{}ใช้\wbr{}งาน. ไฟล์\wbr{}ที่\wbr{}มี\wbr{}ค่า\wbr{}บิต suid อยู่\wbr{}เวลา\wbr{}ดู\wbr{}ราย\wbr{}ละเอียด\wbr{}ไฟล์\wbr{}ด้วย\wbr{}คำ\wbr{}สั่ง \cmd{ls}, จะ\wbr{}มี\wbr{}ตัว\wbr{}อักษร \cmd{s} แทน\wbr{}อยู่\wbr{}ใน\wbr{}ตำแหน่ง \cmd{x} ของ\wbr{}เจ้า\wbr{}ของ\wbr{}ไฟล์.
+\item \emph{บิต sgid}\gindex{sgid} เป็น\wbr{}บิต\wbr{}ที่\wbr{}เกี่ยว\wbr{}กับ\wbr{}ไฟล์\wbr{}โปรแกรม\wbr{}เช่น\wbr{}กัน. เวลา\wbr{}ที่\wbr{}ผู้\wbr{}ใช้\wbr{}ใดๆ\wbr{}รัน\wbr{}ไฟล์\wbr{}โปรแกรม\wbr{}นั้น\wbr{}จะ\wbr{}มี\wbr{}ผล\wbr{}ให้\wbr{}ผู้\wbr{}ใช้\wbr{}นั้น\wbr{}เหมือน\wbr{}อยู่\wbr{}ใน\wbr{}กลุ่ม\wbr{}เดียว\wbr{}กับ\wbr{}ที่\wbr{}ไฟล์\wbr{}ใน\wbr{}อยู่. การ\wbr{}ที่ GID ของ\wbr{}ผู้\wbr{}ใช้\wbr{}ที่\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง\wbr{}นั้น\wbr{}เปลี่ยน\wbr{}ไป\wbr{}เป็น GID ของ\wbr{}กลุ่ม\wbr{}ไฟล์\wbr{}ขณะ\wbr{}ที่\wbr{}โปรแกรม\wbr{}นั้น\wbr{}ทำ\wbr{}งาน\wbr{}อยู่\wbr{}เรีย\wbr{}กว่า \cmd{effective GID}\gindex{gid@GID!effective}. ไฟล์\wbr{}ที่\wbr{}มี\wbr{}ค่า\wbr{}บิต sgid อยู่\wbr{}เวลา\wbr{}ดู\wbr{}ราย\wbr{}ละเอียด\wbr{}ไฟล์\wbr{}ด้วย\wbr{}คำ\wbr{}สั่ง \cmd{ls}, จะ\wbr{}มี\wbr{}ตัว\wbr{}อักษร \cmd{s} แทน\wbr{}อยู่\wbr{}ใน\wbr{}ตำแหน่ง \cmd{x} ของ\wbr{}กลุ่ม\wbr{}ไฟล์.
+\item \emph{บิต sticky}\gindex{sticky bit} ใช้\wbr{}กับ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี, คือ\wbr{}ผู้\wbr{}ใช้\wbr{}ที่\wbr{}ลบ\wbr{}ไฟล์\wbr{}ใต้\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นั้น\wbr{}ต้อง\wbr{}เป็น\wbr{}ผู้\wbr{}สร้าง\wbr{}ไฟล์\wbr{}นั้น\wbr{}เท่า\wbr{}นั้น. ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}ใช้ sticky bit นี้\wbr{}เช่น\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{/tmp} เป็น\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}ใคร\wbr{}ก็\wbr{}ได้\wbr{}สามารถ\wbr{}สร้าง\wbr{}ไฟล์\wbr{}ได้\wbr{}แต่\wbr{}ไม่\wbr{}สามารถ\wbr{}ลบ\wbr{}ไฟล์\wbr{}ที่\wbr{}ไม่\wbr{}ใช่\wbr{}ของ\wbr{}ตัว\wbr{}เอง. คำ\wbr{}สั่ง \cmd{ls} ที่\wbr{}แสดง\wbr{}ราย\wbr{}ละเอียด\wbr{}ไฟล์\wbr{}จะ\wbr{}แสดง\wbr{}เครื่อง\wbr{}หมาย \cmd{t} ที่\wbr{}ตำแหน่ง \cmd{x} ของ\wbr{}ผู้\wbr{}ใช้\wbr{}อื่นๆ.
+\end{enumerate}
+\begin{MyExample}[ไฟล์\wbr{}ที่\wbr{}มี\wbr{}ค่า\wbr{}บิต suid, sgid และ stick]
+\begin{MyEx}
+$ \cin{ls -l /usr/bin/passwd} \mycomment{ไฟล์\wbr{}ที่\wbr{}มี\wbr{}ค่า\wbr{}บิต suid}
+-rwsr-xr-x    1 root     root        26512 Apr 13 17:33 /usr/bin/passwd
+$ \cin{ls -l /usr/bin/man} \mycomment{ไฟล์\wbr{}ที่\wbr{}มี\wbr{}ค่า\wbr{}บิต sgid}
+-r-xr-sr-x    1 root     man         40400 Apr 13 16:46 /usr/bin/man
+$ \cin{ls -l / | grep tmp} \mycomment{ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}มี\wbr{}ค่า\wbr{}บิต sticky}
+drwxrwxrwt   28 root     root         4096 Jul 24 16:25 tmp
+\end{MyEx}
+\end{MyExample}%$
+
+ถ้า\wbr{}มี\wbr{}ไฟล์\wbr{}โปรแกรม\wbr{}ที่\wbr{}ตั้ง\wbr{}ค่า\wbr{}บิต suid ไว้\wbr{}และ\wbr{}เจ้า\wbr{}ของ\wbr{}โปรแกรม\wbr{}นั้น\wbr{}คือ root, เวลา\wbr{}ที่\wbr{}ผู้\wbr{}ใช้\wbr{}ทั่ว\wbr{}ไป\wbr{}รัน\wbr{}โปรแกรม\wbr{}นั้น\wbr{}ก็\wbr{}จะ\wbr{}เหมือน\wbr{}กับ root เป็น\wbr{}ผู้\wbr{}รัน\wbr{}โปรแกรม\wbr{}นั้น. เนื่อง\wbr{}จาก root สามารถ\wbr{}ลบ, อ่าน\wbr{}ไฟล์\wbr{}ใดๆ\wbr{}ก็\wbr{}ได้\wbr{}ใน\wbr{}ระบบ, โปรแกรม\wbr{}ที่\wbr{}รัน\wbr{}นั้น\wbr{}ก็\wbr{}จะ\wbr{}ได้\wbr{}รับ\wbr{}สิทธิ์\wbr{}ที่ root สามารถ\wbr{}กระทำ\wbr{}ได้\wbr{}เช่น\wbr{}กัน. ตัว\wbr{}อย่าง\wbr{}โปรแกรม\wbr{}ที่\wbr{}ตั้ง\wbr{}ค่า\wbr{}บิต suid ไว้\wbr{}เช่น\wbr{}โปรแกรม \cmd{passwd}. \refcmd{passwd}
+
+\begin{MyExample}[ค่า\wbr{}บิต suid ของ\wbr{}คำ\wbr{}สั่ง \cmd{passwd}]
+\begin{MyEx}
+$ \cin{ls -l /usr/bin/passwd}
+-rwsr-xr-x    1 root     root        26512 Apr 13 17:33 /usr/bin/passwd
+$ \cin{ls -l /etc/shadow}
+-rw-------    1 root     root          615 Jul  4 21:05 /etc/shadow
+\end{MyEx}
+\end{MyExample}
+โปรแกรม \cmd{passwd} เป็น\wbr{}โปรแกรม\wbr{}ที่\wbr{}ต้อง\wbr{}แก้\wbr{}ไข\wbr{}ไฟล์ \cmd{/etc/shadow} ซึ่ง\wbr{}เป็น\wbr{}ไฟล์\wbr{}ที่\wbr{}เก็บ\wbr{}รหัส\wbr{}ผ่าน\wbr{}ที่\wbr{}ผ่าน\wbr{}การ\wbr{}เข้า\wbr{}รหัส\wbr{}เรียบ\wbr{}ร้อย\wbr{}แล้ว. ผู้\wbr{}ที่\wbr{}มี\wbr{}สิทธิ์\wbr{}ใน\wbr{}การ\wbr{}อ่าน\wbr{}และ\wbr{}แก้\wbr{}ไข\wbr{}ไฟล์\wbr{}นี้\wbr{}คือ root เท่า\wbr{}นั้น, ดัง\wbr{}นั้น\wbr{}ไฟล์\wbr{}โปรแกรม \cmd{passwd} จึง\wbr{}มี\wbr{}การ\wbr{}ตั้ง\wbr{}ค่า\wbr{}บิต suid ไว้\wbr{}เพื่อ\wbr{}ให้\wbr{}ใคร\wbr{}ก็\wbr{}ได้\wbr{}เมื่อ\wbr{}สั่ง\wbr{}คำ\wbr{}สั่ง \cmd{passwd} แล้ว\wbr{}อ่าน\wbr{}และ\wbr{}แก้\wbr{}ไข\wbr{}ไฟล์ \cmd{/etc/shadow} ได้.
+
+
+โปรแกรม\wbr{}ที่\wbr{}มี\wbr{}เจ้า\wbr{}ของ\wbr{}เป็น root และ\wbr{}ตั้ง\wbr{}ค่า\wbr{}บิต suid ไว้\wbr{}ใน\wbr{}บาง\wbr{}ครั้ง\wbr{}อาจ\wbr{}เป็น\wbr{}ตัว\wbr{}ก่อ\wbr{}ให้\wbr{}เกิด\wbr{}อันตราย\wbr{}ต่อ\wbr{}ระบบ\wbr{}ถ้า\wbr{}หาก\wbr{}จู่\wbr{}โจม\wbr{}โดย\wbr{}วิธี buffer overflow\myvocab{b}{buffer overflow}{เป็น\wbr{}อาการ\wbr{}ที่\wbr{}โปรแกรม\wbr{}ไม่\wbr{}สามารถ\wbr{}รัน\wbr{}ข้อ\wbr{}มูล\wbr{}เข้า\wbr{}ทำ\wbr{}ให้\wbr{}ล้น\wbr{}พื้น\wbr{}ที่\wbr{}ที่\wbr{}รอง\wbr{}รับ (buffer). ใน\wbr{}กรณี\wbr{}ที่\wbr{}โปรแกรม\wbr{}นั้น\wbr{}ออก\wbr{}แบบ\wbr{}มา\wbr{}ไม่\wbr{}ได้, อาจ\wbr{}จะ\wbr{}ทำ\wbr{}ให้\wbr{}ระบบ\wbr{}เกิด\wbr{}ความ\wbr{}เสีย\wbr{}หาย\wbr{}หรือ\wbr{}เป็น\wbr{}ลู่\wbr{}ทาง\wbr{}ให้\wbr{}ผู้\wbr{}ที่\wbr{}รัน\wbr{}โปรแกรม\wbr{}ที่\wbr{}มี\wbr{}ค่า\wbr{}บิต suid สั่ง\wbr{}คำ\wbr{}สั่ง\wbr{}หรือ\wbr{}กระทำ\wbr{}การ\wbr{}ที่ root กระทำ\wbr{}ได้.}. เพราะ\wbr{}ฉะนั้น\wbr{}จึง\wbr{}ควร\wbr{}ระวัง\wbr{}หาก\wbr{}ไม่\wbr{}จำ\wbr{}เป็น\wbr{}ไม่\wbr{}ควร\wbr{}จะ\wbr{}ใช้\wbr{}หรือ\wbr{}เก็บ\wbr{}ไฟล์\wbr{}โปรแกรม\wbr{}ที่\wbr{}ตั้ง\wbr{}ค่า\wbr{}บิต suid ไว้.
+
+
+\subsection{การ\wbr{}ตั้ง\wbr{}ค่า\wbr{}บิต\wbr{}พิเศษ}
+การ\wbr{}ตั้ง\wbr{}ค่า\wbr{}บิต suid ให้\wbr{}กับ\wbr{}ไฟล์\wbr{}ทำ\wbr{}ได้\wbr{}โดย\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{chmod} โดย\wbr{}มี\wbr{}รูป\wbr{}แบบ\wbr{}ต่อ\wbr{}ไป\wbr{}นี้.
+\begin{MyVerbatim}
+ chmod [ug]+[st] \textit{file}
+\end{MyVerbatim}
+การ\wbr{}ระบุ\wbr{}โหมด\wbr{}แบบ symbolic, \cmd{u+s} จะ\wbr{}หมาย\wbr{}ถึง\wbr{}การ\wbr{}ตั้ง\wbr{}ค่า\wbr{}บิต suid, \cmd{g+s} หมาย\wbr{}ถึง\wbr{}การ\wbr{}ตั้ง\wbr{}ค่า\wbr{}บิต sgid, และ \cmd{o+t} จะ\wbr{}หมาย\wbr{}ถึง\wbr{}การ\wbr{}ตั้ง\wbr{}ค่า\wbr{}บิต sticky. การ\wbr{}ระบุ\wbr{}โหมด\wbr{}เป็น \cmd{+s} จะ\wbr{}หมาย\wbr{}ถึง\wbr{}ตั้ง\wbr{}ค่า\wbr{}บิต\wbr{}ทั้ง suid และ sgid ทั้ง\wbr{}สอง\wbr{}ตัว.
+
+การ\wbr{}ระบุ\wbr{}โหมด\wbr{}แบบ\wbr{}ใช้\wbr{}ค่า\wbr{}บิต\wbr{}จะ\wbr{}เพิ่ม\wbr{}บิต 3 ตัว\wbr{}นำ\wbr{}หน้า\wbr{}บิต\wbr{}ของ\wbr{}สิทธิ์\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์. เช่น\wbr{}ถ้า\wbr{}สิทธิ์\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์\wbr{}ที่\wbr{}ต้องการ\wbr{}ตั้ง\wbr{}ให้\wbr{}ไฟล์\wbr{}เป็น \cmd{755} และ\wbr{}ต้องการ\wbr{}ให้\wbr{}ไฟล์\wbr{}นี้\wbr{}มี\wbr{}ค่า\wbr{}บิต suid ด้วย\wbr{}จะ\wbr{}เพิ่ม\wbr{}บิต\wbr{}อีก\wbr{}สาม\wbr{}ตัว\wbr{}ข้าง\wbr{}หน้า\wbr{}เป็น \cmd{4755}. กล่าว\wbr{}คือ\wbr{}ค่า \cmd{4000} คือ\wbr{}บิต suid, \cmd{2000} คือ\wbr{}บิต sgid, และ \cmd{1000} คือ\wbr{}บิต sticky ตาม\wbr{}ลำดับ\mymemo{ดู\wbr{}รูป\wbr{}ที่ \ref{fig:mode} ประกอบ\wbr{}เรื่อง\wbr{}โหมด.}.
+
+
+
+
+
+
+%\section{ACL (Access Control List)}
+%จะ\wbr{}เห็น\wbr{}ได้\wbr{}ว่า\wbr{}คำ\wbr{}สั่ง \cmd{chmod} สามารถ\wbr{}กำหนด\wbr{}สิทธิ์\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์\wbr{}แบบ\wbr{}ง่ายๆ\wbr{}ได้\wbr{}เท่า\wbr{}นั้น, ซึ่ง\wbr{}บาง\wbr{}ครั้ง\wbr{}ไม่\wbr{}เพียง\wbr{}พอ\wbr{}สำหรับ\wbr{}การ\wbr{}ใช้\wbr{}งาน\wbr{}จริง. Access Control List\gindex{access control list@Access Control List} หรือ\wbr{}เรียก\wbr{}ย่อๆ\wbr{}ว่า ACL\gindex{acl@ACL} เป็น\wbr{}แนว\wbr{}คิด\wbr{}เกี่ยว\wbr{}กับ\wbr{}การ\wbr{}กำหนด\wbr{}สิทธิ์\wbr{}ที่\wbr{}กระทำ\wbr{}ได้\wbr{}กับ\wbr{}ไฟล์\wbr{}เช่น\wbr{}เดียว\wbr{}กับ \cmd{chmod} แต่\wbr{}สามารถ\wbr{}ตั้ง\wbr{}ค่า\wbr{}ได้\wbr{}ละเอียด\wbr{}กว่า\wbr{}และ\wbr{}สามารถ\wbr{}ตั้ง\wbr{}คุณสมบัติ\wbr{}ของ\wbr{}ไฟล์\wbr{}ได้\wbr{}มา\wbr{}กว่า\wbr{}เช่น กำหนด\wbr{}ไม่\wbr{}ให้\wbr{}ลบ\wbr{}ไฟล์\wbr{}ไม่\wbr{}ว่า\wbr{}ผู้\wbr{}ใช้\wbr{}จะ\wbr{}เป็น root เป็นต้น.
+
+
+
+%\section{การ\wbr{}กระทำ\wbr{}กับ\wbr{}ไฟล์}
+\section{การ\wbr{}จัด\wbr{}การ\wbr{}ไฟล์\wbr{}และ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}เบื้อง\wbr{}ต้น}
+%คำ\wbr{}สั่ง\wbr{}ใน\wbr{}ลิ\wbr{}นุกซ์\wbr{}ส่วน\wbr{}ใหญ่\wbr{}จะ\wbr{}เป็น\wbr{}คำ\wbr{}สั่ง\wbr{}ที่\wbr{}รับ\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}เป็น\wbr{}อาร์กิวเ\wbr{}มนต์, ประมวล\wbr{}ผล\wbr{}และ\wbr{}ส่ง\wbr{}ผล\wbr{}ลัพธ์\wbr{}ออก\wbr{}มา. ด้วย\wbr{}เหตุ\wbr{}นี้\wbr{}เอง\wbr{}จึง\wbr{}มี\wbr{}ความ\wbr{}จำ\wbr{}เป็น\wbr{}ที่\wbr{}ผู้\wbr{}ใช้\wbr{}ต้อง\wbr{}รู้\wbr{}จัก\wbr{}การ\wbr{}กระทำ\wbr{}กับ\wbr{}ไฟล์\wbr{}ต่างๆ\wbr{}เพื่อ\wbr{}ที่\wbr{}จะ\wbr{}ใช้\wbr{}งาน\wbr{}ลิ\wbr{}นุกซ์\wbr{}อย่าง\wbr{}จริง\wbr{}จัง.
+การ\wbr{}จัด\wbr{}การ\wbr{}กับ\wbr{}ไฟล์\wbr{}และ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}เป็น\wbr{}งาน\wbr{}ที่\wbr{}เกิด\wbr{}ขึ้น\wbr{}บ่อย\wbr{}เช่น\wbr{}การ\wbr{}ลบ\wbr{}ไฟล์, สร้าง\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี, ย้าย\wbr{}ไฟล์\wbr{}ไป\wbr{}ที่\wbr{}ต่างๆ ฯลฯ. งาน\wbr{}เหล่า\wbr{}นี้\wbr{}ผู้\wbr{}ใช้\wbr{}อาจ\wbr{}จะ\wbr{}ใช้ file browser แบบ GUI เช่น nautilus หรือ konqueror ก็\wbr{}ได้. แต่\wbr{}สำหรับ\wbr{}ระบบ\wbr{}ที่\wbr{}ไม่\wbr{}สามารถ\wbr{}ใช้ X วิน\wbr{}โดว์\wbr{}หรือ\wbr{}เช่น\wbr{}ระบบ\wbr{}ที่\wbr{}เป็นเ\wbr{}ซิฟร์\wbr{}เวอร์, การ\wbr{}เรียน\wbr{}รู้\wbr{}และ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง\wbr{}สำหรับ\wbr{}จัด\wbr{}การ\wbr{}ไฟล์, ประมวล\wbr{}ผล\wbr{}ข้อ\wbr{}มูล\wbr{}ใน\wbr{}ไฟล์\wbr{}มี\wbr{}ความ\wbr{}สำคัญ\wbr{}อย่าง\wbr{}ยิ่ง.
+
+คำ\wbr{}สั่ง\wbr{}ที่\wbr{}จัด\wbr{}การ\wbr{}ไฟล์\wbr{}และ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ส่วน\wbr{}ใหญ่\wbr{}จะ\wbr{}รับ\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}หรือ\wbr{}ไดเร\wbr{}กอ\wbr{}ทอ\wbr{}รี\wbr{}เป็น\wbr{}อาร์กิวเ\wbr{}มนต์\wbr{}และ\wbr{}สามารถ\wbr{}รับ\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}หลายๆ\wbr{}ไฟล์\wbr{}ได้\wbr{}ใน\wbr{}คราว\wbr{}เดียว\wbr{}กัน.
+
+\subsection{การ\wbr{}สร้าง\wbr{}ไฟล์}
+การ\wbr{}สร้าง\wbr{}ไฟล์\wbr{}ที่\wbr{}ไม่\wbr{}มี\wbr{}ข้อ\wbr{}มูล (ไฟล์\wbr{}เปล่า) อาจ\wbr{}ทำ\wbr{}ได้\wbr{}โดย\wbr{}การ\wbr{}รี\wbr{}ไดเ\wbr{}รก\wbr{}หรือ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{touch}.
+\begin{MyExample}[การ\wbr{}สร้าง\wbr{}ไฟล์\wbr{}เปล่า\wbr{}ด้วย\wbr{}การ\wbr{}รี\wbr{}ไดเ\wbr{}รก\wbr{}และ\wbr{}คำ\wbr{}สั่ง \cmd{touch}]
+\begin{MyEx}
+$ \cin{> file1}
+$ \cin{touch file2}
+$ \cin{ls -l file[12]}
+-rw-r--r--    1 poonlap  users           0 Jul  8 22:45 file1
+-rw-r--r--    1 poonlap  users           0 Jul  8 22:46 file2
+\end{MyEx}
+\end{MyExample}%$
+
+การ\wbr{}สร้าง\wbr{}ไฟล์เท็กซ์\wbr{}ที่\wbr{}มี\wbr{}เนื้อ\wbr{}หา\wbr{}สั้นๆ, ใช้\wbr{}คำ\wbr{}สั่ง \cmd{cat} กับ\wbr{}การ\wbr{}ใช้ here document จะ\wbr{}เป็น\wbr{}วิธี\wbr{}ที่\wbr{}สะดวก\wbr{}ที่\wbr{}สุด\wbr{}แต่\wbr{}จะ\wbr{}ไม่\wbr{}สามารถ\wbr{}แก้\wbr{}ไข\wbr{}บรรทัด\wbr{}ที่\wbr{}พิมพ์\wbr{}ไป\wbr{}แล้ว.
+\begin{MyExample}[การ\wbr{}สร้าง\wbr{}ไฟล์เท็กซ์\wbr{}แบบ\wbr{}สั้นๆ\wbr{}ด้วย \cmd{cat}]
+\begin{MyEx}
+$ \cin{cat <<EOF > hello.c}
+> #include <stdio.h>
+> main(){ printf("Hello World!\bs{}n"); }
+EOF
+\end{MyEx}
+\end{MyExample}%$
+
+การ\wbr{}สร้าง\wbr{}ไฟล์เท็กซ์\wbr{}ยาวๆ\wbr{}หรือ\wbr{}แก้\wbr{}ไข\wbr{}ไฟล์\wbr{}ที่\wbr{}มี\wbr{}อยู่\wbr{}แล้ว\wbr{}ควร\wbr{}จะ\wbr{}ใช้\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}สำหรับ\wbr{}งาน\wbr{}ทั่ว\wbr{}ไป\mymemo{บรรณาธิ\wbr{}กรณ์\wbr{}สำหรับ\wbr{}งาน\wbr{}ทั่ว\wbr{}ไป\wbr{}หมาย\wbr{}ถึง\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}ที่\wbr{}ใช้\wbr{}เขียน, แก้\wbr{}ไขเท็กซ์\wbr{}ไฟล์, ไม่\wbr{}ใช่ word processor เช่น OpenOffice.}เช่น \cmd{vi}, \cmd{emacs}, \cmd{gedit}, \cmd{nano} ฯลฯ.
+
+สำหรับ\wbr{}การ\wbr{}สร้าง\wbr{}ไฟล์\wbr{}ที่\wbr{}มี\wbr{}ขนาด\wbr{}ไม่\wbr{}เป็น\wbr{}ศูนย์\wbr{}ปลอมๆ, ให้\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{dd} ตาม\wbr{}ที่\wbr{}แสดง\wbr{}ใน\wbr{}ตัว\wbr{}อย่าง\wbr{}ที่ \ref{ex:dd} (หน้า \pageref{ex:dd}).
+
+\subsection{การ\wbr{}สร้าง\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี}
+การ\wbr{}สร้าง\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}จะ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{mkdir}\refcmd{mkdir}. ใน\wbr{}กรณี\wbr{}ที่\wbr{}ต้องการ\wbr{}สร้าง\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ซ้อน\wbr{}กัน\wbr{}หลาย\wbr{}ชั้น\wbr{}แต่\wbr{}ยัง\wbr{}ไม่\wbr{}มี\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}แม่, ให้\wbr{}ใช้\wbr{}ตัว\wbr{}เลือก \cmd{-p} ประกอบ\wbr{}เพื่อ\wbr{}ให้\wbr{}สร้าง\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}แม่\wbr{}ที่\wbr{}จำ\wbr{}เป็น\wbr{}โดย\wbr{}อัตโนมัติ. ตัว\wbr{}อย่าง\wbr{}เช่น
+\begin{MyExample}[การ\wbr{}สร้าง\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ซ้อน\wbr{}กัน\wbr{}หลาย\wbr{}ชั้น.]
+\begin{MyEx}
+$ \cin{mkdir tmp/sub/subsub}
+mkdir: cannot create directory `tmp/sub/subsub': No such file or directory
+$ \cin{mkdir -p tmp/sub/subsub}
+$ \cin{ls -l tmp/sub}
+total 4
+drwxr-xr-x    2 poonlap  users        4096 Jul  8 23:13 subsub/
+\end{MyEx}
+\end{MyExample}%$
+
+\subsection{การ\wbr{}ลบ\wbr{}ไฟล์}
+การ\wbr{}ลบ\wbr{}ไฟล์\wbr{}จะ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{rm}\cindex{rm}\refcmd{rm} ซึ่ง\wbr{}สามารถ\wbr{}ลบ\wbr{}ไฟล์\wbr{}ได้\wbr{}หลาย\wbr{}ไฟล์\wbr{}พร้อมๆ\wbr{}กัน. ถ้า\wbr{}ไฟล์\wbr{}นั้น\wbr{}เป็น\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}และ\wbr{}ต้องการ\wbr{}ลบ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}และ\wbr{}ไฟล์\wbr{}ทั้ง\wbr{}หมด\wbr{}ที่\wbr{}อยู่\wbr{}ใต้\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นั้น\wbr{}ให้\wbr{}ใช้\wbr{}ตัว\wbr{}เลือก \cmd{-r}. การ\wbr{}ลบ\wbr{}ไฟล์\wbr{}เป็น\wbr{}อันตราย\wbr{}อย่าง\wbr{}ยิ่ง\wbr{}ถ้า root เป็น\wbr{}ผู้\wbr{}ลบ\wbr{}ไฟล์\wbr{}ที่\wbr{}จำ\wbr{}เป็น\wbr{}ต่อ\wbr{}ระบบ. ดัง\wbr{}นั้น\wbr{}จึง\wbr{}ควร\wbr{}ใช้\wbr{}ตัว\wbr{}เลือก \cmd{-i} เพื่อ\wbr{}ให้\wbr{}มี\wbr{}การ\wbr{}ถาม\wbr{}ย้ำ\wbr{}หรือ\wbr{}ตั้ง\wbr{}เป็น alias ไว้.
+
+\subsection{การ\wbr{}ลบ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี}
+ใน\wbr{}ลิ\wbr{}นุกซ์\wbr{}จะ\wbr{}มี\wbr{}คำ\wbr{}สั่ง\wbr{}สำหรับ\wbr{}ลบ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}เฉพาะ\wbr{}คือ \cmd{rmdir}\cindex{rmdir}\refcmd{rmdir} แต่\wbr{}จะ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง\wbr{}นี้\wbr{}ได้\wbr{}ก็\wbr{}ต่อ\wbr{}เมื่อ\wbr{}ไฟล์\wbr{}ที่\wbr{}อยู่\wbr{}ใต้\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}ต้องการ\wbr{}ลบ\wbr{}นั้น\wbr{}ถู\wbr{}กลบ\wbr{}หมด\wbr{}แล้ว. ดัง\wbr{}นั้น\wbr{}ถ้า\wbr{}ต้องการ\wbr{}ลบ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}มี\wbr{}ไฟล์\wbr{}อยู่\wbr{}ใน\wbr{}นั้น\wbr{}อยู่\wbr{}แล้ว\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{rm -r} จะ\wbr{}สะดวก\wbr{}กว่า\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{rmdir}.
+
+\subsection{การ\wbr{}ย้าย\wbr{}ไฟล์, เปลี่ยน\wbr{}ชื่อ}
+คำ\wbr{}สั่ง \cmd{mv}\cindex{mv} เป็น\wbr{}คำ\wbr{}สั่ง\wbr{}สำหรับ\wbr{}เปลี่ยน\wbr{}ชื่อ\wbr{}หรือ\wbr{}ย้าย\wbr{}ไฟล์.\cindex{mv}\refcmd{mv}
+ตัว\wbr{}อย่าง\wbr{}ใช้\wbr{}งาน\wbr{}แบบ\wbr{}ง่าย\wbr{}คือ\wbr{}มี\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ที่\wbr{}ต้องการ\wbr{}เปลี่ยน\wbr{}ชื่อ\wbr{}เป็น\wbr{}อาร์กิวเ\wbr{}มนต์\wbr{}ตัว\wbr{}ที่\wbr{}หนึ่ง, และ\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ใหม่\wbr{}เป็น\wbr{}อาร์กิวเ\wbr{}มนต์\wbr{}ตัว\wbr{}ที่\wbr{}สอง.
+\begin{MyExample}[การ\wbr{}เปลี่ยน\wbr{}ชื่อ\wbr{}หรือ\wbr{}ย้าย\wbr{}ไฟล์.]
+\begin{MyEx}
+$ \cin{ls}
+file
+$ \cin{mv -v file newname}
+`file' -> `newname'
+$ \cin{ls}
+newname
+$ \cin{mv -v newname /tmp/newname} \mycomment{หรือ mv newname /tmp}
+`newname' -> `/tmp/newname'
+removed `newname'
+$ \cin{ls -0}
+total 0
+$ \cin{ls /tmp/newname}
+/tmp/newname
+\end{MyEx}
+\end{MyExample}%$
+
+จาก\wbr{}ตัว\wbr{}อย่าง\wbr{}จะ\wbr{}เห็น\wbr{}ว่า\wbr{}การ\wbr{}เปลี่ยน\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ก็\wbr{}คือ\wbr{}การ\wbr{}ย้าย\wbr{}ไฟล์\wbr{}แบบ\wbr{}หนึ่ง. ส่วน\wbr{}ที่\wbr{}เป็น\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ที่\wbr{}ต้องการ\wbr{}เปลี่ยน\wbr{}ไป\wbr{}หา\wbr{}นั้น\wbr{}จะ\wbr{}เป็น\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}แบบ full path, ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี, หรือ ชื่อ\wbr{}ไฟล์\wbr{}ก็\wbr{}ได้. ถ้า\wbr{}เป็น full path, ก็\wbr{}จะ\wbr{}เป็น\wbr{}การ\wbr{}ย้าย\wbr{}ไฟล์ (ถ้า full path นั้น\wbr{}ไม่\wbr{}ใช่\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ปัจจุบัน). ถ้า\wbr{}เป็น\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี, จะ\wbr{}เป็น\wbr{}การ\wbr{}ย้าย\wbr{}ไฟล์\wbr{}ไป\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}ต้องการ. ถ้า\wbr{}เป็น\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}เดี่ยวๆ\wbr{}ก็\wbr{}จะ\wbr{}หมาย\wbr{}ถึง\wbr{}การ\wbr{}เปลี่ยน\wbr{}ชื่อ\wbr{}ไฟล์. เนื่อง\wbr{}จาก\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ก็\wbr{}คือ\wbr{}ไฟล์\wbr{}แบบ\wbr{}หนึ่ง\wbr{}ดัง\wbr{}นั้น\wbr{}คำ\wbr{}สั่ง \cmd{mv} ก็\wbr{}ใช้\wbr{}กับ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ได้\wbr{}ด้วย.
+
+นอก\wbr{}จาก\wbr{}จะ\wbr{}ย้าย\wbr{}หรือ\wbr{}เปลี่ยน\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ชื่อ\wbr{}ต่อ\wbr{}ชื่อ\wbr{}แล้ว, คำ\wbr{}สั่ง \cmd{mv} ยัง\wbr{}สามารถ\wbr{}ย้าย\wbr{}ไฟล์\wbr{}ได้\wbr{}มา\wbr{}กว่า\wbr{}หนึ่ง\wbr{}ไฟล์. ใน\wbr{}กรณี\wbr{}นี้\wbr{}อาร์กิวเ\wbr{}มนต์\wbr{}ตัว\wbr{}สุด\wbr{}ท้าย\wbr{}ของ\wbr{}คำ\wbr{}สั่ง\wbr{}ต้อง\wbr{}เป็น\wbr{}ชื่อ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}เท่า\wbr{}นั้น (เป็น\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ไม่\wbr{}ได้).
+
+จาก\wbr{}การ\wbr{}ที่\wbr{}เรา\wbr{}รู้\wbr{}จัก\wbr{}ความ\wbr{}สัมพันธ์\wbr{}ระหว่าง\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}กับ\wbr{}ไฟล์\wbr{}จริง\wbr{}แล้ว\wbr{}ก็\wbr{}จะ\wbr{}พอ\wbr{}จะ\wbr{}เดา\wbr{}ได้\wbr{}ว่า\wbr{}คำ\wbr{}สั่ง \cmd{mv} จะ\wbr{}ไม่\wbr{}ได้\wbr{}แตะ\wbr{}ต้อง\wbr{}ข้อ\wbr{}มูล\wbr{}เลย, เป็น\wbr{}การ\wbr{}เปลี่ยน\wbr{}ชื่อ\wbr{}ที่\wbr{}ไฟล์\wbr{}หรือ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}บันทึก\wbr{}ไว้\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}หนึ่ง\wbr{}ไป\wbr{}เขียน\wbr{}ใหม่\wbr{}หรือ\wbr{}เปลี่ยน\wbr{}ชื่อ\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}ต้องการ\wbr{}ย้าย\wbr{}ไป. ดัง\wbr{}นั้น\wbr{}จึง\wbr{}ไม่\wbr{}ใช้\wbr{}เวลา\wbr{}มาก\wbr{}นัก\wbr{}ถึง\wbr{}แม้\wbr{}จะ\wbr{}เป็น\wbr{}การ\wbr{}ย้าย\wbr{}ไฟล์\wbr{}ที่\wbr{}มี\wbr{}ขนาด\wbr{}ใหญ่.\mymemo{การ\wbr{}ย้าย\wbr{}ไฟล์\wbr{}ที่\wbr{}อยู่\wbr{}ต่าง\wbr{}พาร์ทิ\wbr{}ชัน\wbr{}หรือ\wbr{}ระบบ\wbr{}ไฟล์\wbr{}จะ\wbr{}เป็น\wbr{}การ\wbr{}เคลื่อน\wbr{}ย้าย\wbr{}ข้อ\wbr{}มูล\wbr{}จริงๆ(ไฟล์\wbr{}จริง).}
+
+คำ\wbr{}สั่ง\wbr{}ที่\wbr{}ใช้\wbr{}เปลี่ยน\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}อีก\wbr{}คำ\wbr{}สั่ง\wbr{}คือ \cmd{rename}.\cindex{rename}\refcmd{rename}
+คำ\wbr{}สั่ง \cmd{rename} เหมาะ\wbr{}สำหรับ\wbr{}การ\wbr{}เปลี่ยน\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}หลาย\wbr{}ไฟล์\wbr{}ด้วย\wbr{}คำ\wbr{}สั่ง\wbr{}เดียว\wbr{}โดย\wbr{}ที่\wbr{}ไฟล์\wbr{}เหล่า\wbr{}นี้\wbr{}มี\wbr{}รูป\wbr{}แบบ\wbr{}ที่\wbr{}ตาม\wbr{}ตัว.
+\begin{MyExample}[การ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{rename}.]
+\begin{MyEx}
+$ \cin{ls}
+bar1.htm  bar2.htm  foo1.htm  foo2.htm
+$ \cin{rename .htm .html *}
+$ \cin{ls}
+bar1.html  bar2.html  foo1.html  foo2.html
+\end{MyEx}
+\end{MyExample}%$
+จาก\wbr{}ตัว\wbr{}อย่าง, คำ\wbr{}สั่ง \cmd{rename} จะ\wbr{}เปลี่ยน\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ที่\wbr{}ต้องการ\wbr{}จาก \cmd{.htm} เป็น \cmd{.html}.\mymemo{\cmd{*} เป็น\wbr{}ไวล์\wbr{}คาร์ด\wbr{}แทน\wbr{}ไฟล์\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ปัจจุบัน\wbr{}ทั้ง\wbr{}หมด.}
+
+
+\subsection{การ\wbr{}สำเนา\wbr{}ไฟล์}
+การ\wbr{}ทำ\wbr{}สำเนา\wbr{}ไฟล์\wbr{}หรือ\wbr{}เรียก\wbr{}ง่ายๆ\wbr{}ว่า\wbr{}ก็\wbr{}อป\wbr{}ปี้\wbr{}ทำ\wbr{}ได้\wbr{}โดย\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{cp}\cindex{cp}\refcmd{cp}
+คำ\wbr{}สั่ง \cmd{cp} ต้องการ\wbr{}อาร์กิวเ\wbr{}มนต์\wbr{}เป็น\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}อย่าง\wbr{}น้อย\wbr{}สอง\wbr{}ไฟล์. ไฟล์\wbr{}หลัง\wbr{}จาก\wbr{}การ\wbr{}ก็\wbr{}อป\wbr{}ปี้\wbr{}ต้อง\wbr{}มี\wbr{}ชื่อ\wbr{}ไม่\wbr{}เหมือน\wbr{}กับ\wbr{}ไฟล์\wbr{}ที่\wbr{}ต้องการ\wbr{}ก็\wbr{}อป\wbr{}ปี้. หรือ\wbr{}จะ\wbr{}มี\wbr{}ชื่อ\wbr{}เหมือน\wbr{}กัน\wbr{}ก็\wbr{}ได้\wbr{}แต่\wbr{}ต้อง\wbr{}ไม่\wbr{}อยู่\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}เดียว\wbr{}กัน. ถ้า\wbr{}ต้องการ\wbr{}ก็\wbr{}อป\wbr{}ปี้\wbr{}ไฟล์\wbr{}หลาย\wbr{}ไฟล์, อาร์กิวเ\wbr{}มนต์\wbr{}ตัว\wbr{}สุด\wbr{}ท้าย\wbr{}ต้อง\wbr{}เป็น\wbr{}ชื่อ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี. ผล\wbr{}ของ\wbr{}คำ\wbr{}สั่ง \cmd{cp} จะ\wbr{}ได้\wbr{}ไฟล์\wbr{}ที่\wbr{}มี\wbr{}ชื่อ\wbr{}เหมือน\wbr{}กัน\wbr{}อยู่\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นั้น.
+\begin{MyExample}[การ\wbr{}ก็\wbr{}อป\wbr{}ปี้\wbr{}ไฟล์\wbr{}ด้วย\wbr{}คำ\wbr{}สั่ง \cmd{cp}.]
+\begin{MyEx}
+$ \cin{ls}
+foo
+$ \cin{cp foo bar}
+$ \cin{ls}
+bar foo
+$ \cin{cp -v bar foo /tmp}
+`bar' -> `/tmp/bar'
+`foo' -> `/tmp/foo'
+\end{MyEx}
+\end{MyExample}
+
+การ\wbr{}ก็\wbr{}อป\wbr{}ปี้\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}และ\wbr{}ไฟล์\wbr{}ทั้ง\wbr{}หมด\wbr{}ที่\wbr{}อยู่\wbr{}ใต้\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}นั้น\wbr{}ให้\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{cp} กับ\wbr{}ตัว\wbr{}เลือก \cmd{-r}.
+\begin{MyExample}[การ\wbr{}ก็\wbr{}อป\wbr{}ปี้\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี.]
+\begin{MyEx}
+$ \cin{ls -F}
+dir1/
+$ \cin{cp -rv dir1 dir2}
+`dir1' -> `dir2'
+`dir1/foo' -> `dir2/foo'
+`dir1/bar' -> `dir2/bar'
+\end{MyEx}
+\end{MyExample}
+
+ความ\wbr{}หมาย\wbr{}ของ\wbr{}การ\wbr{}ก็\wbr{}อป\wbr{}ปี้\wbr{}คือ\wbr{}การ\wbr{}อ่าน\wbr{}ข้อ\wbr{}มูล\wbr{}จาก\wbr{}ไฟล์\wbr{}หนึ่ง\wbr{}แล้ว\wbr{}เขียน\wbr{}ลง\wbr{}อีก\wbr{}ไฟล์\wbr{}หนึ่ง. ดัง\wbr{}นั้น\wbr{}คำ\wbr{}สั่ง \cmd{cat} ก็\wbr{}ใช้\wbr{}แทน\wbr{}คำ\wbr{}สั่ง \cmd{cp} ได้\wbr{}ด้วย\wbr{}เช่น
+\begin{MyExample}[การ\wbr{}ก็\wbr{}อป\wbr{}ปี้\wbr{}ไฟล์\wbr{}ด้วย \cmd{cat}]
+\begin{MyEx}
+$ \cin{cat < foo > bar} \mycomment{หรือ cat foo > bar}
+\end{MyEx}
+\end{MyExample}%$
+เพราะ\wbr{}ว่า\wbr{}ใน\wbr{}โลก\wbr{}ของ\wbr{}ยู\wbr{}นิกซ์\wbr{}ไม่\wbr{}มี\wbr{}การ\wbr{}แยก\wbr{}แยะ\wbr{}ไฟล์ไบ\wbr{}นารี\wbr{}กับ\wbr{}ไฟล์เท็กซ์, ดัง\wbr{}นั้น\wbr{}จึง\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{cat} ก็\wbr{}อป\wbr{}ปี้\wbr{}ไฟล์\wbr{}ที่\wbr{}ไม่\wbr{}ใช่\wbr{}ไฟล์เท็กซ์\wbr{}ก็\wbr{}ได้.
+
+คำ\wbr{}สั่ง\wbr{}ที่\wbr{}ใช้\wbr{}ก็\wbr{}อป\wbr{}ปี้\wbr{}ไฟล์\wbr{}ได้\wbr{}อีก\wbr{}คำ\wbr{}สั่ง\wbr{}คือ \cmd{dd}. คำ\wbr{}สั่ง \cmd{dd} มัน\wbr{}จะ\wbr{}ก็\wbr{}อป\wbr{}ปี้\emph{ดี\wbr{}ไวซ์\wbr{}ดิบ (raw device)}\gindex{raw device} \myvocab{r}{raw device}{หมาย\wbr{}ถึง\wbr{}ไฟล์\wbr{}ดี\wbr{}ไวซ์. ไฟล์\wbr{}ที่\wbr{}ยัง\wbr{}ไม่\wbr{}ได้ mount เข้า\wbr{}โครง\wbr{}สร้าง\wbr{}ไฟล์\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี. ตัว\wbr{}อย่าง raw device ได้\wbr{}แก่ \cmd{/dev/hda}, \cmd{/dev/cdrom} เป็นต้น.} เช่น\wbr{}การ\wbr{}ก็\wbr{}อป\wbr{}ปี้ \cmd{/dev/fd0} เก็บ\wbr{}ไว้\wbr{}ใน\wbr{}ไฟล์\wbr{}เดียว. ไฟล์\wbr{}ที่\wbr{}ได้\wbr{}มา\wbr{}จาก\wbr{}การ\wbr{}ก็\wbr{}อป\wbr{}ปี้\wbr{}เก็บ\wbr{}ดี\wbr{}ไวซ์\wbr{}ดิบ\wbr{}แบบ\wbr{}นี้\wbr{}บ้าง\wbr{}ก็\wbr{}เรีย\wbr{}กว่า\emph{ไฟล์อิม\wbr{}เมจ (image file)}\gindex{image file}.
+\begin{MyExample}[การ\wbr{}ใช้ \cmd{dd} ก็\wbr{}อป\wbr{}ปี้\wbr{}ดี\wbr{}ไวซ์\wbr{}ดิบ\wbr{}เก็บ\wbr{}ใน\wbr{}ไฟล์\wbr{}เดียว.]
+\begin{MyEx}
+$ \cin{dd if=/dev/fd0 of=floppy.img}
+\end{MyEx}
+\end{MyExample}%$
+คำ\wbr{}สั่ง \cmd{cp} หรือ \cmd{cat} สามารถ\wbr{}ใช้\wbr{}ก็\wbr{}อป\wbr{}ปี้\wbr{}ดี\wbr{}ไวซ์\wbr{}ดิบ\wbr{}ได้\wbr{}เช่น\wbr{}เดียว\wbr{}กับ\wbr{}คำ\wbr{}สั่ง \cmd{dd} เพราะ\wbr{}คำ\wbr{}สั่ง\wbr{}เหล่า\wbr{}นี้\wbr{}ไฟล์\wbr{}ดี\wbr{}ไวซ์\wbr{}ก็\wbr{}เหมือน\wbr{}กับ\wbr{}ไฟล์\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}ระบบ\wbr{}ไฟล์\wbr{}ทั่ว\wbr{}ไป\wbr{}คือ\wbr{}เป็น\wbr{}ไฟล์. เพียง\wbr{}แต่ว่า\wbr{}ไฟล์\wbr{}ดี\wbr{}ไวซ์\wbr{}ไม่\wbr{}ได้ mount ปะ\wbr{}ติด\wbr{}กับ\wbr{}โครง\wbr{}สร้าง\wbr{}ไฟล์\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี.
+\begin{MyExample}[การ\wbr{}ใช้ \cmd{cp} ก็\wbr{}อป\wbr{}ปี้\wbr{}ดี\wbr{}ไวซ์\wbr{}ดิบ\wbr{}เก็บ\wbr{}ใน\wbr{}ไฟล์\wbr{}เดียว.]
+\begin{MyEx}
+$ \cin{cp /dev/fd0 floppy.img}
+\end{MyEx}
+\end{MyExample}%$
+ความ\wbr{}แตก\wbr{}ต่าง\wbr{}ระหว่าง \cmd{dd} กับ \cmd{cp} คือ\wbr{}คำ\wbr{}สั่ง \cmd{dd} สามารถ\wbr{}ระบุ\wbr{}ขนาด\wbr{}ของ\wbr{}บล็อก (block size)\refcmd{dd} ที่\wbr{}ต้องการ\wbr{}อ่าน\wbr{}หรือ\wbr{}เขียน\wbr{}ได้. การ\wbr{}ปรับ\wbr{}ค่า\wbr{}ขนาด\wbr{}ของ\wbr{}บล็อก\wbr{}ให้\wbr{}เหมาะ\wbr{}สม\wbr{}กับ\wbr{}ดี\wbr{}ไวซ์\wbr{}จะ\wbr{}ทำ\wbr{}ให้\wbr{}การ\wbr{}เขียน\wbr{}อ่าน\wbr{}เร็ว\wbr{}ขึ้น.
+
+\subsection{การ\wbr{}หา\wbr{}ไฟล์}
+การ\wbr{}หา\wbr{}ไฟล์\mymemo{ถ้า\wbr{}จะ\wbr{}เรียก\wbr{}การ\wbr{}หา\wbr{}ไฟล์\wbr{}ให้\wbr{}ถูก\wbr{}ต้อง\wbr{}ควร\wbr{}จะ\wbr{}ใช้\wbr{}คำ\wbr{}ว่า\wbr{}การ\wbr{}หา\wbr{}ชื่อ\wbr{}ไฟล์. ใน\wbr{}ที่\wbr{}นี้\wbr{}ขอ\wbr{}ใช้\wbr{}คำ\wbr{}ว่า\wbr{}การ\wbr{}หา\wbr{}ไฟล์\wbr{}เพื่อ\wbr{}ความ\wbr{}สะดวก.}ด้วย\wbr{}บรรทัด\wbr{}คำ\wbr{}สั่ง\wbr{}จะ\wbr{}แบ่ง\wbr{}ได้\wbr{}เป็น\wbr{}สอง\wbr{}วิธี\wbr{}คือ
+\begin{enumerate}
+\item การ\wbr{}หา\wbr{}ไฟล์\wbr{}โดย\wbr{}อาศัย\wbr{}ฐาน\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}เตรียม\wbr{}ไว้\wbr{}ล่วง\wbr{}หน้า\mymemo{คำ\wbr{}สั่ง\wbr{}ที่\wbr{}ใช้\wbr{}สร้าง\wbr{}ฐาน\wbr{}ข้อ\wbr{}มูล\wbr{}สำหรับ\wbr{}คำ\wbr{}สั่ง \cmd{locate} คือ\wbr{}คำ\wbr{}สั่ง \cmd{updatedb}.}. ฐาน\wbr{}ข้อ\wbr{}มูล\wbr{}นี้\wbr{}เป็น\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}เก็บ\wbr{}ที่\wbr{}อยู่\wbr{}ของ\wbr{}ไฟล์\wbr{}และ\wbr{}ชื่อ\wbr{}ไฟล์, และ\wbr{}มี\wbr{}การ\wbr{}ปรับ\wbr{}ปรุง\wbr{}ข้อ\wbr{}มูล\wbr{}ให้\wbr{}ทัน\wbr{}สมัย\wbr{}เป็น\wbr{}ระยะ\wbr{}ที่\wbr{}กำหนด\wbr{}ไว้\wbr{}โดย\wbr{}อัตโนมัติ. คำ\wbr{}สั่ง\wbr{}หา\wbr{}ไฟล์\wbr{}ที่\wbr{}ทำ\wbr{}งาน\wbr{}ใน\wbr{}ลักษณะ\wbr{}นี้\wbr{}ได้\wbr{}แก่ \cmd{slocate} หรือ \cmd{locate}.
+\item การ\wbr{}หา\wbr{}ไฟล์\wbr{}โดย\wbr{}การ\wbr{}ไล่\wbr{}หา\wbr{}ไป\wbr{}เรื่อยๆ\wbr{}จาก\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ที่\wbr{}กำหนด\wbr{}เป็น\wbr{}จุด\wbr{}เริ่ม\wbr{}ต้น\wbr{}หา. วิธี\wbr{}นี้\wbr{}จะ\wbr{}เป็น\wbr{}หา\wbr{}ไฟล์\wbr{}จริงๆ\wbr{}โดย\wbr{}ไม่\wbr{}ใช้\wbr{}ฐาน\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}เตรียม\wbr{}ไว้, ดัง\wbr{}นั้น\wbr{}ไม่\wbr{}จำ\wbr{}เป็น\wbr{}ต้อง\wbr{}มี\wbr{}การ\wbr{}สร้าง\wbr{}ฐาน\wbr{}ข้อ\wbr{}มูล\wbr{}ล่วง\wbr{}หน้า\wbr{}ก่อน\wbr{}การ\wbr{}หา\wbr{}ไฟล์. แต่\wbr{}มี\wbr{}ข้อ\wbr{}เสีย\wbr{}ที่\wbr{}จะ\wbr{}ใช้\wbr{}เวลา\wbr{}นาน\wbr{}ใน\wbr{}การ\wbr{}หา\wbr{}ไฟล์\wbr{}ใน\wbr{}บาง\wbr{}กรณี. คำ\wbr{}สั่ง\wbr{}หา\wbr{}ไฟล์\wbr{}ที่\wbr{}ทำ\wbr{}งาน\wbr{}ใน\wbr{}ลักษณะ\wbr{}นี้\wbr{}ได้\wbr{}แก่\wbr{}คำ\wbr{}สั่ง \cmd{find}.
+\end{enumerate}
+
+\subsubsection{คำ\wbr{}สั่ง \cmd{locate}, \cmd{slocate}}
+\cmd{locate}\cindex{locate} เป็น\wbr{}โปรแกรม\wbr{}คำ\wbr{}สั่ง\wbr{}ที่\wbr{}หา\wbr{}ไฟล์\wbr{}ที่\wbr{}โดย\wbr{}อาศัย\wbr{}ฐาน\wbr{}ข้อ\wbr{}มูล\wbr{}ของ\wbr{}ไฟล์\wbr{}ใน\wbr{}ระบบ\wbr{}ที่\wbr{}เตรียม\wbr{}ไว้\wbr{}ก่อน\wbr{}แล้ว. ส่วน\wbr{}คำ\wbr{}สั่ง \cmd{slocate} เป็น\wbr{}โปรแกรม \cmd{locate} ที่\wbr{}ได้\wbr{}รับ\wbr{}การ\wbr{}ปรับ\wbr{}ปรุง\wbr{}ด้าน\wbr{}ความ\wbr{}ปลอด\wbr{}ภัย (security enhanced) ให้\wbr{}ดี\wbr{}ขึ้น\wbr{}และ\wbr{}ทำ\wbr{}หน้า\wbr{}ที่\wbr{}เหมือน \cmd{locate}. ดัง\wbr{}นั้น\wbr{}ใน\wbr{}ลิ\wbr{}นุกซ์ดิสท\wbr{}ริ\wbr{}บิว\wbr{}ชัน\wbr{}ทั่วๆ\wbr{}ไป\wbr{}จึง\wbr{}ใช้ \cmd{slocate} และ\wbr{}มี \cmd{locate} เป็น\wbr{}ซอฟต์\wbr{}ลิงค์\wbr{}ชี้\wbr{}ไป\wbr{}ที่ \cmd{slocate} อีก\wbr{}ที.\mymemo{ต่อ\wbr{}ไป\wbr{}นี้\wbr{}ถ้า\wbr{}มี\wbr{}การ\wbr{}อ้าง\wbr{}ถึง \cmd{locate} จะ\wbr{}หมาย\wbr{}ถึง \cmd{slocate} ด้วย\wbr{}ไป\wbr{}ใน\wbr{}ตัว.}
+
+การ\wbr{}ไฟล์\wbr{}ด้วย\wbr{}คำ\wbr{}สั่ง \cmd{locate}\refcmd{locate} ทำ\wbr{}ได้\wbr{}โดย\wbr{}ระบุ\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}หรือ\wbr{}ส่วน\wbr{}ของ\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}เป็น\wbr{}อาร์กิวเ\wbr{}มนต์\wbr{}ของ\wbr{}คำ\wbr{}สั่ง. สมมติ\wbr{}ว่า\wbr{}เรา\wbr{}ต้องการ\wbr{}หา\wbr{}ดู\wbr{}ว่า\wbr{}มี\wbr{}ไฟล์\wbr{}โปรแกรม\wbr{}อะไร\wbr{}บ้าง\wbr{}ที่\wbr{}เกี่ยว\wbr{}กับ\wbr{}การ\wbr{}วาด\wbr{}กราฟ\wbr{}ก็\wbr{}อาจ\wbr{}จะ\wbr{}ใช้ \cmd{locate} หา\wbr{}ไฟล์\wbr{}ที่\wbr{}มี\wbr{}คำ\wbr{}ว่า ``plot''.
+\begin{MyExample}[การ\wbr{}หา\wbr{}ไฟล์\wbr{}ด้วย \cmd{locate}]
+\begin{MyEx}
+$ \cin{locate plot}
+/var/cache/edb/dep/app-emacs/gnuplot-mode-0.6.0
+/var/cache/edb/dep/app-sci/kmatplot-0.4-r1
+/var/cache/edb/dep/app-sci/kmatplot-0.4-r2
+...
+\end{MyEx}
+\end{MyExample}%$
+จาก\wbr{}ตัว\wbr{}อย่าง\wbr{}จะ\wbr{}เห็น\wbr{}ว่า\wbr{}ไฟล์\wbr{}ที่\wbr{}มี\wbr{}คำ\wbr{}ว่า ``plot'' อยู่\wbr{}ด้วย\wbr{}มี\wbr{}มาก\wbr{}เกิน\wbr{}ไป\wbr{}และ\wbr{}ไฟล์\wbr{}บาง\wbr{}ไฟล์\wbr{}ไม่\wbr{}ใช่\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}ต้องการ. เรา\wbr{}สามารถ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{grep} กรอง\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}ต้องการ\wbr{}ได้\wbr{}เช่น เอา\wbr{}ผล\wbr{}ลัพธ์\wbr{}ที่\wbr{}มี\wbr{}คำ\wbr{}ว่า ``bin'' มา\wbr{}แสดง\wbr{}อย่าง\wbr{}เดียว. สาเหตุ\wbr{}ที่\wbr{}เอา\wbr{}ผล\wbr{}ลัพธ์\wbr{}ที่\wbr{}มี\wbr{}คำ\wbr{}ว่า ``bin'' มา\wbr{}แสดง\wbr{}เพราะ\wbr{}ไฟล์\wbr{}โปรแกรม\wbr{}มัก\wbr{}จะ\wbr{}อยู่\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{/usr/bin} หรือ \cmd{/usr/local/bin}.
+\begin{MyExample}[การ\wbr{}ใช้ \cmd{locate} และ \cmd{grep} หา\wbr{}ไฟล์\wbr{}ที่\wbr{}ต้องการ.]
+\begin{MyEx}
+$ \cin{locate plot | grep bin}
+/usr/bin/pbmtoplot
+/usr/bin/plot
+/usr/bin/tek2plot
+/usr/bin/plotfont
+/usr/bin/pic2plot
+/usr/bin/gnuplot
+/usr/share/doc/gnuplot-4.0/demo/binary.dem
+/usr/share/doc/gnuplot-4.0/demo/binary1
+/usr/share/doc/gnuplot-4.0/demo/binary2
+/usr/share/doc/gnuplot-4.0/demo/binary3
+/usr/kde/3.2/bin/kmplot
+\end{MyEx}
+\end{MyExample}%$
+การ\wbr{}ใช้ \cmd{locate} ร่วม\wbr{}กับ \cmd{grep} ก็\wbr{}จะ\wbr{}แสดง\wbr{}ไฟล์\wbr{}โปรแกรม\wbr{}ที่\wbr{}มี\wbr{}คำ\wbr{}ว่า ``plot'' ให้. ส่วน\wbr{}โปรแกรม\wbr{}เหล่า\wbr{}นี้\wbr{}มี\wbr{}วิธี\wbr{}ใช้\wbr{}อย่าง\wbr{}ไร\wbr{}ต้อง\wbr{}ไป\wbr{}ดู\wbr{}คู่\wbr{}มือ\wbr{}เพิ่ม\wbr{}เติม, หรือ\wbr{}ลอง\wbr{}ใช้\wbr{}ด้วย\wbr{}ตัว\wbr{}เอง.
+
+นอก\wbr{}จาก\wbr{}การ\wbr{}หา\wbr{}ไฟล์\wbr{}แบบ\wbr{}ง่ายๆ\wbr{}ตาม\wbr{}ที่\wbr{}แสดง\wbr{}ไป\wbr{}แล้ว, คำ\wbr{}สั่ง \cmd{locate} ยัง\wbr{}มี\wbr{}ตัว\wbr{}เลือก \cmd{-i} (insensitive case) ไว้\wbr{}หา\wbr{}ไฟล์\wbr{}โดย\wbr{}ไม่\wbr{}แยก\wbr{}แยะ\wbr{}ตัว\wbr{}อักษร\wbr{}ว่า\wbr{}จะ\wbr{}เป็น\wbr{}ตัว\wbr{}ใหญ่\wbr{}หรือ\wbr{}ตัว\wbr{}เล็ก. ตัว\wbr{}เลือก \cmd{-r} ให้\wbr{}ผู้\wbr{}ใช้\wbr{}ระบุ\wbr{}คำ\wbr{}ที่\wbr{}ต้องการ\wbr{}หา\wbr{}ใน\wbr{}รูป\wbr{}แบบ\wbr{}ของ regular expression\mymemo{ราย\wbr{}ละเอียด\wbr{}เรื่อง regular expression ดู\wbr{}ที่\wbr{}หน้า \pageref{sec:re}.}\myvocab{r}{regular expression}{กลุ่ม\wbr{}อักขระ\wbr{}ที่\wbr{}ใช้\wbr{}แสดง\wbr{}เป็น\wbr{}ตัว\wbr{}แทน\wbr{}ของ\wbr{}คำ\wbr{}โดย\wbr{}ที่\wbr{}กลุ่ม\wbr{}อักขระ\wbr{}ที่\wbr{}ใช้\wbr{}แสดง regular expression นี้\wbr{}มี\wbr{}ไวย์\wbr{}กรณ์\wbr{}ที่\wbr{}แน่\wbr{}นอน. regular expression มี\wbr{}ประโยชน์\wbr{}ใน\wbr{}การ\wbr{}เขียน\wbr{}นิยาม\wbr{}ของ\wbr{}คำ\wbr{}ที่\wbr{}ต้องการ\wbr{}ค้น\wbr{}หา. regular expression มัก\wbr{}จะ\wbr{}ใช้\wbr{}กับ\wbr{}โปรแกรม \cmd{grep}, \cmd{sed}, \cmd{perl} เป็นต้น. ตัว\wbr{}อย่าง\wbr{}เช่น ``\cmd{A.*\$}'' หมาย\wbr{}ถึง\wbr{}คำ\wbr{}ที่\wbr{}ขึ้น\wbr{}ต้น\wbr{}ด้วย A จะ\wbr{}มี\wbr{}อักขระ\wbr{}ใดๆ\wbr{}หรือ\wbr{}ไม่\wbr{}มี (ใช้ . แทน\wbr{}อักขระ\wbr{}ใดๆ) มาก\wbr{}กว่า\wbr{}หนึ่ง\wbr{}ตัว\wbr{}จน\wbr{}สุด\wbr{}บรรทัด. regular expression นี้\wbr{}แทน\wbr{}ตัว A, A3, Asdf ได้\wbr{}เป็นต้น.} ได้\wbr{}ด้วย. ตัว\wbr{}อย่าง\wbr{}เช่น\wbr{}จะ\wbr{}หา\wbr{}ไฟล์\wbr{}ที่\wbr{}ลง\wbr{}ท้าย\wbr{}ด้วย ``xml'' ที่\wbr{}มี\wbr{}อยู่\wbr{}ใน\wbr{}ระบบ\wbr{}สามารถ\wbr{}ใช้ \cmd{locate} กับ regular expression ได้\wbr{}ตาม\wbr{}ตัว\wbr{}อย่าง.
+\begin{MyExample}[การ\wbr{}ใช้ \cmd{locate} กับ regular expression.]
+\begin{MyEx}
+$ \cin{locate -r 'xml$'}
+/etc/xml
+/etc/bonobo-activation/bonobo-activation-config.xml
+/etc/gconf/gconf.xml.defaults/%gconf.xml
+/etc/gconf/gconf.xml.defaults/system/%gconf.xml
+...
+\end{MyEx}
+\end{MyExample}
+
+\subsubsection{คำ\wbr{}สั่ง find}
+คำ\wbr{}สั่ง \cmd{find}\cindex{find}\refcmd{find} เป็น\wbr{}คำ\wbr{}สั่ง\wbr{}ที่\wbr{}หา\wbr{}ไฟล์\wbr{}ใต้\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี่\wbr{}ที่\wbr{}กำหนด\wbr{}โดย\wbr{}ระบุ\wbr{}เงื่อน\wbr{}ไข\wbr{}ที่\wbr{}ต้องการ. การ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{find} จะ\wbr{}ซับ\wbr{}ซ้อน\wbr{}กว่า\wbr{}การ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{locate} เพราะ\wbr{}สามารถ\wbr{}ตั้ง\wbr{}เงื่อน\wbr{}ไข\wbr{}ได้\wbr{}หลาย\wbr{}อย่าง, ไม่\wbr{}จำ\wbr{}เป็น\wbr{}ต้อง\wbr{}เป็น\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}เช่น หา\wbr{}ไฟล์\wbr{}ตาม\wbr{}เงื่อน\wbr{}ไข\wbr{}สิทธิ์\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์, เวลา\wbr{}ที่\wbr{}มี\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์\wbr{}นั้น\wbr{}ครั้ง\wbr{}สุด\wbr{}ท้าย ฯลฯ. นอก\wbr{}จาก\wbr{}นั้น\wbr{}ยัง\wbr{}สามารถ\wbr{}กระทำ\wbr{}การ\wbr{}กับ\wbr{}ไฟล์\wbr{}ที่\wbr{}ตรง\wbr{}ตาม\wbr{}เงื่อน\wbr{}ไข\wbr{}ตาม\wbr{}ที่\wbr{}ต้องการ\wbr{}ด้วย.
+
+การ\wbr{}หา\wbr{}ไฟล์\wbr{}ตาม\wbr{}เงื่อน\wbr{}ไข\wbr{}แบบ\wbr{}ง่ายๆ\wbr{}ได้\wbr{}แก่\wbr{}การ\wbr{}หา\wbr{}ไฟล์\wbr{}ตาม\wbr{}ชื่อ\wbr{}ที่\wbr{}ต้องการ. ใน\wbr{}ตัว\wbr{}อย่าง\wbr{}ต่อ\wbr{}ไป\wbr{}นี้\wbr{}เป็น\wbr{}หาร\wbr{}ไฟล์\wbr{}ที่\wbr{}ลง\wbr{}ท้าย\wbr{}ด้วย ``\cmd{.o}'' (ตัว\wbr{}เลือก \cmd{-name}) ที่\wbr{}อยู่\wbr{}ใต้\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ปัจจุบัน\wbr{}และ\wbr{}ให้\wbr{}แสดง\wbr{}ชื่อ\wbr{}ไฟล์ (relative path) ทาง\wbr{}หน้า\wbr{}จอ (ตัว\wbr{}เลือก \cmd{-print}).
+\begin{MyExample}[การ\wbr{}ใช้ \cmd{find} หา\wbr{}ไฟล์\wbr{}ตาม\wbr{}ชื่อ\wbr{}ที่\wbr{}ต้องการ.]
+\begin{MyEx}
+$ \cin{find . -name "*.o" -print}
+./CVS/software/cttex/map.o
+./CVS/software/xiterm+thai/src/command.o
+./CVS/software/xiterm+thai/src/debug.o
+...
+\end{MyEx}
+\end{MyExample}%$
+สมมติ\wbr{}ว่า\wbr{}เรา\wbr{}ต้องการ\wbr{}จะ\wbr{}ลบ\wbr{}ไฟล์\wbr{}เหล่า\wbr{}นี้\wbr{}ด้วย\wbr{}ก็\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{-exec} ให้\wbr{}คำ\wbr{}สั่ง \cmd{find} ดัง\wbr{}นี้.
+\begin{MyExample}[ใช้\wbr{}คำ\wbr{}สั่ง \cmd{find} ลบ\wbr{}ไฟล์\wbr{}ที่\wbr{}ต้องการ.]
+\begin{MyEx}
+$ \cin{find . -name "*.o" -exec rm -v '\{\}' \bs{};}
+removed `./CVS/software/cttex/map.o'
+removed `./CVS/software/xiterm+thai/src/command.o'
+removed `./CVS/software/xiterm+thai/src/debug.o'
+...
+\end{MyEx}
+\end{MyExample}%$
+อาร์กิวเ\wbr{}มนต์\wbr{}ที่\wbr{}อยู่\wbr{}หลัง \cmd{-exec} คือ\wbr{}คำ\wbr{}สั่ง\wbr{}ที่\wbr{}ต้องการ\wbr{}ทำ\wbr{}กับ\wbr{}ไฟล์\wbr{}ที่\wbr{}ค้น\wbr{}หา\wbr{}เจอ. \cmd{'\{\}'} เป็น\wbr{}ตัว\wbr{}แทน\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}ที่\wbr{}หา\wbr{}เจอ\wbr{}และ\wbr{}สาเหตุ\wbr{}ที่\wbr{}ต้อง\wbr{}ใช้\wbr{}เครื่อง\wbr{}หมาย quote คร่อม\wbr{}เพราะ\wbr{}เครื่อง\wbr{}หมาย\wbr{}ปีก\wbr{}กา\wbr{}มี\wbr{}ความ\wbr{}หมาย\wbr{}พิเศษ\wbr{}ต่อ\wbr{}เชลล์. ตัว\wbr{}อักษร ``\cmd{\bs{};}''\mymemo{จะ\wbr{}ใช้\wbr{}เครื่อง\wbr{}หมาย quote ก็\wbr{}ได้\wbr{}เช่น \cmd{find . -name "*.o" -exec rm -v '\{\}' ';'}.} เป็น\wbr{}ตัว\wbr{}บอก\wbr{}ให้\wbr{}คำ\wbr{}สั่ง \cmd{find} รู้\wbr{}ว่า\wbr{}จบ\wbr{}คำ\wbr{}สั่ง\wbr{}ที่\wbr{}ต้องการ\wbr{}ใช้\wbr{}เมื่อ\wbr{}หา\wbr{}ไฟล์\wbr{}นั้น\wbr{}เจอ. สาเหตุ\wbr{}ที่\wbr{}ต้อง\wbr{}ใส่\wbr{}เครื่อง\wbr{}หมาย backslash หน้า \cmd{;} เพราะ \cmd{;} มี\wbr{}ความ\wbr{}หมาย\wbr{}พิเศษ\wbr{}สำหรับ\wbr{}เชลล์.
+
+สำหรับ\wbr{}วิธี\wbr{}การ\wbr{}หา\wbr{}ไฟล์\wbr{}จาก\wbr{}เงื่อน\wbr{}ไข\wbr{}อื่นๆ\wbr{}เช่น สิทธิ์\wbr{}การ\wbr{}ใช้\wbr{}ไฟล์, เวลา\wbr{}ที่\wbr{}แก้\wbr{}ไข\wbr{}ไฟล์ ฯลฯ สามารถ\wbr{}อ่าน\wbr{}ได้\wbr{}จาก \cmd{man find}. เนื่อง\wbr{}จาก\wbr{}คำ\wbr{}สั่ง \cmd{find} เป็น\wbr{}คำ\wbr{}สั่ง\wbr{}ที่\wbr{}ซับ\wbr{}ซ้อน\wbr{}และ\wbr{}ใช้\wbr{}ยาก, สำหรับ\wbr{}ผู้\wbr{}ที่\wbr{}ใช้\wbr{}เดกสท\wbr{}อป\wbr{}อาจ\wbr{}จะ\wbr{}ใช้\wbr{}ไฟล์บ\wbr{}ราวเ\wbr{}ซอร์ \cmd{konqueror} ใน\wbr{}การ\wbr{}หา\wbr{}ไฟล์\wbr{}ที่\wbr{}ต้องการ. เมนู\wbr{}การ\wbr{}หา\wbr{}ไฟล์\wbr{}ของ \cmd{konqueror} มี\wbr{}ตัว\wbr{}เลือก\wbr{}ต่างๆ\wbr{}เหมือน\wbr{}กับ\wbr{}ที่\wbr{}คำ\wbr{}สั่ง \cmd{find} ทำ\wbr{}ได้.
+
+\begin{figure}[!htb]
+\plfigure{.5}{konqueror_find.eps}{เมนู\wbr{}หา\wbr{}ไฟล์\wbr{}ใน konqueror.}{konqueror_find}
+\end{figure}
+
+\subsection{ดู\wbr{}ข้อ\wbr{}มูล\wbr{}ใน\wbr{}ไฟล์}
+การ\wbr{}กระทำ\wbr{}กับ\wbr{}ไฟล์\wbr{}อย่าง\wbr{}หนึ่ง\wbr{}ที่\wbr{}เกิด\wbr{}ขึ้น\wbr{}บ่อย\wbr{}ได้\wbr{}แก่\wbr{}การ\wbr{}ดู\wbr{}ข้อ\wbr{}มูล\wbr{}ใน\wbr{}ไฟล์. เรา\wbr{}อาจ\wbr{}จะ\wbr{}ใช้\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}ที่\wbr{}ถนัด\wbr{}เช่น \cmd{vi}, \cmd{emacs}, \cmd{gedit} ฯลฯ เปิด\wbr{}ไฟล์\wbr{}ดู\wbr{}ข้อ\wbr{}มูล\wbr{}ข้าง\wbr{}ใน\wbr{}ก็\wbr{}ได้. แต่\wbr{}การ\wbr{}เรียก\wbr{}ใช้\wbr{}โปรแกรม\wbr{}เหล่า\wbr{}นี้\wbr{}เป็น\wbr{}การ\wbr{}ใช้\wbr{}ทรัพยากรณ์ (resource) ของ\wbr{}คอมพิวเตอร์\wbr{}โดย\wbr{}ใช่\wbr{}เหตุ. ถ้า\wbr{}ต้องการ\wbr{}ดู\wbr{}เนื้อ\wbr{}หา\wbr{}ใน\wbr{}ไฟล์\wbr{}ควร\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง\wbr{}ที่\wbr{}ใช้\wbr{}ทรัพยากรณ์\wbr{}น้อย\wbr{}เช่น \cmd{cat}, \cmd{less}. และ\wbr{}โปรแกรม\wbr{}เหล่า\wbr{}นี้\wbr{}สา\wbr{}มาร\wbr{}ใช้\wbr{}ได้\wbr{}ในเ\wbr{}ทอร์\wbr{}มิ\wbr{}นอล, ทำ\wbr{}งาน\wbr{}เฉพาะ\wbr{}ทาง\wbr{}จึง\wbr{}ทำ\wbr{}ให้\wbr{}การ\wbr{}ทำ\wbr{}งาน\wbr{}เร็ว\wbr{}กว่า\wbr{}การ\wbr{}ใช้\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}ทั่ว\wbr{}ไป.
+
+โดย\wbr{}ทั่ว\wbr{}ไป\wbr{}เรา\wbr{}จะ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{less} เพื่อ\wbr{}ดู\wbr{}ข้อ\wbr{}มูล\wbr{}ไฟล์เท็กซ์. การ\wbr{}ดู\wbr{}เนื้อ\wbr{}หา\wbr{}ใน\wbr{}ไฟล์\wbr{}อย่าง\wbr{}เดียว\wbr{}ไม่\wbr{}เพียง\wbr{}พอ, บ่อย\wbr{}ครั้ง\wbr{}ที่\wbr{}เรา\wbr{}ต้องการ\wbr{}หา\wbr{}คำ\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}ไฟล์\wbr{}นั้น\wbr{}ด้วย. ใน\wbr{}กรณี\wbr{}นี้ keybinding\mymemo{key binding ของ \cmd{less} ดู\wbr{}ได้\wbr{}ที่\wbr{}หน้า \pageref{tab:lesskey}.} ``\cmd{/}'' ซึ่ง\wbr{}จะ\wbr{}เป็น\wbr{}การ\wbr{}หา\wbr{}คำ\wbr{}ไป\wbr{}ข้าง\wbr{}หน้า. ใช้\wbr{}คีย์ ``\cmd{?}'' เพื่อ\wbr{}หา\wbr{}คำ\wbr{}ย้อม\wbr{}หลัง. ถ้า\wbr{}ต้องการ\wbr{}แก้\wbr{}ไข\wbr{}ไฟล์\wbr{}นั้น\wbr{}ก็\wbr{}ใช้\wbr{}คีย์ \cmd{v} เพื่อ\wbr{}เรียก\wbr{}บรรณาธิ\wbr{}กรณ์\wbr{}ที่\wbr{}ตั้ง\wbr{}ค่า\wbr{}ไว้\wbr{}ใน\wbr{}ตัวแปร\wbr{}สภาพ\wbr{}แวด\wbr{}ล้อม\wbr{}มา\wbr{}เป็น\wbr{}โปรแกรม\wbr{}แก้\wbr{}ไข\wbr{}ไฟล์\wbr{}นั้น.
+
+\subsubsection{การ\wbr{}ดู\wbr{}ไฟล์ไบ\wbr{}นารี}
+
+เรา\wbr{}สามารถ\wbr{}ดู\wbr{}ไฟล์\wbr{}อะไร\wbr{}ก็\wbr{}ได้\wbr{}ด้วย\wbr{}คำ\wbr{}สั่ง\wbr{}เช่น \cmd{less}, \cmd{cat}, \cmd{head}%
+ฯลฯ. ถ้า\wbr{}ใน\wbr{}ไฟล์\wbr{}นั้น\wbr{}เป็น\wbr{}ไฟล์ไบ\wbr{}นารี\wbr{}ก็\wbr{}อาจ\wbr{}จะ\wbr{}แสดง\wbr{}อักขระ\wbr{}ที่\wbr{}อ่าน\wbr{}ไม่\wbr{}ออก\wbr{}ทางเ\wbr{}ทอร์\wbr{}มิ\wbr{}นอล\wbr{}ใน\wbr{}รูป\wbr{}ที่ \ref{fig:binfile}.
+
+\begin{figure}[!htb]
+\ifthenelse{\isodd{\pageref{fig:binfile}}}%
+{\parbox{\headwidth}{\center\scalebox{.3}{\includegraphics{less_binaryfile.eps}~~~~\includegraphics{cat_binaryfile.eps}}\caption{การ\wbr{}ดู\wbr{}ไฟล์ไบ\wbr{}นารี\wbr{}ทางเ\wbr{}ทอร์\wbr{}มิ\wbr{}นอล}\label{fig:binfile}}}%
+{\leftskip=\moveback\parbox{\headwidth}{\center\scalebox{.3}{\includegraphics{less_binaryfile.eps}~~~~\includegraphics{cat_binaryfile.eps}}\caption{การ\wbr{}ดู\wbr{}ไฟล์ไบ\wbr{}นารี\wbr{}ทางเ\wbr{}ทอร์\wbr{}มิ\wbr{}นอล}\label{fig:binfile}}}
+\end{figure}
+ใน\wbr{}กรณี\wbr{}ที่\wbr{}ใช้\wbr{}โปรแกรม\wbr{}ที่\wbr{}ไม่\wbr{}มี\wbr{}การ\wbr{}กรอง\wbr{}อักขระ\wbr{}ควบ\wbr{}คุม\wbr{}ที่\wbr{}แสดง\wbr{}ทางเ\wbr{}ทอร์\wbr{}มิ\wbr{}นอล\wbr{}เช่น \cmd{cat}, \cmd{head} ฯลฯ จะ\wbr{}ทำ\wbr{}ให้เ\wbr{}ทอร์\wbr{}มิ\wbr{}นอล\wbr{}แสดง\wbr{}ผล\wbr{}หรือ\wbr{}ทำ\wbr{}งาน\wbr{}ผิด\wbr{}ปรกติ\wbr{}หลัง\wbr{}จาก\wbr{}ดู\wbr{}ไฟล์ไบ\wbr{}นารี. ใน\wbr{}กรณี\wbr{}ให้\wbr{}พิมพ์\wbr{}คำ\wbr{}สั่ง \cmd{reset}\cindex{reset}\myexplanation{reset}{รีเซ็ต\wbr{}ให้เ\wbr{}ทอร์\wbr{}มิ\wbr{}นอล\wbr{}อยู่\wbr{}ใน\wbr{}สภาพ\wbr{}เริ่ม\wbr{}ต้น\wbr{}ปรกติ.} ถึง\wbr{}แม้\wbr{}จะ\wbr{}อ่าน\wbr{}ไม่\wbr{}ออก\wbr{}ก็\wbr{}ตาม\wbr{}แล้ว\wbr{}กด\wbr{}คีย์ \kk{Enter} ตาม. คำ\wbr{}สั่ง \cmd{reset} จะ\wbr{}ทำ\wbr{}ให้เ\wbr{}ทอร์\wbr{}มิ\wbr{}นอ\wbr{}ลก\wbr{}ลับ\wbr{}อยู่\wbr{}ใน\wbr{}สภาพ\wbr{}ปรกติ.
+
+โอกาส\wbr{}ที่\wbr{}จะ\wbr{}ดู\wbr{}เนื้อ\wbr{}หา\wbr{}ของ\wbr{}ไฟล์ไบ\wbr{}นารี\wbr{}คง\wbr{}มี\wbr{}ไม่\wbr{}บ่อย\wbr{}นัก\wbr{}แต่\wbr{}ถ้า\wbr{}มี\wbr{}ความ\wbr{}จำ\wbr{}เป็น, คำ\wbr{}สั่ง \cmd{od}\cindex{od}\refcmd{od}\mymemo{ลิ\wbr{}นุกซ์\wbr{}ยัง\wbr{}มี\wbr{}คำ\wbr{}สั่ง\wbr{}ที่\wbr{}คล้าย\wbr{}กับ\wbr{}คำ\wbr{}สั่ง \cmd{od} อื่นๆ\wbr{}อีก\wbr{}เช่น \cmd{hexdump}\cindex{hexdump}} %
+ช่วย\wbr{}เรา\wbr{}ได้.
+\begin{MyExample}[ใช้ \cmd{od} ดู\wbr{}ไฟล์ไบ\wbr{}นารี.]
+\begin{MyEx}
+$ \cin{od /bin/bash | head -n 3}
+0000000 042577 043114 000401 000001 000000 000000 000000 000000
+0000020 000002 000003 000001 000000 131260 004005 000064 000000
+0000040 074170 000011 000000 000000 000064 000040 000010 000050
+\end{MyEx}
+\end{MyExample}%$
+ใน\wbr{}แต่\wbr{}ละ\wbr{}บรรทัด\wbr{}จะ\wbr{}เป็น\wbr{}ข้อ\wbr{}มูล\wbr{}ใน\wbr{}ไฟล์\wbr{}ที่\wbr{}แสดง\wbr{}ใน\wbr{}รูป\wbr{}ของ\wbr{}ค่า\wbr{}ฐาน\wbr{}แปด. ถ้า\wbr{}ต้องการ\wbr{}ให้\wbr{}แสดง\wbr{}ข้อ\wbr{}มูล\wbr{}เป็น\wbr{}ฐาน\wbr{}สิบ\wbr{}หก\wbr{}ให้\wbr{}ใช้\wbr{}ตัว\wbr{}เลือก \cmd{-h} (hexadecimal). อย่าง\wbr{}ไร\wbr{}ก็\wbr{}ตาม\wbr{}การ\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}แสดง\wbr{}นั้น\wbr{}ไม่\wbr{}สื่อ\wbr{}ความ\wbr{}หมาย\wbr{}เท่า\wbr{}ที่\wbr{}ควร\wbr{}เพราะ\wbr{}เป็น\wbr{}ตัว\wbr{}ค่า\wbr{}ของ\wbr{}ข้อ\wbr{}มูล\wbr{}ล้วนๆ. ถ้า\wbr{}ใช้\wbr{}ตัว\wbr{}เลือก \cmd{-c} (character), คำ\wbr{}สั่ง \cmd{od} จะ\wbr{}พยายาม\wbr{}แสดง\wbr{}ข้อ\wbr{}มูล\wbr{}ที่\wbr{}เป็น\wbr{}อักขระ ASCII ทาง\wbr{}หน้า\wbr{}จอ.
+\begin{MyExample}[ใช้ \cmd{od} กับ\wbr{}ตัว\wbr{}เลือก \cmd{-c} ดู\wbr{}ไฟล์ไบ\wbr{}นารี.]\label{ex:od}
+\begin{MyEx}
+$ \cin{od -c /bin/bash | head -n 3}
+0000000 177   E   L   F 001 001 001  \bs{}0  \bs{}0  \bs{}0  \bs{}0  \bs{}0  \bs{}0  \bs{}0  \bs{}0  \bs{}0
+0000020 002  \bs{}0 003  \bs{}0 001  \bs{}0  \bs{}0  \bs{}0 260 262 005  \bs{}b   4  \bs{}0  \bs{}0  \bs{}0
+0000040   x   x  \bs{}t  \bs{}0  \bs{}0  \bs{}0  \bs{}0  \bs{}0   4  \bs{}0      \bs{}0  \bs{}b  \bs{}0   (  \bs{}0
+\end{MyEx}
+\end{MyExample}%$
+จะ\wbr{}เห็น\wbr{}ข้อ\wbr{}มูล\wbr{}บาง\wbr{}ส่วน\wbr{}ในไบ\wbr{}นารี\wbr{}ไฟล์\wbr{}มี\wbr{}ข้อ\wbr{}มูลเท็กซ์\wbr{}ผสม\wbr{}อยู่\wbr{}ด้วย.
+
+คำ\wbr{}สั่ง \cmd{less}\refcmd{less} สามารถ\wbr{}เปิด\wbr{}ดู\wbr{}ไฟล์ไบ\wbr{}นารี\wbr{}ได้\wbr{}เช่น\wbr{}เดียว\wbr{}กับ\wbr{}การ\wbr{}ดู\wbr{}ไฟล์เท็กซ์. จาก\wbr{}รูป\wbr{}ที่ \ref{fig:binfile} เป็น\wbr{}การ\wbr{}ใช้ \cmd{less} เปิด\wbr{}ดู\wbr{}ไฟล์ \cmd{/bin/bash} ซึ่ง\wbr{}ถ้า\wbr{}เปรียบ\wbr{}เทียบ\wbr{}กับ\wbr{}ตัว\wbr{}อย่าง\wbr{}ที่ \ref{ex:od} จะ\wbr{}เห็น\wbr{}ว่า\wbr{}คำ\wbr{}สั่ง \cmd{less} จะ\wbr{}แสดง\wbr{}ส่วน\wbr{}ที่\wbr{}เป็น\wbr{}อักขระ ASCII ให้. ถ้า\wbr{}มี\wbr{}การ\wbr{}ตั้ง\wbr{}ตัวแปร\wbr{}สภาพ\wbr{}แวด\wbr{}ล้อม \cmd{LESSOPEN} ไว้, \cmd{less} จะ\wbr{}ใช้\wbr{}โปรแกรม\wbr{}ที่\wbr{}ระบุ\wbr{}ไว้\wbr{}ใน\wbr{}ตัวแปร\wbr{}นั้น\wbr{}เป็น\wbr{}โปรแกรม\wbr{}ประมวล\wbr{}ผล\wbr{}ไฟล์\wbr{}ที่\wbr{}ต้องการ\wbr{}ดู\wbr{}ข้อ\wbr{}มูล\wbr{}ก่อน\wbr{}ที่\wbr{}จะ\wbr{}ใช้ \cmd{less} เปิด\wbr{}อ่าน\wbr{}ไฟล์\wbr{}นั้น. ตัว\wbr{}อย่าง\wbr{}เช่น\wbr{}ถ้า\wbr{}ไฟล์\wbr{}ที่\wbr{}ต้องการ\wbr{}เปิด\wbr{}อ่าน\wbr{}ด้วย \cmd{less} เป็น\wbr{}ไฟล์\wbr{}ที่\wbr{}บีบ\wbr{}อัด\wbr{}ด้วย \cmd{gzip} (\cmd{.gz}), โปรแกรม\wbr{}ที่\wbr{}ระบุ\wbr{}ไว้\wbr{}ใน\wbr{}ตัวแปร\wbr{}สภาพ\wbr{}แวด\wbr{}ล้อม\wbr{}ก็\wbr{}จะ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{gzip} ขยาย\wbr{}ไฟล์\wbr{}นั้น\wbr{}ก่อน\wbr{}แล้ว\wbr{}ส่ง\wbr{}ข้อ\wbr{}มูล\wbr{}ไป\wbr{}ให้ \cmd{less}. ถ้า\wbr{}ไม่\wbr{}ต้องการ\wbr{}ใช้\wbr{}โปรแกรม\wbr{}ที่\wbr{}ระบุ\wbr{}ไว้\wbr{}ใน\wbr{}ตัวแปร\wbr{}สภาพ\wbr{}แวด\wbr{}ล้อม \cmd{LESSOPEN} ก็\wbr{}ใช้\wbr{}ใช้\wbr{}ตัว\wbr{}เลือก \cmd{-L}.
+
+คำ\wbr{}สั่ง\wbr{}ที่\wbr{}ใช้\wbr{}ดู\wbr{}ข้อ\wbr{}มูลเท็กซ์\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}ไฟล์ไบ\wbr{}นารี\wbr{}ที่\wbr{}มี\wbr{}ประโยชน์\wbr{}อีด\wbr{}คำ\wbr{}สั่ง\wbr{}คือ \cmd{strings}\cindex{strings}\refcmd{strings}. คำ\wbr{}สั่ง \cmd{strings} จะ\wbr{}สกัด\wbr{}ส่วน\wbr{}ที่\wbr{}เป็น\wbr{}ข้อ\wbr{}มูลเท็กซ์\wbr{}ออก\wbr{}มา\wbr{}จาก\wbr{}ไฟล์ไบ\wbr{}นารี. ถ้า\wbr{}ไม่\wbr{}มี\wbr{}การ\wbr{}ระบุ\wbr{}ตัว\wbr{}เลือก, คำ\wbr{}สั่ง \cmd{strings} จะ\wbr{}ถือ\wbr{}ว่า\wbr{}ข้อ\wbr{}มูลเท็กซ์\wbr{}ที่\wbr{}ต้องการ\wbr{}คือ\wbr{}อักขระ ASCII ที่\wbr{}เรียง\wbr{}ติด\wbr{}กัน\wbr{}อย่าง\wbr{}น้อย 4 ตัว.
+\begin{MyExample}[การ\wbr{}สกัด\wbr{}ส่วน\wbr{}ที่\wbr{}เป็น\wbr{}ข้อ\wbr{}มูลเท็กซ์\wbr{}จาก\wbr{}ไฟล์ไบ\wbr{}นารี.]
+\begin{MyEx}
+$ \cin{strings /bin/bash | head -n 3}
+/lib/ld-linux.so.2
+libdl.so.2
+dlerror
+\end{MyEx}
+\end{MyExample}%$
+สาเหตุ\wbr{}ที่\wbr{}คำ\wbr{}สั่ง \cmd{strings} ไม่\wbr{}แสดง\wbr{}คำ\wbr{}ว่า ``ELF'' ทั้งๆ\wbr{}ที่\wbr{}คำ\wbr{}สั่ง \cmd{od} เห็น\wbr{}ว่า\wbr{}มี\wbr{}คำ\wbr{}นี้\wbr{}เพราะ\wbr{}ว่า\wbr{}คำ\wbr{}สั่ง \cmd{strings} จะ\wbr{}สกัด\wbr{}ข้อ\wbr{}มูลเท็กซ์\wbr{}จาก\wbr{}ไฟล์ไบ\wbr{}นารี\wbr{}ที่\wbr{}เป็น\wbr{}ไฟล์\wbr{}โปรแกรม, และ\wbr{}จะ\wbr{}สกัด\wbr{}ข้อ\wbr{}มูลเท็กซ์\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}ช่วง\wbr{}ของ\wbr{}ข้อ\wbr{}มูล\wbr{}โปรแกรม (data sectoin) เท่า\wbr{}นั้น. ถ้า\wbr{}ต้องการ\wbr{}จะ\wbr{}ให้\wbr{}คำ\wbr{}สั่ง \cmd{strings} สกัด\wbr{}ข้อ\wbr{}มูลเท็กซ์\wbr{}จาก\wbr{}ทุก\wbr{}ส่วน\wbr{}ใน\wbr{}ไฟล์\wbr{}โปรแกรม, ให้\wbr{}ใช้\wbr{}ตัว\wbr{}เลือก \cmd{-a} (all) ประกอบ.
+\begin{MyExample}[การ\wbr{}ใช้ \cmd{strings} กับ\wbr{}ตัว\wbr{}เลือก \cmd{-a}.]
+\begin{MyEx}
+$ \cin{strings -a -3 /bin/bash | head -n 3}
+ELF
+xx
+`D
+\end{MyEx}
+\end{MyExample}%$
+
+
+
+%\section{ไฟล์บ\wbr{}ราวเ\wbr{}ซอร์}
+%สำหรับ\wbr{}ผู้\wbr{}ที่\wbr{}ยัง\wbr{}ไม่\wbr{}คุ้น\wbr{}เคย\wbr{}กับ
+
+%gpathfinder, nautilus, konqueror, gtkfind
+
+
+\section{สรุป\wbr{}ท้าย\wbr{}บท}
+\begin{itemize}
+\item พาร์ทิ\wbr{}ชัน\wbr{}คือ\wbr{}การ\wbr{}แบ่ง\wbr{}ฮาร์ดดิสก์\wbr{}เชิง\wbr{}ตรรกะ\wbr{}ยัง\wbr{}ไม่\wbr{}สามารถ\wbr{}ใช้\wbr{}งาน\wbr{}ได้\wbr{}จน\wbr{}กว่า\wbr{}จะ\wbr{}สร้าง\wbr{}ระบบ\wbr{}ไฟล์\wbr{}ใน\wbr{}พาร์ทิ\wbr{}ชัน\wbr{}นั้น.
+\item ระบบ\wbr{}ไฟล์\wbr{}เชิง\wbr{}ตรรกะ\wbr{}ใน\wbr{}ลิ\wbr{}นุกซ์\wbr{}จะ\wbr{}มี\wbr{}โครง\wbr{}สร้าง\wbr{}เป็น\wbr{}แผน\wbr{}ภาพ\wbr{}ต้น\wbr{}ไม้\wbr{}โดย\wbr{}มี\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}รูท\wbr{}เป็น\wbr{}จุด\wbr{}เริ่ม\wbr{}ต้น\wbr{}และ\wbr{}ขยาย\wbr{}เป็น\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ย่อย\wbr{}ต่อ\wbr{}ไป.
+\item การ mount คือ\wbr{}การ\wbr{}นำ\wbr{}พาร์ทิ\wbr{}ชัน\wbr{}มา\wbr{}ปะ\wbr{}ติด\wbr{}กับ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ใน\wbr{}ระบบ\wbr{}ไฟล์.
+\item ไฟล์\wbr{}คือ\wbr{}กลุ่ม\wbr{}ข้อ\wbr{}มูล\wbr{}หน่วย\wbr{}เป็นไบต์\wbr{}ที่\wbr{}เรียง\wbr{}เป็น\wbr{}ลำดับ\wbr{}ต่อ\wbr{}กัน\wbr{}ไป\wbr{}เป็น\wbr{}สาย.
+\item ทุก\wbr{}อย่าง\wbr{}ใน\wbr{}ระบบ\wbr{}ปฏิบัติ\wbr{}การ\wbr{}ยู\wbr{}นิกซ์\wbr{}และ\wbr{}ลิ\wbr{}นุกซ์\wbr{}สามารถ\wbr{}แสดง\wbr{}ได้\wbr{}ด้วย\wbr{}ไฟล์.
+\item ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}คือ\wbr{}ไฟล์\wbr{}พิเศษ\wbr{}ที่\wbr{}มี\wbr{}ข้อ\wbr{}มูล\wbr{}เกี่ยว\wbr{}กับ\wbr{}ชื่อ\wbr{}ไฟล์\wbr{}และ\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}หน่วย\wbr{}ความ\wbr{}จำ\wbr{}ถาวร\wbr{}ของ\wbr{}ไฟล์\wbr{}นั้น.
+\item คำ\wbr{}ว่า ``ไฟล์'' มี\wbr{}ความ\wbr{}ได้\wbr{}สอง\wbr{}อย่าง\wbr{}คือ\wbr{}ไฟล์\wbr{}จริง (ข้อ\wbr{}มูล) หรือ\wbr{}ชื่อ\wbr{}ไฟล์ (ชื่อ\wbr{}อ้าง\wbr{}อิง\wbr{}ข้อ\wbr{}มูล).
+%\item ใน\wbr{}ระบบ\wbr{}ปฏิบัติ\wbr{}การ\wbr{}ลิ\wbr{}นุกซ์\wbr{}มี\wbr{}คำ\wbr{}สั่ง\wbr{}สำหรับ\wbr{}จัด\wbr{}การ, ประมวล\wbr{}ผล\wbr{}ไฟล์\wbr{}หลาย\wbr{}คำ\wbr{}สั่ง. การ\wbr{}ศึกษา\wbr{}และ\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง\wbr{}เหล่า\wbr{}นี้\wbr{}ร่วม\wbr{}กัน\wbr{}ช่วย\wbr{}ให้\wbr{}ผู้\wbr{}ใช้\wbr{}ทำ\wbr{}งาน\wbr{}ได้\wbr{}คล่อง\wbr{}และ\wbr{}มี\wbr{}ประสิทธิภาพ.
+\end{itemize}
+
+%\section{คำ\wbr{}ถาม\wbr{}ทบ\wbr{}ทวน\wbr{}ความ\wbr{}เข้า\wbr{}ใจ}
+%\begin{description}
+%\myprac สมมติ\wbr{}ว่า\wbr{}มี\wbr{}ไฟล์\wbr{}ชื่อ \cmd{-whatever}. จะ\wbr{}ลบ\wbr{}ไฟล์\wbr{}นี้\wbr{}ด้วย\wbr{}คำ\wbr{}สั่ง \cmd{rm} ได้\wbr{}อย่าง\wbr{}ไร? (คำ\wbr{}ตอบ\wbr{}หน้า \pageref{q_3_1})
+%\myprac จง\wbr{}สังเกต\wbr{}ตัว\wbr{}อย่าง\wbr{}ต่อ\wbr{}ไป\wbr{}นี้
+%\begin{MyVerbatim}
+%$ \cin{ls -l}
+%total 0
+%$ \cin{ls -al}
+%total 8
+%drwxr-xr-x    2 somchai  users        4096 May 30 18:21 ./
+%-rw-r--r--    1 somchai  users           0 May 30 18:21 .
+%-rw-r--r--    1 somchai  users           0 May 30 18:24 .
+%drwx------   51 somchai  users        4096 May 30 17:40 ../
+%$ \cin{rm .}
+%rm: cannot remove `.' or `..'
+%\end{MyVerbatim}
+%จง\wbr{}ให้\wbr{}เหตุ\wbr{}ผล\wbr{}ที่\wbr{}เป็น\wbr{}ไป\wbr{}ได้\wbr{}ว่า\wbr{}ทำไม\wbr{}มี\wbr{}ไฟล์ ``\cmd{.}'' สอง\wbr{}ไฟล์. และ\wbr{}จะ\wbr{}ลบ\wbr{}เหล่า\wbr{}นี้\wbr{}ได้\wbr{}อย่าง\wbr{}ไร? (\cmd{./} และ \cmd{../} คือ\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี.) (คำ\wbr{}ตอบ\wbr{}หน้า \pageref{q_3_2})
+%\myprac ให้\wbr{}ไฟล์\wbr{}เสียง \cmd{.au} หรือ \cmd{.wav} ที่\wbr{}มี\wbr{}ใน\wbr{}ระบบ\wbr{}แล้ว\wbr{}ใช้ \cmd{cat} ฟัง\wbr{}เสียง\wbr{}ที่\wbr{}อยู่\wbr{}ใน\wbr{}ไฟล์\wbr{}นั้นๆ. (คำ\wbr{}ตอบ\wbr{}หน้า \pageref{q_3_3})
+%\myprac ให้\wbr{}ใช้\wbr{}คำ\wbr{}สั่ง \cmd{cd} และ \cmd{ls} สำรวจ\wbr{}โครง\wbr{}สร้าง\wbr{}ระบบ\wbr{}ไฟล์\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี\wbr{}ด้วย\wbr{}ตัว\wbr{}เอง.
+%\myprac ให้\wbr{}หา\wbr{}ไฟล์\wbr{}ที่\wbr{}มี\wbr{}การ\wbr{}ตั้ง\wbr{}ค่า\wbr{}บิต suid และ sgid ที่\wbr{}อยู่\wbr{}ใน\wbr{}ไดเ\wbr{}รก\wbr{}ทอ\wbr{}รี \cmd{/usr/bin}. (คำ\wbr{}ตอบ\wbr{}หน้า \pageref{q_3_5})
+%\myprac จง\wbr{}หา\wbr{}หลัก\wbr{}ฐาน (หรือ\wbr{}ข้อ\wbr{}สัน\wbr{}นิ\wbr{}ฐาน) ว่า\wbr{}เชลล์ \cmd{bash} พยายาม\wbr{}อ่าน\wbr{}ไฟล์\wbr{}เริ่ม\wbr{}ต้น\wbr{}จาก \cmd{/etc/profile}, \cmd{~/.bash\_profile}. (คำ\wbr{}ตอบ\wbr{}หน้า \pageref{q_3_6})
+%\myprac ให้\wbr{}สำรวจ\wbr{}ว่า\wbr{}ลิ\wbr{}นุกซ์\wbr{}ที่\wbr{}ผู้\wbr{}อ่าน\wbr{}ใช้\wbr{}อยู่\wbr{}มี\wbr{}การ\wbr{}บันทึก atime ทุก\wbr{}ครั้ง\wbr{}ที่\wbr{}ใช้\wbr{}ไฟล์\wbr{}หรือ\wbr{}ไม่. (คำ\wbr{}ตอบ\wbr{}หน้า \pageref{q_3_7})
+%\end{description}
+
+
+
+
+
+
+
+
+
+

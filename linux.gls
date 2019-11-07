@@ -1,0 +1,263 @@
+\begin{theglossary} 
+
+ \nomgroup{A}
+
+  \item [{{\latintext address space}}]\begingroup \mbox {}\\ หน่วย\wbr ความ\wbr จำ\wbr เสมือน (virtual memory) ที่\wbr โปร\wbr เซส\wbr สามารถ\wbr ใช้\wbr ได้. เ\wbr คอร์เนล\wbr จะแม็ป (map) address space เข้า\wbr กับ\wbr หน่วย\wbr ความ\wbr จำ\wbr จริง (physical memory) เวลา\wbr ใช้\wbr งาน.\label {vocab:address space}\nomeqref {5.0}
+		\nompageref{206}
+  \item [{{\latintext archive}}]\begingroup \mbox {}\\ การ\wbr เก็บ\wbr ไฟล์, เอก\wbr สาร\wbr สำคัญ\wbr ไว้. ถ้า\wbr เป็น\wbr คำ\wbr นาม\wbr จะ\wbr หมาย\wbr ถึง\wbr เอก\wbr สาร\wbr ที่\wbr เก็บ\wbr ไว้\wbr เช่น\wbr เอก\wbr สาร\wbr สำรอง\wbr หรือ\wbr เอก\wbr สาร\wbr สำคัญ.\label {vocab:archive}\nomeqref {4.0}
+		\nompageref{182}
+  \item [{{\latintext assembly language}}]\begingroup \mbox {}\\ \emph {ภาษา\wbr แอสเ\wbr ซมบ\wbr ลี}. ภาษา\wbr คอมพิวเตอร์\wbr ชั้น\wbr ต่ำ, มี\wbr ความ\wbr ขึ้น\wbr อยู่\wbr กับ\wbr สถาปัตยกรรม\wbr ที่\wbr ใช้\wbr มาก\wbr ทำ\wbr ให้\wbr ยาก\wbr ต่อ\wbr การ\wbr พอร์ต\wbr โปรแกรม\wbr ไป\wbr ใช้\wbr กับ\wbr สถาปัตยกรรม\wbr อื่นๆ.\label {vocab:assembly language}\nomeqref {2.0}
+		\nompageref{22}
+
+ \nomgroup{B}
+
+  \item [{{\latintext base64}}]\begingroup \mbox {}\\ วิธี\wbr การ\wbr เข้า\wbr รหัส\wbr ข้อ\wbr มูลไบ\wbr นารี\wbr ให้\wbr เป็นเท็กซ์ ASCII โดย\wbr ใช้\wbr อักขระ 65 ตัว\wbr ได้\wbr แก่ \cmd {A-Z}, \cmd {a-z}, \cmd {0-9}, \cmd {+}, \cmd {/} และ \cmd {=} \cite {base64}.\label {vocab:base64}\nomeqref {4.0}
+		\nompageref{185}
+  \item [{{\latintext batch}}]\begingroup \mbox {}\\ การ\wbr ประมวล\wbr ผล\wbr ข้อ\wbr มูล\wbr โดย\wbr รวบ\wbr รวม\wbr กระทำ\wbr ตาม\wbr ลำดับ\wbr ที่\wbr กำหนด\wbr ไว้.\label {vocab:batch}\nomeqref {4.0}
+		\nompageref{168}
+  \item [{{\latintext Bezier}}]\begingroup \mbox {}\\ เส้น\wbr โค้ง B\'ezier เป็น\wbr เส้น\wbr โค้ง\wbr คณิต\wbr ศาสตร์\wbr แบบ\wbr พารา\wbr มิเตอร์. นิยม\wbr ใช้\wbr ใน\wbr โปรแกรมก\wbr รา\wbr ฟิก\wbr ต่างๆ\wbr เช่น Gimp, Inkscape ฯลฯ. รูป\wbr ทรง\wbr ของ\wbr ฟอนต์ท\wbr รู\wbr ไทป์\wbr เป็น\wbr เส้น\wbr โค้ง Quadratic Bezier ซึ่ง\wbr อันดับ (เลข\wbr ยก\wbr กำลัง) ของ\wbr พารา\wbr มิเตอร์\wbr เป็น 2. ส่วน\wbr ฟอนต์ PostScript ใช้\wbr เส้น\wbr โค้ง Cubic Bezier มี\wbr อันดับ\wbr ของ\wbr พารา\wbr มิเตอร์\wbr เป็น 3.\label {vocab:Bezier}\nomeqref {6.0}
+		\nompageref{250}
+  \item [{{\latintext boot loader}}]\begingroup \mbox {}\\ \label {vocab:boot loader}\nomeqref {3.0}
+		\nompageref{102}
+  \item [{{\latintext buffer overflow}}]\begingroup \mbox {}\\ เป็น\wbr อาการ\wbr ที่\wbr โปรแกรม\wbr ไม่\wbr สามารถ\wbr รัน\wbr ข้อ\wbr มูล\wbr เข้า\wbr ทำ\wbr ให้\wbr ล้น\wbr พื้น\wbr ที่\wbr ที่\wbr รอง\wbr รับ (buffer). ใน\wbr กรณี\wbr ที่\wbr โปรแกรม\wbr นั้น\wbr ออก\wbr แบบ\wbr มา\wbr ไม่\wbr ได้, อาจ\wbr จะ\wbr ทำ\wbr ให้\wbr ระบบ\wbr เกิด\wbr ความ\wbr เสีย\wbr หาย\wbr หรือ\wbr เป็น\wbr ลู่\wbr ทาง\wbr ให้\wbr ผู้\wbr ที่\wbr รัน\wbr โปรแกรม\wbr ที่\wbr มี\wbr ค่า\wbr บิต suid สั่ง\wbr คำ\wbr สั่ง\wbr หรือ\wbr กระทำ\wbr การ\wbr ที่ root กระทำ\wbr ได้.\label {vocab:buffer overflow}\nomeqref {3.0}
+		\nompageref{122}
+  \item [{{\latintext bug}}]\begingroup \mbox {}\\ \emph {บั๊ก}, \emph {ข้อ\wbr บก\wbr พร่อง}. ข้อ\wbr บก\wbr พร่อง\wbr ของ\wbr ซอฟต์แวร์\wbr หลัง\wbr จาก\wbr ที่\wbr เจ้า\wbr ของ\wbr ซอฟต์แวร์\wbr นั้น\wbr ประกาศ\wbr ออก\wbr ตัว\wbr ซอฟต์แวร์\wbr นั้น\label {vocab:bug}\nomeqref {1.0}
+		\nompageref{11}
+  \item [{{\latintext byte}}]\begingroup \mbox {}\\ หน่วย\wbr ของ\wbr ข้อ\wbr มูล. จำนวน\wbr หนึ่งไบต์\wbr สามารถ\wbr แสดง\wbr หรือ\wbr เก็บ\wbr ค่า\wbr ได้\wbr ตั้ง\wbr แต่ 0 ถึง 255.\label {vocab:byte}\nomeqref {3.0}
+		\nompageref{94}
+
+ \nomgroup{C}
+
+  \item [{{\latintext cache}}]\begingroup \mbox {}\\ การ\wbr เก็บ\wbr ข้อ\wbr มูล\wbr บาง\wbr อย่าง\wbr ไว้\wbr ช่วย\wbr คราว\wbr เพื่อ\wbr ความ\wbr รวด\wbr เร็ว\wbr ใน\wbr การ\wbr เข้า\wbr ถึง\wbr ข้อ\wbr มูล\wbr นั้น\wbr ภาย\wbr หลัง. ถ้า\wbr ใช้\wbr คำ\wbr ว่า cache อย่าง\wbr เดียว\wbr ไม่\wbr สามารถ\wbr บอก\wbr ได้\wbr ว่า\wbr เป็น cache ของ\wbr อะไร. ลิ\wbr นุกซ์เ\wbr คอร์เนล\wbr ใช้\wbr หน่วย\wbr ความ\wbr จำ\wbr ใน\wbr การ cache ข้อ\wbr มูล\wbr หลาย\wbr อย่าง\wbr เช่น buffer cache, page cache, inode cache, directory cache และ swap cache.\label {vocab:cache}\nomeqref {5.0}
+		\nompageref{221}
+  \item [{{\latintext checksum}}]\begingroup \mbox {}\\ วีธี\wbr การ\wbr ตรวจ\wbr สอบ\wbr ความ\wbr ผิด\wbr พลาด\wbr ของ\wbr ข้อ\wbr มูล, หรือ\wbr ค่าที่\wbr ได้\wbr จาก\wbr การ\wbr ตรวจ\wbr สอบ. ค่า\wbr เหล่า\wbr นี้\wbr สามารถ\wbr บอก\wbr ได้\wbr ว่า\wbr ข้อ\wbr มูล\wbr ที่\wbr ได้\wbr รับ\wbr เช่น\wbr ข้อ\wbr มูล\wbr ผ่าน\wbr ทางเน็ตเ\wbr วิร์ก\wbr มี\wbr ข้อ\wbr ผิด\wbr พลาด\wbr หรือ\wbr ไม่. วิธี\wbr การ\wbr คำนวณ\wbr และ\wbr หา\wbr ค่า\wbr เหล่า\wbr นี้\wbr มี\wbr หลาย\wbr วิธี\wbr เช่น cyclic redundancy checks, cryptographic message digest. วิธี\wbr แบบ cryptographic message digest ยัง\wbr มี\wbr หลาย\wbr วิธี\wbr เช่น MD5 เป็นต้น. \label {vocab:checksum}\nomeqref {4.0}
+		\nompageref{154}
+  \item [{{\latintext C language}}]\begingroup \mbox {}\\ \emph {ภาษา\wbr ซี}. ภาษา\wbr คอมพิวเตอร์\wbr ที่\wbr มนุษย์\wbr สามารถ\wbr อ่าน\wbr ทำ\wbr ความ\wbr เข้า\wbr ใจ\wbr ได้. เป็น\wbr ภาษา\wbr ชั้น\wbr สูง\wbr ที่\wbr มี\wbr ไวย\wbr กรณ์\wbr แน่\wbr นอน. โดย\wbr ปรกติ\wbr ผู้\wbr ใช้\wbr จะ\wbr คอมไพล์\wbr รหัส\wbr ต้น\wbr ฉบับ\wbr ที่\wbr เขียน\wbr ด้วย\wbr ภาษา\wbr ซี\wbr เพื่อ\wbr แปลง\wbr เป็น\wbr ภาษา\wbr เครื่อง\wbr กล\wbr ที่\wbr คอมพิวเตอร์\wbr เข้า\wbr ใจ\wbr ซึ่ง\wbr เรีย\wbr กว่า\wbr โปรแกรม. ภาษา\wbr ซี\wbr สร้าง\wbr โดย Dennis Ritchie นัก\wbr วิจัย\wbr ของ Bell Laboratories ใน\wbr ราว\wbr ปี ค.ศ. 1972. ภาษา\wbr ซี\wbr เป็น\wbr ภาษา\wbr ใช้\wbr งาน\wbr ทั่ว\wbr ไป (general purpose) และ\wbr ใช้\wbr ใน\wbr สร้าง\wbr ระบบ\wbr ปฏิบัติ\wbr การ\wbr ยู\wbr นิกซ์\wbr ใน\wbr เวลา\wbr ต่อ\wbr มา. ลิ\wbr นุกซ์เ\wbr คอร์เนล\wbr และ\wbr โปรแกรม\wbr ใช้\wbr งาน\wbr ส่วน\wbr ใหญ่\wbr ก็\wbr ใช้\wbr ภาษา\wbr ซี\wbr เขียน\wbr เช่น\wbr กัน.\label {vocab:C language}\nomeqref {2.0}
+		\nompageref{22}
+  \item [{{\latintext code}}]\begingroup \mbox {}\\ ส่วน\wbr ที่\wbr เป็น\wbr ข้อ\wbr มูล\wbr สำหรับ\wbr หน่วย\wbr ประมวล\wbr ผล\wbr สั่ง\wbr คำ\wbr สั่ง.\label {vocab:code}\nomeqref {5.0}
+		\nompageref{206}
+  \item [{{\latintext command}}]\begingroup \mbox {}\\ \emph {คำ\wbr สั่ง}. คำ\wbr หรือ\wbr ตัว\wbr อักษร\wbr ที่\wbr พิมพ์\wbr ทาง\wbr แป้น\wbr พิมพ์\wbr ส่ง\wbr ต่อ\wbr ให้\wbr เชลล์\wbr แปล\wbr ความ\wbr หมาย\wbr และ\wbr กระทำ\wbr การ\wbr ต่อ\wbr ไป. ความ\wbr หมาย\wbr ทั่ว\wbr ไป\wbr ยัง\wbr หมาย\wbr ถึง\wbr โปรแกรม\wbr หรือ\wbr ชื่อ\wbr โปรแกรม\wbr ที่\wbr เรียก\wbr ใช้\wbr ผ่าน\wbr เชลล์.\label {vocab:command}\nomeqref {2.0}
+		\nompageref{30}
+  \item [{{\latintext command line interface}}]\begingroup \mbox {}\\ ระบบ\wbr อินเ\wbr ทอร์เฟส\wbr ที่\wbr ใช้\wbr คีย์\wbr บอร์ด\wbr และ\wbr หน้า\wbr จอ\wbr แสดง\wbr ตัว\wbr อักษร\wbr เป็น\wbr หลัก. ถ้า\wbr เป็น\wbr งาน\wbr ที่\wbr ไม่\wbr ต้องการ\wbr กราฟ\wbr ฟิก\wbr จะ\wbr เป็น\wbr อินเ\wbr ทอร์เฟส\wbr ที่\wbr สะดวก\wbr มาก\wbr และ\wbr ปฏิบัติ\wbr การ\wbr ได้\wbr เร็ว\wbr กว่า graphical user interface.\label {vocab:command line interface}\nomeqref {2.0}
+		\nompageref{24}
+  \item [{{\latintext core}}]\begingroup \mbox {}\\ core หรือ\wbr เรียก\wbr อีก\wbr อย่าง\wbr ว่า core dump เป็น\wbr ไฟล์\wbr ที่\wbr บันทึก\wbr เนื้อ\wbr หา\wbr ของ\wbr หน่วย\wbr ความ\wbr จำ\wbr เวลา\wbr เวลา\wbr โปรแกรม\wbr ทำ\wbr งาน\wbr ล้ม\wbr เหลว (crash). ผู้\wbr พัฒนา\wbr สามารถ\wbr ใช้\wbr ข้อ\wbr มูล\wbr ที่\wbr ได้\wbr จาก\wbr ไฟล์\wbr นี้\wbr ใน\wbr การ\wbr หา\wbr ข้อ\wbr บก\wbr พร่อง\wbr ของ\wbr โปรแกรม\wbr ได้.\label {vocab:core}\nomeqref {2.0}
+		\nompageref{63}
+  \item [{{\latintext csv}}]\begingroup \mbox {}\\ เป็น\wbr คำ\wbr ย่อ\wbr ของ comma separated values. เป็น\wbr รูป\wbr แบบ\wbr ไฟล์\wbr ใช้\wbr บันทึก\wbr ราย\wbr การ (record) เป็น\wbr บรรทัดๆ. ภาย\wbr ใน\wbr บรรทัด\wbr สามารถ\wbr มี\wbr ค่า\wbr ได้\wbr หลาย\wbr คอลัมน์ (field) และ\wbr มัก\wbr ใช้\wbr เครื่อง\wbr หมาย comma เป็นต้น\wbr แบ่ง\wbr คอลัมน์. ไฟล์\wbr แบบ\wbr นี้\wbr สามารถ\wbr สร้าง\wbr ได้\wbr ง่ายๆ\wbr ด้วย\wbr บรรณาธิ\wbr กรณ์\wbr ทั่ว\wbr ไป\wbr หรือ\wbr โปรแกรม spreadsheet. ใน\wbr ระบบ\wbr ลิ\wbr นุกซ์\wbr มี\wbr ไฟล์\wbr แบบ\wbr นี้\wbr เหมือน\wbr กัน\wbr เช่น\wbr ไฟล์ \cmd {/etc/passwd}, \cmd {/etc/group} แต่\wbr จะ\wbr ใช้\wbr เครื่อง\wbr หมาย colon เป็น\wbr ตัว\wbr แบ่ง\wbr คอลัมน์.\label {vocab:csv}\nomeqref {4.0}
+		\nompageref{157}
+  \item [{{\latintext CVS}}]\begingroup \mbox {}\\ \emph {Concurrent Versions Systems}. เป็น\wbr ระบบ\wbr ที่\wbr ช่วย\wbr เก็บ\wbr และ\wbr ควบ\wbr คุม\wbr เวอร์\wbr ชัน\wbr ของ\wbr รหัส\wbr ต้น\wbr ฉบับ. มี\wbr ประโยชน์\wbr อย่าง\wbr ยิ่ง\wbr โดย\wbr เฉพาะ\wbr การ\wbr พัฒนา\wbr ซอฟต์แวร์\wbr ร่วม\wbr กัน\wbr หลาย\wbr คน\wbr โดย\wbr ผ่าน\wbr ทางเน็ตเ\wbr วิร์ก, ไม่\wbr มี\wbr ข้อ\wbr จำกัด\wbr เรื่อง\wbr ที่\wbr อยู่\wbr ของ\wbr นัก\wbr พัฒนา\wbr ซอฟต์แวร์.\label {vocab:CVS}\nomeqref {1.0}
+		\nompageref{15}
+
+ \nomgroup{D}
+
+  \item [{{\latintext daemon}}]\begingroup \mbox {}\\ โปร\wbr เซส\wbr แบบ background ที่\wbr มี\wbr โปร\wbr เซส ID แม่ (PPID) เป็น 1 (โปร\wbr เซส \cmd {init}). โปร\wbr เซส\wbr เหล่า\wbr นี้\wbr มัก\wbr จะ\wbr เป็น\wbr โปร\wbr เซส\wbr ที่\wbr ทำ\wbr งาน\wbr โดย\wbr อัตโนมัติ\wbr ถูก\wbr สร้าง\wbr ตอน\wbr ที่\wbr ระบบ\wbr เริ่ม\wbr ทำ\wbr งาน. โปร\wbr เซส\wbr เหล่า\wbr นี้\wbr บาง\wbr ตัว\wbr อาจ\wbr เป็น\wbr โปร\wbr เซส\wbr ที่\wbr ช่วย\wbr ดู\wbr แล\wbr ระบบ, เ\wbr ซิฟร์\wbr เวอร์ เช่น \cmd {cron}, \cmd {sendmail} เป็นต้น.\label {vocab:daemon}\nomeqref {4.0}
+		\nompageref{152}
+  \item [{{\latintext data}}]\begingroup \mbox {}\\ ส่วน\wbr ที่\wbr เป็น\wbr ข้อ\wbr มูล\wbr ตัวแปร\wbr ส่วน\wbr กลาง (global variable) ของ\wbr โปร\wbr เซส.\label {vocab:data}\nomeqref {5.0}
+		\nompageref{206}
+  \item [{{\latintext debug}}]\begingroup \mbox {}\\ การ\wbr กำจัดข้\wbr อม\wbr ผิด\wbr พลาด\wbr ของ\wbr โปรแกรม. ข้อ\wbr ผิด\wbr พลาด\wbr นี้\wbr มัก\wbr เป็น\wbr ข้อ\wbr ผิด\wbr พลาด\wbr ที่\wbr ไม่\wbr คาด\wbr คิด\wbr จน\wbr กระทั่ง\wbr ใช้\wbr งาน\wbr จริง\wbr ที่\wbr เรีย\wbr กว่า runtime error.\label {vocab:debug}\nomeqref {4.0}
+		\nompageref{135}
+  \item [{{\latintext Desktop Environment}}]\begingroup \mbox {}\\ ระบบ, สภาพ\wbr แวด\wbr ล้อม\wbr ที่\wbr เสนอ\wbr กราฟ\wbr ฟิก\wbr อินเ\wbr ทอร์เฟส\wbr สำหรับ\wbr ผู้\wbr ใช้\wbr โดย\wbr ที่\wbr อินเ\wbr ทอร์เฟส\wbr เหล่า\wbr นั้น\wbr มี\wbr ความ\wbr เข้า\wbr กัน\wbr ได้\wbr ดี\wbr เช่น\wbr รูป\wbr ร่าง\wbr หน้า\wbr ตา\wbr เหมือน\wbr หรือ\wbr คล้าย\wbr กัน, ทำ\wbr งาน\wbr ร่วม\wbr กัน\wbr ได้ ฯลฯ. ตัว\wbr อย่าง Desktop Environment ที่\wbr นิยม\wbr ได้\wbr แก่ GNOME, KDE เป็นต้น.\label {vocab:Desktop Environment}\nomeqref {2.0}
+		\nompageref{25}
+  \item [{{\latintext dump terminal}}]\begingroup \mbox {}\\ เป็นเ\wbr ทอร์\wbr มิ\wbr นอล\wbr โบราณ\wbr รุ่น\wbr แรกๆ. ไม่\wbr มี\wbr ความ\wbr สามารถ\wbr ใน\wbr การ\wbr จัด\wbr แต่ง\wbr หน้า\wbr จอ, ไม่\wbr มี\wbr สี (ขาว\wbr ดำ) หรือ\wbr มี\wbr ขีด\wbr จำกัด\wbr อื่นๆ. กล่าว\wbr คือ\wbr เป็นเ\wbr ทอร์\wbr มิ\wbr นอล\wbr แบบ\wbr ง่ายๆ, มี\wbr เพียง\wbr คุณสมบัติ\wbr เบื้อง\wbr ต้น\wbr ที่\wbr พอ\wbr จะ\wbr ใช้\wbr งาน\wbr ได้\wbr เท่า\wbr นั้น.\label {vocab:dump terminal}\nomeqref {2.0}
+		\nompageref{75}
+
+ \nomgroup{E}
+
+  \item [{{\latintext event}}]\begingroup \mbox {}\\ \emph {อี\wbr เวนท์}\gindex {event}\gindex {อี\wbr เวนท์}. เหตุ\wbr การณ์\wbr ต่างๆ\wbr ที่\wbr เกิด\wbr ขึ้น. เป็น\wbr คำ\wbr ศัพท์\wbr ที่\wbr ใช้\wbr ใน\wbr ระบบ GUI. ตัว\wbr อย่าง\wbr เช่น\wbr การคลิ้ก\wbr เมาส์\wbr ทำ\wbr ให้\wbr เกิด\wbr อี\wbr เวนท์ (เหตุ\wbr การณ์) การคลิ้ก. ตัว X เ\wbr ซิร์ฟ\wbr เวอร์\wbr จะ\wbr ส่ง\wbr ข้อ\wbr มูล\wbr เกี่ยว\wbr กับ\wbr เหตุ\wbr การณ์\wbr นั้น\wbr ไป\wbr ให้\wbr ไคล\wbr เอ็นต์.\label {vocab:event}\nomeqref {6.0}
+		\nompageref{238}
+  \item [{{\latintext expression}}]\begingroup \mbox {}\\ \emph {นิพจน์}. ประโยค\wbr ที่\wbr แสดง\wbr ความ\wbr หมาย\wbr อย่าง\wbr ใด\wbr อย่าง\wbr หนึ่ง.\label {vocab:expression}\nomeqref {4.0}
+		\nompageref{138}
+
+ \nomgroup{F}
+
+  \item [{{\latintext FAQ (Frequently Asked Questions}}]\begingroup \mbox {}\\ การ\wbr รวม\wbr คำ\wbr ถาม\wbr และ\wbr คำ\wbr ตอบ\wbr ที่\wbr ถาม\wbr กัน\wbr บ่อย\wbr สรุป\wbr ไว้\wbr เพื่อ\wbr เป็น\wbr ข้อ\wbr มูล\wbr สำหรับ\wbr คน\wbr อื่น\wbr ที่\wbr มี\wbr คำ\wbr ถาม\wbr เดียว\wbr กัน.\label {vocab:FAQ (Frequently Asked Questions}\nomeqref {2.0}
+		\nompageref{71}
+  \item [{{\latintext file}}]\begingroup \mbox {}\\ \emph {ไฟล์}, \emph {แฟ้ม\wbr ข้อ\wbr มูล}. ไฟล์\wbr คือ\wbr ข้อ\wbr มูล\wbr ซึ่ง\wbr อาจ\wbr จะ\wbr เก็บ\wbr บันทึก\wbr ใน\wbr หน่วย\wbr ความ\wbr จำ\wbr ถาวร\wbr เช่น\wbr ฮาร์ด\wbr ดิกส์\wbr เป็นต้น. ข้อ\wbr มูล\wbr ที่\wbr เรีย\wbr กว่า\wbr ไฟล์\wbr นี้\wbr มี\wbr ลำดับ, กล่าว\wbr คือ\wbr ข้อ\wbr มูล\wbr ที่\wbr บันทึก\wbr ก่อน\wbr จะ\wbr อยู่\wbr ใน\wbr ช่วง\wbr ต้น\wbr ของ\wbr ไฟล์. ข้อ\wbr มูล\wbr ที่\wbr เก็บ\wbr ล่า\wbr สุด\wbr จะ\wbr อยู่\wbr ใน\wbr ช่วง\wbr ท้าย\wbr ของ\wbr ไฟล์. เรียก\wbr การ\wbr เก็บ\wbr ข้อ\wbr มูล\wbr แบบ\wbr นี้\wbr ว่า first in first out.\label {vocab:file}\nomeqref {2.0}
+		\nompageref{22}
+  \item [{{\latintext file descriptor}}]\begingroup \mbox {}\\ ตัว\wbr เลข\wbr จำนวน\wbr เต็ม\wbr ที่\wbr ระบบ\wbr ปฏิบัติ\wbr การ\wbr ใช้\wbr อ้าง\wbr อิง\wbr ไฟล์\wbr ที่\wbr เปิด\wbr ไว้. โดย\wbr ปรกติ\wbr จะ\wbr มี\wbr การ\wbr กำหนด\wbr ค่า file descriptor ให้\wbr กับ stdin, stdout และ stderr โดย\wbr ปริยาย\wbr เป็น 0, 1 และ 2 ตาม\wbr ลำดับ.\label {vocab:file descriptor}\nomeqref {2.0}
+		\nompageref{43}
+  \item [{{\latintext file system}}]\begingroup \mbox {}\\ \emph {ระบบ\wbr ไฟล์}. วิธี\wbr การ\wbr ที่\wbr ระบบ\wbr ปฏิบัติ\wbr ใช้\wbr ใน\wbr การ\wbr เข้า\wbr ถึง\wbr ข้อ\wbr มูล\wbr ที่\wbr อยู่\wbr ใน\wbr หน่วย\wbr ความ\wbr จำ\wbr ถาวร. ระบบ\wbr ไฟล์\wbr ที่\wbr ใช้\wbr ใน\wbr ลิ\wbr นุกซ์\wbr มี\wbr หลาย\wbr ประเภท\wbr ได้\wbr เช่น ext2, ext3, xfs ฯลฯ.\label {vocab:file system}\nomeqref {3.0}
+		\nompageref{111}
+  \item [{{\latintext FQDN}}]\begingroup \mbox {}\\ เป็น\wbr ชื่อ\wbr ย่อ\wbr ของ\wbr คำ\wbr ว่า Fully Qualified Domain Name. ชื่อ\wbr เป็น\wbr ทาง\wbr การ\wbr ที่\wbr ตั้ง\wbr ให้\wbr กับ\wbr คอมพิวเตอร์. ชื่อ\wbr นี้\wbr จะ\wbr ประกอบ\wbr ด้วย\wbr ชื่อ\wbr โฮส\wbr และ\wbr ชื่อ\wbr โด\wbr เมน. ชื่อ FQDN นี้\wbr จะ\wbr บันทึก\wbr กับ\wbr ระบบ DNS ด้วย.\label {vocab:FQDN}\nomeqref {10.0}
+		\nompageref{373}
+  \item [{{\latintext front-end}}]\begingroup \mbox {}\\ โปรแกรม\wbr ที่\wbr เรียก\wbr ใช้\wbr โปรแกรม\wbr เฉพาะ\wbr ต่อ\wbr อีก\wbr ที\wbr หนึ่ง. เช่น\wbr โปรแกรม \cmd {mkfs} เรียก\wbr ใช้\wbr โปรแกรม \cmd {mkfs.ext2} หรือ \cmd {mkfs.xfs} อีก\wbr ทอด\wbr หนึ่ง\wbr แล้ว\wbr แต่\wbr ตัว\wbr เลือก\wbr ที่\wbr ใช้\wbr กับ \cmd {mkfs}. โปรแกรม front-end เหล่า\wbr นี้\wbr เป็น\wbr เพียง\wbr อินเ\wbr ทอร์เฟส, ไม่\wbr ได้\wbr เป็น\wbr ตัว\wbr ที่\wbr ทำ\wbr งาน\wbr หลัก\wbr เอง.\label {vocab:front-end}\nomeqref {3.0}
+		\nompageref{91}
+
+ \nomgroup{G}
+
+  \item [{{\latintext gif}}]\begingroup \mbox {}\\ เป็น\wbr คำ\wbr ย่อ\wbr ของ Graphics Interchange Format ฟอร์แ\wbr มต\wbr ไฟล์\wbr รูป\wbr ภาพ\wbr บิตแมป\wbr สี. มี\wbr การ\wbr อัด\wbr บีบ\wbr ข้อ\wbr มูล, ใช้\wbr ดรรชนี\wbr สี\wbr แสดง\wbr สี\wbr ที่\wbr มี\wbr อยู่\wbr ใน\wbr รูป. ไฟล์\wbr รูป\wbr แบบ\wbr นี้\wbr เป็น\wbr นิยม\wbr ใช้\wbr ในเว็บ\wbr แต่\wbr หลัง\wbr จาก\wbr ที่\wbr มี\wbr ปัญหา\wbr สิทธิ\wbr บัตร\wbr เกี่ยว\wbr กับ\wbr การ\wbr บีบ\wbr อัด\wbr ข้อ\wbr มูล, ไฟล์\wbr รูป\wbr แบบ\wbr อื่น\wbr เช่น jpg และ png ก็\wbr เป็น\wbr ที่\wbr นิยม\wbr ถัด\wbr มา.\label {vocab:gif}\nomeqref {4.0}
+		\nompageref{195}
+  \item [{{\latintext graphical user interface (GUI)}}]\begingroup \mbox {}\\ อินเ\wbr ทอร์เฟส\wbr แบบ\wbr กราฟ\wbr ฟิก\wbr ที่\wbr แสดง\wbr หน้า\wbr ต่าง, ปุ่ม\wbr กด, เมนู ทาง\wbr หน้า\wbr จอ. ผู้\wbr ใช้\wbr จะ\wbr ใช้\wbr เมาส์\wbr หรือ\wbr คีย์\wbr บอร์ด\wbr ใน\wbr การ\wbr โต้\wbr ตอบ\wbr กัน\wbr ระบบ.\label {vocab:graphical user interface (GUI)}\nomeqref {2.0}
+		\nompageref{25}
+  \item [{{\latintext graphic mode}}]\begingroup \mbox {}\\ \emph {กราฟ\wbr ฟิก\wbr โหมด}. สภาพ\wbr ที่\wbr ระบบ\wbr ปฏิบัติ\wbr การ\wbr ใช้\wbr อินเ\wbr ทอร์เฟส\wbr แบบ\wbr กราฟ\wbr ฟิก\wbr ติด\wbr ต่อ\wbr กับ\wbr ผู้\wbr ใช้. โดย\wbr ทั่ว\wbr ไป\wbr คอมพิวเตอร์\wbr แบบ\wbr กราฟ\wbr ฟิก\wbr โหมด\wbr สามารถ\wbr ผล\wbr เป็น\wbr แบบ\wbr หน้า\wbr ต่าง, สร้าง\wbr ปุ่ม, เมนู ฯลฯ. ผู้\wbr ใช้\wbr โต้\wbr ตอบ\wbr กับ\wbr คอมพิวเตอร์\wbr ด้วย\wbr คีย์\wbr บอร์ด\wbr และ\wbr เมาส์.\label {vocab:graphic mode}\nomeqref {2.0}
+		\nompageref{25}
+
+ \nomgroup{H}
+
+  \item [{{\latintext header file}}]\begingroup \mbox {}\\ \label {vocab:header file}\nomeqref {3.0}
+		\nompageref{104}
+  \item [{{\latintext high-level language}}]\begingroup \mbox {}\\ \emph {ภาษา\wbr ชั้น\wbr สูง}. หมาย\wbr ถึง\wbr ภาษา\wbr คอมพิวเตอร์\wbr ที่\wbr มนุษย์\wbr อ่าน\wbr แล้ว\wbr ทำ\wbr ความ\wbr เข้า\wbr ใจ\wbr ได้, ไวย\wbr กรณ์\wbr ไม่\wbr ขึ้น\wbr กับ\wbr เครื่อง\wbr คอมพิวเตอร์\wbr ที่\wbr ใช้\wbr งาน. ตัว\wbr อย่าง\wbr ของ\wbr ภาษา\wbr ชั้น\wbr สูง\wbr ได้\wbr แก่ C, C++, Java เป็นต้น.\label {vocab:high-level language}\nomeqref {1.0}
+		\nompageref{17}
+  \item [{{\latintext home directory}}]\begingroup \mbox {}\\ \emph {โฮม\wbr ไดเ\wbr รก\wbr ทอ\wbr รี}. ไดเ\wbr รก\wbr ทอ\wbr รี\wbr ที่\wbr ผู้\wbr ใช้\wbr เป็น\wbr เจ้า\wbr ของ. เป็น\wbr ไดเ\wbr รก\wbr ทอ\wbr รี\wbr เริ่ม\wbr ต้น\wbr เวลาล็\wbr อก\wbr อิน\wbr เข้า\wbr สู่\wbr ระบบ\wbr หรือ\wbr เรียก\wbr ใช้เ\wbr ทอร์\wbr มินัล\wbr เอ\wbr มิวเล\wbr เตอร์.\label {vocab:home directory}\nomeqref {2.0}
+		\nompageref{25}
+  \item [{{\latintext HTML (Hyper Text Markup Language)}}]\begingroup \mbox {}\\ มาตร\wbr ฐาน\wbr สำหรับ\wbr เขียน\wbr เอก\wbr สาร\wbr ที่\wbr เผย\wbr แพร่\wbr ทาง World Wide Web. รูป\wbr แบบ\wbr ของ\wbr ไฟล์\wbr เป็น\wbr เนื้อ\wbr หาเท็กซ์\wbr ที่\wbr มนุษย์\wbr อ่าน\wbr แล้ว\wbr เข้า\wbr ใจ\wbr ได้. ใช้\wbr การ\wbr เขียน\wbr กำกับ\wbr ส่วน\wbr ที่\wbr เป็น\wbr หัว\wbr ข้อ, เนื้อ\wbr หา, รูป\wbr ภาพ ฯลฯ. โดย\wbr ปรกติ\wbr จะ\wbr ใช้เว็บบ\wbr ราวเ\wbr ซอร์ (web browser) ดู\wbr ไฟล์ HTML. เว็บบ\wbr ราวเ\wbr ซอร์\wbr จะ\wbr ทำ\wbr หน้า\wbr ที่\wbr จัด\wbr หน้า\wbr จอ\wbr ภาพ\wbr ตาม\wbr ที่\wbr เขียน\wbr กำกับ\wbr ไว้\wbr ใน\wbr ไฟล์.\label {vocab:HTML (Hyper Text Markup Language)}\nomeqref {2.0}
+		\nompageref{71}
+
+ \nomgroup{I}
+
+  \item [{{\latintext interface}}]\begingroup \mbox {}\\ \emph {อินเ\wbr ทอร์เฟส}. หมาย\wbr ถึง\wbr ตัว\wbr เชื่อม\wbr หรือ\wbr ตัว\wbr กลาง\wbr ระหว่าง\wbr ของ\wbr สอง\wbr สิ่ง. ตัว\wbr อย่าง\wbr เช่น เชลล์\wbr เป็น\wbr อินเ\wbr ทอร์เฟส\wbr แบบ\wbr คำ\wbr สั่ง\wbr บรรทัด\wbr ระหว่าง\wbr ยูสเ\wbr ซอร์\wbr กับเ\wbr คอร์เนล. X วิน\wbr โดว์\wbr เป็น\wbr อินเ\wbr ทอร์เฟส\wbr แบบ\wbr หน้า\wbr ต่าง\wbr ใช้\wbr เมาส์\wbr และ\wbr คีย์\wbr บอร์ด\wbr ใน\wbr การ\wbr ป้อน\wbr ข้อ\wbr มูล\label {vocab:interface}\nomeqref {2.0}
+		\nompageref{22}
+  \item [{{\latintext internationalization}}]\begingroup \mbox {}\\ ความ\wbr สามารถ\wbr ที่\wbr โปรแกรม\wbr สามารถ\wbr ปรับ\wbr ตัว\wbr ให้\wbr เข้า\wbr กับ\wbr สภาพ\wbr แวด\wbr ล้อม\wbr ภาษา\wbr และ\wbr วัฒนธรรม\wbr ที่\wbr ผู้\wbr ใช้\wbr กำหนด. ตัว\wbr อย่าง\wbr เช่น\wbr โปรแกรม\wbr สามารถ\wbr แสดง\wbr ผล\wbr นอก\wbr เหนือ\wbr จาก\wbr ภาษา\wbr อังกฤษ\wbr ได้\wbr ถ้า\wbr สภาพ\wbr แวด\wbr ล้อม\wbr ของ\wbr ผู้\wbr ใช้\wbr ไม่\wbr ใช่\wbr ภาษา\wbr อังกฤษ. Internationalization มี\wbr คำ\wbr ย่อ\wbr ว่า i18n โดย\wbr ตัว\wbr เลข 18 คือ\wbr จำนวน\wbr อักษร\wbr ระหว่าง\wbr อักษร i และ n.\label {vocab:internationalization}\nomeqref {3.0}
+		\nompageref{94}
+  \item [{{\latintext interpreter}}]\begingroup \mbox {}\\ \emph {โปรแกรม\wbr แปล\wbr คำ\wbr สั่ง}, \emph {ตัวแปร\wbr คำ\wbr สั่ง}. ภาษา\wbr คอมพิวเตอร์\wbr แบบ\wbr หนึ่ง\wbr ซึ่ง\wbr จะ\wbr รับ\wbr ข้อ\wbr มูลเท็กซ์, แปล\wbr ความ\wbr หมาย, แล้ว\wbr กระทำ\wbr การ. ภาษา\wbr คอมพิวเตอร์\wbr แบบ\wbr นี้\wbr มี\wbr ข้อ\wbr ดี\wbr ที่\wbr พัฒนา\wbr ได้\wbr รวด\wbr เร็ว, ไม่\wbr ต้อง\wbr คอมไพล์ และ\wbr มัก\wbr จะ\wbr มี\wbr วิธี\wbr การ\wbr จัด\wbr การ\wbr หน่วย\wbr ความ\wbr จำ\wbr ให้\wbr โดย\wbr อัตโนมัติ. ข้อ\wbr เสีย\wbr ของ\wbr ภาษา\wbr คอมพิวเตอร์\wbr แบบ\wbr นี้\wbr คือ\wbr จะ\wbr ทำ\wbr งาน\wbr ช้า\wbr กว่า\wbr โปรแกรม\wbr ที่\wbr สร้าง\wbr ด้วย\wbr คอม\wbr ไพ\wbr เลอร์. โปรแกรม\wbr แปล\wbr ภาษา\wbr ที่\wbr นิยม\wbr ใช้\wbr กัน\wbr ได้\wbr แก่ เชลล์, Perl, Python, Ruby ฯลฯ.\label {vocab:interpreter}\nomeqref {3.0}
+		\nompageref{97}
+
+ \nomgroup{J}
+
+  \item [{{\latintext jpg}}]\begingroup \mbox {}\\ เป็น\wbr คำ\wbr ย่อ\wbr ของ Joint Photographic Experts Group. รูป\wbr ภาพ\wbr แบบ\wbr บิตแมป\wbr ที่\wbr มี\wbr การ\wbr อัด\wbr บีบ\wbr ข้อ\wbr มูล\wbr และ\wbr มัก\wbr ใช้\wbr กับ\wbr ไฟล์\wbr รูป\wbr ภาพ\wbr บน\wbr อินเ\wbr ทอร์เน็ต.\label {vocab:jpg}\nomeqref {4.0}
+		\nompageref{195}
+
+ \nomgroup{K}
+
+  \item [{{\latintext kerning}}]\begingroup \mbox {}\\ การ\wbr ปรับ\wbr ระดับ, ตำแหน่ง\wbr ของ\wbr อักขระ\wbr เมื่อ\wbr มี\wbr การ\wbr แสดง\wbr ผล\wbr ร่วม\wbr กับ\wbr อักขระ\wbr อื่น\wbr ให้\wbr เหมาะ\wbr สม\wbr สวย\wbr งาม. \label {vocab:kerning}\nomeqref {6.0}
+		\nompageref{250}
+  \item [{{\latintext key binding}}]\begingroup \mbox {}\\ การ\wbr สร้าง\wbr ความ\wbr สัมพันธ์\wbr ของ\wbr โปรแกรม\wbr ระหว่าง\wbr คีย์\wbr ที่\wbr ผู้\wbr ใช้\wbr กด\wbr และ\wbr การ\wbr กระทำ\wbr ของ\wbr โปรแกรม\wbr ที่\wbr เตรียม\wbr ไว้.\label {vocab:key binding}\nomeqref {2.0}
+		\nompageref{67}
+
+ \nomgroup{L}
+
+  \item [{{\latintext load average}}]\begingroup \mbox {}\\ \emph {โ\wbr หลด\wbr โดย\wbr เฉลี่ย}. ค่า\wbr เฉลี่ย\wbr ของ\wbr จำนวน\wbr โปร\wbr เซส\wbr ที่ active อยู่\wbr ใน\wbr ระบบ. ค่า\wbr นี้\wbr จะ\wbr แสดง\wbr ให้\wbr ทราบ\wbr ว่า\wbr ระบบ\wbr ยุ่ง\wbr หรือ\wbr ไม่. ค่า\wbr นี้\wbr ไม่\wbr จำ\wbr เป็น\wbr ต้อง\wbr สัมพันธ์\wbr กับ\wbr เปอร์เซ็นต์\wbr การ\wbr ใช้\wbr งาน\wbr ของ\wbr หน่วย\wbr ประมวล\wbr ผล.\label {vocab:load average}\nomeqref {4.0}
+		\nompageref{141}
+
+ \nomgroup{M}
+
+  \item [{{\latintext machine language}}]\begingroup \mbox {}\\ \emph {ภาษา\wbr เครื่อง\wbr กล}. ข้อ\wbr มูล\wbr ที่\wbr หน่วย\wbr ประมวล\wbr ผล\wbr เข้า\wbr ใจ\wbr และ\wbr แปล\wbr ความ\wbr หมาย\wbr เพื่อ\wbr ทำ\wbr งาน\wbr ได้.\label {vocab:machine language}\nomeqref {2.0}
+		\nompageref{22}
+  \item [{{\latintext macro}}]\begingroup \mbox {}\\ \emph {แม\wbr โคร}. ชื่อ\wbr ที่\wbr กำหนด\wbr ไว้\wbr และ\wbr กระจาย\wbr ต่อ\wbr ไป\wbr คำ\wbr อื่นๆ\wbr ต่อ\wbr ไป. แม\wbr โคร\wbr ใช้\wbr กัน\wbr อย่าง\wbr กว้าง\wbr ขวาง\wbr เช่น\wbr ใน\wbr ภาษา\wbr ซี, \LaTeX {} ฯลฯ.\label {vocab:macro}\nomeqref {2.0}
+		\nompageref{83}
+  \item [{{\latintext magic number}}]\begingroup \mbox {}\\ ข้อ\wbr มูล\wbr หรือ\wbr ค่าที่\wbr อยู่\wbr ใน\wbr ไฟล์, เป็น\wbr เอกลักษณ์\wbr พิเศษ\wbr ที่\wbr บอก\wbr ประเภท\wbr ของ\wbr ไฟล์\wbr ได้. ตัว\wbr อย่าง\wbr เช่น magic number ของสค\wbr ริปต์\wbr ที่\wbr ใช้\wbr ใน\wbr ยู\wbr นิกซ์\wbr หรือ\wbr ลิ\wbr นุกซ์\wbr คือ\wbr อักขระ \cmd {\#
+    \subitem }.\label {vocab:magic number}\nomeqref {3.0}
+		\nompageref{96}
+  \item [{{\latintext Minix}}]\begingroup \mbox {}\\ ระบบ\wbr ปฏิบัติ\wbr การ\wbr คล้าย\wbr เหมือน\wbr ยู\wbr นิกซ์\wbr ที่\wbr สร้าง\wbr ขึ้น\wbr โดย\wbr ศาสตราจารย์ Andrew Tanenbaum เพื่อ\wbr การ\wbr เรียน\wbr การ\wbr สอน\wbr เกี่ยว\wbr กับ\wbr ระบบ\wbr ปฏิบัติ\wbr การ\label {vocab:Minix}\nomeqref {1.0}
+		\nompageref{1}
+  \item [{{\latintext mount}}]\begingroup \mbox {}\\ การ\wbr นำ\wbr ดี\wbr ไวซ์\wbr หน่วย\wbr ความ\wbr จำ\wbr ข้อ\wbr มูล\wbr เช่น\wbr ฮาร์ดดิสก์\wbr มา\wbr ปะ\wbr ติด\wbr ใน\wbr ระบบ\wbr โครง\wbr สร้าง\wbr ไดเ\wbr รก\wbr ทอ\wbr รี. เช่น\wbr การ\wbr นำ\wbr ซี\wbr ดี\wbr รอม\wbr มา\wbr ปะ\wbr ติด (mount) ไว้\wbr กับ\wbr ไดเ\wbr รก\wbr ทอ\wbr รี \cmd {/mnt/cdrom} เป็นต้น. การ mount นี้\wbr สามารถ\wbr ระบุ\wbr ไฟล์\wbr ซิส\wbr เต็ม\wbr ของ\wbr ดี\wbr ไวซ์\wbr ได้\wbr ด้วย\wbr เมื่อ mount ไฟล์\wbr ซิส\wbr เต็ม\wbr เข้า\wbr สู่\wbr โครง\wbr สร้าง\wbr ไดเ\wbr รก\wbr ทอ\wbr รี\wbr แล้ว\wbr ก็\wbr จะ\wbr ใช้\wbr งาน\wbr ได้\wbr อย่าง\wbr โปร่ง\wbr ใส, อาจ\wbr จะ\wbr ไม่สัง\wbr เกตุ\wbr เห็น\wbr ความ\wbr แตก\wbr ต่าง\wbr ระหว่าง\wbr ไฟล์\wbr ซิส\wbr เต็ม.\label {vocab:mount}\nomeqref {3.0}
+		\nompageref{103}
+  \item [{{\latintext multi-tasks}}]\begingroup \mbox {}\\ \emph {มัล\wbr ติ\wbr ทาส์ก}. ความ\wbr สามารถ\wbr ใน\wbr การ\wbr แบ่ง\wbr เวลา\wbr การ\wbr ทำ\wbr งาน\wbr ของ\wbr หน่วย\wbr ประมวล\wbr ผล\wbr เมื่อ\wbr มี\wbr งาน\wbr หลาย\wbr อย่าง\wbr ที่\wbr ต้อง\wbr ทำ. เป็น\wbr ผล\wbr ให้\wbr ดู\wbr เหมือน\wbr ว่า\wbr หน่วย\wbr ประมวล\wbr ผล\wbr ข้อ\wbr มูล\wbr สามารถ\wbr ทำ\wbr งาน\wbr หลาย\wbr อย่าง\wbr ได้\wbr ใน\wbr เวลา\wbr เดียว\wbr กัน.\label {vocab:multi-tasks}\nomeqref {1.0}
+		\nompageref{2}
+  \item [{{\latintext multi-users}}]\begingroup \mbox {}\\ \emph {มัล\wbr ติ\wbr ยูสเ\wbr ซอร์}. ความ\wbr สามารถ\wbr ของ\wbr ระบบ\wbr ปฏิบัติ\wbr การ\wbr ที่\wbr ให้\wbr ผู้\wbr ใช้\wbr หลาย\wbr คน\wbr ทำ\wbr งาน\wbr ได้\wbr ใน\wbr เวลา\wbr เดียว\wbr กัน\label {vocab:multi-users}\nomeqref {1.0}
+		\nompageref{2}
+
+ \nomgroup{O}
+
+  \item [{{\latintext OpenGL}}]\begingroup \mbox {}\\ ย่อ\wbr มา\wbr จาก Open Graphics Library เป็นไ\wbr ลบ\wbr รา\wbr รี (ซอฟต์แวร์) อินเ\wbr ทอร์เฟส\wbr สำหรับ\wbr ฮาร์ดแวร์ก\wbr รา\wbr ฟิก, ใช้\wbr ใน\wbr การ\wbr สร้าง\wbr ภาพ\wbr สาม\wbr มิติ\wbr คุณภาพ\wbr สูง\wbr และ\wbr เป็น\wbr มาตร\wbr ฐาน\wbr สากล.\label {vocab:OpenGL}\nomeqref {6.0}
+		\nompageref{267}
+  \item [{{\latintext operator}}]\begingroup \mbox {}\\ \emph {ตัว\wbr ดำเ\wbr นิ\wbr การ} หรือ \emph {ตัว\wbr ปฏิบัติ\wbr การ}. คือ\wbr เครื่อง\wbr หมาย\wbr ที่\wbr มี\wbr ความ\wbr หมาย\wbr พิเศษ\wbr ใช้\wbr สำหรับ\wbr การ\wbr ประมวล\wbr ผล. เช่น \cmd {+} เป็น\wbr ตัว\wbr ปฏิบัติ\wbr การ\wbr ทาง\wbr คณิต\wbr ศาสตร์\wbr สำหรับ\wbr รวม\wbr ค่า\wbr ของ\wbr จำนวน\wbr สอง\wbr จำนวน. \cmd {\&\&} เป็น\wbr ตัว\wbr ปฏิบัติ\wbr การ\wbr ทาง\wbr ตรรกะ AND.\label {vocab:operator}\nomeqref {4.0}
+		\nompageref{178}
+
+ \nomgroup{P}
+
+  \item [{{\latintext page}}]\begingroup \mbox {}\\ หน่วย\wbr ของ\wbr หน่วย\wbr ความ\wbr จำ. ใน\wbr ระบบ\wbr ยู\wbr นิกซ์\wbr รวม\wbr ถึง\wbr ลิ\wbr นุกซ์\wbr จะ\wbr แบ่ง\wbr หน่วย\wbr ความ\wbr จำ\wbr เป็น\wbr กลุ่ม\wbr ขนาด\wbr เล็ก\wbr เรีย\wbr กว่า page. โดย\wbr ทั่ว\wbr ไป page จะ\wbr มี\wbr ขนาด 4Kb (4096 ไบต์).\label {vocab:page}\nomeqref {5.0}
+		\nompageref{212}
+  \item [{{\latintext pager}}]\begingroup \mbox {}\\ \emph {เพจ\wbr เจอร์}. โปรแกรม\wbr ที่\wbr ใช้\wbr แสดง\wbr ข้อ\wbr มูลเท็กซ์\wbr ทาง\wbr หน้า\wbr จอเ\wbr ทอร์\wbr มิ\wbr นอล\wbr เป็น\wbr หน้าๆ. มี\wbr ความ\wbr สามารถ\wbr เลื่อน\wbr ข้อ\wbr มูล\wbr ตาม\wbr ต้องการ\wbr และ\wbr มี\wbr ความ\wbr สามารถ\wbr ค้น\wbr หา\wbr คำ\wbr ที่\wbr ต้องการ\wbr ได้. เพจ\wbr เจอร์\wbr ที่\wbr นิยม\wbr ใช้\wbr ได้\wbr แก่ \cmd {less}, \cmd {more}, \cmd {lv} ฯลฯ.\label {vocab:pager}\nomeqref {2.0}
+		\nompageref{66}
+  \item [{{\latintext partition}}]\begingroup \mbox {}\\ \emph {พาร์ทิ\wbr ชัน}. พื้น\wbr ที่\wbr ใน\wbr ฮาร์ดดิสก์\wbr ที่\wbr แบ่ง\wbr เป็น\wbr ส่วนๆ. เมื่อ\wbr แบ่ง\wbr พาร์ทิ\wbr ชัน\wbr แล้ว\wbr ยัง\wbr ไม่\wbr สามารถ\wbr ใช้\wbr งาน\wbr ได้\wbr ทัน\wbr ที\wbr ต้อง\wbr สร้าง\wbr ระบบ\wbr ไฟล์ (file system) ก่อน.\label {vocab:partition}\nomeqref {3.0}
+		\nompageref{111}
+  \item [{{\latintext patch}}]\begingroup \mbox {}\\ แพทช์. ไฟล์\wbr ที่\wbr มี\wbr เนื้อ\wbr หา\wbr ความ\wbr แตก\wbr ต่าง\wbr ระหว่าง\wbr ไฟล์\wbr ต้น\wbr ฉบับ\wbr ก่อน\wbr เปลี่ยน\wbr แปลง\wbr กับ\wbr ไฟล์\wbr ที่\wbr แก้\wbr ไข\wbr แล้ว. ผู้\wbr พัฒนา\wbr ซอฟต์แวร์\wbr จะ\wbr สร้าง\wbr ไฟล์ patch ด้วย\wbr โปรแกรม \cmd {diff} และ\wbr ผู้\wbr ที่\wbr ต้องการ\wbr ใช้\wbr ไฟล์ patch นี้\wbr จะ\wbr ทำ\wbr การ patch ไฟล์\wbr ดัง\wbr กล่าว\wbr ให้\wbr แก้\wbr ไข\wbr ไฟล์\wbr ต้น\wbr ฉบับ\wbr ที่\wbr ดั้งเดิม\wbr ให้\wbr มี\wbr เนื้อ\wbr หา\wbr เป็น\wbr เนื้อ\wbr หา\wbr ใหม่\wbr ที่\wbr แก้\wbr ไข\wbr แล้ว\wbr ด้วย\wbr โปรแกรม \cmd {patch}.\label {vocab:patch}\nomeqref {4.0}
+		\nompageref{160}
+  \item [{{\latintext physical memory}}]\begingroup \mbox {}\\ \emph {หน่วย\wbr ความ\wbr จำ\wbr จริง}. คือ\wbr จำนวน\wbr หน่วย\wbr ความ\wbr จำ\wbr ที่\wbr มี\wbr จริง\wbr ใน\wbr ระบบ\wbr หมาย\wbr ถึง\wbr ตัว\wbr ฮาร์ดแวร์ (memory). เ\wbr คอร์เนล\wbr จะ\wbr ใช้\wbr หน่วย\wbr ความ\wbr จำ\wbr จริง\wbr โดย\wbr แบ่ง\wbr เป็น page, มัก\wbr จะ\wbr เรีย\wbr กว่า freame.\label {vocab:physical memory}\nomeqref {5.0}
+		\nompageref{212}
+  \item [{{\latintext pixel}}]\begingroup \mbox {}\\ หมาย\wbr ถึง\wbr จุด\wbr ที่\wbr ประกอบ\wbr กัน\wbr เป็น\wbr รูป\wbr หรือ\wbr หน่วย\wbr ที่\wbr บอก\wbr ขนาด\wbr ของ\wbr รูป. ขนาด\wbr ของ\wbr จุด\wbr ไม่\wbr มี\wbr ขนาด\wbr สัมบูรณ์\wbr ขึ้น\wbr อยู่\wbr กับ\wbr อุปกรณ์\wbr ที่\wbr ใช้\wbr แสดง. เพราะ\wbr ฉะนั้น\wbr ถ้า\wbr พูด\wbr ถึง\wbr รูป\wbr ขนาด 16x16 พิก\wbr เซล\wbr จะ\wbr มี\wbr ขนาด\wbr ต่าง\wbr กัน\wbr เมื่อ\wbr พิมพ์\wbr ออก\wbr ทาง\wbr เครื่อง\wbr พิมพ์\wbr เทียบ\wbr กับ\wbr หน้า\wbr จอ.\label {vocab:pixel}\nomeqref {4.0}
+		\nompageref{200}
+  \item [{{\latintext port}}]\begingroup \mbox {}\\ \emph {พอร์ต}(กริยา). การ\wbr ดัด\wbr แปลง\wbr ต้น\wbr ฉบับ\wbr โปรแกรม, คอมไพล์\wbr ให้\wbr ใช้\wbr บน\wbr ระบบ\wbr ปฏิบัติ\wbr การ\wbr ที่\wbr แตก\wbr ต่าง\wbr กัน\wbr หรือ\wbr สถาปัตยกรรม\wbr คอมพิวเตอร์\wbr ที่\wbr แตก\wbr ต่าง\wbr กัน\wbr ได้\label {vocab:port}\nomeqref {1.0}
+		\nompageref{3}
+  \item [{{\latintext POSIX}}]\begingroup \mbox {}\\ ข้อ\wbr กำหนด\wbr มาตร\wbr ฐาน\wbr ว่า\wbr ระบบ\wbr ปฏิบัติ\wbr การ\wbr ที่\wbr สามารถ\wbr ใช้\wbr งาน\wbr ได้\wbr กับ\wbr ฮาร์ดแวร์\wbr ต่าง\wbr ระบบ\wbr นั้น\wbr ต้อง\wbr มี\wbr ราย\wbr ละเอียด\wbr คุณสมบัติ\wbr อย่าง\wbr ไร. มาตร\wbr ฐาน\wbr นี้\wbr กำหนด\wbr โดย\wbr องค์\wbr กร The Institute of Electrical and Electronic Engineers (IEEE).\label {vocab:POSIX}\nomeqref {1.0}
+		\nompageref{2}
+  \item [{{\latintext PostScript}}]\begingroup \mbox {}\\ ภาษา\wbr คอมพิวเตอร์\wbr สำหรับ\wbr งา\wbr นก\wbr รา\wbr ฟิก, นิยม\wbr ใช้\wbr ใน\wbr งาน\wbr พิมพ์\wbr ต่างๆ. ใน\wbr ลิ\wbr นุกซ์\wbr จะ\wbr มี\wbr ตัว\wbr แปล\wbr ภาษา PostScript ที่\wbr เรีย\wbr กว่า Ghostscript ซึ่ง\wbr ใช้\wbr แปล\wbr ภาษา PostScript แสดง\wbr ผล\wbr ใน\wbr ดี\wbr ไวซ์\wbr ต่างๆ\wbr ได้.\label {vocab:PostScript}\nomeqref {6.0}
+		\nompageref{250}
+  \item [{{\latintext process}}]\begingroup \mbox {}\\ \emph {โปร\wbr เซส}. สภาพ\wbr ที่\wbr โปรแกรม\wbr ที่\wbr กำลัง\wbr ทำ\wbr งาน\wbr อยู่. กล่าว\wbr คือ\wbr เนื้อ\wbr หา\wbr ของ\wbr ตัว\wbr โปรแกรม\wbr ถูกโ\wbr หลด\wbr จาก\wbr ฮาร์ด\wbr ดิกส์\wbr ไป\wbr ที่\wbr หน่วย\wbr ความ\wbr จำ\wbr และ\wbr หน่วย\wbr ประมวล\wbr ผล\wbr ข้อ\wbr มูล\wbr แปล\wbr คำ\wbr สั่ง\wbr เพื่อ\wbr ที่\wbr จะ\wbr กระทำ\wbr การ\wbr ต่อ\wbr ไป.\label {vocab:process}\nomeqref {2.0}
+		\nompageref{22}
+  \item [{{\latintext program}}]\begingroup \mbox {}\\ \emph {โปรแกรม}. ชุด\wbr คำ\wbr สั่ง\wbr ภาษา\wbr เครื่อง\wbr กล (machine language) ที่\wbr สามารถโ\wbr หลด\wbr เข้า\wbr ไป\wbr ใน\wbr หน่วย\wbr ความ\wbr จำ\wbr และ\wbr หน่วย\wbr ปร\wbr ะมวล\wbr ผล\wbr แปล\wbr ความ\wbr ภาษา\wbr เครื่อง\wbr กล\wbr เพื่อ\wbr ที่\wbr จะ\wbr ทำ\wbr งาน\wbr ต่อ\wbr ไป.\label {vocab:program}\nomeqref {2.0}
+		\nompageref{22}
+  \item [{{\latintext prompt}}]\begingroup \mbox {}\\ \emph {พร\wbr อมต์}. เครื่อง\wbr หมาย, หรือ\wbr อักษร\wbr ที่\wbr เชลล์\wbr แสดง\wbr ทาง\wbr หน้า\wbr จอ\wbr เพื่อ\wbr แสดง\wbr ว่า\wbr พร้อม\wbr ที่\wbr จะ\wbr รับ\wbr คำ\wbr สั่ง\wbr จาก\wbr คีย์\wbr บอร์ด.\label {vocab:prompt}\nomeqref {2.0}
+		\nompageref{24}
+  \item [{{\latintext protocol}}]\begingroup \mbox {}\\ \emph {โปร\wbr โต\wbr คอล}. คือ\wbr ข้อ\wbr ตก\wbr ลง, วิธี\wbr การ\wbr ใน\wbr การ\wbr กระทำ\wbr การ\wbr อย่าง\wbr ใด\wbr อย่าง\wbr หนึ่ง. เช่น HTTP protol เป็น\wbr ข้อ\wbr ตก\wbr ลง, วิธี\label {vocab:protocol}\nomeqref {1.0}
+		\nompageref{9}
+  \item [{{\latintext PS/2}}]\begingroup \mbox {}\\ ย่อ\wbr มา\wbr จาก\wbr คำ\wbr ว่า Personal System 2 เป็น\wbr อินเ\wbr ทอร์เฟส\wbr มาตร\wbr ฐาน\wbr สำหรับ\wbr ต่อ\wbr อุปกรณ์\wbr แป้น\wbr พิมพ์\wbr หรือ\wbr เมาส์\wbr สำหรับ\wbr คอมพิวเตอร์\wbr ส่วย\wbr บุคคล.\label {vocab:PS/2}\nomeqref {6.0}
+		\nompageref{260}
+
+ \nomgroup{R}
+
+  \item [{{\latintext raw device}}]\begingroup \mbox {}\\ หมาย\wbr ถึง\wbr ไฟล์\wbr ดี\wbr ไวซ์. ไฟล์\wbr ที่\wbr ยัง\wbr ไม่\wbr ได้ mount เข้า\wbr โครง\wbr สร้าง\wbr ไฟล์\wbr ไดเ\wbr รก\wbr ทอ\wbr รี. ตัว\wbr อย่าง raw device ได้\wbr แก่ \cmd {/dev/hda}, \cmd {/dev/cdrom} เป็นต้น.\label {vocab:raw device}\nomeqref {3.0}
+		\nompageref{126}
+  \item [{{\latintext regular expression}}]\begingroup \mbox {}\\ กลุ่ม\wbr อักขระ\wbr ที่\wbr ใช้\wbr แสดง\wbr เป็น\wbr ตัว\wbr แทน\wbr ของ\wbr คำ\wbr โดย\wbr ที่\wbr กลุ่ม\wbr อักขระ\wbr ที่\wbr ใช้\wbr แสดง regular expression นี้\wbr มี\wbr ไวย์\wbr กรณ์\wbr ที่\wbr แน่\wbr นอน. regular expression มี\wbr ประโยชน์\wbr ใน\wbr การ\wbr เขียน\wbr นิยาม\wbr ของ\wbr คำ\wbr ที่\wbr ต้องการ\wbr ค้น\wbr หา. regular expression มัก\wbr จะ\wbr ใช้\wbr กับ\wbr โปรแกรม \cmd {grep}, \cmd {sed}, \cmd {perl} เป็นต้น. ตัว\wbr อย่าง\wbr เช่น ``\cmd {A.*\$}'' หมาย\wbr ถึง\wbr คำ\wbr ที่\wbr ขึ้น\wbr ต้น\wbr ด้วย A จะ\wbr มี\wbr อักขระ\wbr ใดๆ\wbr หรือ\wbr ไม่\wbr มี (ใช้ . แทน\wbr อักขระ\wbr ใดๆ) มาก\wbr กว่า\wbr หนึ่ง\wbr ตัว\wbr จน\wbr สุด\wbr บรรทัด. regular expression นี้\wbr แทน\wbr ตัว A, A3, Asdf ได้\wbr เป็นต้น.\label {vocab:regular expression}\nomeqref {3.0}
+		\nompageref{128}
+  \item [{{\latintext RGB}}]\begingroup \mbox {}\\ เป็น\wbr วิธี\wbr การ\wbr แสดง\wbr สี\wbr ต่าง\wbr ด้วย\wbr แสง\wbr โดย\wbr ใช้\wbr แม่\wbr สี\wbr ได้\wbr แก่\wbr สี\wbr แดง (Red), สี\wbr เขียว (Green) และ\wbr สี\wbr น้ำ\wbr เงิน (Blue). จะ\wbr ใช้\wbr ค่า\wbr แปด\wbr บิต\wbr ซึ่ง\wbr มี\wbr ค่า\wbr ตั้ง\wbr แต่ 0 ถึง 255 แทน\wbr ความ\wbr เข้ม\wbr ของ\wbr แม่\wbr สี. เช่น\wbr สี\wbr แดง\wbr มี\wbr ค่า\wbr เป็น 255 0 0, สี\wbr เขียว\wbr มี\wbr ค่า\wbr เป็น 0 255 0, และ\wbr สี\wbr น้ำ\wbr เงิน\wbr มี\wbr ค่า\wbr เป็น 0 0 255. ใน\wbr ทฤษฎี\wbr แสง, ถ้า\wbr นำ\wbr แม่\wbr สี\wbr เหล่า\wbr นี้\wbr มา\wbr ผสม\wbr กัน\wbr จะ\wbr ได้\wbr สี\wbr ขาว.\label {vocab:RGB}\nomeqref {4.0}
+		\nompageref{199}
+
+ \nomgroup{S}
+
+  \item [{{\latintext Serial}}]\begingroup \mbox {}\\ มาตร\wbr ฐาน\wbr สำหรับ\wbr สื่อ\wbr สาร. ด้าน\wbr หลัง\wbr ของ\wbr คอมพิวเตอร์\wbr ส่วน\wbr บุคคล\wbr โดย\wbr ทั่ว\wbr ไป\wbr จะ\wbr มี\wbr ซีเรียล\wbr อินเ\wbr ทอร์เฟส RS-232 อยู่.\label {vocab:Serial}\nomeqref {6.0}
+		\nompageref{260}
+  \item [{{\latintext shared library}}]\begingroup \mbox {}\\ ไฟล์ไบ\wbr นารี\wbr ที่\wbr เป็น\wbr ส่วน\wbr ของไ\wbr ลบ\wbr รา\wbr รี. โปรแกรม\wbr ที่\wbr สร้าง\wbr ไม่\wbr ต้อง\wbr รวม\wbr ส่วน\wbr ที่\wbr เป็นไ\wbr ลบ\wbr รา\wbr รี\wbr เข้า\wbr ไป\wbr ใน\wbr ตัว\wbr โปรแกรม. เรียก\wbr อีก\wbr อย่าง\wbr หนึ่ง\wbr ว่า dynamic library.\label {vocab:shared library}\nomeqref {2.0}
+		\nompageref{85}
+  \item [{{\latintext shell}}]\begingroup \mbox {}\\ \emph {เชลล์}. โปรแกรม\wbr ที่\wbr เป็น\wbr ตัว\wbr กลาง\wbr ระหว่าง\wbr ผู้\wbr ใช้\wbr กับเ\wbr คอร์เนล. มี\wbr หน้า\wbr ที่\wbr แปล\wbr คำ\wbr สั่ง\wbr จาก\wbr คีย์\wbr บอร์ด\wbr ส่ง\wbr ต่อ\wbr ให้เ\wbr คอร์เนล\wbr ทำ\wbr งาน\wbr ที่\wbr ต้องการ. เชลล์\wbr ที่\wbr นิยม\wbr ใช้\wbr กับ\wbr ลิ\wbr นุกซ์\wbr ได้\wbr แก่ \cmd {bash}, \cmd {csh}, \cmd {ksh}, \cmd {zsh} เป็นต้น.\label {vocab:shell}\nomeqref {2.0}
+		\nompageref{21}
+  \item [{{\latintext shell script}}]\begingroup \mbox {}\\ \emph {เชลล์สค\wbr ริปต์}. ไฟล์\wbr ที่\wbr รวม\wbr คำ\wbr สั่ง\wbr ที่\wbr ใช้\wbr ใน\wbr เชลล์\wbr เข้า\wbr ด้วย\wbr กัน. เชลล์\wbr จะ\wbr ตี\wbr ความ\wbr คำ\wbr สั่ง\wbr ที่\wbr อยู่\wbr ใน\wbr ไฟล์\wbr นั้น\wbr บรรทัด\wbr ต่อ\wbr บรรทัด. สะดวก\wbr สำหรับ\wbr การ\wbr สั่ง\wbr คำ\wbr ที่\wbr เป็น\wbr ขั้น\wbr ตอน. เนื่อง\wbr จาก\wbr เชลล์\wbr มี\wbr ไวย\wbr กรณ์, สามารถ\wbr สร้าง\wbr ตัวแปร, สามารถ\wbr ควบ\wbr คุม\wbr ข้อ\wbr แม้\wbr ต่างๆ\wbr ได้\wbr จึง\wbr ถือ\wbr เป็น\wbr ภาษา\wbr คอมพิวเตอร์\wbr แบบ interpreter ด้วย. เชลล์สค\wbr ริปต์\wbr มี\wbr บท\wbr บาท\wbr สำคัญ\wbr กับ\wbr ลิ\wbr นุกซ์\wbr มาก\wbr เช่น เชลล์สค\wbr ริปต์\wbr ใช้\wbr ใน\wbr การ\wbr เริ่ม\wbr ต้น\wbr โปรแกรมเ\wbr ซิร์ฟ\wbr เวอร์\wbr ต่างๆ.\label {vocab:shell script}\nomeqref {2.0}
+		\nompageref{27}
+  \item [{{\latintext socket}}]\begingroup \mbox {}\\ วิธี\wbr การ\wbr ที่\wbr ใช้\wbr เขียน\wbr โปรแกรม\wbr ติด\wbr ต่อ\wbr กัน\wbr ผ่าน\wbr ทางเน็ตเ\wbr วิร์ก. socket นี้\wbr จะ\wbr เกี่ยว\wbr ข้อง\wbr กับ TCP, IP และ port.\label {vocab:socket}\nomeqref {3.0}
+		\nompageref{110}
+  \item [{{\latintext stack}}]\begingroup \mbox {}\\ โครง\wbr สร้าง\wbr ข้อ\wbr มูล (data structure) แบบ\wbr เข้า\wbr ก่อน\wbr ออก\wbr หลัง (first-in last-out) สำหรับ\wbr เก็บ\wbr ตัวแปร\wbr เฉพาะ\wbr ที่ (local variable) ใน\wbr ฟังก์ชัน ฯลฯ. พื้น\wbr ที่\wbr สำหรับ stack จะ\wbr อยู่\wbr ท้ายๆ\wbr ของ\wbr หน่วย\wbr ความ\wbr จำ.\label {vocab:stack}\nomeqref {5.0}
+		\nompageref{206}
+  \item [{{\latintext system call}}]\begingroup \mbox {}\\ \emph {ซิส\wbr เต็ม\wbr คอลล์}. ฟังค์\wbr ชัน\wbr ภาษา\wbr ซี\wbr สำหรับ\wbr ติด\wbr ต่อ\wbr ใช้\wbr งานเ\wbr คอร์เนล.\label {vocab:system call}\nomeqref {1.0}
+		\nompageref{15}
+
+ \nomgroup{T}
+
+  \item [{{\latintext roff}}]\begingroup \mbox {}\\ ระบบ\wbr ประมวล\wbr ผล\wbr เอก\wbr สาร\wbr ที่\wbr พัฒนา\wbr บน\wbr ระบบ\wbr ปฏิบัติ\wbr การ\wbr ยู\wbr นิกซ์\wbr ตั้ง\wbr แต่\wbr เริ่ม\wbr ต้น. ฟอร์แ\wbr มต\wbr ของ\wbr เอก\wbr สาร\wbr นี้\wbr ใน\wbr ปัจจุบัน\wbr เป็นฟอร์แ\wbr มต\wbr ของ man page ที่\wbr ใช้\wbr กัน\wbr ทั่ว\wbr ไป. ต่อ\wbr มา\wbr มี\wbr การ\wbr พัฒนา\wbr หลาย\wbr แขนง\wbr ได้\wbr แก่ nroff, troff, groff เป็นต้น.\label {vocab:roff}\nomeqref {2.0}
+		\nompageref{66}
+  \item [{{\latintext tcp}}]\begingroup \mbox {}\\ ย่อ\wbr มา\wbr จาก\wbr คำ\wbr ว่า Transfer Control Protocol เป็น\wbr โปร\wbr โต\wbr คอล\wbr มาตร\wbr ฐาน\wbr สำหรับ\wbr ควบ\wbr คุม\wbr ข้อ\wbr มูล\wbr ที่\wbr ส่ง\wbr ผ่าน\wbr ทาง\wbr อินเ\wbr ทอร์เน็ต. มี\wbr ระบบ\wbr สร้าง\wbr คอนเน็ก\wbr ชัน\wbr ระหว่าง\wbr โฮส, ตรวจเช็ก\wbr ข้อ\wbr มูล ฯลฯ\label {vocab:tcp}\nomeqref {6.0}
+		\nompageref{289}
+  \item [{{\latintext terminal emulator}}]\begingroup \mbox {}\\ \emph {เ\wbr ทอร์\wbr มิ\wbr นอล\wbr เอ\wbr มิวเล\wbr เตอร์}. โปรแกรม\wbr ที่\wbr จำลอง\wbr หน้า\wbr จอ\wbr แสดง\wbr ผล\wbr ตัว\wbr อักษร\wbr เพื่อ\wbr ใช้\wbr กับ\wbr เชลล์. เ\wbr ทอร์\wbr มิ\wbr นอล\wbr เอ\wbr มิวเล\wbr เตอร์\wbr จะ\wbr เป็น\wbr โปรแกรม\wbr ที่\wbr ใช้\wbr ใน X วิน\wbr โดว์\wbr เช่น \cmd {xterm}, \cmd {gnome-terminal}, \cmd {konsole} เป็นต้น.\label {vocab:terminal emulator}\nomeqref {2.0}
+		\nompageref{25}
+  \item [{{\latintext terminal emulator}}]\begingroup \mbox {}\\ \emph {เ\wbr ทอร์\wbr มิ\wbr นอล\wbr เอมูเล\wbr เตอร์}. โปรแกรม\wbr ที่\wbr ใช้\wbr ใน\wbr การ\wbr แสดง\wbr ผล\wbr ใน\wbr รูป\wbr ของ\wbr ตัว\wbr อักษร\wbr ผ่าน\wbr ทาง\wbr หน้า\wbr จอ\wbr โดย\wbr การ\wbr ป้อน\wbr ข้อ\wbr มูล\wbr เข้า\wbr ผ่าน\wbr ทาง\wbr คีย์\wbr บอร์ด\label {vocab:terminal emulator}\nomeqref {1.0}
+		\nompageref{3}
+  \item [{{\latintext text data}}]\begingroup \mbox {}\\ \emph {ข้อ\wbr มูลเท็กซ์}. ข้อ\wbr มูล\wbr ที่\wbr หรือ\wbr ไฟล์\wbr ที่\wbr มนุษย์\wbr สามารถ\wbr อ่าน\wbr แล้ว\wbr เข้า\wbr ใจ\wbr ได้. โดย\wbr ปรกติ\wbr ข้อ\wbr มูลเท็กซ์\wbr จะ\wbr หมาย\wbr ถึง\wbr ไฟล์\wbr ที่\wbr เขียน\wbr ด้วย\wbr ภาษา\wbr อังกฤษ\wbr ที่\wbr อ่าน\wbr ได้, ไม่\wbr มี\wbr อักขระ\wbr ควบ\wbr คุม (control character) ปะปน.\label {vocab:text data}\nomeqref {2.0}
+		\nompageref{27}
+  \item [{{\latintext text mode}}]\begingroup \mbox {}\\ \emph {เท็กซ์\wbr โหมด}. สภาพ\wbr ของ\wbr ระบบ\wbr ปฏิบัติ\wbr ที่\wbr อินเ\wbr ทอร์เฟส\wbr เป็น\wbr คีย์\wbr บอร์ด\wbr และ\wbr หน้า\wbr จอเ\wbr ทอร์\wbr มินัล\wbr เท่า\wbr นั้น.\label {vocab:text mode}\nomeqref {2.0}
+		\nompageref{24}
+  \item [{{\latintext thread}}]\begingroup \mbox {}\\ สาย\wbr งาน\wbr ที่\wbr อยู่\wbr โปร\wbr เซส\wbr ที่\wbr สามารถ\wbr ทำ\wbr งาน\wbr ได้\wbr พร้อมๆ\wbr กัน. โปรแกรม\wbr ที่\wbr ใช้ thread ได้\wbr จะ\wbr ใช้ไ\wbr ลบ\wbr รา\wbr รี pthread.\label {vocab:thread}\nomeqref {5.0}
+		\nompageref{214}
+
+ \nomgroup{U}
+
+  \item [{{\latintext unicode}}]\begingroup \mbox {}\\ มาตร\wbr ฐาน\wbr สำหรับ\wbr การ\wbr แสดง\wbr ข้อ\wbr มูลเท็กซ์\wbr หลาย\wbr ภาษา\wbr พร้อมๆ\wbr กัน. เดิม\wbr ที\wbr ข้อ\wbr มูล\wbr ใน\wbr คอมพิวเตอร์\wbr ไม่\wbr ได้\wbr คำนึง\wbr ถึง\wbr การ\wbr ใช้\wbr ภาษา\wbr อื่นๆ\wbr ทำ\wbr ให้\wbr ช่วง\wbr แรกๆ\wbr คอมพิวเตอร์\wbr รอง\wbr รับ\wbr ข้อ\wbr มูลเท็กซ์\wbr เฉพาะ\wbr ภาษา\wbr อังกฤษ\wbr ซึ่ง\wbr ต้องการ\wbr เนื้อ\wbr ที่\wbr สำหรับ\wbr บันทึก\wbr อักขระ\wbr แค่ 7 บิต\wbr ก็\wbr เพียง\wbr พอ. ต่อ\wbr มา\wbr คอมพิวเตอร์\wbr ใช้\wbr กัน\wbr อย่าง\wbr แพร่\wbr หลาย\wbr ทำ\wbr ให้\wbr ต้อง\wbr เพิ่ม\wbr เนื้อ\wbr ที่\wbr สำหรับ\wbr ภาษา\wbr อื่นๆ\wbr ด้วย\wbr จึง\wbr เกิด\wbr มาตร\wbr ฐาน\wbr ยู\wbr นิ\wbr โค้ด\wbr ขึ้น. อักขระ\wbr ทุก\wbr ภาษา\wbr สามารถ\wbr แสดง\wbr ด้วย\wbr ข้อ\wbr มูล 16 บิต.\label {vocab:unicode}\nomeqref {6.0}
+		\nompageref{250}
+  \item [{{\latintext URL (Uniform Resource Locator)}}]\begingroup \mbox {}\\ วิธี\wbr การ\wbr อ้าง\wbr อิง\wbr แหล่ง\wbr ข้อ\wbr มูล\wbr เช่น\wbr เอก\wbr สาร\wbr ทาง\wbr อินเ\wbr ทอร์เน็ต. ตัว\wbr อย่าง\wbr เช่น http://linux.thai.net:80/plone ประกอบ\wbr ด้วย\wbr ส่วน\wbr ต่างๆ\wbr ได้\wbr แก่ โปร\wbr โต\wbr คอล (http), ชื่อ\wbr โด\wbr เมน (linux.thai.net), หมาย\wbr เลข\wbr พอร์ต (80) และ path (plone).\label {vocab:URL (Uniform Resource Locator)}\nomeqref {2.0}
+		\nompageref{72}
+  \item [{{\latintext USB}}]\begingroup \mbox {}\\ คำ\wbr ย่อ\wbr ของ Universal Serial Bus เป็น\wbr มาตร\wbr ฐาน\wbr สำหรับ\wbr ต่อ\wbr อุปกรณ์\wbr คอมพิวเตอร์\wbr ต่างๆ\wbr ตั้ง\wbr แต่\wbr แป้น\wbr พิมพ์, เมาส์, เครื่อง\wbr พิมพ์, ฮาร์ดดิสก์ ฯลฯ.\label {vocab:USB}\nomeqref {6.0}
+		\nompageref{260}
+
+ \nomgroup{V}
+
+  \item [{{\latintext virtual desktop}}]\begingroup \mbox {}\\ \emph {เดสก์ท็\wbr อป\wbr เสมือน}. คุณสมบัติ\wbr ของ\wbr วิน\wbr โดว์\wbr แมนเน\wbr เจอร์\wbr ที่\wbr สามารถ\wbr ขยาย\wbr เดสก์ท็\wbr อป\wbr ให้\wbr มี\wbr หลาย\wbr หน้า\wbr ทำ\wbr ให้\wbr เนื้อ\wbr ที่\wbr การ\wbr ใช้\wbr งาน\wbr เดสก์ท็\wbr อป\wbr กว้าง\wbr ขึ้น. แต่\wbr ใน\wbr ความ\wbr เป็น\wbr จริง\wbr แล้ว\wbr มี\wbr หน้า\wbr จอ\wbr เพียง\wbr หน้า\wbr เดียว.\label {vocab:virtual desktop}\nomeqref {6.0}
+		\nompageref{259}
+  \item [{{\latintext virtual memory}}]\begingroup \mbox {}\\ \emph {หน่วย\wbr ความ\wbr จำ\wbr เสมือน}. พื้น\wbr ที่\wbr หน่วย\wbr ความ\wbr จำ (address space) ที่\wbr โปร\wbr เซ\wbr สมอง\wbr เห็น\wbr ซึ่ง\wbr โดย\wbr ทั่ว\wbr ไป\wbr จะ\wbr มี\wbr ขนาด\wbr ไม่\wbr เท่า\wbr กับ\wbr หน่วย\wbr ความ\wbr จำ\wbr จริง (physical memory). ใน\wbr ระบบ\wbr สถาปัตยกรรม 32 บิต\wbr พื้น\wbr ที่\wbr ที่\wbr โปร\wbr เซส\wbr เห็น\wbr จะ\wbr มี\wbr ขนาด 4GB.\label {vocab:virtual memory}\nomeqref {5.0}
+		\nompageref{212}
+  \item [{{\latintext virtual memory}}]\begingroup \mbox {}\\ \label {vocab:virtual memory}\nomeqref {3.0}
+		\nompageref{90}
+  \item [{{\latintext virtual terminal}}]\begingroup \mbox {}\\ \emph {เ\wbr ทอร์\wbr มิ\wbr นอล\wbr เสมือน}. เ\wbr ทอร์\wbr มิ\wbr นอล\wbr ในเท็กซ์\wbr โหมด\wbr ของ\wbr ลิ\wbr นุกซ์\wbr ที่\wbr สามารถ\wbr เปลี่ยน\wbr หน้า\wbr จอ\wbr เป็น\wbr หลาย\wbr หน้า\wbr จอ\wbr ได้\wbr โดย\wbr มี\wbr หน้า\wbr จอ\wbr ที่\wbr เป็น\wbr รูป\wbr ธรรม\wbr เพียง\wbr หน้า\wbr จอ\wbr เดียว. วิธี\wbr เปลี่ยน\wbr หน้า\wbr จอ\wbr ทำ\wbr ได้\wbr โดย\wbr กด \ovalbox {\cmd {Ctrl}} และ \ovalbox {\cmd {Alt}} ร่วม\wbr กับ\wbr ฟังค์\wbr ชัน\wbr คีย์.\label {vocab:virtual terminal}\nomeqref {2.0}
+		\nompageref{28}
+  \item [{{\latintext VPN (Virtual Private Network)}}]\begingroup \mbox {}\\ การ\wbr ใช้\wbr เครือ\wbr ข่าย\wbr สาธารณะ\wbr เช่น\wbr อินเ\wbr ทอร์เน็ต\wbr ใน\wbr การ\wbr รับ\wbr ส่ง\wbr ข้อ\wbr มูล\wbr โดย\wbr มี\wbr วิธี\wbr การ\wbr รักษา\wbr ความ\wbr ปลอด\wbr ภัย\wbr ของ\wbr ข้อ\wbr มูล\wbr ด้วย. พูด\wbr ง่ายๆ\wbr คือ\wbr การ\wbr สร้าง\wbr เครือ\wbr ข่าย\wbr ที่\wbr มี\wbr ความ\wbr ปลอด\wbr ภัย\wbr สูง (เช่น\wbr การ\wbr ลง\wbr รหัส) บน\wbr เครือ\wbr ข่าย\wbr สาธารณะ.\label {vocab:VPN (Virtual Private Network)}\nomeqref {2.0}
+		\nompageref{71}
+
+ \nomgroup{X}
+
+  \item [{{\latintext X Display Manager}}]\begingroup \mbox {}\\ หน้า\wbr จอ\wbr แบบ\wbr กราฟ\wbr ฟิก\wbr ใช้\wbr ใน\wbr การล็\wbr อก\wbr อิน. ก่อน\wbr ที่\wbr จะ\wbr มี GNOME และ KDE, ระบบ X วิน\wbr โดว์\wbr ใช้ X Display Manager ที่\wbr เรีย\wbr กว่า \cmd {xdm} ซึ่ง\wbr ปัจจุบัน\wbr ไม่\wbr นิยม\wbr ใช้\wbr กัน\wbr แล้ว. โปรแกรม\wbr ที่\wbr มา\wbr แทน \cmd {xdm} ได้\wbr แก่ \cmd {gdm}, \cmd {kdm} ฯลฯ.\label {vocab:X Display Manager}\nomeqref {2.0}
+		\nompageref{25}
+  \item [{{\latintext XML}}]\begingroup \mbox {}\\ Extensible Markup Language. รูป\wbr แบบ\wbr ข้อ\wbr มูลเท็กซ์\wbr ใช้\wbr คำ\wbr ที่\wbr กำหนด\wbr ไว้\wbr เรีย\wbr กว่า tag กำกับ\wbr ส่วน\wbr ต่างๆ\wbr ให้\wbr มี\wbr ความ\wbr หมาย\wbr ต่างๆ. XML เป็นฟอร์แ\wbr มต\wbr ที่\wbr สร้าง\wbr สืบ\wbr ทอด\wbr มา\wbr จาก SGML (Standard Generalized Markup Language) เช่น\wbr เดียว\wbr กัน\wbr กับ HTML (HyperText Markup Language). HTML จะ\wbr เป็น\wbr ซับเซ็ต\wbr ของ XML.\label {vocab:XML}\nomeqref {6.0}
+		\nompageref{295}
+  \item [{{\latintext X server}}]\begingroup \mbox {}\\ \emph {X เ\wbr ซิร์ฟ\wbr เวอร์}. โปรแกรม\wbr แบบ server - client ที่\wbr มี\wbr หน้า\wbr ที่\wbr รับ\wbr คำ\wbr ขอ\wbr จาก client วาด\wbr หน้า\wbr จอ, ผลิต\wbr หน้า\wbr ต่าง, ควบ\wbr คุม\wbr ระบบ\wbr หน้า\wbr ต่าง ฯลฯ.\label {vocab:X server}\nomeqref {2.0}
+		\nompageref{25}
+  \item [{{\latintext X window system}}]\begingroup \mbox {}\\ \emph {X วิน\wbr โดว์}. ระบบ\wbr การ\wbr แสดง\wbr ผล\wbr กราฟ\wbr ฟิกส์\wbr ผ่าน\wbr ทาง\wbr จอ\wbr ภาพ\wbr ใน\wbr รูป\wbr แบบ\wbr ของ\wbr หน้า\wbr ต่าง\wbr หลาย\wbr บาน. เป็น\wbr โครง\wbr การ\wbr ของ MIT ที่\wbr พัฒนา\wbr ต่อ\wbr มา\wbr จาก W windows system ของ Stanford. ระบบ X วิน\wbr โดว์\wbr ที่\wbr ใช้\wbr ใน\wbr ลิ\wbr นุกซ์\wbr เป็น\wbr โครง\wbr การ\wbr ของ Xfree86 ซึ่ง\wbr พัฒนา X เ\wbr ซิฟร์\wbr เวอร์\wbr สำหรับ\wbr วี\wbr ดี\wbr โอ\wbr การ์ด\wbr ต่างๆ. สัง\wbr เกตุ\wbr ว่า\wbr เขียน\wbr ว่า X window ไม่\wbr ใช่ X windows.\label {vocab:X window system}\nomeqref {1.0}
+		\nompageref{3}
+
+\end{theglossary}

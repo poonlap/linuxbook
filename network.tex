@@ -1,0 +1,38 @@
+\begin{thwbr}
+\chapter{ระบบเครือข่าย}
+โดยปรกติชื่อโฮสจะเก็บไว้ในไฟล์ \cmd{/etc/hosts} ตามตัวอย่างที่ \ref{ex:hosts}
+\begin{MyExample}[ไฟล์ \cmd{/etc/hosts}.]\label{ex:hosts}
+\begin{MyEx}
+$ \cin{cat /etc/hosts}
+127.0.0.1       localhost toybox
+\end{MyEx}
+\end{MyExample}%$
+วิธีเขียนไฟล์นี้จะมีแบบอย่างเป็น
+\begin{MyVerbatim}
+IP_address \thtt{ชื่อหลัก} \thtt{ชื่ออื่น}
+\end{MyVerbatim}
+ชื่อหลักคือชื่อเครื่องที่เป็นทางการเช่นชื่อแบบ \emph{FQDN (Fully Qualified Domain Name)}\gindex{fqdn@FQDN}\myvocab{f}{FQDN}{เป็นชื่อย่อของคำว่า Fully Qualified Domain Name. ชื่อเป็นทางการที่ตั้งให้กับคอมพิวเตอร์. ชื่อนี้จะประกอบด้วยชื่อโฮสและชื่อโดเมน. ชื่อ FQDN นี้จะบันทึกกับระบบ DNS ด้วย.} หรือชื่อเครื่องที่ไม่เป็นทางการก็ได้เช่น localhost. หลังจากชื่อห
+
+\section{port}
+คำสั่ง \cmd{fuser} ยังมีความสามารถพิเศษสามารถหาโปรเซสที่ใช้พอร์ตเน็ตเวิร์กได้ด้วยโดยระบุตัวเลือก \cmd{-n tcp} หรือ \cmd{-n udp}. โดยปรกติ 
+\begin{MyExample}[]
+\begin{MyEx}
+$ \cin{netstat -ltu}
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State
+tcp        0      0 *:609                   *:*                     LISTEN
+tcp        0      0 *:wnn6                  *:*                     LISTEN
+tcp        0      0 *:32776                 *:*                     LISTEN
+tcp        0      0 *:sunrpc                *:*                     LISTEN
+tcp        0      0 *:ssh                   *:*                     LISTEN
+udp        0      0 *:bootps                *:*
+udp    42320      0 *:bootpc                *:*
+udp        0      0 *:sunrpc                *:*
+\end{MyEx}
+\end{MyExample}
+
+\section{อินเทอร์เฟส}
+
+
+\end{thwbr}
+\wbrin

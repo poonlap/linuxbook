@@ -1,0 +1,140 @@
+\chapter{รหัสอักขระ ASCII}
+\tablecaption{รหัสอักขระ ASCII}\label{tab:ascii}
+\tablefirsthead{\hline \multicolumn{1}{c|}{ค่าฐานสิบ} & \multicolumn{1}{|c|}{ค่าฐานสิบหก} & \multicolumn{1}{|c|}{ค่าฐานแปด} & \multicolumn{2}{|c}{อักขระ}\\
+\hline
+}
+\tablehead{\multicolumn{5}{l}{{\slshape ต่อจากหน้าที่แล้ว}}\\ \hline \multicolumn{1}{c|}{ค่าฐานสิบ} & \multicolumn{1}{|c|}{ค่าฐานสิบหก} & \multicolumn{1}{|c|}{ค่าฐานแปด} & \multicolumn{2}{|c}{อักขระ}\\
+\hline
+}
+\tabletail{\hline \multicolumn{5}{r}{\slshape ต่อหน้าถัดไป}\\}
+\tablelasttail{\hline \multicolumn{5}{r}{\cmd{*} เครื่องหมายควบคุม (control character)}\\}
+\begin{supertabular}{r|c|c|c|p{.3\linewidth}}
+0 & 0x00 & 000 & \texttt{NUL}$^*$ & null \\
+1 & 0x01 & 001 & \texttt{SOH}$^*$ & start of heading \\
+2 & 0x02 & 002& \texttt{STX}$^*$ & start of text\\
+3 & 0x03 & 003 & \texttt{ETX}$^*$ & end of text\\
+4 & 0x04 & 004 & \texttt{EOT}$^*$ & end of transmission\\
+5 & 0x05 & 005 & \texttt{ENQ}$^*$ & enquiry\\
+6 & 0x06 & 006 & \texttt{ACK}$^*$ & acknowledge\\
+7 & 0x07 & 007 & \texttt{BEL}$^*$ & bell\\
+8 & 0x08 & 010 & \texttt{BS}$^*$ & backspace\\
+9 & 0x09 & 011 & \texttt{TAB}$^*$ & horizontal tab\\
+10 & 0x0A & 012 & \texttt{LF}$^*$ & new line, line feed\\
+11 & 0x0B & 013 & \texttt{VT}$^*$ & vertical tab\\
+12 & 0x0C & 014 & \texttt{FF}$^*$ & new page, form feed\\
+13 & 0x0D & 015 & \texttt{CR}$^*$ & carriage return\\
+14 & 0x0E & 016 & \texttt{SO}$^*$ & shift out\\
+15 & 0x0F & 017 & \texttt{SI}$^*$ & shift in \\
+16 & 0x10 & 020 & \texttt{DLE}$^*$ & data line escape\\
+17 & 0x11 & 021 & \texttt{DC1}$^*$ & device control 1\\
+18 & 0x12 & 022 & \texttt{DC2}$^*$ & device control 2\\
+19 & 0x13 & 023 & \texttt{DC3}$^*$ & device control 3\\
+20 & 0x14 & 024 & \texttt{DC4}$^*$ & device control 4\\
+21 & 0x15 & 025 & \texttt{NAK}$^*$ & negative acknowledge\\
+22 & 0x16 & 026 & \texttt{SYN}$^*$ & synchronous idle\\
+23 & 0x17 & 027 & \texttt{ETB}$^*$ & end of transmission block\\
+24 & 0x18 & 030 & \texttt{CAN}$^*$ & cancel\\
+25 & 0x19 & 031 & \texttt{EM}$^*$ & end of medium\\
+26 & 0x1A & 032 & \texttt{SUB}$^*$ & substitute\\
+27 & 0x1B & 033 & \texttt{ESC}$^*$ & escape\\
+28 & 0x1C & 034 & \texttt{FS}$^*$ & file separator\\
+29 & 0x1D & 035 & \texttt{GS}$^*$ & group separator\\
+30 & 0x1E & 036 & \texttt{RS}$^*$ & record separator\\
+31 & 0x1F & 037 & \texttt{US}$^*$ & unit separator\\
+32 & 0x20 & 040 & \texttt{SP}  & space\\
+33 & 0x21 & 041 & \verb|!| & exclamation mark\\
+34 & 0x22 & 042 & \verb|"| & (double) quotation mark\\
+35 & 0x23 & 043 & \verb|#| & number sign\\
+36 & 0x24 & 044 & \verb|$| & dollar sign\\
+37 & 0x25 & 045 & \verb|%| & percent sign\\
+38 & 0x26 & 046 & \verb|&| & ampersand\\
+39 & 0x27 & 047 & \verb|'| & apostrophe, single quote mark\\
+40 & 0x28 & 050 & \verb|(| & left parenthesis\\
+41 & 0x29 & 051 & \verb|)| & right parenthesis\\
+42 & 0x2A & 052 & \verb|*| & asterisk\\
+43 & 0x2B & 053 & \verb|+| & plus sign\\
+44 & 0x2C & 054 & \verb|,| & comma\\
+45 & 0x2D & 055 & \verb/-/ & minus sign, hyphen\\
+46 & 0x2E & 056 & \verb/./ & period, decimal point, full stop\\
+47 & 0x2F & 057 & \verb|/| & slash, virgule, solidus\\
+48 & 0x30 & 060 & \verb/0/ & digit 0\\
+49 & 0x31 & 061 & \verb/1/ & digit 1\\
+50 & 0x32 & 062 & \verb|2| & digit 2\\
+51 & 0x33 & 063 & \verb|3| & digit 3\\
+52 & 0x34 & 064 & \verb|4| & digit 4\\
+53 & 0x35 & 065 & \verb|5| & digit 5\\
+54 & 0x36 & 066 & \verb|6| & digit 6\\
+55 & 0x37 & 067 & \verb|7| & digit 7\\
+56 & 0x38 & 070 & \verb|8| & digit 8\\
+57 & 0x39 & 071 & \verb|9| & digit 9\\
+58 & 0x3A & 072 & \verb|:| & colon\\
+59 & 0x3B & 073 & \verb|;| & semicolon\\
+60 & 0x3C & 074 & \verb|<| & less-than sign\\
+61 & 0x3D & 075 & \verb|=| & equal sign\\
+62 & 0x3E & 076 & \verb|>| & greater-than sign\\
+63 & 0x3F & 077 & \verb|?| & question mark\\
+64 & 0x40 & 100 & \verb|@| & commercial at sign\\
+65 & 0x41 & 101 & \verb|A| & capital A                    \\
+66 & 0x42 & 102 & \verb|B| & capital B                    \\
+67 & 0x43 & 103 & \verb|C| & capital C                    \\
+68 & 0x44 & 104 & \verb|D| & capital D                    \\
+69 & 0x45 & 105 & \verb|E| & capital E                    \\
+70 & 0x46 & 106 & \verb|F| & capital F                    \\
+71 & 0x47 & 107 & \verb|G| & capital G                    \\
+72 & 0x48 & 110 & \verb|H| & capital H                    \\
+73 & 0x49 & 111 & \verb|I| & capital I                    \\
+74 & 0x4A & 112 & \verb|J| & capital J                    \\
+75 & 0x4B & 113 & \verb|K| & capital K                    \\
+76 & 0x4C & 114 & \verb|L| & capital L                    \\
+77 & 0x4D & 115 & \verb|M| & capital M                    \\
+78 & 0x4E & 116 & \verb|N| & capital N                    \\
+79 & 0x4F & 117 & \verb|O| & capital O                    \\
+80 & 0x50 & 120 & \verb|P| & capital P                    \\
+81 & 0x51 & 121 & \verb|Q| & capital Q                    \\
+82 & 0x52 & 122 & \verb|R| & capital R                    \\
+83 & 0x53 & 123 & \verb|S| & capital S                    \\
+84 & 0x54 & 124 & \verb|T| & capital T                    \\
+85 & 0x55 & 125 & \verb|U| & capital U                    \\
+86 & 0x56 & 126 & \verb|V| & capital V                    \\
+87 & 0x57 & 127 & \verb|W| & capital W                    \\
+88 & 0x58 & 130 & \verb|X| & capital X                    \\
+89 & 0x59 & 131 & \verb|Y| & capital Y                    \\
+90 & 0x5A & 132 & \verb|Z| & capital Z                    \\
+91 & 0x5B & 133 & \verb|[| & left square bracket          \\
+92 & 0x5C & 134 & \verb|\| & backslash, reverse solidus   \\
+93 & 0x5D & 135 & \verb|]| & right square bracket         \\
+94 & 0x5E & 136 & \verb|^| & spacing circumflex accent     \\
+95 & 0x5F & 137 & \verb|_| & spacing underscore, low line, horizontal bar\\
+96 & 0x60 & 140 & \verb|`| &   spacing grave accent, back apostrophe, back quote\\
+97 & 0x61 & 141 & \verb|a| & small a \\
+98 & 0x62 & 142 & \verb|b| & small b \\
+99 & 0x63 & 143 & \verb|c| & small c \\
+100 & 0x64 & 144 & \verb|d| &small d  \\
+101 & 0x65 & 145 & \verb|e| &small e  \\
+102 & 0x66 & 146 & \verb|f| &small f  \\
+103 & 0x67 & 147 & \verb|g| &small g  \\
+104 & 0x68 & 150 & \verb|h| &small h  \\
+105 & 0x69 & 151 & \verb|i| &small i  \\
+106 & 0x6A & 152 & \verb|j| &small j  \\
+107 & 0x6B & 153 & \verb|k| &small k  \\
+108 & 0x6C & 154 & \verb|l| &small l  \\
+109 & 0x6D & 155 & \verb|m| &small m  \\
+110 & 0x6E & 156 & \verb|n| &small n  \\
+111 & 0x6F & 157 & \verb|o| &small o  \\
+112 & 0x70 & 160 & \verb|p| &small p  \\
+113 & 0x71 & 161 & \verb|q| &small q  \\
+114 & 0x72 & 162 & \verb|r| &small r  \\
+115 & 0x73 & 163 & \verb|s| &small s  \\
+116 & 0x74 & 164 & \verb|t| &small t  \\
+117 & 0x75 & 165 & \verb|u| &small u  \\
+118 & 0x76 & 166 & \verb|v| &small v  \\
+119 & 0x77 & 167 & \verb|w| &small w  \\
+120 & 0x78 & 170 & \verb|x| &small x  \\
+121 & 0x79 & 171 & \verb|y| &small y  \\
+122 & 0x7A & 172 & \verb|z| &small z  \\
+123 & 0x7B & 173 & \verb|{| & left brace (curly bracket)\\
+124 & 0x7C & 174 & \verb/|/ & vertical bar\\
+125 & 0x7D & 175 & \verb|}| & right brace (curly bracket)\\
+126 & 0x7E & 176 & \verb|~| & tilde accent\\
+127 & 0x7F & 177 & \texttt{DEL}$^*$ & delete\\
+\end{supertabular}
