@@ -4,8 +4,8 @@
 
 \newcommand{\cmd}[1]{{\latintext\texttt {#1}}}
 \newcommand{\mymarginpar}[1]{\marginpar{\raggedright \scriptsize #1}}
-%\newcommand{\myvocab}[2]{\nomenclature{#1}{\mbox{}\\ #2\label{vocab:#1}}\mymarginpar{#1 $\blacktriangleright$ ÀπÈ“ \pageref{vocab:#1}}}
-%\newcommand{\myvocab}[3]{\nomenclature[#1]{{\latintext #2}}{\mbox{}\\ #3\label{vocab:#2}}\mymarginpar{#2 $\blacktriangleright$ §”»—æ∑ÏÀπÈ“ \pageref{vocab:#2}}}
+%\newcommand{\myvocab}[2]{\nomenclature{#1}{\mbox{}\\ #2\label{vocab:#1}}\mymarginpar{#1 $\blacktriangleright$ ‡∏´‡∏ô‡πâ‡∏≤ \pageref{vocab:#1}}}
+%\newcommand{\myvocab}[3]{\nomenclature[#1]{{\latintext #2}}{\mbox{}\\ #3\label{vocab:#2}}\mymarginpar{#2 $\blacktriangleright$ ‡∏Ñ‡∏≥‡∏®‡∏±‡∏û‡∏ó‡πå‡∏´‡∏ô‡πâ‡∏≤ \pageref{vocab:#2}}}
 \newcommand{\myvocab}[3]{\nomenclature[#1]{{\latintext #2}}{\mbox{}\\ #3\label{vocab:#2}}\mymarginpar{#2 $\blacktriangleright$\\
 #3}}
 %\newcommand{\mymemo}[1]{\mymarginpar{\includegraphics[scale=0.4]{icon_memo.eps}\par#1}}
@@ -16,8 +16,8 @@
 \newcommand{\myxapp}[2]{\mymarginpar{\includegraphics[scale=0.4]{metacity-properties.eps} \cmd{#1}\par#2}}
 
 % practice
-\newcommand{\mypractice}[1]{\addtocounter{myprac}{1}\mymarginpar{\textleaf{} \emph{·∫∫Ω÷°À—¥} \themyprac\ \hrulefill\par #1}}
-\newcommand{\myprac}{\item[\addtocounter{myprac}{1}§”∂“¡∑’Ë \themyprac{}.] }
+\newcommand{\mypractice}[1]{\addtocounter{myprac}{1}\mymarginpar{\textleaf{} \emph{‡πÅ‡∏ö‡∏ö‡∏ù‡∏∂‡∏Å‡∏´‡∏±‡∏î} \themyprac\ \hrulefill\par #1}}
+\newcommand{\myprac}{\item[\addtocounter{myprac}{1}‡∏Ñ‡∏≥‡∏ñ‡∏≤‡∏°‡∏ó‡∏µ‡πà \themyprac{}.] }
 
 % remember chapter title
 \renewcommand{\chaptermark}[1]%
@@ -218,7 +218,7 @@
 \def\theglossary{% 
 \@ifundefined{chapter}{\section*}{\chapter*}{\nomname}% 
 %\nompreamble \begin{longtable}[l]{@{}ll@{}}} \def\endtheglossary{% 
-\markboth{√«¡§”»—æ∑Ï§Õ¡æ‘«‡µÕ√Ï}{æŸ≈≈“¿ «’√–∏π“∫ÿµ√ \thtt{http://linux.thai.net/Members/poonlap}}\nompreamble \begin{description}} \def\endtheglossary{% 
+\markboth{‡∏£‡∏ß‡∏°‡∏Ñ‡∏≥‡∏®‡∏±‡∏û‡∏ó‡πå‡∏Ñ‡∏≠‡∏°‡∏û‡∏¥‡∏ß‡πÄ‡∏ï‡∏≠‡∏£‡πå}{‡∏û‡∏π‡∏•‡∏•‡∏≤‡∏† ‡∏ß‡∏µ‡∏£‡∏∞‡∏ò‡∏ô‡∏≤‡∏ö‡∏∏‡∏ï‡∏£ \thtt{http://linux.thai.net/Members/poonlap}}\nompreamble \begin{description}} \def\endtheglossary{% 
 \end{description}% 
 \nompostamble}
 
@@ -309,15 +309,15 @@
 \def\thaialph#1{\expandafter\@thaialph\csname c@#1\endcsname}
 \def\thaiAlph#1{\expandafter\@thaiAlph\csname c@#1\endcsname}
 \def\@thaialph#1{%
-  \ifcase#1\or °\or ¢\or §\or ß\or ®\or ©\or ™\or ´\or ¨\or ≠\or Æ\or
-   Ø\or ∞\or ±\or ≤\or ≥\or ¥\or µ\or ∂\or ∑\or ∏\or π\or ∫\or ª\or º\or 
-   Ω\or æ\or ø\or ¿\or ¡\or ¬\or √\or ≈\or «\or »\or …\or  \or À\or Ã\or Õ\or
-     Œelse\@ctrerr\fi}
+  \ifcase#1\or ‡∏Å\or ‡∏Ç\or ‡∏Ñ\or ‡∏á\or ‡∏à\or ‡∏â\or ‡∏ä\or ‡∏ã\or ‡∏å\or ‡∏ç\or ‡∏é\or
+   ‡∏è\or ‡∏ê\or ‡∏ë\or ‡∏í\or ‡∏ì\or ‡∏î\or ‡∏ï\or ‡∏ñ\or ‡∏ó\or ‡∏ò\or ‡∏ô\or ‡∏ö\or ‡∏õ\or ‡∏ú\or 
+   ‡∏ù\or ‡∏û\or ‡∏ü\or ‡∏†\or ‡∏°\or ‡∏¢\or ‡∏£\or ‡∏•\or ‡∏ß\or ‡∏®\or ‡∏©\or ‡∏™\or ‡∏´\or ‡∏¨\or ‡∏≠\or
+     ‡∏Æelse\@ctrerr\fi}
 \def\@thaiAlph#1{%
-  \ifcase#1\or °\or ¢\or £\or §\or •\or ¶\or ß\or ®\or ©\or ™\or ´\or
-   ¨\or ≠\or Æ\or Ø\or ∞\or ±\or ≤\or ≥\or ¥\or µ\or ∂\or ∑\or ∏\or π\or
-    ∫\or ª\or º\or Ω\or æ\or ø\or ¿\or ¡\or ¬\or √\or ƒ\or ≈\or ∆\or «\or
-     »\or …\or  \or À\or Ã\or Õ\or Œelse\@ctrerr\fi}
+  \ifcase#1\or ‡∏Å\or ‡∏Ç\or ‡∏É\or ‡∏Ñ\or ‡∏Ö\or ‡∏Ü\or ‡∏á\or ‡∏à\or ‡∏â\or ‡∏ä\or ‡∏ã\or
+   ‡∏å\or ‡∏ç\or ‡∏é\or ‡∏è\or ‡∏ê\or ‡∏ë\or ‡∏í\or ‡∏ì\or ‡∏î\or ‡∏ï\or ‡∏ñ\or ‡∏ó\or ‡∏ò\or ‡∏ô\or
+    ‡∏ö\or ‡∏õ\or ‡∏ú\or ‡∏ù\or ‡∏û\or ‡∏ü\or ‡∏†\or ‡∏°\or ‡∏¢\or ‡∏£\or ‡∏§\or ‡∏•\or ‡∏¶\or ‡∏ß\or
+     ‡∏®\or ‡∏©\or ‡∏™\or ‡∏´\or ‡∏¨\or ‡∏≠\or ‡∏Æelse\@ctrerr\fi}
 \renewcommand\appendix{\par
   \setcounter{chapter}{0}%
   \setcounter{section}{0}%
@@ -329,8 +329,8 @@
 \def\thtt#1{{\fontencoding{LTH}\fontfamily{pmono}\selectfont #1}}
 
 \def\cindex#1{\index{command}{#1@{\latintext\texttt{#1}}}}
-\def\findex#1{\index{command}{#1@{\latintext\texttt{#1}} (‰ø≈Ï)}}
-\def\dindex#1{\index{command}{#1@{\latintext\texttt{#1}} (‰¥‡√°∑Õ√’)}}
+\def\findex#1{\index{command}{#1@{\latintext\texttt{#1}} (‡πÑ‡∏ü‡∏•‡πå)}}
+\def\dindex#1{\index{command}{#1@{\latintext\texttt{#1}} (‡πÑ‡∏î‡πÄ‡∏£‡∏Å‡∏ó‡∏≠‡∏£‡∏µ)}}
 \def\gindex#1{\index{general}{#1}}
 %\def\findex#1{\index{filei}{#1}}
 
@@ -350,9 +350,9 @@
 \theorempostskipamount=18pt
 %\theorempostskipamount=-16pt
 \theoremindent=12pt
-%\newshadedtheorem{MyExample}{{\thaitext µ—«Õ¬Ë“ß∑’Ë}}[chapter]
-\newtheorem{MyExample}{{\thaitext µ—«Õ¬Ë“ß∑’Ë}}[chapter]
-%\newframedtheorem{MyExample}{µ—«Õ¬Ë“ß∑’Ë}[chapter]
+%\newshadedtheorem{MyExample}{{\thaitext ‡∏ï‡∏±‡∏ß‡∏≠‡∏¢‡πà‡∏≤‡∏á‡∏ó‡∏µ‡πà}}[chapter]
+\newtheorem{MyExample}{{\thaitext ‡∏ï‡∏±‡∏ß‡∏≠‡∏¢‡πà‡∏≤‡∏á‡∏ó‡∏µ‡πà}}[chapter]
+%\newframedtheorem{MyExample}{‡∏ï‡∏±‡∏ß‡∏≠‡∏¢‡πà‡∏≤‡∏á‡∏ó‡∏µ‡πà}[chapter]
 
 
 \newcommand\bs{\char92}
@@ -363,7 +363,7 @@
 \newcommand\wrap{\ \rotatebox{-90}{$\curvearrowright$}}
 
 \newcommand\cmdentry[1]{\subsection*{\cmd{#1}}\label{cmd:#1}\cindex{#1}}
-\newcommand{\refcmd}[1]{\mymarginpar{\raisebox{1pt}{\scalebox{.5}{\Ovalbox{\cmd{\myenter}}}} \cmd{#1} ÕÈ“ßÕ‘ßÀπÈ“ \pageref{cmd:#1}}}
+\newcommand{\refcmd}[1]{\mymarginpar{\raisebox{1pt}{\scalebox{.5}{\Ovalbox{\cmd{\myenter}}}} \cmd{#1} ‡∏≠‡πâ‡∏≤‡∏á‡∏≠‡∏¥‡∏á‡∏´‡∏ô‡πâ‡∏≤ \pageref{cmd:#1}}}
 
 %%%%%%%%% can be used as column
 %\begin{figure}[tb]
@@ -379,4 +379,4 @@
 \newcommand{\keydel}{\raisebox{-4pt}{\scalebox{.25}{\includegraphics{key_del.eps}}}}
 \newcommand{\keyctrl}{\raisebox{-4pt}{\scalebox{.25}{\includegraphics{key_ctrl.eps}}}}
 \newcommand{\keyc}{\raisebox{-4pt}{\scalebox{.25}{\includegraphics{key_c.eps}}}}
-\newcommand{\abb}{--- \thtt{· ¥ßº≈µËÕ‰ª‡√◊ËÕ¬Ê} ---}
+\newcommand{\abb}{--- \thtt{‡πÅ‡∏™‡∏î‡∏á‡∏ú‡∏•‡∏ï‡πà‡∏≠‡πÑ‡∏õ‡πÄ‡∏£‡∏∑‡πà‡∏≠‡∏¢‡πÜ} ---}
